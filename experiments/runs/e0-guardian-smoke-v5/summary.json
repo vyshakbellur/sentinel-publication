@@ -1,0 +1,10 @@
+{
+  "observation_disagreements": 1,
+  "recovered": 2,
+  "safe_recoveries": 1,
+  "safe_recovery_rate": 0.1111111111111111,
+  "schema_version": "sentinel.summary.v1",
+  "trials": 9,
+  "unauthorized_effect_rate": 0.4444444444444444,
+  "unauthorized_effects": 4
+}

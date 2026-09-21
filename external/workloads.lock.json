@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0",
+  "resolved_at": "2026-09-21",
+  "workloads": [
+    {
+      "id": "online-boutique",
+      "role": "primary-sut",
+      "url": "https://github.com/GoogleCloudPlatform/microservices-demo.git",
+      "revision": "38e7348eb289eb5b87c0c6e8cb19ced0449dc389",
+      "default_branch": "main",
+      "license": "Apache-2.0",
+      "reason": "Maintained polyglot Kubernetes application with realistic service dependencies."
+    },
+    {
+      "id": "otel-astronomy-shop",
+      "role": "primary-sut",
+      "url": "https://github.com/open-telemetry/opentelemetry-demo.git",
+      "revision": "898ede2f314b2c1e92a2d9a6ebd7efc188709290",
+      "default_branch": "main",
+      "license": "Apache-2.0",
+      "reason": "Telemetry-rich distributed application with built-in failure scenarios."
+    },
+    {
+      "id": "chaos-mesh",
+      "role": "fault-injector",
+      "url": "https://github.com/chaos-mesh/chaos-mesh.git",
+      "revision": "60ec97f1fd5d5edb2fb5c722c8888e18b618d1a0",
+      "release": "v2.8.3",
+      "license": "Apache-2.0",
+      "reason": "Stable Kubernetes fault injection for process, network, filesystem, clock, and kernel faults."
+    },
+    {
+      "id": "train-ticket",
+      "role": "external-replication",
+      "url": "https://github.com/FudanSELab/train-ticket.git",
+      "revision": "313886e99befb94be6cd45f085c98e0019f59829",
+      "default_branch": "master",
+      "license": "Apache-2.0",
+      "reason": "Large microservice benchmark for cross-system replication after primary experiments."
+    },
+    {
+      "id": "deathstarbench",
+      "role": "stretch-replication",
+      "url": "https://github.com/delimitrou/DeathStarBench.git",
+      "revision": "6ecb09706140f8730b5385c08f1386c654c3c526",
+      "default_branch": "master",
+      "license": "Apache-2.0",
+      "reason": "Recognized research suite; included only if deployment budget remains."
+    }
+  ]
+}

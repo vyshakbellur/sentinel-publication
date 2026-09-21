@@ -1,0 +1,62 @@
+{
+  "findings": [
+    {
+      "guardrail": "guardian",
+      "minimal_fault_sets": [
+        [
+          "policy.overbroad_scope",
+          "predictor.wrong_service"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "unauthorized_effect",
+      "trial_id": "guardian-wrong-plus-overbroad-policy"
+    },
+    {
+      "guardrail": "guardian",
+      "minimal_fault_sets": [
+        [
+          "enforcement.argument_substitution"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "guardian-post-decision-substitution"
+    },
+    {
+      "guardrail": "guardian",
+      "minimal_fault_sets": [
+        [
+          "enforcement.duplicate_retry"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "guardian-duplicate-retry"
+    },
+    {
+      "guardrail": "guardian",
+      "minimal_fault_sets": [
+        [
+          "enforcement.drop_effect",
+          "observation.false_success"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "observation_disagreement",
+      "trial_id": "guardian-false-success"
+    },
+    {
+      "guardrail": "none",
+      "minimal_fault_sets": [
+        [
+          "predictor.wrong_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "no-guard-wrong-prediction"
+    }
+  ],
+  "schema_version": "sentinel.cut_sets.v1"
+}

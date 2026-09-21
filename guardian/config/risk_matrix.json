@@ -1,0 +1,42 @@
+{
+  "operations": {
+    "read": {
+      "capability_floor": "LOW",
+      "irreversibility": "LOW"
+    },
+    "transmit": {
+      "capability_floor": "HIGH",
+      "irreversibility": "HIGH"
+    },
+    "execute": {
+      "capability_floor": "CRITICAL",
+      "irreversibility": "CRITICAL"
+    },
+    "modify": {
+      "capability_floor": "MEDIUM",
+      "irreversibility": "HIGH"
+    },
+    "encode": {
+      "capability_floor": "MEDIUM",
+      "irreversibility": "LOW"
+    }
+  },
+  "data_sensitivity": {
+    "public": 1,
+    "internal": 2,
+    "confidential": 3,
+    "secret": 4
+  },
+  "destination_trust": {
+    "internal_trusted": 1,
+    "internal_untrusted": 2,
+    "external_trusted": 3,
+    "external_untrusted": 4
+  },
+  "risk_thresholds": {
+    "LOW": 4,
+    "MEDIUM": 8,
+    "HIGH": 12,
+    "CRITICAL": 16
+  }
+}

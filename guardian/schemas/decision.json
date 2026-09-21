@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://guardian-paradigm.io/schemas/v1/decision.json",
+  "title": "Decision Schema",
+  "description": "The standardized outcome returned by the PolicyDecisionPoint.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "decision",
+    "policy_version",
+    "evidence_digest",
+    "evaluated_at",
+    "correlation_id"
+  ],
+  "properties": {
+    "decision": {
+      "type": "string",
+      "enum": [
+        "ALLOW",
+        "DENY",
+        "REQUIRE_APPROVAL",
+        "REQUIRE_ADDITIONAL_EVIDENCE",
+        "ERROR_FAIL_CLOSED"
+      ],
+      "description": "The final authorization decision."
+    },
+    "reason_codes": {
+      "type": "array",
+      "description": "Machine-readable codes indicating why the decision was made.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "obligations": {
+      "type": "array",
+      "description": "Conditions that the Execution Broker must fulfill for the action to be valid.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "policy_version": {
+      "type": "string",
+      "description": "The version of the policy ruleset that generated this decision."
+    },
+    "manifest_digest": {
+      "type": "string",
+      "description": "SHA-256 hash of the tool manifest authorized."
+    },
+    "evidence_digest": {
+      "type": "string",
+      "description": "SHA-256 hash of the CanonicalAction payload evaluated."
+    },
+    "decision_ttl_ms": {
+      "type": "integer",
+      "description": "Time-to-live for the authorization token in milliseconds."
+    },
+    "evaluated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp of the policy evaluation."
+    },
+    "correlation_id": {
+      "type": "string",
+      "description": "Unique identifier tying the decision to the specific protocol request."
+    }
+  }
+}

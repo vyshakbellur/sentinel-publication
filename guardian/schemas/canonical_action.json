@@ -1,0 +1,124 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://guardian-paradigm.io/schemas/v1/canonical_action.json",
+  "title": "Canonical Action Envelope",
+  "description": "The protocol-neutral representation of an agent's request paired with trusted attributes.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "principal",
+    "agent",
+    "delegation",
+    "capability",
+    "resource",
+    "arguments",
+    "input_provenance",
+    "destination",
+    "session",
+    "manifest_digest",
+    "policy_version",
+    "protocol_evidence"
+  ],
+  "properties": {
+    "principal": {
+      "type": "object",
+      "description": "Authenticated identity of the user or system initiating the session.",
+      "required": ["id", "tenant_id"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "tenant_id": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": true
+    },
+    "agent": {
+      "type": "object",
+      "description": "Identity of the agent framework or specific autonomous loop.",
+      "required": ["id"],
+      "properties": {"id": {"type": "string", "minLength": 1}},
+      "additionalProperties": true
+    },
+    "delegation": {
+      "type": "object",
+      "description": "Chain of trust and permissions delegated to the agent.",
+      "additionalProperties": true
+    },
+    "capability": {
+      "type": "object",
+      "description": "Authoritative identity and properties of the tool being requested, derived from the trusted catalog.",
+      "properties": {
+        "name": { "type": "string" },
+        "intent": { "type": "string" },
+        "operation": { "type": "string" },
+        "source_classification": { "type": "string" },
+        "effects": {"type": "array", "items": {"type": "string"}}
+      },
+      "required": ["name", "intent", "operation", "source_classification", "effects"],
+      "additionalProperties": false
+    },
+    "resource": {
+      "type": "object",
+      "description": "Target resource attributes if the action targets a specific entity (e.g., file, DB row).",
+      "properties": {
+        "id": {"type": "string"},
+        "classification": {"type": "string"},
+        "tenant_id": {"type": "string"},
+        "attributes": {"type": "object"}
+      },
+      "additionalProperties": false
+    },
+    "arguments": {
+      "type": "object",
+      "description": "The normalized, agent-provided payload for the tool execution.",
+      "additionalProperties": true
+    },
+    "input_provenance": {
+      "type": "array",
+      "description": "Lineage identifiers tracking the sources of data influencing the arguments.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "destination": {
+      "type": "object",
+      "description": "Trusted attributes about the network or system receiving the action.",
+      "required": ["id", "trust_domain", "endpoint"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "trust_domain": {"type": "string", "minLength": 1},
+        "endpoint": {"type": "string", "minLength": 1},
+        "tenant_id": {"type": ["string", "null"]},
+        "attributes": {"type": "object"}
+      },
+      "additionalProperties": false
+    },
+    "session": {
+      "type": "object",
+      "description": "Lineage session identifiers for stateful consequence tracking.",
+      "required": ["id", "tenant_id"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "tenant_id": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": true
+    },
+    "manifest_digest": {
+      "type": "string",
+      "description": "SHA-256 hash of the trusted tool manifest to prevent TOCTOU changes."
+    },
+    "policy_version": {
+      "type": "string",
+      "description": "The version of the security policy active when the envelope was created."
+    },
+    "protocol_evidence": {
+      "type": "object",
+      "description": "Raw context extracted from the transport layer (e.g., HTTP headers, gRPC metadata) used by the binder.",
+      "required": ["protocol", "authenticated_capability", "tenant_id"],
+      "properties": {
+        "protocol": {"type": "string", "minLength": 1},
+        "authenticated_capability": {"type": "string", "minLength": 1},
+        "tenant_id": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": true
+    }
+  }
+}

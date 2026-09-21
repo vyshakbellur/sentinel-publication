@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://guardian-paradigm.io/schemas/v1/agent_proposal.json",
+  "title": "Agent Proposal",
+  "description": "The only authority-free payload accepted from an untrusted agent.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["capability_name", "arguments"],
+  "properties": {
+    "capability_name": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Requested capability name; it must match authenticated protocol evidence."
+    },
+    "arguments": {
+      "type": "object",
+      "description": "Untrusted arguments validated against the trusted capability manifest."
+    }
+  }
+}

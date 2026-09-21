@@ -1,0 +1,13 @@
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+.venv/
+*.pyc
+_workloads/
+.DS_Store
+
+# Experiment runs are immutable but normally local. The curated smoke run is
+# committed as a contract fixture; add future publication runs explicitly.
+experiments/runs/*
+!experiments/runs/e0-guardian-smoke-v5/
+!experiments/runs/e0-guardian-smoke-v5/**
