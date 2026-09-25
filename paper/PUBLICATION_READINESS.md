@@ -2,7 +2,7 @@
 
 Last reviewed: 2026-09-24
 
-Iteration budget: **1/25 completed**. Stop after Cycle 25, or earlier if every
+Iteration budget: **2/25 completed**. Stop after Cycle 25, or earlier if every
 publication gate passes. The final cycle must record a readiness verdict and
 all remaining blockers before pausing the publication automation.
 
@@ -21,7 +21,7 @@ Current maturity: **protocol + E0 harness validation**.
 | Defensible novelty statement | Pass | Effect-grounded cross-layer guardrail evaluation; does not claim deterministic enforcement itself as new. |
 | Complete manuscript without placeholders | Fail | Abstract, results tables, discussion, and conclusion await confirmatory results. |
 | References verified against primary sources | Fail | Candidate bibliography exists; venue/version/DOI verification is incomplete. |
-| Independent oracle fixtures | Partial | Seven deterministic effect/recovery fixtures added; delayed regression, rollback, and partial-effect fixtures remain. |
+| Independent oracle fixtures | Pass | Eleven deterministic fixtures cover safe/no-effect, wrong target, duplicate identity and semantic effects, excessive and partial effects, false success, rollback, delayed regression, and stale observation. Live calibration remains separate. |
 | Frozen threat model and fault catalog | Partial | Six-layer taxonomy exists, but operators and exclusions are not preregistered/frozen. |
 | Meaningful baselines | Fail | Only Guardian and no-guard simulator paths exist; schema/allowlist and OPA/Cedar are missing. |
 | First realistic public system | Fail | Online Boutique is revision-locked but not deployed or actuated by SENTINEL. |
@@ -58,11 +58,12 @@ Minikube, or Helm client. Repository and simulator work can continue, but
 Online Boutique and OTel Demo trials cannot run until a disposable Kubernetes
 environment is installed or attached.
 
-### P1 — Oracle independence is incomplete
+### P1 — Live oracle calibration is incomplete
 
-The effect oracle is now a separate function that receives neither policy
-verdict nor tool-return success. Remaining fixtures must cover partial effects,
-rollback confirmation, delayed regression, and observer staleness.
+The effect oracle is a separate function that receives neither policy verdict
+nor tool-return success, and its current semantic contract is fixture-tested.
+Recovery windows and signal freshness still require calibration against both
+live systems before confirmatory use.
 
 ### P1 — Manuscript/reference integrity
 
@@ -87,9 +88,26 @@ status before they can support novelty claims.
   and effect outcomes can disagree and that the harness finds synthetic cut
   sets. It provides no population or cross-system estimate.
 
+### Cycle 2 — 2026-09-24
+
+- **Review:** selected incomplete E0 oracle semantics as the highest blocker
+  that could be resolved without a Kubernetes runtime.
+- **Fix:** extended effect records with completion and compensation identity;
+  added recovery-observation traces and oracle outputs for partial effects,
+  independently confirmed rollback, delayed regression, and stale observation.
+  The first rollback fixture exposed that compensation actions were being
+  counted as fresh unsafe effects; the evaluator was corrected before commit.
+- **Run:** 133 unit/regression tests and all SENTINEL lint checks passed. The
+  nine-trial smoke campaign retained its prior four unauthorized effects, one
+  observation disagreement, and safe-recovery summary.
+- **Analyze:** the E0 semantic oracle contract now covers the planned terminal
+  classes without reading the guardrail verdict or tool-return status. This is
+  harness evidence only; timing windows and signals remain unvalidated on live
+  systems.
+
 ## Next highest-priority cycle
 
-Complete E0 by adding explicit partial-effect, rollback, delayed-regression,
-and stale-observer contracts and fixtures. Then implement the schema/allowlist
-baseline before beginning Kubernetes integration. A live experiment should not
-start until the oracle can distinguish these terminal states reliably.
+Implement the schema/allowlist baseline behind the same guardrail interface and
+replay the frozen smoke matrix across no-guard, schema/allowlist, and Guardian.
+The comparison must expose trusted-binding differences without implying
+population results. After that, freeze the fault catalog and primary contrasts.

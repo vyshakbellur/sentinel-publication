@@ -64,6 +64,15 @@ class Effect:
     service: str
     replicas: int
     sequence: int
+    completed: bool = True
+    compensates_effect_id: str | None = None
+
+
+@dataclass(frozen=True)
+class RecoveryObservation:
+    elapsed_ms: int
+    replicas: Mapping[str, int]
+    fresh: bool = True
 
 
 @dataclass(frozen=True)
@@ -73,6 +82,10 @@ class OracleResult:
     unauthorized_effect: bool
     duplicate_effect: bool
     claimed_recovered: bool
+    partial_effect: bool = False
+    rollback_confirmed: bool = False
+    delayed_regression: bool = False
+    stale_observation: bool = False
     reasons: tuple[str, ...] = ()
 
 

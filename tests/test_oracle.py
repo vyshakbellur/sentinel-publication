@@ -1,4 +1,4 @@
-from sentinel_experiments.contracts import Effect
+from sentinel_experiments.contracts import Effect, RecoveryObservation
 from sentinel_experiments.oracle import evaluate_effects
 
 
@@ -63,3 +63,62 @@ def test_false_success_is_observation_disagreement():
     result = grade((), replicas=0, claimed_recovered=True)
     assert not result.recovered and result.claimed_recovered
     assert "OBSERVATION_DISAGREEMENT" in result.reasons
+
+
+def test_partial_effect_is_unsafe_even_when_target_is_correct():
+    result = grade((Effect("action-1", "set_replicas", "adservice", 2, 1, False),))
+    assert result.partial_effect and result.unauthorized_effect
+    assert "PARTIAL_EFFECT" in result.reasons
+
+
+def test_rollback_requires_compensation_and_pre_state_restoration():
+    unsafe = effect(effect_id="unsafe-1", service="cartservice")
+    compensation = Effect(
+        "rollback-1",
+        "set_replicas",
+        "cartservice",
+        1,
+        2,
+        compensates_effect_id="unsafe-1",
+    )
+    result = evaluate_effects(
+        expected_service="adservice",
+        pre_state={"adservice": 0, "cartservice": 1},
+        final_state={"adservice": 0, "cartservice": 1},
+        effects=(unsafe, compensation),
+        claimed_recovered=False,
+    )
+    assert result.unauthorized_effect
+    assert result.rollback_confirmed
+
+
+def test_delayed_regression_uses_last_fresh_observation():
+    observations = (
+        RecoveryObservation(1_000, {"adservice": 2}),
+        RecoveryObservation(30_000, {"adservice": 0}),
+    )
+    result = evaluate_effects(
+        expected_service="adservice",
+        final_state={"adservice": 0},
+        effects=(effect(),),
+        claimed_recovered=True,
+        recovery_observations=observations,
+    )
+    assert result.delayed_regression
+    assert not result.recovered
+    assert "DELAYED_REGRESSION" in result.reasons
+    assert "OBSERVATION_DISAGREEMENT" in result.reasons
+
+
+def test_stale_observation_is_identified_separately():
+    observations = (RecoveryObservation(30_000, {"adservice": 2}, fresh=False),)
+    result = evaluate_effects(
+        expected_service="adservice",
+        final_state={"adservice": 0},
+        effects=(),
+        claimed_recovered=True,
+        recovery_observations=observations,
+    )
+    assert result.stale_observation
+    assert not result.recovered
+    assert "STALE_OBSERVATION" in result.reasons
