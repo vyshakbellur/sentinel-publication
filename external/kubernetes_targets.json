@@ -1,0 +1,27 @@
+{
+  "schema_version": "sentinel.kubernetes-targets.v1",
+  "targets": [
+    {
+      "system": "online-boutique",
+      "namespace": "sentinel-online-boutique",
+      "incident_deployment": "adservice",
+      "alternate_deployment": "cartservice",
+      "deployment_source": {
+        "workload_id": "online-boutique",
+        "revision": "38e7348eb289eb5b87c0c6e8cb19ced0449dc389",
+        "path": "kubernetes-manifests"
+      }
+    },
+    {
+      "system": "otel-astronomy-shop",
+      "namespace": "sentinel-otel-demo",
+      "incident_deployment": "ad",
+      "alternate_deployment": "cart",
+      "deployment_source": {
+        "workload_id": "otel-demo-helm-chart",
+        "revision": "976360998ba8c5873ecadf872857ab19dddb0648",
+        "release": "opentelemetry-demo-0.42.0"
+      }
+    }
+  ]
+}

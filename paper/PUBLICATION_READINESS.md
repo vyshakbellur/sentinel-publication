@@ -2,7 +2,7 @@
 
 Last reviewed: 2026-09-24
 
-Iteration budget: **8/25 completed**. Stop after Cycle 25, or earlier if every
+Iteration budget: **9/25 completed**. Stop after Cycle 25, or earlier if every
 publication gate passes. The final cycle must record a readiness verdict and
 all remaining blockers before pausing the publication automation.
 
@@ -24,8 +24,8 @@ Current maturity: **protocol + E0 harness validation**.
 | Independent oracle fixtures | Pass | Eleven deterministic fixtures cover safe/no-effect, wrong target, duplicate identity and semantic effects, excessive and partial effects, false success, rollback, delayed regression, and stale observation. Live calibration remains separate. |
 | Frozen threat model and fault catalog | Pass | Versioned machine-readable v1 catalog declares all 11 implemented operators; five primary contrasts, exclusions, non-exclusions, pairing, and analysis rules are frozen before live-pilot outcomes. |
 | Meaningful baselines | Partial | No-guard, schema/allowlist, Guardian, checksum-pinned OPA, and always-deny now run on frozen simulator proposals; live-system equivalence remains. |
-| First realistic public system | Fail | Online Boutique is revision-locked but not deployed or actuated by SENTINEL. |
-| Second realistic public system | Fail | OTel Demo is revision-locked but not deployed or actuated by SENTINEL. |
+| First realistic public system | Fail | Online Boutique now has a revision-locked Kubernetes target and tested adapter contract, but has not been deployed or actuated. |
+| Second realistic public system | Fail | OTel Demo and its official Helm chart now have revision-locked targets and tested adapter contracts, but have not been deployed or actuated. |
 | Repeated trials and uncertainty | Fail | Exact binomial intervals and paired-contrast extraction are implemented for descriptive preflight analysis, but there are no repeated live trials, pilot variance, or confirmatory intervals. |
 | Cross-layer interaction analysis | Partial | The 58-row design expanded to 580 unique system/guardrail rows and completed a simulator preflight; live execution, repetitions, and inferential analysis remain. |
 | Ablations | Fail | Planned but not executed. |
@@ -214,9 +214,28 @@ status before they can support novelty claims.
   labels use one simulator. The tooling now refuses `--confirmatory` analysis
   for this run rather than relying on author discipline.
 
+### Cycle 9 — 2026-09-25
+
+- **Review:** selected the live execution boundary because Kubernetes work could
+  not safely begin without explicit separation of mutation, observation, and
+  reset authority or revision-correct workload names.
+- **Fix:** added Kubernetes actuator and read-only observer adapters with
+  separate contexts, strict deployment-state parsing, convergence checks, and
+  a deterministic reset contract. Added pinned mappings for Online Boutique
+  `adservice`/`cartservice` and OTel Demo `ad`/`cart`; pinned the official OTel
+  Demo Helm chart at release 0.42.0 and documented the architecture/trade-offs.
+- **Run:** 174 tests and all lint/JSON checks passed using recorded Kubernetes
+  responses for both systems. Tests verify command boundaries, context
+  separation, replica validation, deterministic restoration, convergence, and
+  mapping-to-lock consistency.
+- **Analyze:** the live boundary is now implementable without allowing the
+  actuator or guardrail to define its own success. This remains contract and
+  fixture evidence: no API server, controller race, rollout delay, RBAC policy,
+  or health signal has been exercised.
+
 ## Next highest-priority cycle
 
-Define the live Kubernetes actuator, independent observer, reset contract, and
-workload mappings for Online Boutique and OTel Astronomy Shop. Test command and
-state parsing with recorded fixtures, but do not claim live execution until a
-cluster is available.
+Build a live-trial state machine around the actuator/observer boundary with
+pre-state capture, injected incident, guarded action, observation window,
+terminal recording, and mandatory restoration. Exercise it with recorded
+transports so the first cluster run cannot skip cleanup or independence checks.

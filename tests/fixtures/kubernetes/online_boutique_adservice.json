@@ -1,0 +1,12 @@
+{
+  "apiVersion": "apps/v1",
+  "kind": "Deployment",
+  "metadata": {
+    "generation": 7,
+    "name": "adservice",
+    "namespace": "sentinel-online-boutique",
+    "resourceVersion": "1042"
+  },
+  "spec": {"replicas": 2},
+  "status": {"availableReplicas": 2, "observedGeneration": 7}
+}

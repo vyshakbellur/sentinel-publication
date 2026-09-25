@@ -21,6 +21,15 @@
       "reason": "Telemetry-rich distributed application with built-in failure scenarios."
     },
     {
+      "id": "otel-demo-helm-chart",
+      "role": "deployment-manifest",
+      "url": "https://github.com/open-telemetry/opentelemetry-helm-charts.git",
+      "revision": "976360998ba8c5873ecadf872857ab19dddb0648",
+      "release": "opentelemetry-demo-0.42.0",
+      "license": "Apache-2.0",
+      "reason": "Pinned Kubernetes deployment companion for the OTel Astronomy Shop application."
+    },
+    {
       "id": "chaos-mesh",
       "role": "fault-injector",
       "url": "https://github.com/chaos-mesh/chaos-mesh.git",

@@ -1,0 +1,69 @@
+# Live Kubernetes experiment boundary
+
+## Requirements
+
+SENTINEL must actuate a bounded remediation, observe the resulting environment
+through independent credentials, and restore the exact pre-trial state before
+the next randomized condition. A tool response is never accepted as evidence
+that the effect occurred or that recovery succeeded.
+
+Non-functional requirements are deterministic command construction, immutable
+target revisions, unique trial identity, fail-closed parsing, and no production
+cluster support. The initial action vocabulary is limited to Deployment replica
+changes in disposable namespaces.
+
+## Components and data flow
+
+```text
+frozen proposal -> guardrail -> KubernetesActuator -> Kubernetes API
+                                          |              |
+                                          |              v
+terminal record <- effect oracle <- KubernetesObserver <- state
+                         ^
+                         |
+                 independent context
+
+pre-state -> ResetContract -> actuator restore -> observer verification
+```
+
+- `KubernetesActuator` has mutation credentials and never grades its own result.
+- `KubernetesObserver` has a separate context intended for read-only RBAC.
+- `ResetContract` captures only converged pre-state, restores deterministically,
+  and requires independent convergence verification.
+- `KubernetesTarget` maps neutral experiment roles to revision-pinned workload
+  names and namespaces.
+
+## Initial mappings
+
+| System | Namespace | Incident target | Alternate target | Deployment source |
+|---|---|---|---|---|
+| Online Boutique | `sentinel-online-boutique` | `adservice` | `cartservice` | Pinned application Kubernetes manifests |
+| OTel Astronomy Shop | `sentinel-otel-demo` | `ad` | `cart` | Pinned official OTel Demo Helm chart |
+
+The application and Helm chart are separately pinned because the OTel Demo
+application repository provides Compose definitions while its official
+Kubernetes deployment is maintained in the OpenTelemetry Helm chart repository.
+
+## Failure behavior
+
+- Missing fields or malformed Kubernetes JSON fail the trial.
+- An unconverged environment cannot become a reset baseline.
+- Negative replica requests are rejected before invoking Kubernetes.
+- Failed restoration, actuator timeout, stale observation, partial effect, and
+  rollback failure remain terminal outcomes; they are not silently excluded.
+- A trial may begin only after the reset contract verifies through the observer.
+
+## Trade-offs
+
+Replica scaling provides a portable, observable first action but does not cover
+configuration patches, rollouts, network policy, or persistent data. CLI-based
+adapters are slower than a Kubernetes client library, but make exact commands
+auditable and avoid adding a large client dependency. Separate kube contexts
+improve independence but still share the Kubernetes API server; later work
+should add audit-log receipts and dedicated service accounts.
+
+## Revisit after the pilot
+
+Calibrate convergence and recovery windows, add rollout and partial-commit
+actions, verify RBAC manifests, and decide whether API-server audit events or a
+side-channel controller should become the authoritative effect log.
