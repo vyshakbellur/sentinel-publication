@@ -47,6 +47,13 @@ methodology's value from implementation-specific behavior.
 There are no repeated stochastic/live trials, uncertainty estimates, blocked
 randomization, pilot variance estimates, or frozen sample size.
 
+### P0 — Live-system runtime unavailable
+
+The current host has no reachable Docker daemon and no `kubectl`, Kind,
+Minikube, or Helm client. Repository and simulator work can continue, but
+Online Boutique and OTel Demo trials cannot run until a disposable Kubernetes
+environment is installed or attached.
+
 ### P1 — Oracle independence is incomplete
 
 The effect oracle is now a separate function that receives neither policy
