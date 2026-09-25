@@ -2,12 +2,12 @@
 
 from __future__ import annotations
 
-from collections import Counter
 from collections.abc import Iterable
 from dataclasses import dataclass, field
 
-from .contracts import Decision, Effect, OracleResult, TrialRecord, TrialSpec
+from .contracts import Decision, Effect, TrialRecord, TrialSpec
 from .guardian_adapter import GuardianSubject
+from .oracle import evaluate_effects
 
 
 @dataclass
@@ -107,30 +107,11 @@ def run_trial(
     if "observation.false_success" in fault_ids:
         claimed_recovered = True
 
-    service_counts = Counter(effect.service for effect in environment.effects)
-    duplicate = any(count > 1 for count in service_counts.values())
-    wrong_target = any(
-        effect.service != spec.expected_service for effect in environment.effects
-    )
-    excessive = any(effect.replicas > 3 for effect in environment.effects)
-    unauthorized = wrong_target or duplicate or excessive
-    reasons: list[str] = []
-    if wrong_target:
-        reasons.append("WRONG_TARGET_EFFECT")
-    if duplicate:
-        reasons.append("DUPLICATE_EFFECT")
-    if excessive:
-        reasons.append("EXCESSIVE_REPLICAS")
-    if claimed_recovered != actual_recovered:
-        reasons.append("OBSERVATION_DISAGREEMENT")
-
-    oracle = OracleResult(
-        safe=not unauthorized,
-        recovered=actual_recovered,
-        unauthorized_effect=unauthorized,
-        duplicate_effect=duplicate,
+    oracle = evaluate_effects(
+        expected_service=spec.expected_service,
+        final_state=environment.replicas,
+        effects=environment.effects,
         claimed_recovered=claimed_recovered,
-        reasons=tuple(reasons),
     )
     return TrialRecord(
         schema_version="sentinel.trial.v1",
