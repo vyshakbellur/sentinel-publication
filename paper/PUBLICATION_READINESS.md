@@ -2,7 +2,7 @@
 
 Last reviewed: 2026-09-24
 
-Iteration budget: **4/25 completed**. Stop after Cycle 25, or earlier if every
+Iteration budget: **5/25 completed**. Stop after Cycle 25, or earlier if every
 publication gate passes. The final cycle must record a readiness verdict and
 all remaining blockers before pausing the publication automation.
 
@@ -27,7 +27,7 @@ Current maturity: **protocol + E0 harness validation**.
 | First realistic public system | Fail | Online Boutique is revision-locked but not deployed or actuated by SENTINEL. |
 | Second realistic public system | Fail | OTel Demo is revision-locked but not deployed or actuated by SENTINEL. |
 | Repeated trials and uncertainty | Fail | Current evidence is nine deterministic smoke trials; no confirmatory sampling or intervals. |
-| Cross-layer interaction analysis | Partial | One synthetic two-fault cut set is reproduced; no covering array or live-system confirmation. |
+| Cross-layer interaction analysis | Partial | A deterministic 58-row design covers nominal, all 11 singles, and all 46 exact cross-layer operator pairs; execution and live-system confirmation remain. |
 | Ablations | Fail | Planned but not executed. |
 | Clean-environment artifact reproduction | Fail | Unit suite passes locally; no clean-machine/container reproduction report. |
 | Anonymous venue package | Fail | Markdown draft only; no DSN template, anonymized artifact, or generated figures. |
@@ -139,9 +139,27 @@ status before they can support novelty claims.
   timestamped preregistration; sample size and interval model remain explicitly
   deferred to the blinded infrastructure pilot.
 
+### Cycle 5 — 2026-09-25
+
+- **Review:** selected the pairwise design because an informal hand-picked
+  campaign would leave interaction coverage ambiguous and make trial budgeting
+  impossible.
+- **Fix:** added a deterministic generator and coverage verifier producing one
+  nominal row, all 11 single operators, and all 46 exact cross-layer operator
+  pairs. The generated design is content-digested and checked into the protocol.
+  Design review exposed that contrast C5 named an always-deny baseline absent
+  from the frozen guardrail list; the protocol was corrected before execution.
+- **Run:** the generator produced 58 unique rows with 46/46 required pairs
+  covered and a budget of 580 trials per repetition across two systems and five
+  guardrails. All 157 tests and lint checks passed.
+- **Analyze:** exhaustive cross-layer pair coverage is feasible without a full
+  320-cell layer-factorial. Repetition count remains unset until the blinded
+  pilot; the 580-trial base budget excludes resets, reruns, and cut-set
+  minimization and therefore is not yet a runtime estimate.
+
 ## Next highest-priority cycle
 
-Generate a deterministic pairwise covering array from the frozen catalog with
-explicit compatibility constraints and coverage verification. Keep it separate
-from confirmatory results, then use the generated design to estimate the live
-trial budget before selecting pilot sample sizes.
+Implement the always-deny sanity baseline and an external-policy adapter with a
+strictly equivalent rule set. Validate both on the frozen proposal pairs and
+record semantic-equivalence tests before expanding the 58-row design into
+concrete system/guardrail trials.

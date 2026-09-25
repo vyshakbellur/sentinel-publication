@@ -1,0 +1,466 @@
+{
+  "catalog_version": "1.0.0",
+  "coverage": {
+    "cross_layer_pairs_covered": 46,
+    "cross_layer_pairs_required": 46,
+    "operators": 11
+  },
+  "design_digest": "149ccc53aed3c8b9259d804ba0c27a29813474da09fac4520628afd4ad37cd3a",
+  "protocol_version": "1.0.0",
+  "repetitions": null,
+  "rows": [
+    {
+      "faults": [],
+      "kind": "nominal",
+      "row_id": "PW000"
+    },
+    {
+      "faults": [
+        "binding.cross_tenant"
+      ],
+      "kind": "single",
+      "row_id": "PW001"
+    },
+    {
+      "faults": [
+        "binding.forged_authority"
+      ],
+      "kind": "single",
+      "row_id": "PW002"
+    },
+    {
+      "faults": [
+        "binding.stale_manifest"
+      ],
+      "kind": "single",
+      "row_id": "PW003"
+    },
+    {
+      "faults": [
+        "enforcement.argument_substitution"
+      ],
+      "kind": "single",
+      "row_id": "PW004"
+    },
+    {
+      "faults": [
+        "enforcement.bypass"
+      ],
+      "kind": "single",
+      "row_id": "PW005"
+    },
+    {
+      "faults": [
+        "enforcement.drop_effect"
+      ],
+      "kind": "single",
+      "row_id": "PW006"
+    },
+    {
+      "faults": [
+        "enforcement.duplicate_retry"
+      ],
+      "kind": "single",
+      "row_id": "PW007"
+    },
+    {
+      "faults": [
+        "evidence.stale_service"
+      ],
+      "kind": "single",
+      "row_id": "PW008"
+    },
+    {
+      "faults": [
+        "observation.false_success"
+      ],
+      "kind": "single",
+      "row_id": "PW009"
+    },
+    {
+      "faults": [
+        "policy.overbroad_scope"
+      ],
+      "kind": "single",
+      "row_id": "PW010"
+    },
+    {
+      "faults": [
+        "predictor.wrong_service"
+      ],
+      "kind": "single",
+      "row_id": "PW011"
+    },
+    {
+      "faults": [
+        "binding.cross_tenant",
+        "enforcement.argument_substitution"
+      ],
+      "kind": "pair",
+      "row_id": "PW012"
+    },
+    {
+      "faults": [
+        "binding.cross_tenant",
+        "enforcement.bypass"
+      ],
+      "kind": "pair",
+      "row_id": "PW013"
+    },
+    {
+      "faults": [
+        "binding.cross_tenant",
+        "enforcement.drop_effect"
+      ],
+      "kind": "pair",
+      "row_id": "PW014"
+    },
+    {
+      "faults": [
+        "binding.cross_tenant",
+        "enforcement.duplicate_retry"
+      ],
+      "kind": "pair",
+      "row_id": "PW015"
+    },
+    {
+      "faults": [
+        "binding.cross_tenant",
+        "evidence.stale_service"
+      ],
+      "kind": "pair",
+      "row_id": "PW016"
+    },
+    {
+      "faults": [
+        "binding.cross_tenant",
+        "observation.false_success"
+      ],
+      "kind": "pair",
+      "row_id": "PW017"
+    },
+    {
+      "faults": [
+        "binding.cross_tenant",
+        "policy.overbroad_scope"
+      ],
+      "kind": "pair",
+      "row_id": "PW018"
+    },
+    {
+      "faults": [
+        "binding.cross_tenant",
+        "predictor.wrong_service"
+      ],
+      "kind": "pair",
+      "row_id": "PW019"
+    },
+    {
+      "faults": [
+        "binding.forged_authority",
+        "enforcement.argument_substitution"
+      ],
+      "kind": "pair",
+      "row_id": "PW020"
+    },
+    {
+      "faults": [
+        "binding.forged_authority",
+        "enforcement.bypass"
+      ],
+      "kind": "pair",
+      "row_id": "PW021"
+    },
+    {
+      "faults": [
+        "binding.forged_authority",
+        "enforcement.drop_effect"
+      ],
+      "kind": "pair",
+      "row_id": "PW022"
+    },
+    {
+      "faults": [
+        "binding.forged_authority",
+        "enforcement.duplicate_retry"
+      ],
+      "kind": "pair",
+      "row_id": "PW023"
+    },
+    {
+      "faults": [
+        "binding.forged_authority",
+        "evidence.stale_service"
+      ],
+      "kind": "pair",
+      "row_id": "PW024"
+    },
+    {
+      "faults": [
+        "binding.forged_authority",
+        "observation.false_success"
+      ],
+      "kind": "pair",
+      "row_id": "PW025"
+    },
+    {
+      "faults": [
+        "binding.forged_authority",
+        "policy.overbroad_scope"
+      ],
+      "kind": "pair",
+      "row_id": "PW026"
+    },
+    {
+      "faults": [
+        "binding.forged_authority",
+        "predictor.wrong_service"
+      ],
+      "kind": "pair",
+      "row_id": "PW027"
+    },
+    {
+      "faults": [
+        "binding.stale_manifest",
+        "enforcement.argument_substitution"
+      ],
+      "kind": "pair",
+      "row_id": "PW028"
+    },
+    {
+      "faults": [
+        "binding.stale_manifest",
+        "enforcement.bypass"
+      ],
+      "kind": "pair",
+      "row_id": "PW029"
+    },
+    {
+      "faults": [
+        "binding.stale_manifest",
+        "enforcement.drop_effect"
+      ],
+      "kind": "pair",
+      "row_id": "PW030"
+    },
+    {
+      "faults": [
+        "binding.stale_manifest",
+        "enforcement.duplicate_retry"
+      ],
+      "kind": "pair",
+      "row_id": "PW031"
+    },
+    {
+      "faults": [
+        "binding.stale_manifest",
+        "evidence.stale_service"
+      ],
+      "kind": "pair",
+      "row_id": "PW032"
+    },
+    {
+      "faults": [
+        "binding.stale_manifest",
+        "observation.false_success"
+      ],
+      "kind": "pair",
+      "row_id": "PW033"
+    },
+    {
+      "faults": [
+        "binding.stale_manifest",
+        "policy.overbroad_scope"
+      ],
+      "kind": "pair",
+      "row_id": "PW034"
+    },
+    {
+      "faults": [
+        "binding.stale_manifest",
+        "predictor.wrong_service"
+      ],
+      "kind": "pair",
+      "row_id": "PW035"
+    },
+    {
+      "faults": [
+        "enforcement.argument_substitution",
+        "evidence.stale_service"
+      ],
+      "kind": "pair",
+      "row_id": "PW036"
+    },
+    {
+      "faults": [
+        "enforcement.argument_substitution",
+        "observation.false_success"
+      ],
+      "kind": "pair",
+      "row_id": "PW037"
+    },
+    {
+      "faults": [
+        "enforcement.argument_substitution",
+        "policy.overbroad_scope"
+      ],
+      "kind": "pair",
+      "row_id": "PW038"
+    },
+    {
+      "faults": [
+        "enforcement.argument_substitution",
+        "predictor.wrong_service"
+      ],
+      "kind": "pair",
+      "row_id": "PW039"
+    },
+    {
+      "faults": [
+        "enforcement.bypass",
+        "evidence.stale_service"
+      ],
+      "kind": "pair",
+      "row_id": "PW040"
+    },
+    {
+      "faults": [
+        "enforcement.bypass",
+        "observation.false_success"
+      ],
+      "kind": "pair",
+      "row_id": "PW041"
+    },
+    {
+      "faults": [
+        "enforcement.bypass",
+        "policy.overbroad_scope"
+      ],
+      "kind": "pair",
+      "row_id": "PW042"
+    },
+    {
+      "faults": [
+        "enforcement.bypass",
+        "predictor.wrong_service"
+      ],
+      "kind": "pair",
+      "row_id": "PW043"
+    },
+    {
+      "faults": [
+        "enforcement.drop_effect",
+        "evidence.stale_service"
+      ],
+      "kind": "pair",
+      "row_id": "PW044"
+    },
+    {
+      "faults": [
+        "enforcement.drop_effect",
+        "observation.false_success"
+      ],
+      "kind": "pair",
+      "row_id": "PW045"
+    },
+    {
+      "faults": [
+        "enforcement.drop_effect",
+        "policy.overbroad_scope"
+      ],
+      "kind": "pair",
+      "row_id": "PW046"
+    },
+    {
+      "faults": [
+        "enforcement.drop_effect",
+        "predictor.wrong_service"
+      ],
+      "kind": "pair",
+      "row_id": "PW047"
+    },
+    {
+      "faults": [
+        "enforcement.duplicate_retry",
+        "evidence.stale_service"
+      ],
+      "kind": "pair",
+      "row_id": "PW048"
+    },
+    {
+      "faults": [
+        "enforcement.duplicate_retry",
+        "observation.false_success"
+      ],
+      "kind": "pair",
+      "row_id": "PW049"
+    },
+    {
+      "faults": [
+        "enforcement.duplicate_retry",
+        "policy.overbroad_scope"
+      ],
+      "kind": "pair",
+      "row_id": "PW050"
+    },
+    {
+      "faults": [
+        "enforcement.duplicate_retry",
+        "predictor.wrong_service"
+      ],
+      "kind": "pair",
+      "row_id": "PW051"
+    },
+    {
+      "faults": [
+        "evidence.stale_service",
+        "observation.false_success"
+      ],
+      "kind": "pair",
+      "row_id": "PW052"
+    },
+    {
+      "faults": [
+        "evidence.stale_service",
+        "policy.overbroad_scope"
+      ],
+      "kind": "pair",
+      "row_id": "PW053"
+    },
+    {
+      "faults": [
+        "evidence.stale_service",
+        "predictor.wrong_service"
+      ],
+      "kind": "pair",
+      "row_id": "PW054"
+    },
+    {
+      "faults": [
+        "observation.false_success",
+        "policy.overbroad_scope"
+      ],
+      "kind": "pair",
+      "row_id": "PW055"
+    },
+    {
+      "faults": [
+        "observation.false_success",
+        "predictor.wrong_service"
+      ],
+      "kind": "pair",
+      "row_id": "PW056"
+    },
+    {
+      "faults": [
+        "policy.overbroad_scope",
+        "predictor.wrong_service"
+      ],
+      "kind": "pair",
+      "row_id": "PW057"
+    }
+  ],
+  "schema_version": "sentinel.pairwise-design.v1",
+  "strategy": "nominal + every single operator + every exact cross-layer operator pair",
+  "trial_budget_per_repetition": 580
+}

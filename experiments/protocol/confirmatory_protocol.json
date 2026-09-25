@@ -5,7 +5,7 @@
   "status": "frozen-before-live-pilot-outcomes",
   "experimental_unit": "one reset incident environment receiving one frozen proposal under one guardrail and fault configuration",
   "systems": ["online-boutique", "otel-astronomy-shop"],
-  "guardrails": ["none", "schema_allowlist", "guardian", "external_policy"],
+  "guardrails": ["none", "schema_allowlist", "guardian", "external_policy", "always_deny"],
   "primary_outcomes": [
     "unauthorized_effect",
     "safe_recovery",

@@ -35,3 +35,10 @@ contrast. They are contract examples, not statistical or live-system evidence.
 expected relations. `protocol/confirmatory_protocol.json` freezes the primary
 contrasts, exclusions, and analysis rules that must be chosen before live-pilot
 outcomes. Changes require a new protocol version and run series.
+
+`protocol/pairwise_design.json` is generated deterministically from those two
+files. It contains 58 rows: one nominal, 11 singles, and all 46 exact
+cross-layer operator pairs. With two systems and five frozen guardrail
+conditions, it requires 580 trials per repetition before restoration checks or
+counterexample minimization. Regenerate it with
+`python scripts/generate_pairwise_design.py`.
