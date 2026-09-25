@@ -2,7 +2,7 @@
 
 Last reviewed: 2026-09-25
 
-Iteration budget: **12/25 completed**. Stop after Cycle 25, or earlier if every
+Iteration budget: **13/25 completed**. Stop after Cycle 25, or earlier if every
 publication gate passes. The final cycle must record a readiness verdict and
 all remaining blockers before pausing the publication automation.
 
@@ -20,7 +20,7 @@ Current maturity: **frozen protocol + simulator preflight + live contracts**.
 |---|---|---|
 | Defensible novelty statement | Pass | Effect-grounded cross-layer guardrail evaluation; does not claim deterministic enforcement itself as new. |
 | Complete manuscript without placeholders | Fail | Abstract, results tables, discussion, and conclusion await confirmatory results. |
-| References verified against primary sources | Fail | Candidate bibliography exists; venue/version/DOI verification is incomplete. |
+| References verified against primary sources | Partial | Seventeen core entries now have primary-source metadata, claim limits, and matching BibTeX; 15 candidate entries remain unverified. |
 | Independent oracle fixtures | Pass | Eleven deterministic fixtures cover safe/no-effect, wrong target, duplicate identity and semantic effects, excessive and partial effects, false success, rollback, delayed regression, and stale observation. Live calibration remains separate. |
 | Frozen threat model and fault catalog | Pass | Versioned machine-readable v1 catalog declares all 11 implemented operators; five primary contrasts, exclusions, non-exclusions, pairing, and analysis rules are frozen before live-pilot outcomes. |
 | Meaningful baselines | Partial | No-guard, schema/allowlist, Guardian, checksum-pinned OPA, and always-deny now run on frozen simulator proposals; live-system equivalence remains. |
@@ -67,9 +67,10 @@ live systems before confirmatory use.
 
 ### P1 — Manuscript/reference integrity
 
-The bibliography is a candidate list rather than a verified `.bib` database.
-Several recent works need primary-source verification and correct publication
-status before they can support novelty claims.
+The 17-reference core is verified against publisher, proceedings, government,
+or arXiv records and has a checked `.bib` database. Fifteen candidate works
+still need primary-source verification and publication-status checks before
+they can support final novelty claims.
 
 ## Review–fix–run–analyze history
 
@@ -297,10 +298,33 @@ status before they can support novelty claims.
   enforcement, workload convergence, and live guardrail behavior remain
   unmeasured.
 
+### Cycle 13 — 2026-09-25
+
+- **Review:** selected reference integrity because the related-work argument
+  depended on a prose candidate list containing mixed preprints, proceedings,
+  and two incorrect or incomplete venue/title descriptions.
+- **Fix:** verified 17 core references against primary publisher, proceedings,
+  government, or arXiv records; added a structured ledger with publication
+  status and per-work claim limits; created matching BibTeX; and added a
+  fail-closed ledger/BibTeX integrity checker. Corrected Conformal Risk Control
+  to ICLR 2024, AIOpsLab to MLSys 2025, and the NASA runtime-assurance title and
+  year. Added the previously omitted ToolGate paper and explicit differentiation
+  in related work.
+- **Run:** the reference checker validated 17 unique identifiers and exact
+  citekey parity; 192 tests, all lint checks, and JSON syntax validation passed.
+  The negative test proves duplicate identifiers fail closed; exact citekey-set
+  equality guards ledger/BibTeX drift.
+- **Analyze:** ToolGate is closer prior art than the draft acknowledged because
+  it combines preconditions with runtime-verified postconditions. The defensible
+  SENTINEL claim is therefore narrower: cross-layer fault injection and
+  independent environment-effect evaluation of an assurance chain, not action
+  contracts, postconditions, or deterministic enforcement. Preprints remain
+  labeled as preprints, and the remaining 15 candidates are not yet verified.
+
 ## Next highest-priority cycle
 
-The P0 experimental blocker is now an actual disposable Kubernetes runtime with
-`kubectl` and Helm, not missing trial orchestration. While that external runtime
-is unavailable, verify the manuscript's core primary-source bibliography and
-create a machine-checkable citation ledger so novelty claims do not depend on
-unverified candidate references.
+The P0 experimental blocker remains a disposable Kubernetes runtime with
+`kubectl` and Helm. While it is unavailable, verify or remove the 15 remaining
+candidate references, prioritizing the closest authorization, durable-effect,
+and autonomous-remediation papers; then make every related-work claim resolve
+to a checked citation key.

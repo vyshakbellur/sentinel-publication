@@ -36,12 +36,20 @@ The contribution is an evaluation method and empirical result. We do not claim t
 ### 2.1 Runtime assurance and shielding
 
 The Simplex architecture separates an unverified advanced controller from a trusted decision mechanism and a safety-preserving fallback. Runtime shielding similarly prevents a learning agent from executing actions that violate a formal specification. These systems establish two principles relevant here: safety authority must remain outside the learning component, and any guarantee is relative to the fidelity of the safety specification and environment model.
+[@seto1998simplex; @alshiekh2018shielding; @slagel2024rta]
 
 SENTINEL starts from these principles and evaluates their operational assumptions. Rather than synthesizing a new shield, it perturbs the inputs and components on which a software guardrail depends and observes whether protected-system safety and recovery are preserved.
 
 ### 2.2 Runtime enforcement for LLM agents
 
 CaMeL separates trusted control flow from untrusted data and uses capabilities to prevent unauthorized exfiltration. Fides formalizes information-flow control for agent planners. AgentSpec supplies a runtime-constraint language, while Agent-C enforces temporal constraints. PCAS compiles policies into an instrumented reference monitor over dependency graphs. AgentFlow adds flow-centric policies and bounded formal verification.
+[@debenedetti2025camel; @costa2025fides; @wang2025agentspec; @palumbo2026pcas]
+
+ToolGate uses Hoare-style preconditions and verified postconditions to protect a
+symbolic state during tool execution [@liu2026toolgate]. It is especially close
+contract-level prior art. SENTINEL's proposed novelty is not action contracts;
+it is the cross-layer, effect-grounded fault evaluation of the wider assurance
+chain in which such contracts operate.
 
 These systems establish the breadth of deterministic runtime enforcement. SENTINEL does not propose a competing policy language. It evaluates how such enforcement behaves when trusted attributes, policy data, dependencies, or enforcement paths are faulty.
 
@@ -54,6 +62,7 @@ These mechanisms can strengthen a Guardian implementation, but they are prior ar
 ### 2.4 Guardrail benchmarks
 
 AgentDojo evaluates indirect prompt injection in tool-using agents. Task Shield evaluates task alignment. TraceSafe-Bench evaluates mid-trajectory guardrail judgment. NIST has shown that adaptive attacks, consequence-specific reporting, and repeated attempts can materially change apparent agent robustness.
+[@debenedetti2024agentdojo; @jia2025taskshield; @chen2026tracesafe; @mou2026toolsafe; @nist2025hijacking]
 
 AGENTCHAOSBENCH is the closest methodological neighbor: it injects operational faults at model, tool, guardrail, and inter-agent boundaries and asks models to detect and localize those faults from telemetry. SENTINEL asks a different question. It evaluates whether the assurance architecture prevents prohibited effects and preserves recovery after a fault is injected. Its primary labels are environment safety and recovery outcomes, not fault type or location.
 
@@ -62,6 +71,7 @@ Metamorphic testing addresses systems for which complete expected-output oracles
 ### 2.5 Autonomous remediation
 
 AIOpsLab evaluates agents over cloud incident lifecycles, while MicroRemed evaluates executable remediation generation. R2Act shows that high diagnostic accuracy does not imply valid recovery actions. ARBITER implements typed, policy-gated Kubernetes remediation. Risk-constrained remediation work combines blast radius, reversibility, epistemic uncertainty, and adaptive human review. AIOpsDoom shows that manipulated telemetry can steer AIOps agents toward harmful actions.
+[@chen2025aiopslab]
 
 These studies motivate our domain and baselines. SENTINEL's distinction is to test the fault coverage of the protection chain itself, including interactions among evidence faults, predictor errors, authority faults, enforcement faults, and outcome-observation faults.
 
@@ -393,9 +403,14 @@ Deterministic guardrails are increasingly proposed as the safety boundary around
 
 ## References to include in the formatted manuscript
 
-1. Alshiekh et al. [Safe Reinforcement Learning via Shielding](https://ojs.aaai.org/index.php/AAAI/article/view/11797). AAAI, 2018.
-2. Angelopoulos et al. [Conformal Risk Control](https://arxiv.org/abs/2208.02814). 2022/2024.
-3. Debenedetti et al. [AgentDojo](https://arxiv.org/abs/2406.13352). NeurIPS, 2024.
+Seventeen core references below have publisher/proceedings/government/arXiv
+metadata recorded in `references/core_references.json` and matching entries in
+`paper/references.bib`. Entries without a BibTeX key remain candidates and must
+not support final novelty claims until verified.
+
+1. Alshiekh et al. [Safe Reinforcement Learning via Shielding](https://ojs.aaai.org/index.php/AAAI/article/view/11797). AAAI, 2018. `alshiekh2018shielding`.
+2. Angelopoulos et al. [Conformal Risk Control](https://proceedings.iclr.cc/paper_files/paper/2024/hash/f3549ef9b5ff520a7e41ff3cc306ab2b-Abstract-Conference.html). ICLR, 2024. `angelopoulos2024crc`.
+3. Debenedetti et al. [AgentDojo](https://proceedings.neurips.cc/paper_files/paper/2024/hash/97091a5177d8dc64b1da8bf3e1f6fb54-Abstract-Datasets_and_Benchmarks_Track.html). NeurIPS Datasets and Benchmarks, 2024. `debenedetti2024agentdojo`.
 4. Debenedetti et al. [Defeating Prompt Injections by Design](https://arxiv.org/abs/2503.18813). 2025.
 5. Costa et al. [Securing AI Agents with Information-Flow Control](https://arxiv.org/abs/2505.23643). 2025.
 6. Wang et al. [AgentSpec](https://arxiv.org/abs/2503.18666). 2025/2026.
@@ -415,15 +430,16 @@ Deterministic guardrails are increasingly proposed as the safety boundary around
 20. Habibi and Leon-Garcia. [ARBITER](https://arxiv.org/abs/2607.19182). 2026.
 21. Ponduru et al. [RACER](https://www.multiresearchjournal.com/arclist/list-2026.6.5/id-6834). 2026.
 22. NIST. [Strengthening AI Agent Hijacking Evaluations](https://www.nist.gov/news-events/news/2025/01/technical-blog-strengthening-ai-agent-hijacking-evaluations). 2025.
-23. Seto et al. [The Simplex Architecture for Safe Online Control System Upgrades](https://doi.org/10.1109/ACC.1998.703255). American Control Conference, 1998.
+23. Seto et al. [The Simplex Architecture for Safe Online Control System Upgrades](https://doi.org/10.1109/ACC.1998.703255). American Control Conference, 1998. `seto1998simplex`.
 24. Geifman and El-Yaniv. [SelectiveNet: A Deep Neural Network with an Integrated Reject Option](https://proceedings.mlr.press/v97/geifman19a.html). ICML, 2019.
 25. Kamath et al. [Enforcing Temporal Constraints for LLM Agents](https://arxiv.org/abs/2512.23738). 2025.
 26. Chen et al. [TraceSafe: A Systematic Assessment of LLM Guardrails on Multi-Step Tool-Calling Trajectories](https://arxiv.org/abs/2604.07223). 2026.
 27. Mou et al. [ToolSafe: Enhancing Tool Invocation Safety of LLM-based Agents via Proactive Step-level Guardrail and Feedback](https://aclanthology.org/2026.findings-acl.1850/). Findings of ACL, 2026.
-28. Microsoft Research et al. [AIOpsLab: A Holistic Framework to Evaluate AI Agents for Enabling Autonomous Clouds](https://openreview.net/pdf?id=3EXBLwGxtq). 2025.
-29. NASA. [Towards a Formal Framework for Runtime Assurance of Learning-Enabled Systems](https://ntrs.nasa.gov/citations/20230017350). 2023.
+28. Chen et al. [AIOpsLab: A Holistic Framework to Evaluate AI Agents for Enabling Autonomous Clouds](https://proceedings.mlsys.org/paper_files/paper/2025/file/d1f9e4a9f109b6e8b75ed362736f22ec-Paper-Conference.pdf). MLSys, 2025. `chen2025aiopslab`.
+29. Slagel et al. [A Formal Verification Framework for Runtime Assurance](https://ntrs.nasa.gov/citations/20230017350). NASA Formal Methods, 2024. `slagel2024rta`.
 30. Cho et al. [LLMORPH: Automated Metamorphic Testing of Large Language Models](https://valerio-terragni.github.io/assets/pdf/cho-ase-2025.pdf). ASE, 2025.
 31. Liang et al. [AutoMT: A Multi-Agent LLM Framework for Automated Metamorphic Testing of Autonomous Driving Systems](https://arxiv.org/abs/2510.19438). 2025.
+32. Liu et al. [ToolGate: Contract-Grounded and Verified Tool Execution for LLMs](https://aclanthology.org/2026.findings-acl.470/). Findings of ACL, 2026. `liu2026toolgate`.
 
 ## Publication-readiness gate
 
