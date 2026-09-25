@@ -40,6 +40,11 @@ deployments. The run validates complete campaign plumbing, terminal records,
 fault minimization, and comparison boundaries; its selected-case proportions
 must not be presented as empirical risk rates.
 
+`e3-campaign-preflight-v1/preflight_analysis.json` is regenerated with
+`python scripts/analyze_run.py <run-dir>`. The analyzer verifies all manifest,
+specification, and record digests, reports exact descriptive intervals, and
+refuses to treat simulator incidents as confirmatory evidence.
+
 ## Frozen protocol
 
 `protocol/fault_catalog.json` versions the implemented fault semantics and

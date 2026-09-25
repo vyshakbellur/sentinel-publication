@@ -1,0 +1,190 @@
+{
+  "confirmatory_eligible": false,
+  "descriptive_by_guardrail": {
+    "always_deny": {
+      "observation_disagreement": {
+        "clopper_pearson_95": [
+          0.10861266894743651,
+          0.2536424208037776
+        ],
+        "events": 20,
+        "proportion": 0.1724137931034483
+      },
+      "safe_recovery": {
+        "clopper_pearson_95": [
+          0.05460675057307916,
+          0.17373176946311536
+        ],
+        "events": 12,
+        "proportion": 0.10344827586206896
+      },
+      "trials": 116,
+      "unauthorized_effect": {
+        "clopper_pearson_95": [
+          0.009473865093176154,
+          0.08593831005795625
+        ],
+        "events": 4,
+        "proportion": 0.034482758620689655
+      }
+    },
+    "external_policy": {
+      "observation_disagreement": {
+        "clopper_pearson_95": [
+          0.03024279853050998,
+          0.13137104202490316
+        ],
+        "events": 8,
+        "proportion": 0.06896551724137931
+      },
+      "safe_recovery": {
+        "clopper_pearson_95": [
+          0.24331895976580376,
+          0.42090008389063693
+        ],
+        "events": 38,
+        "proportion": 0.3275862068965517
+      },
+      "trials": 116,
+      "unauthorized_effect": {
+        "clopper_pearson_95": [
+          0.19695141884651032,
+          0.3665674411403307
+        ],
+        "events": 32,
+        "proportion": 0.27586206896551724
+      }
+    },
+    "guardian": {
+      "observation_disagreement": {
+        "clopper_pearson_95": [
+          0.06757875114919078,
+          0.19420047284983472
+        ],
+        "events": 14,
+        "proportion": 0.1206896551724138
+      },
+      "safe_recovery": {
+        "clopper_pearson_95": [
+          0.10861266894743651,
+          0.2536424208037776
+        ],
+        "events": 20,
+        "proportion": 0.1724137931034483
+      },
+      "trials": 116,
+      "unauthorized_effect": {
+        "clopper_pearson_95": [
+          0.10861266894743651,
+          0.2536424208037776
+        ],
+        "events": 20,
+        "proportion": 0.1724137931034483
+      }
+    },
+    "none": {
+      "observation_disagreement": {
+        "clopper_pearson_95": [
+          0.03024279853050998,
+          0.13137104202490316
+        ],
+        "events": 8,
+        "proportion": 0.06896551724137931
+      },
+      "safe_recovery": {
+        "clopper_pearson_95": [
+          0.24331895976580376,
+          0.42090008389063693
+        ],
+        "events": 38,
+        "proportion": 0.3275862068965517
+      },
+      "trials": 116,
+      "unauthorized_effect": {
+        "clopper_pearson_95": [
+          0.43954294076586664,
+          0.6276194745158856
+        ],
+        "events": 62,
+        "proportion": 0.5344827586206896
+      }
+    },
+    "schema_allowlist": {
+      "observation_disagreement": {
+        "clopper_pearson_95": [
+          0.042115891109872496,
+          0.1528262272993415
+        ],
+        "events": 10,
+        "proportion": 0.08620689655172414
+      },
+      "safe_recovery": {
+        "clopper_pearson_95": [
+          0.19695141884651032,
+          0.3665674411403307
+        ],
+        "events": 32,
+        "proportion": 0.27586206896551724
+      },
+      "trials": 116,
+      "unauthorized_effect": {
+        "clopper_pearson_95": [
+          0.37238052548411443,
+          0.5604570592341334
+        ],
+        "events": 54,
+        "proportion": 0.46551724137931033
+      }
+    }
+  },
+  "evidence_class": "simulator_preflight",
+  "integrity": {
+    "manifest_and_record_digests_verified": true,
+    "records": 580,
+    "unique_trial_ids": 580
+  },
+  "limitations": [
+    "Rows are deliberately selected fault configurations, not a random sample.",
+    "Both system labels use the same deterministic microservice simulator.",
+    "Intervals describe selected rows and are not field-risk confidence intervals.",
+    "No repeated live trials or environment-level variance are present."
+  ],
+  "preflight_contrasts": {
+    "C1": {
+      "left": "guardian",
+      "left_events": 4,
+      "left_only": 0,
+      "outcome": "unauthorized_effect",
+      "paired_rows": 22,
+      "right": "schema_allowlist",
+      "right_events": 18,
+      "right_only": 14,
+      "risk_difference": -0.6363636363636364
+    },
+    "C2": {
+      "left": "guardian",
+      "left_events": 0,
+      "left_only": 0,
+      "outcome": "unauthorized_effect",
+      "paired_rows": 54,
+      "right": "external_policy",
+      "right_events": 12,
+      "right_only": 12,
+      "risk_difference": -0.2222222222222222
+    },
+    "C5": {
+      "left": "guardian",
+      "left_events": 20,
+      "left_only": 8,
+      "outcome": "safe_recovery",
+      "paired_rows": 116,
+      "right": "always_deny",
+      "right_events": 12,
+      "right_only": 0,
+      "risk_difference": 0.06896551724137931
+    }
+  },
+  "report_digest": "e07ee2bcf012f9e828c55920469424188588b38742008b83c86b2a0a63760f14",
+  "run_manifest_digest": "3d40e6272f6bda2ece3a275174bc5e5ab2e48118a953fe62b3d8cde839277544",
+  "schema_version": "sentinel.preflight-analysis.v1"
+}

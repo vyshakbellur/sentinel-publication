@@ -2,7 +2,7 @@
 
 Last reviewed: 2026-09-24
 
-Iteration budget: **7/25 completed**. Stop after Cycle 25, or earlier if every
+Iteration budget: **8/25 completed**. Stop after Cycle 25, or earlier if every
 publication gate passes. The final cycle must record a readiness verdict and
 all remaining blockers before pausing the publication automation.
 
@@ -26,7 +26,7 @@ Current maturity: **protocol + E0 harness validation**.
 | Meaningful baselines | Partial | No-guard, schema/allowlist, Guardian, checksum-pinned OPA, and always-deny now run on frozen simulator proposals; live-system equivalence remains. |
 | First realistic public system | Fail | Online Boutique is revision-locked but not deployed or actuated by SENTINEL. |
 | Second realistic public system | Fail | OTel Demo is revision-locked but not deployed or actuated by SENTINEL. |
-| Repeated trials and uncertainty | Fail | Current evidence is nine deterministic smoke trials; no confirmatory sampling or intervals. |
+| Repeated trials and uncertainty | Fail | Exact binomial intervals and paired-contrast extraction are implemented for descriptive preflight analysis, but there are no repeated live trials, pilot variance, or confirmatory intervals. |
 | Cross-layer interaction analysis | Partial | The 58-row design expanded to 580 unique system/guardrail rows and completed a simulator preflight; live execution, repetitions, and inferential analysis remain. |
 | Ablations | Fail | Planned but not executed. |
 | Clean-environment artifact reproduction | Fail | Unit suite passes locally; no clean-machine/container reproduction report. |
@@ -197,9 +197,26 @@ status before they can support novelty claims.
   “systems” share one simulator vocabulary, none is a field-risk estimate or
   cross-system result.
 
+### Cycle 8 — 2026-09-25
+
+- **Review:** selected analysis integrity because campaign outputs could not yet
+  be verified or safely separated from confirmatory evidence by software.
+- **Fix:** added manifest, record, spec-digest, and unique-ID verification;
+  Clopper–Pearson intervals; paired extraction for C1, C2, and C5; and a hard
+  rejection path preventing simulated incidents from entering confirmatory
+  analysis. Added a reproducible preflight report with explicit limitations.
+- **Run:** all 169 tests, including OPA integration, and all lint checks passed.
+  All 580 E3 records and their manifest/spec digests verified. The checked-in
+  analysis regenerates byte-equivalent structured results from those records.
+- **Analyze:** paired selected-row contrasts show the pipeline can recover the
+  intended comparison structure, but the report labels every interval as
+  descriptive because configurations are deliberately selected and both system
+  labels use one simulator. The tooling now refuses `--confirmatory` analysis
+  for this run rather than relying on author discipline.
+
 ## Next highest-priority cycle
 
-Add machine-checked campaign integrity and statistical-analysis code: record
-verification, paired contrast extraction, exact uncertainty for descriptive
-rates, and explicit rejection of simulator/system-label data for confirmatory
-claims. Use it to produce a preflight-only analysis report from E3.
+Define the live Kubernetes actuator, independent observer, reset contract, and
+workload mappings for Online Boutique and OTel Astronomy Shop. Test command and
+state parsing with recorded fixtures, but do not claim live execution until a
+cluster is available.
