@@ -15,6 +15,7 @@ analysis = ["scipy>=1.10"]
 
 [project.scripts]
 sentinel-experiment = "sentinel_experiments.cli:main"
+sentinel-live-pilot = "sentinel_experiments.pilot_cli:main"
 
 [tool.setuptools.packages.find]
 include = ["guardian*", "sentinel_experiments*"]

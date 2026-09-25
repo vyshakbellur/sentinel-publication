@@ -5,11 +5,10 @@ from __future__ import annotations
 from collections.abc import Iterable
 from dataclasses import dataclass, field
 
-from .baselines import SchemaAllowlistSubject
-from .contracts import Decision, Effect, TrialRecord, TrialSpec
+from .contracts import Effect, TrialRecord, TrialSpec
 from .guardian_adapter import GuardianSubject
 from .oracle import evaluate_effects
-from .policy_baselines import AlwaysDenySubject, OpaPolicySubject
+from .subjects import decide_proposal
 
 
 @dataclass
@@ -72,31 +71,13 @@ def run_trial(
     if "binding.forged_authority" in fault_ids:
         proposal["source"] = {"classification": "public"}
 
-    if spec.guardrail == "guardian":
-        decision = subject.decide(
-            proposal,
-            expected_service=spec.expected_service,
-            faults=fault_ids,
-        )
-    elif spec.guardrail == "schema_allowlist":
-        decision = SchemaAllowlistSubject(subject.services).decide(proposal)
-    elif spec.guardrail == "external_policy":
-        decision = OpaPolicySubject(subject.services).decide(
-            proposal,
-            expected_service=spec.expected_service,
-            faults=fault_ids,
-        )
-    elif spec.guardrail == "always_deny":
-        decision = AlwaysDenySubject().decide(proposal)
-    elif spec.guardrail == "none":
-        decision = Decision(
-            verdict="ALLOW",
-            allowed=True,
-            canonical_service=proposed_service,
-            reason_codes=("NO_EXTERNAL_GUARDRAIL",),
-        )
-    else:
-        raise ValueError(f"unsupported guardrail {spec.guardrail!r}")
+    decision = decide_proposal(
+        spec.guardrail,
+        proposal,
+        expected_service=spec.expected_service,
+        services=subject.services,
+        faults=fault_ids,
+    )
 
     should_execute = decision.allowed or "enforcement.bypass" in fault_ids
     execution_service = decision.canonical_service or proposed_service

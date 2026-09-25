@@ -20,6 +20,21 @@ Use only a disposable, non-production cluster dedicated to SENTINEL trials.
 ## Pilot execution
 
 - Begin with one nominal row and one blocked row per system.
+- Execute each row through the single-row controller, for example:
+
+  ```sh
+  python -m sentinel_experiments.pilot_cli \
+    --trial-id pilot-online-none-001 \
+    --system online-boutique \
+    --guardrail none \
+    --observer-context sentinel-observer \
+    --actuator-context sentinel-actuator \
+    --output experiments/runs/pilot-online-none-001.json
+  ```
+
+  The output path must not exist. The controller rejects conditions absent from
+  the frozen protocol, reruns readiness immediately before mutation, stores the
+  protocol and readiness digests, and refuses to overwrite a prior record.
 - Preserve randomized trial identity, proposal, observations, state-machine
   phases, oracle output, errors, and restoration result in the terminal record.
 - Do not retry or exclude a failed trial based on its outcome. Record the

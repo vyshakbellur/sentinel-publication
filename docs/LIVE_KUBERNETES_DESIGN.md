@@ -47,6 +47,13 @@ that enforce separation, and independently observed target convergence. Its
 content-digested JSON result is an experiment input. A failed or malformed
 check blocks execution.
 
+`sentinel-live-pilot` binds one condition from the frozen protocol to the
+uniform guardrail interface, reruns readiness, executes the fail-safe trial,
+and creates one content-digested terminal record. It uses exclusive file
+creation so a trial ID cannot silently overwrite earlier evidence. Failures in
+decision evaluation or pre-state capture also produce a terminal record; a
+failed readiness check produces no mutation.
+
 ## Initial mappings
 
 | System | Namespace | Incident target | Alternate target | Deployment source |

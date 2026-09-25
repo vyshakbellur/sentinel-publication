@@ -2,7 +2,7 @@
 
 Last reviewed: 2026-09-25
 
-Iteration budget: **11/25 completed**. Stop after Cycle 25, or earlier if every
+Iteration budget: **12/25 completed**. Stop after Cycle 25, or earlier if every
 publication gate passes. The final cycle must record a readiness verdict and
 all remaining blockers before pausing the publication automation.
 
@@ -274,10 +274,33 @@ status before they can support novelty claims.
   manifests, that service-account contexts are correctly issued, or that the
   pinned applications converge.
 
+### Cycle 12 — 2026-09-25
+
+- **Review:** selected the missing single-row live controller because the
+  adapters, readiness gate, decision baselines, and restoration state machine
+  still required manual composition that could bypass the frozen protocol or
+  lose pre-capture failures.
+- **Fix:** added a uniform decision boundary for all five frozen guardrails and
+  refactored simulator execution through it. Added a one-row live-pilot command
+  that validates system and guardrail membership against the frozen protocol,
+  reruns readiness before mutation, binds the decision to the fail-safe trial,
+  records protocol/readiness digests, captures decision and pre-state failures,
+  and uses durable exclusive file creation to prevent evidence overwrite.
+- **Run:** 190 tests and all lint checks passed. Recorded transports exercised
+  successful mutation and restoration, shared-context rejection with zero
+  cluster calls, a pre-capture observation failure with zero mutations,
+  rejection of an unfrozen guardrail, and refusal to overwrite an existing
+  record. The command help path also ran successfully.
+- **Analyze:** the first live pilot row is now executable without manual glue,
+  and failure paths yield auditable terminal evidence. This remains contract
+  evidence: no Kubernetes runtime was available, so controller timing, RBAC
+  enforcement, workload convergence, and live guardrail behavior remain
+  unmeasured.
+
 ## Next highest-priority cycle
 
-Add a one-row live-pilot command that requires a successful readiness report,
-binds a frozen guardrail decision to the fail-safe state machine, and writes an
-immutable terminal record even on failure. This will make the actual disposable
-Kubernetes runtime, rather than orchestration glue, the remaining execution
-blocker.
+The P0 experimental blocker is now an actual disposable Kubernetes runtime with
+`kubectl` and Helm, not missing trial orchestration. While that external runtime
+is unavailable, verify the manuscript's core primary-source bibliography and
+create a machine-checkable citation ledger so novelty claims do not depend on
+unverified candidate references.
