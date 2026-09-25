@@ -90,3 +90,34 @@ def baseline_matrix() -> tuple[TrialSpec, ...]:
             )
         )
     return tuple(specs)
+
+
+def policy_baseline_matrix() -> tuple[TrialSpec, ...]:
+    """Frozen pairs spanning every guardrail in the confirmatory protocol."""
+    incident = "online-boutique/adservice/replicas-zero"
+    specs: list[TrialSpec] = []
+    for guardrail in (
+        "none",
+        "schema_allowlist",
+        "guardian",
+        "external_policy",
+        "always_deny",
+    ):
+        specs.extend(
+            (
+                TrialSpec(
+                    f"{guardrail}-nominal",
+                    incident,
+                    "adservice",
+                    guardrail=guardrail,
+                ),
+                TrialSpec(
+                    f"{guardrail}-wrong-prediction",
+                    incident,
+                    "adservice",
+                    guardrail=guardrail,
+                    faults=(Fault("wrong_service", FaultLayer.PREDICTOR),),
+                ),
+            )
+        )
+    return tuple(specs)

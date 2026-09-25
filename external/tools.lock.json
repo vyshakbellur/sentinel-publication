@@ -1,0 +1,23 @@
+{
+  "schema_version": "sentinel.tool-lock.v1",
+  "resolved_at": "2026-09-25",
+  "tools": {
+    "opa": {
+      "version": "v1.21.0",
+      "artifacts": {
+        "Darwin-arm64": {
+          "url": "https://github.com/open-policy-agent/opa/releases/download/v1.21.0/opa_darwin_arm64",
+          "sha256": "f1e4da6467a2adb2846bb23eec6ea00d8c3a04786f9270bb11003d22dfd827a5"
+        },
+        "Linux-x86_64": {
+          "url": "https://github.com/open-policy-agent/opa/releases/download/v1.21.0/opa_linux_amd64_static",
+          "sha256": "5eef70644868bb04d0556bcc795ee42f2ab379e73f51d1bfa30f83e1305bc9b9"
+        },
+        "Linux-aarch64": {
+          "url": "https://github.com/open-policy-agent/opa/releases/download/v1.21.0/opa_linux_arm64_static",
+          "sha256": "0ec34027c15b4d969c21d01ed570fe14fbebd508a08157043ab09f9a0dccbee6"
+        }
+      }
+    }
+  }
+}

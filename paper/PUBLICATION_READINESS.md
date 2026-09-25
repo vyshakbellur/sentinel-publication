@@ -2,7 +2,7 @@
 
 Last reviewed: 2026-09-24
 
-Iteration budget: **5/25 completed**. Stop after Cycle 25, or earlier if every
+Iteration budget: **6/25 completed**. Stop after Cycle 25, or earlier if every
 publication gate passes. The final cycle must record a readiness verdict and
 all remaining blockers before pausing the publication automation.
 
@@ -23,7 +23,7 @@ Current maturity: **protocol + E0 harness validation**.
 | References verified against primary sources | Fail | Candidate bibliography exists; venue/version/DOI verification is incomplete. |
 | Independent oracle fixtures | Pass | Eleven deterministic fixtures cover safe/no-effect, wrong target, duplicate identity and semantic effects, excessive and partial effects, false success, rollback, delayed regression, and stale observation. Live calibration remains separate. |
 | Frozen threat model and fault catalog | Pass | Versioned machine-readable v1 catalog declares all 11 implemented operators; five primary contrasts, exclusions, non-exclusions, pairing, and analysis rules are frozen before live-pilot outcomes. |
-| Meaningful baselines | Partial | No-guard and schema/allowlist simulator paths now run beside Guardian on frozen proposals; OPA/Cedar and live-system baselines remain. |
+| Meaningful baselines | Partial | No-guard, schema/allowlist, Guardian, checksum-pinned OPA, and always-deny now run on frozen simulator proposals; live-system equivalence remains. |
 | First realistic public system | Fail | Online Boutique is revision-locked but not deployed or actuated by SENTINEL. |
 | Second realistic public system | Fail | OTel Demo is revision-locked but not deployed or actuated by SENTINEL. |
 | Repeated trials and uncertainty | Fail | Current evidence is nine deterministic smoke trials; no confirmatory sampling or intervals. |
@@ -42,10 +42,9 @@ must never populate the confirmatory result tables.
 
 ### P0 — Missing comparisons
 
-The schema/allowlist baseline is implemented for simulator studies, but no
-external policy engine is integrated. Without OPA or Cedar on the same frozen
-proposals, reviewers cannot fully separate the methodology's value from
-Guardian-specific behavior.
+The OPA and always-deny baselines are integrated for simulator studies, but
+their rule equivalence and safety–recovery behavior have not been validated on
+the two live systems. Simulator agreement cannot establish external validity.
 
 ### P0 — No statistical experiment
 
@@ -157,9 +156,28 @@ status before they can support novelty claims.
   pilot; the 580-trial base budget excludes resets, reruns, and cut-set
   minimization and therefore is not yet a runtime estimate.
 
+### Cycle 6 — 2026-09-25
+
+- **Review:** selected the missing external-policy and always-deny baselines,
+  which blocked contrasts C2 and C5 and left Guardian-specific effects
+  inseparable from methodology effects.
+- **Fix:** integrated checksum-pinned Open Policy Agent v1.21.0 with a Rego v1
+  rule over the same trusted scope and proposal vocabulary, added a portable
+  tool lock/fetcher, and added the always-deny sanity condition. Added matched
+  Guardian/OPA semantic tests and a ten-trial five-condition smoke matrix.
+- **Run:** OPA's own policy checker passed; all 160 tests ran with OPA enabled,
+  and SENTINEL lint checks passed. The immutable
+  `e2-policy-baseline-smoke-v1` run completed.
+- **Analyze:** on one nominal and one wrong-service contract example per
+  condition, Guardian and OPA matched (0/2 unauthorized, 1/2 safe recovery),
+  schema/allowlist and no guard each allowed the wrong target (1/2
+  unauthorized), and always-deny prevented all effects but recovered 0/2.
+  This validates comparison semantics and the need for a joint safety–recovery
+  metric; it is not a rate estimate or live-system result.
+
 ## Next highest-priority cycle
 
-Implement the always-deny sanity baseline and an external-policy adapter with a
-strictly equivalent rule set. Validate both on the frozen proposal pairs and
-record semantic-equivalence tests before expanding the 58-row design into
-concrete system/guardrail trials.
+Expand the 58-row design deterministically across two systems and five
+guardrails, validate unique trial identities and restoration metadata, and run
+a simulator preflight. Treat its 580 outcomes only as campaign-plumbing
+evidence before any blinded live pilot.

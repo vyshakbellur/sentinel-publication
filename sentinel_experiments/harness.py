@@ -9,6 +9,7 @@ from .baselines import SchemaAllowlistSubject
 from .contracts import Decision, Effect, TrialRecord, TrialSpec
 from .guardian_adapter import GuardianSubject
 from .oracle import evaluate_effects
+from .policy_baselines import AlwaysDenySubject, OpaPolicySubject
 
 
 @dataclass
@@ -77,6 +78,14 @@ def run_trial(
         )
     elif spec.guardrail == "schema_allowlist":
         decision = SchemaAllowlistSubject(subject.services).decide(proposal)
+    elif spec.guardrail == "external_policy":
+        decision = OpaPolicySubject(subject.services).decide(
+            proposal,
+            expected_service=spec.expected_service,
+            faults=fault_ids,
+        )
+    elif spec.guardrail == "always_deny":
+        decision = AlwaysDenySubject().decide(proposal)
     elif spec.guardrail == "none":
         decision = Decision(
             verdict="ALLOW",

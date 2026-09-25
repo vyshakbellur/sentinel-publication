@@ -4,6 +4,7 @@ __pycache__/
 .venv/
 *.pyc
 _workloads/
+_tools/
 .DS_Store
 
 # Experiment runs are immutable but normally local. The curated smoke run is

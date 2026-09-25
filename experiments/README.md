@@ -29,6 +29,11 @@ across no guard, a static schema/allowlist, and Guardian. Its six deterministic
 simulator trials demonstrate the comparison plumbing and trusted-binding
 contrast. They are contract examples, not statistical or live-system evidence.
 
+`e2-policy-baseline-smoke-v1` extends the same contract comparison to the
+checksum-pinned OPA Rego policy and an always-deny sanity baseline. Its ten
+trials validate semantic wiring and illustrate why safety must be reported with
+recovery utility; they are not population estimates.
+
 ## Frozen protocol
 
 `protocol/fault_catalog.json` versions the implemented fault semantics and

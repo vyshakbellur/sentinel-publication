@@ -47,6 +47,13 @@ python scripts/fetch_workloads.py
 This checks out exact commits beneath `_workloads/`; it does not vendor those
 repositories or their histories into SENTINEL.
 
+The external-policy baseline also uses a checksum-pinned OPA executable:
+
+```bash
+python scripts/fetch_tools.py
+SENTINEL_OPA_BIN="$PWD/_tools/opa" python -m pytest
+```
+
 ## Current experiment boundary
 
 This slice uses a deterministic simulator, not a live Kubernetes cluster. Its purpose is to validate experiment contracts, oracle behavior, deterministic replay, and fault plumbing before expensive model or cluster runs. It does not establish production safety.
