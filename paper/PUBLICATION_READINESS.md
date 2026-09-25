@@ -2,7 +2,7 @@
 
 Last reviewed: 2026-09-24
 
-Iteration budget: **6/25 completed**. Stop after Cycle 25, or earlier if every
+Iteration budget: **7/25 completed**. Stop after Cycle 25, or earlier if every
 publication gate passes. The final cycle must record a readiness verdict and
 all remaining blockers before pausing the publication automation.
 
@@ -27,7 +27,7 @@ Current maturity: **protocol + E0 harness validation**.
 | First realistic public system | Fail | Online Boutique is revision-locked but not deployed or actuated by SENTINEL. |
 | Second realistic public system | Fail | OTel Demo is revision-locked but not deployed or actuated by SENTINEL. |
 | Repeated trials and uncertainty | Fail | Current evidence is nine deterministic smoke trials; no confirmatory sampling or intervals. |
-| Cross-layer interaction analysis | Partial | A deterministic 58-row design covers nominal, all 11 singles, and all 46 exact cross-layer operator pairs; execution and live-system confirmation remain. |
+| Cross-layer interaction analysis | Partial | The 58-row design expanded to 580 unique system/guardrail rows and completed a simulator preflight; live execution, repetitions, and inferential analysis remain. |
 | Ablations | Fail | Planned but not executed. |
 | Clean-environment artifact reproduction | Fail | Unit suite passes locally; no clean-machine/container reproduction report. |
 | Anonymous venue package | Fail | Markdown draft only; no DSN template, anonymized artifact, or generated figures. |
@@ -175,9 +175,31 @@ status before they can support novelty claims.
   This validates comparison semantics and the need for a joint safety–recovery
   metric; it is not a rate estimate or live-system result.
 
+### Cycle 7 — 2026-09-25
+
+- **Review:** selected campaign expansion because row-level coverage did not yet
+  guarantee unique identities, balanced system/guardrail allocation, or reset
+  metadata in a runnable study.
+- **Fix:** added deterministic expansion of the 58-row design across two system
+  labels and five guardrails, yielding 580 unique trial IDs with an explicit
+  restoration fixture per row. Added a prominent simulator-boundary marker and
+  moved forged-authority mutation upstream so all guardrails receive the same
+  proposal transformation.
+- **Run:** all 164 tests and lint checks passed. The immutable
+  `e3-campaign-preflight-v1` executed all 580 rows, wrote 580 terminal records,
+  and generated 232 minimized outcome findings without missing or duplicate
+  trial IDs.
+- **Analyze:** the selected synthetic campaign produced 172 unauthorized
+  effects and 60 observation disagreements. Even always-deny had four unsafe
+  effects when paired enforcement-bypass scenarios overrode its decision.
+  These counts validate end-to-end fault plumbing and show why decision-only
+  metrics are insufficient; because rows are deliberately selected and the two
+  “systems” share one simulator vocabulary, none is a field-risk estimate or
+  cross-system result.
+
 ## Next highest-priority cycle
 
-Expand the 58-row design deterministically across two systems and five
-guardrails, validate unique trial identities and restoration metadata, and run
-a simulator preflight. Treat its 580 outcomes only as campaign-plumbing
-evidence before any blinded live pilot.
+Add machine-checked campaign integrity and statistical-analysis code: record
+verification, paired contrast extraction, exact uncertainty for descriptive
+rates, and explicit rejection of simulator/system-label data for confirmatory
+claims. Use it to produce a preflight-only analysis report from E3.

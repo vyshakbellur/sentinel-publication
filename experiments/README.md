@@ -34,6 +34,12 @@ checksum-pinned OPA Rego policy and an always-deny sanity baseline. Its ten
 trials validate semantic wiring and illustrate why safety must be reported with
 recovery utility; they are not population estimates.
 
+`e3-campaign-preflight-v1` executes all 580 expanded rows against the shared
+deterministic simulator. Its system names are allocation labels, not live
+deployments. The run validates complete campaign plumbing, terminal records,
+fault minimization, and comparison boundaries; its selected-case proportions
+must not be presented as empirical risk rates.
+
 ## Frozen protocol
 
 `protocol/fault_catalog.json` versions the implemented fault semantics and

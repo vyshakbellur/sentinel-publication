@@ -69,6 +69,8 @@ def run_trial(
             "replicas": spec.desired_replicas,
         },
     }
+    if "binding.forged_authority" in fault_ids:
+        proposal["source"] = {"classification": "public"}
 
     if spec.guardrail == "guardian":
         decision = subject.decide(

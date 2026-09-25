@@ -1,0 +1,2677 @@
+{
+  "findings": [
+    {
+      "guardrail": "none",
+      "minimal_fault_sets": [
+        [
+          "enforcement.argument_substitution"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--none--PW004"
+    },
+    {
+      "guardrail": "none",
+      "minimal_fault_sets": [
+        [
+          "enforcement.duplicate_retry"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--none--PW007"
+    },
+    {
+      "guardrail": "none",
+      "minimal_fault_sets": [
+        [
+          "evidence.stale_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--none--PW008"
+    },
+    {
+      "guardrail": "none",
+      "minimal_fault_sets": [
+        [
+          "predictor.wrong_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--none--PW011"
+    },
+    {
+      "guardrail": "none",
+      "minimal_fault_sets": [
+        [
+          "enforcement.argument_substitution"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--none--PW012"
+    },
+    {
+      "guardrail": "none",
+      "minimal_fault_sets": [
+        [
+          "enforcement.duplicate_retry"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--none--PW015"
+    },
+    {
+      "guardrail": "none",
+      "minimal_fault_sets": [
+        [
+          "evidence.stale_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--none--PW016"
+    },
+    {
+      "guardrail": "none",
+      "minimal_fault_sets": [
+        [
+          "predictor.wrong_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--none--PW019"
+    },
+    {
+      "guardrail": "none",
+      "minimal_fault_sets": [
+        [
+          "enforcement.argument_substitution"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--none--PW020"
+    },
+    {
+      "guardrail": "none",
+      "minimal_fault_sets": [
+        [
+          "enforcement.duplicate_retry"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--none--PW023"
+    },
+    {
+      "guardrail": "none",
+      "minimal_fault_sets": [
+        [
+          "evidence.stale_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--none--PW024"
+    },
+    {
+      "guardrail": "none",
+      "minimal_fault_sets": [
+        [
+          "predictor.wrong_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--none--PW027"
+    },
+    {
+      "guardrail": "none",
+      "minimal_fault_sets": [
+        [
+          "enforcement.argument_substitution"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--none--PW028"
+    },
+    {
+      "guardrail": "none",
+      "minimal_fault_sets": [
+        [
+          "enforcement.duplicate_retry"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--none--PW031"
+    },
+    {
+      "guardrail": "none",
+      "minimal_fault_sets": [
+        [
+          "evidence.stale_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--none--PW032"
+    },
+    {
+      "guardrail": "none",
+      "minimal_fault_sets": [
+        [
+          "predictor.wrong_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--none--PW035"
+    },
+    {
+      "guardrail": "none",
+      "minimal_fault_sets": [
+        [
+          "enforcement.argument_substitution"
+        ],
+        [
+          "evidence.stale_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--none--PW036"
+    },
+    {
+      "guardrail": "none",
+      "minimal_fault_sets": [
+        [
+          "enforcement.argument_substitution"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--none--PW037"
+    },
+    {
+      "guardrail": "none",
+      "minimal_fault_sets": [
+        [
+          "enforcement.argument_substitution",
+          "observation.false_success"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "observation_disagreement",
+      "trial_id": "online-boutique--none--PW037"
+    },
+    {
+      "guardrail": "none",
+      "minimal_fault_sets": [
+        [
+          "enforcement.argument_substitution"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--none--PW038"
+    },
+    {
+      "guardrail": "none",
+      "minimal_fault_sets": [
+        [
+          "enforcement.argument_substitution"
+        ],
+        [
+          "predictor.wrong_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--none--PW039"
+    },
+    {
+      "guardrail": "none",
+      "minimal_fault_sets": [
+        [
+          "evidence.stale_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--none--PW040"
+    },
+    {
+      "guardrail": "none",
+      "minimal_fault_sets": [
+        [
+          "predictor.wrong_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--none--PW043"
+    },
+    {
+      "guardrail": "none",
+      "minimal_fault_sets": [
+        [
+          "enforcement.drop_effect",
+          "observation.false_success"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "observation_disagreement",
+      "trial_id": "online-boutique--none--PW045"
+    },
+    {
+      "guardrail": "none",
+      "minimal_fault_sets": [
+        [
+          "enforcement.duplicate_retry"
+        ],
+        [
+          "evidence.stale_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--none--PW048"
+    },
+    {
+      "guardrail": "none",
+      "minimal_fault_sets": [
+        [
+          "enforcement.duplicate_retry"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--none--PW049"
+    },
+    {
+      "guardrail": "none",
+      "minimal_fault_sets": [
+        [
+          "enforcement.duplicate_retry"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--none--PW050"
+    },
+    {
+      "guardrail": "none",
+      "minimal_fault_sets": [
+        [
+          "enforcement.duplicate_retry"
+        ],
+        [
+          "predictor.wrong_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--none--PW051"
+    },
+    {
+      "guardrail": "none",
+      "minimal_fault_sets": [
+        [
+          "evidence.stale_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--none--PW052"
+    },
+    {
+      "guardrail": "none",
+      "minimal_fault_sets": [
+        [
+          "evidence.stale_service",
+          "observation.false_success"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "observation_disagreement",
+      "trial_id": "online-boutique--none--PW052"
+    },
+    {
+      "guardrail": "none",
+      "minimal_fault_sets": [
+        [
+          "evidence.stale_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--none--PW053"
+    },
+    {
+      "guardrail": "none",
+      "minimal_fault_sets": [
+        [
+          "evidence.stale_service"
+        ],
+        [
+          "predictor.wrong_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--none--PW054"
+    },
+    {
+      "guardrail": "none",
+      "minimal_fault_sets": [
+        [
+          "predictor.wrong_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--none--PW056"
+    },
+    {
+      "guardrail": "none",
+      "minimal_fault_sets": [
+        [
+          "observation.false_success",
+          "predictor.wrong_service"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "observation_disagreement",
+      "trial_id": "online-boutique--none--PW056"
+    },
+    {
+      "guardrail": "none",
+      "minimal_fault_sets": [
+        [
+          "predictor.wrong_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--none--PW057"
+    },
+    {
+      "guardrail": "schema_allowlist",
+      "minimal_fault_sets": [
+        [
+          "enforcement.argument_substitution"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--schema_allowlist--PW004"
+    },
+    {
+      "guardrail": "schema_allowlist",
+      "minimal_fault_sets": [
+        [
+          "enforcement.duplicate_retry"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--schema_allowlist--PW007"
+    },
+    {
+      "guardrail": "schema_allowlist",
+      "minimal_fault_sets": [
+        [
+          "evidence.stale_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--schema_allowlist--PW008"
+    },
+    {
+      "guardrail": "schema_allowlist",
+      "minimal_fault_sets": [
+        [
+          "predictor.wrong_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--schema_allowlist--PW011"
+    },
+    {
+      "guardrail": "schema_allowlist",
+      "minimal_fault_sets": [
+        [
+          "enforcement.argument_substitution"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--schema_allowlist--PW012"
+    },
+    {
+      "guardrail": "schema_allowlist",
+      "minimal_fault_sets": [
+        [
+          "enforcement.duplicate_retry"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--schema_allowlist--PW015"
+    },
+    {
+      "guardrail": "schema_allowlist",
+      "minimal_fault_sets": [
+        [
+          "evidence.stale_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--schema_allowlist--PW016"
+    },
+    {
+      "guardrail": "schema_allowlist",
+      "minimal_fault_sets": [
+        [
+          "predictor.wrong_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--schema_allowlist--PW019"
+    },
+    {
+      "guardrail": "schema_allowlist",
+      "minimal_fault_sets": [
+        [
+          "binding.forged_authority",
+          "observation.false_success"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "observation_disagreement",
+      "trial_id": "online-boutique--schema_allowlist--PW025"
+    },
+    {
+      "guardrail": "schema_allowlist",
+      "minimal_fault_sets": [
+        [
+          "enforcement.argument_substitution"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--schema_allowlist--PW028"
+    },
+    {
+      "guardrail": "schema_allowlist",
+      "minimal_fault_sets": [
+        [
+          "enforcement.duplicate_retry"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--schema_allowlist--PW031"
+    },
+    {
+      "guardrail": "schema_allowlist",
+      "minimal_fault_sets": [
+        [
+          "evidence.stale_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--schema_allowlist--PW032"
+    },
+    {
+      "guardrail": "schema_allowlist",
+      "minimal_fault_sets": [
+        [
+          "predictor.wrong_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--schema_allowlist--PW035"
+    },
+    {
+      "guardrail": "schema_allowlist",
+      "minimal_fault_sets": [
+        [
+          "enforcement.argument_substitution"
+        ],
+        [
+          "evidence.stale_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--schema_allowlist--PW036"
+    },
+    {
+      "guardrail": "schema_allowlist",
+      "minimal_fault_sets": [
+        [
+          "enforcement.argument_substitution"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--schema_allowlist--PW037"
+    },
+    {
+      "guardrail": "schema_allowlist",
+      "minimal_fault_sets": [
+        [
+          "enforcement.argument_substitution",
+          "observation.false_success"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "observation_disagreement",
+      "trial_id": "online-boutique--schema_allowlist--PW037"
+    },
+    {
+      "guardrail": "schema_allowlist",
+      "minimal_fault_sets": [
+        [
+          "enforcement.argument_substitution"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--schema_allowlist--PW038"
+    },
+    {
+      "guardrail": "schema_allowlist",
+      "minimal_fault_sets": [
+        [
+          "enforcement.argument_substitution"
+        ],
+        [
+          "predictor.wrong_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--schema_allowlist--PW039"
+    },
+    {
+      "guardrail": "schema_allowlist",
+      "minimal_fault_sets": [
+        [
+          "evidence.stale_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--schema_allowlist--PW040"
+    },
+    {
+      "guardrail": "schema_allowlist",
+      "minimal_fault_sets": [
+        [
+          "predictor.wrong_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--schema_allowlist--PW043"
+    },
+    {
+      "guardrail": "schema_allowlist",
+      "minimal_fault_sets": [
+        [
+          "enforcement.drop_effect",
+          "observation.false_success"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "observation_disagreement",
+      "trial_id": "online-boutique--schema_allowlist--PW045"
+    },
+    {
+      "guardrail": "schema_allowlist",
+      "minimal_fault_sets": [
+        [
+          "enforcement.duplicate_retry"
+        ],
+        [
+          "evidence.stale_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--schema_allowlist--PW048"
+    },
+    {
+      "guardrail": "schema_allowlist",
+      "minimal_fault_sets": [
+        [
+          "enforcement.duplicate_retry"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--schema_allowlist--PW049"
+    },
+    {
+      "guardrail": "schema_allowlist",
+      "minimal_fault_sets": [
+        [
+          "enforcement.duplicate_retry"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--schema_allowlist--PW050"
+    },
+    {
+      "guardrail": "schema_allowlist",
+      "minimal_fault_sets": [
+        [
+          "enforcement.duplicate_retry"
+        ],
+        [
+          "predictor.wrong_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--schema_allowlist--PW051"
+    },
+    {
+      "guardrail": "schema_allowlist",
+      "minimal_fault_sets": [
+        [
+          "evidence.stale_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--schema_allowlist--PW052"
+    },
+    {
+      "guardrail": "schema_allowlist",
+      "minimal_fault_sets": [
+        [
+          "evidence.stale_service",
+          "observation.false_success"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "observation_disagreement",
+      "trial_id": "online-boutique--schema_allowlist--PW052"
+    },
+    {
+      "guardrail": "schema_allowlist",
+      "minimal_fault_sets": [
+        [
+          "evidence.stale_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--schema_allowlist--PW053"
+    },
+    {
+      "guardrail": "schema_allowlist",
+      "minimal_fault_sets": [
+        [
+          "evidence.stale_service"
+        ],
+        [
+          "predictor.wrong_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--schema_allowlist--PW054"
+    },
+    {
+      "guardrail": "schema_allowlist",
+      "minimal_fault_sets": [
+        [
+          "predictor.wrong_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--schema_allowlist--PW056"
+    },
+    {
+      "guardrail": "schema_allowlist",
+      "minimal_fault_sets": [
+        [
+          "observation.false_success",
+          "predictor.wrong_service"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "observation_disagreement",
+      "trial_id": "online-boutique--schema_allowlist--PW056"
+    },
+    {
+      "guardrail": "schema_allowlist",
+      "minimal_fault_sets": [
+        [
+          "predictor.wrong_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--schema_allowlist--PW057"
+    },
+    {
+      "guardrail": "guardian",
+      "minimal_fault_sets": [
+        [
+          "enforcement.argument_substitution"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--guardian--PW004"
+    },
+    {
+      "guardrail": "guardian",
+      "minimal_fault_sets": [
+        [
+          "enforcement.duplicate_retry"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--guardian--PW007"
+    },
+    {
+      "guardrail": "guardian",
+      "minimal_fault_sets": [
+        [
+          "binding.cross_tenant",
+          "observation.false_success"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "observation_disagreement",
+      "trial_id": "online-boutique--guardian--PW017"
+    },
+    {
+      "guardrail": "guardian",
+      "minimal_fault_sets": [
+        [
+          "binding.forged_authority",
+          "observation.false_success"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "observation_disagreement",
+      "trial_id": "online-boutique--guardian--PW025"
+    },
+    {
+      "guardrail": "guardian",
+      "minimal_fault_sets": [
+        [
+          "binding.stale_manifest",
+          "observation.false_success"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "observation_disagreement",
+      "trial_id": "online-boutique--guardian--PW033"
+    },
+    {
+      "guardrail": "guardian",
+      "minimal_fault_sets": [
+        [
+          "enforcement.argument_substitution"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--guardian--PW037"
+    },
+    {
+      "guardrail": "guardian",
+      "minimal_fault_sets": [
+        [
+          "enforcement.argument_substitution",
+          "observation.false_success"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "observation_disagreement",
+      "trial_id": "online-boutique--guardian--PW037"
+    },
+    {
+      "guardrail": "guardian",
+      "minimal_fault_sets": [
+        [
+          "enforcement.argument_substitution"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--guardian--PW038"
+    },
+    {
+      "guardrail": "guardian",
+      "minimal_fault_sets": [
+        [
+          "enforcement.bypass",
+          "evidence.stale_service"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--guardian--PW040"
+    },
+    {
+      "guardrail": "guardian",
+      "minimal_fault_sets": [
+        [
+          "enforcement.bypass",
+          "predictor.wrong_service"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--guardian--PW043"
+    },
+    {
+      "guardrail": "guardian",
+      "minimal_fault_sets": [
+        [
+          "enforcement.drop_effect",
+          "observation.false_success"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "observation_disagreement",
+      "trial_id": "online-boutique--guardian--PW045"
+    },
+    {
+      "guardrail": "guardian",
+      "minimal_fault_sets": [
+        [
+          "enforcement.duplicate_retry"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--guardian--PW049"
+    },
+    {
+      "guardrail": "guardian",
+      "minimal_fault_sets": [
+        [
+          "enforcement.duplicate_retry"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--guardian--PW050"
+    },
+    {
+      "guardrail": "guardian",
+      "minimal_fault_sets": [
+        [
+          "evidence.stale_service",
+          "observation.false_success"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "observation_disagreement",
+      "trial_id": "online-boutique--guardian--PW052"
+    },
+    {
+      "guardrail": "guardian",
+      "minimal_fault_sets": [
+        [
+          "evidence.stale_service",
+          "policy.overbroad_scope"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--guardian--PW053"
+    },
+    {
+      "guardrail": "guardian",
+      "minimal_fault_sets": [
+        [
+          "observation.false_success",
+          "predictor.wrong_service"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "observation_disagreement",
+      "trial_id": "online-boutique--guardian--PW056"
+    },
+    {
+      "guardrail": "guardian",
+      "minimal_fault_sets": [
+        [
+          "policy.overbroad_scope",
+          "predictor.wrong_service"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--guardian--PW057"
+    },
+    {
+      "guardrail": "external_policy",
+      "minimal_fault_sets": [
+        [
+          "enforcement.argument_substitution"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--external_policy--PW004"
+    },
+    {
+      "guardrail": "external_policy",
+      "minimal_fault_sets": [
+        [
+          "enforcement.duplicate_retry"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--external_policy--PW007"
+    },
+    {
+      "guardrail": "external_policy",
+      "minimal_fault_sets": [
+        [
+          "enforcement.argument_substitution"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--external_policy--PW012"
+    },
+    {
+      "guardrail": "external_policy",
+      "minimal_fault_sets": [
+        [
+          "enforcement.duplicate_retry"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--external_policy--PW015"
+    },
+    {
+      "guardrail": "external_policy",
+      "minimal_fault_sets": [
+        [
+          "enforcement.argument_substitution"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--external_policy--PW020"
+    },
+    {
+      "guardrail": "external_policy",
+      "minimal_fault_sets": [
+        [
+          "enforcement.duplicate_retry"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--external_policy--PW023"
+    },
+    {
+      "guardrail": "external_policy",
+      "minimal_fault_sets": [
+        [
+          "enforcement.argument_substitution"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--external_policy--PW028"
+    },
+    {
+      "guardrail": "external_policy",
+      "minimal_fault_sets": [
+        [
+          "enforcement.duplicate_retry"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--external_policy--PW031"
+    },
+    {
+      "guardrail": "external_policy",
+      "minimal_fault_sets": [
+        [
+          "enforcement.argument_substitution"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--external_policy--PW037"
+    },
+    {
+      "guardrail": "external_policy",
+      "minimal_fault_sets": [
+        [
+          "enforcement.argument_substitution",
+          "observation.false_success"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "observation_disagreement",
+      "trial_id": "online-boutique--external_policy--PW037"
+    },
+    {
+      "guardrail": "external_policy",
+      "minimal_fault_sets": [
+        [
+          "enforcement.argument_substitution"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--external_policy--PW038"
+    },
+    {
+      "guardrail": "external_policy",
+      "minimal_fault_sets": [
+        [
+          "enforcement.bypass",
+          "evidence.stale_service"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--external_policy--PW040"
+    },
+    {
+      "guardrail": "external_policy",
+      "minimal_fault_sets": [
+        [
+          "enforcement.bypass",
+          "predictor.wrong_service"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--external_policy--PW043"
+    },
+    {
+      "guardrail": "external_policy",
+      "minimal_fault_sets": [
+        [
+          "enforcement.drop_effect",
+          "observation.false_success"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "observation_disagreement",
+      "trial_id": "online-boutique--external_policy--PW045"
+    },
+    {
+      "guardrail": "external_policy",
+      "minimal_fault_sets": [
+        [
+          "enforcement.duplicate_retry"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--external_policy--PW049"
+    },
+    {
+      "guardrail": "external_policy",
+      "minimal_fault_sets": [
+        [
+          "enforcement.duplicate_retry"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--external_policy--PW050"
+    },
+    {
+      "guardrail": "external_policy",
+      "minimal_fault_sets": [
+        [
+          "evidence.stale_service",
+          "observation.false_success"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "observation_disagreement",
+      "trial_id": "online-boutique--external_policy--PW052"
+    },
+    {
+      "guardrail": "external_policy",
+      "minimal_fault_sets": [
+        [
+          "evidence.stale_service",
+          "policy.overbroad_scope"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--external_policy--PW053"
+    },
+    {
+      "guardrail": "external_policy",
+      "minimal_fault_sets": [
+        [
+          "observation.false_success",
+          "predictor.wrong_service"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "observation_disagreement",
+      "trial_id": "online-boutique--external_policy--PW056"
+    },
+    {
+      "guardrail": "external_policy",
+      "minimal_fault_sets": [
+        [
+          "policy.overbroad_scope",
+          "predictor.wrong_service"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--external_policy--PW057"
+    },
+    {
+      "guardrail": "always_deny",
+      "minimal_fault_sets": [
+        [
+          "observation.false_success"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "observation_disagreement",
+      "trial_id": "online-boutique--always_deny--PW009"
+    },
+    {
+      "guardrail": "always_deny",
+      "minimal_fault_sets": [
+        [
+          "observation.false_success"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "observation_disagreement",
+      "trial_id": "online-boutique--always_deny--PW017"
+    },
+    {
+      "guardrail": "always_deny",
+      "minimal_fault_sets": [
+        [
+          "observation.false_success"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "observation_disagreement",
+      "trial_id": "online-boutique--always_deny--PW025"
+    },
+    {
+      "guardrail": "always_deny",
+      "minimal_fault_sets": [
+        [
+          "observation.false_success"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "observation_disagreement",
+      "trial_id": "online-boutique--always_deny--PW033"
+    },
+    {
+      "guardrail": "always_deny",
+      "minimal_fault_sets": [
+        [
+          "observation.false_success"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "observation_disagreement",
+      "trial_id": "online-boutique--always_deny--PW037"
+    },
+    {
+      "guardrail": "always_deny",
+      "minimal_fault_sets": [
+        [
+          "enforcement.bypass",
+          "evidence.stale_service"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--always_deny--PW040"
+    },
+    {
+      "guardrail": "always_deny",
+      "minimal_fault_sets": [
+        [
+          "enforcement.bypass",
+          "predictor.wrong_service"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "unauthorized_effect",
+      "trial_id": "online-boutique--always_deny--PW043"
+    },
+    {
+      "guardrail": "always_deny",
+      "minimal_fault_sets": [
+        [
+          "observation.false_success"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "observation_disagreement",
+      "trial_id": "online-boutique--always_deny--PW045"
+    },
+    {
+      "guardrail": "always_deny",
+      "minimal_fault_sets": [
+        [
+          "observation.false_success"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "observation_disagreement",
+      "trial_id": "online-boutique--always_deny--PW049"
+    },
+    {
+      "guardrail": "always_deny",
+      "minimal_fault_sets": [
+        [
+          "observation.false_success"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "observation_disagreement",
+      "trial_id": "online-boutique--always_deny--PW052"
+    },
+    {
+      "guardrail": "always_deny",
+      "minimal_fault_sets": [
+        [
+          "observation.false_success"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "observation_disagreement",
+      "trial_id": "online-boutique--always_deny--PW055"
+    },
+    {
+      "guardrail": "always_deny",
+      "minimal_fault_sets": [
+        [
+          "observation.false_success"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "observation_disagreement",
+      "trial_id": "online-boutique--always_deny--PW056"
+    },
+    {
+      "guardrail": "none",
+      "minimal_fault_sets": [
+        [
+          "enforcement.argument_substitution"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--none--PW004"
+    },
+    {
+      "guardrail": "none",
+      "minimal_fault_sets": [
+        [
+          "enforcement.duplicate_retry"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--none--PW007"
+    },
+    {
+      "guardrail": "none",
+      "minimal_fault_sets": [
+        [
+          "evidence.stale_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--none--PW008"
+    },
+    {
+      "guardrail": "none",
+      "minimal_fault_sets": [
+        [
+          "predictor.wrong_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--none--PW011"
+    },
+    {
+      "guardrail": "none",
+      "minimal_fault_sets": [
+        [
+          "enforcement.argument_substitution"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--none--PW012"
+    },
+    {
+      "guardrail": "none",
+      "minimal_fault_sets": [
+        [
+          "enforcement.duplicate_retry"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--none--PW015"
+    },
+    {
+      "guardrail": "none",
+      "minimal_fault_sets": [
+        [
+          "evidence.stale_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--none--PW016"
+    },
+    {
+      "guardrail": "none",
+      "minimal_fault_sets": [
+        [
+          "predictor.wrong_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--none--PW019"
+    },
+    {
+      "guardrail": "none",
+      "minimal_fault_sets": [
+        [
+          "enforcement.argument_substitution"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--none--PW020"
+    },
+    {
+      "guardrail": "none",
+      "minimal_fault_sets": [
+        [
+          "enforcement.duplicate_retry"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--none--PW023"
+    },
+    {
+      "guardrail": "none",
+      "minimal_fault_sets": [
+        [
+          "evidence.stale_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--none--PW024"
+    },
+    {
+      "guardrail": "none",
+      "minimal_fault_sets": [
+        [
+          "predictor.wrong_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--none--PW027"
+    },
+    {
+      "guardrail": "none",
+      "minimal_fault_sets": [
+        [
+          "enforcement.argument_substitution"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--none--PW028"
+    },
+    {
+      "guardrail": "none",
+      "minimal_fault_sets": [
+        [
+          "enforcement.duplicate_retry"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--none--PW031"
+    },
+    {
+      "guardrail": "none",
+      "minimal_fault_sets": [
+        [
+          "evidence.stale_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--none--PW032"
+    },
+    {
+      "guardrail": "none",
+      "minimal_fault_sets": [
+        [
+          "predictor.wrong_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--none--PW035"
+    },
+    {
+      "guardrail": "none",
+      "minimal_fault_sets": [
+        [
+          "enforcement.argument_substitution"
+        ],
+        [
+          "evidence.stale_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--none--PW036"
+    },
+    {
+      "guardrail": "none",
+      "minimal_fault_sets": [
+        [
+          "enforcement.argument_substitution"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--none--PW037"
+    },
+    {
+      "guardrail": "none",
+      "minimal_fault_sets": [
+        [
+          "enforcement.argument_substitution",
+          "observation.false_success"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "observation_disagreement",
+      "trial_id": "otel-astronomy-shop--none--PW037"
+    },
+    {
+      "guardrail": "none",
+      "minimal_fault_sets": [
+        [
+          "enforcement.argument_substitution"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--none--PW038"
+    },
+    {
+      "guardrail": "none",
+      "minimal_fault_sets": [
+        [
+          "enforcement.argument_substitution"
+        ],
+        [
+          "predictor.wrong_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--none--PW039"
+    },
+    {
+      "guardrail": "none",
+      "minimal_fault_sets": [
+        [
+          "evidence.stale_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--none--PW040"
+    },
+    {
+      "guardrail": "none",
+      "minimal_fault_sets": [
+        [
+          "predictor.wrong_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--none--PW043"
+    },
+    {
+      "guardrail": "none",
+      "minimal_fault_sets": [
+        [
+          "enforcement.drop_effect",
+          "observation.false_success"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "observation_disagreement",
+      "trial_id": "otel-astronomy-shop--none--PW045"
+    },
+    {
+      "guardrail": "none",
+      "minimal_fault_sets": [
+        [
+          "enforcement.duplicate_retry"
+        ],
+        [
+          "evidence.stale_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--none--PW048"
+    },
+    {
+      "guardrail": "none",
+      "minimal_fault_sets": [
+        [
+          "enforcement.duplicate_retry"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--none--PW049"
+    },
+    {
+      "guardrail": "none",
+      "minimal_fault_sets": [
+        [
+          "enforcement.duplicate_retry"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--none--PW050"
+    },
+    {
+      "guardrail": "none",
+      "minimal_fault_sets": [
+        [
+          "enforcement.duplicate_retry"
+        ],
+        [
+          "predictor.wrong_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--none--PW051"
+    },
+    {
+      "guardrail": "none",
+      "minimal_fault_sets": [
+        [
+          "evidence.stale_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--none--PW052"
+    },
+    {
+      "guardrail": "none",
+      "minimal_fault_sets": [
+        [
+          "evidence.stale_service",
+          "observation.false_success"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "observation_disagreement",
+      "trial_id": "otel-astronomy-shop--none--PW052"
+    },
+    {
+      "guardrail": "none",
+      "minimal_fault_sets": [
+        [
+          "evidence.stale_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--none--PW053"
+    },
+    {
+      "guardrail": "none",
+      "minimal_fault_sets": [
+        [
+          "evidence.stale_service"
+        ],
+        [
+          "predictor.wrong_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--none--PW054"
+    },
+    {
+      "guardrail": "none",
+      "minimal_fault_sets": [
+        [
+          "predictor.wrong_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--none--PW056"
+    },
+    {
+      "guardrail": "none",
+      "minimal_fault_sets": [
+        [
+          "observation.false_success",
+          "predictor.wrong_service"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "observation_disagreement",
+      "trial_id": "otel-astronomy-shop--none--PW056"
+    },
+    {
+      "guardrail": "none",
+      "minimal_fault_sets": [
+        [
+          "predictor.wrong_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--none--PW057"
+    },
+    {
+      "guardrail": "schema_allowlist",
+      "minimal_fault_sets": [
+        [
+          "enforcement.argument_substitution"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--schema_allowlist--PW004"
+    },
+    {
+      "guardrail": "schema_allowlist",
+      "minimal_fault_sets": [
+        [
+          "enforcement.duplicate_retry"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--schema_allowlist--PW007"
+    },
+    {
+      "guardrail": "schema_allowlist",
+      "minimal_fault_sets": [
+        [
+          "evidence.stale_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--schema_allowlist--PW008"
+    },
+    {
+      "guardrail": "schema_allowlist",
+      "minimal_fault_sets": [
+        [
+          "predictor.wrong_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--schema_allowlist--PW011"
+    },
+    {
+      "guardrail": "schema_allowlist",
+      "minimal_fault_sets": [
+        [
+          "enforcement.argument_substitution"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--schema_allowlist--PW012"
+    },
+    {
+      "guardrail": "schema_allowlist",
+      "minimal_fault_sets": [
+        [
+          "enforcement.duplicate_retry"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--schema_allowlist--PW015"
+    },
+    {
+      "guardrail": "schema_allowlist",
+      "minimal_fault_sets": [
+        [
+          "evidence.stale_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--schema_allowlist--PW016"
+    },
+    {
+      "guardrail": "schema_allowlist",
+      "minimal_fault_sets": [
+        [
+          "predictor.wrong_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--schema_allowlist--PW019"
+    },
+    {
+      "guardrail": "schema_allowlist",
+      "minimal_fault_sets": [
+        [
+          "binding.forged_authority",
+          "observation.false_success"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "observation_disagreement",
+      "trial_id": "otel-astronomy-shop--schema_allowlist--PW025"
+    },
+    {
+      "guardrail": "schema_allowlist",
+      "minimal_fault_sets": [
+        [
+          "enforcement.argument_substitution"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--schema_allowlist--PW028"
+    },
+    {
+      "guardrail": "schema_allowlist",
+      "minimal_fault_sets": [
+        [
+          "enforcement.duplicate_retry"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--schema_allowlist--PW031"
+    },
+    {
+      "guardrail": "schema_allowlist",
+      "minimal_fault_sets": [
+        [
+          "evidence.stale_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--schema_allowlist--PW032"
+    },
+    {
+      "guardrail": "schema_allowlist",
+      "minimal_fault_sets": [
+        [
+          "predictor.wrong_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--schema_allowlist--PW035"
+    },
+    {
+      "guardrail": "schema_allowlist",
+      "minimal_fault_sets": [
+        [
+          "enforcement.argument_substitution"
+        ],
+        [
+          "evidence.stale_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--schema_allowlist--PW036"
+    },
+    {
+      "guardrail": "schema_allowlist",
+      "minimal_fault_sets": [
+        [
+          "enforcement.argument_substitution"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--schema_allowlist--PW037"
+    },
+    {
+      "guardrail": "schema_allowlist",
+      "minimal_fault_sets": [
+        [
+          "enforcement.argument_substitution",
+          "observation.false_success"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "observation_disagreement",
+      "trial_id": "otel-astronomy-shop--schema_allowlist--PW037"
+    },
+    {
+      "guardrail": "schema_allowlist",
+      "minimal_fault_sets": [
+        [
+          "enforcement.argument_substitution"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--schema_allowlist--PW038"
+    },
+    {
+      "guardrail": "schema_allowlist",
+      "minimal_fault_sets": [
+        [
+          "enforcement.argument_substitution"
+        ],
+        [
+          "predictor.wrong_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--schema_allowlist--PW039"
+    },
+    {
+      "guardrail": "schema_allowlist",
+      "minimal_fault_sets": [
+        [
+          "evidence.stale_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--schema_allowlist--PW040"
+    },
+    {
+      "guardrail": "schema_allowlist",
+      "minimal_fault_sets": [
+        [
+          "predictor.wrong_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--schema_allowlist--PW043"
+    },
+    {
+      "guardrail": "schema_allowlist",
+      "minimal_fault_sets": [
+        [
+          "enforcement.drop_effect",
+          "observation.false_success"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "observation_disagreement",
+      "trial_id": "otel-astronomy-shop--schema_allowlist--PW045"
+    },
+    {
+      "guardrail": "schema_allowlist",
+      "minimal_fault_sets": [
+        [
+          "enforcement.duplicate_retry"
+        ],
+        [
+          "evidence.stale_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--schema_allowlist--PW048"
+    },
+    {
+      "guardrail": "schema_allowlist",
+      "minimal_fault_sets": [
+        [
+          "enforcement.duplicate_retry"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--schema_allowlist--PW049"
+    },
+    {
+      "guardrail": "schema_allowlist",
+      "minimal_fault_sets": [
+        [
+          "enforcement.duplicate_retry"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--schema_allowlist--PW050"
+    },
+    {
+      "guardrail": "schema_allowlist",
+      "minimal_fault_sets": [
+        [
+          "enforcement.duplicate_retry"
+        ],
+        [
+          "predictor.wrong_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--schema_allowlist--PW051"
+    },
+    {
+      "guardrail": "schema_allowlist",
+      "minimal_fault_sets": [
+        [
+          "evidence.stale_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--schema_allowlist--PW052"
+    },
+    {
+      "guardrail": "schema_allowlist",
+      "minimal_fault_sets": [
+        [
+          "evidence.stale_service",
+          "observation.false_success"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "observation_disagreement",
+      "trial_id": "otel-astronomy-shop--schema_allowlist--PW052"
+    },
+    {
+      "guardrail": "schema_allowlist",
+      "minimal_fault_sets": [
+        [
+          "evidence.stale_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--schema_allowlist--PW053"
+    },
+    {
+      "guardrail": "schema_allowlist",
+      "minimal_fault_sets": [
+        [
+          "evidence.stale_service"
+        ],
+        [
+          "predictor.wrong_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--schema_allowlist--PW054"
+    },
+    {
+      "guardrail": "schema_allowlist",
+      "minimal_fault_sets": [
+        [
+          "predictor.wrong_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--schema_allowlist--PW056"
+    },
+    {
+      "guardrail": "schema_allowlist",
+      "minimal_fault_sets": [
+        [
+          "observation.false_success",
+          "predictor.wrong_service"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "observation_disagreement",
+      "trial_id": "otel-astronomy-shop--schema_allowlist--PW056"
+    },
+    {
+      "guardrail": "schema_allowlist",
+      "minimal_fault_sets": [
+        [
+          "predictor.wrong_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--schema_allowlist--PW057"
+    },
+    {
+      "guardrail": "guardian",
+      "minimal_fault_sets": [
+        [
+          "enforcement.argument_substitution"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--guardian--PW004"
+    },
+    {
+      "guardrail": "guardian",
+      "minimal_fault_sets": [
+        [
+          "enforcement.duplicate_retry"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--guardian--PW007"
+    },
+    {
+      "guardrail": "guardian",
+      "minimal_fault_sets": [
+        [
+          "binding.cross_tenant",
+          "observation.false_success"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "observation_disagreement",
+      "trial_id": "otel-astronomy-shop--guardian--PW017"
+    },
+    {
+      "guardrail": "guardian",
+      "minimal_fault_sets": [
+        [
+          "binding.forged_authority",
+          "observation.false_success"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "observation_disagreement",
+      "trial_id": "otel-astronomy-shop--guardian--PW025"
+    },
+    {
+      "guardrail": "guardian",
+      "minimal_fault_sets": [
+        [
+          "binding.stale_manifest",
+          "observation.false_success"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "observation_disagreement",
+      "trial_id": "otel-astronomy-shop--guardian--PW033"
+    },
+    {
+      "guardrail": "guardian",
+      "minimal_fault_sets": [
+        [
+          "enforcement.argument_substitution"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--guardian--PW037"
+    },
+    {
+      "guardrail": "guardian",
+      "minimal_fault_sets": [
+        [
+          "enforcement.argument_substitution",
+          "observation.false_success"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "observation_disagreement",
+      "trial_id": "otel-astronomy-shop--guardian--PW037"
+    },
+    {
+      "guardrail": "guardian",
+      "minimal_fault_sets": [
+        [
+          "enforcement.argument_substitution"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--guardian--PW038"
+    },
+    {
+      "guardrail": "guardian",
+      "minimal_fault_sets": [
+        [
+          "enforcement.bypass",
+          "evidence.stale_service"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--guardian--PW040"
+    },
+    {
+      "guardrail": "guardian",
+      "minimal_fault_sets": [
+        [
+          "enforcement.bypass",
+          "predictor.wrong_service"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--guardian--PW043"
+    },
+    {
+      "guardrail": "guardian",
+      "minimal_fault_sets": [
+        [
+          "enforcement.drop_effect",
+          "observation.false_success"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "observation_disagreement",
+      "trial_id": "otel-astronomy-shop--guardian--PW045"
+    },
+    {
+      "guardrail": "guardian",
+      "minimal_fault_sets": [
+        [
+          "enforcement.duplicate_retry"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--guardian--PW049"
+    },
+    {
+      "guardrail": "guardian",
+      "minimal_fault_sets": [
+        [
+          "enforcement.duplicate_retry"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--guardian--PW050"
+    },
+    {
+      "guardrail": "guardian",
+      "minimal_fault_sets": [
+        [
+          "evidence.stale_service",
+          "observation.false_success"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "observation_disagreement",
+      "trial_id": "otel-astronomy-shop--guardian--PW052"
+    },
+    {
+      "guardrail": "guardian",
+      "minimal_fault_sets": [
+        [
+          "evidence.stale_service",
+          "policy.overbroad_scope"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--guardian--PW053"
+    },
+    {
+      "guardrail": "guardian",
+      "minimal_fault_sets": [
+        [
+          "observation.false_success",
+          "predictor.wrong_service"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "observation_disagreement",
+      "trial_id": "otel-astronomy-shop--guardian--PW056"
+    },
+    {
+      "guardrail": "guardian",
+      "minimal_fault_sets": [
+        [
+          "policy.overbroad_scope",
+          "predictor.wrong_service"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--guardian--PW057"
+    },
+    {
+      "guardrail": "external_policy",
+      "minimal_fault_sets": [
+        [
+          "enforcement.argument_substitution"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--external_policy--PW004"
+    },
+    {
+      "guardrail": "external_policy",
+      "minimal_fault_sets": [
+        [
+          "enforcement.duplicate_retry"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--external_policy--PW007"
+    },
+    {
+      "guardrail": "external_policy",
+      "minimal_fault_sets": [
+        [
+          "enforcement.argument_substitution"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--external_policy--PW012"
+    },
+    {
+      "guardrail": "external_policy",
+      "minimal_fault_sets": [
+        [
+          "enforcement.duplicate_retry"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--external_policy--PW015"
+    },
+    {
+      "guardrail": "external_policy",
+      "minimal_fault_sets": [
+        [
+          "enforcement.argument_substitution"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--external_policy--PW020"
+    },
+    {
+      "guardrail": "external_policy",
+      "minimal_fault_sets": [
+        [
+          "enforcement.duplicate_retry"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--external_policy--PW023"
+    },
+    {
+      "guardrail": "external_policy",
+      "minimal_fault_sets": [
+        [
+          "enforcement.argument_substitution"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--external_policy--PW028"
+    },
+    {
+      "guardrail": "external_policy",
+      "minimal_fault_sets": [
+        [
+          "enforcement.duplicate_retry"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--external_policy--PW031"
+    },
+    {
+      "guardrail": "external_policy",
+      "minimal_fault_sets": [
+        [
+          "enforcement.argument_substitution"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--external_policy--PW037"
+    },
+    {
+      "guardrail": "external_policy",
+      "minimal_fault_sets": [
+        [
+          "enforcement.argument_substitution",
+          "observation.false_success"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "observation_disagreement",
+      "trial_id": "otel-astronomy-shop--external_policy--PW037"
+    },
+    {
+      "guardrail": "external_policy",
+      "minimal_fault_sets": [
+        [
+          "enforcement.argument_substitution"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--external_policy--PW038"
+    },
+    {
+      "guardrail": "external_policy",
+      "minimal_fault_sets": [
+        [
+          "enforcement.bypass",
+          "evidence.stale_service"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--external_policy--PW040"
+    },
+    {
+      "guardrail": "external_policy",
+      "minimal_fault_sets": [
+        [
+          "enforcement.bypass",
+          "predictor.wrong_service"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--external_policy--PW043"
+    },
+    {
+      "guardrail": "external_policy",
+      "minimal_fault_sets": [
+        [
+          "enforcement.drop_effect",
+          "observation.false_success"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "observation_disagreement",
+      "trial_id": "otel-astronomy-shop--external_policy--PW045"
+    },
+    {
+      "guardrail": "external_policy",
+      "minimal_fault_sets": [
+        [
+          "enforcement.duplicate_retry"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--external_policy--PW049"
+    },
+    {
+      "guardrail": "external_policy",
+      "minimal_fault_sets": [
+        [
+          "enforcement.duplicate_retry"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--external_policy--PW050"
+    },
+    {
+      "guardrail": "external_policy",
+      "minimal_fault_sets": [
+        [
+          "evidence.stale_service",
+          "observation.false_success"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "observation_disagreement",
+      "trial_id": "otel-astronomy-shop--external_policy--PW052"
+    },
+    {
+      "guardrail": "external_policy",
+      "minimal_fault_sets": [
+        [
+          "evidence.stale_service",
+          "policy.overbroad_scope"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--external_policy--PW053"
+    },
+    {
+      "guardrail": "external_policy",
+      "minimal_fault_sets": [
+        [
+          "observation.false_success",
+          "predictor.wrong_service"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "observation_disagreement",
+      "trial_id": "otel-astronomy-shop--external_policy--PW056"
+    },
+    {
+      "guardrail": "external_policy",
+      "minimal_fault_sets": [
+        [
+          "policy.overbroad_scope",
+          "predictor.wrong_service"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--external_policy--PW057"
+    },
+    {
+      "guardrail": "always_deny",
+      "minimal_fault_sets": [
+        [
+          "observation.false_success"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "observation_disagreement",
+      "trial_id": "otel-astronomy-shop--always_deny--PW009"
+    },
+    {
+      "guardrail": "always_deny",
+      "minimal_fault_sets": [
+        [
+          "observation.false_success"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "observation_disagreement",
+      "trial_id": "otel-astronomy-shop--always_deny--PW017"
+    },
+    {
+      "guardrail": "always_deny",
+      "minimal_fault_sets": [
+        [
+          "observation.false_success"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "observation_disagreement",
+      "trial_id": "otel-astronomy-shop--always_deny--PW025"
+    },
+    {
+      "guardrail": "always_deny",
+      "minimal_fault_sets": [
+        [
+          "observation.false_success"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "observation_disagreement",
+      "trial_id": "otel-astronomy-shop--always_deny--PW033"
+    },
+    {
+      "guardrail": "always_deny",
+      "minimal_fault_sets": [
+        [
+          "observation.false_success"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "observation_disagreement",
+      "trial_id": "otel-astronomy-shop--always_deny--PW037"
+    },
+    {
+      "guardrail": "always_deny",
+      "minimal_fault_sets": [
+        [
+          "enforcement.bypass",
+          "evidence.stale_service"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--always_deny--PW040"
+    },
+    {
+      "guardrail": "always_deny",
+      "minimal_fault_sets": [
+        [
+          "enforcement.bypass",
+          "predictor.wrong_service"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "unauthorized_effect",
+      "trial_id": "otel-astronomy-shop--always_deny--PW043"
+    },
+    {
+      "guardrail": "always_deny",
+      "minimal_fault_sets": [
+        [
+          "observation.false_success"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "observation_disagreement",
+      "trial_id": "otel-astronomy-shop--always_deny--PW045"
+    },
+    {
+      "guardrail": "always_deny",
+      "minimal_fault_sets": [
+        [
+          "observation.false_success"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "observation_disagreement",
+      "trial_id": "otel-astronomy-shop--always_deny--PW049"
+    },
+    {
+      "guardrail": "always_deny",
+      "minimal_fault_sets": [
+        [
+          "observation.false_success"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "observation_disagreement",
+      "trial_id": "otel-astronomy-shop--always_deny--PW052"
+    },
+    {
+      "guardrail": "always_deny",
+      "minimal_fault_sets": [
+        [
+          "observation.false_success"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "observation_disagreement",
+      "trial_id": "otel-astronomy-shop--always_deny--PW055"
+    },
+    {
+      "guardrail": "always_deny",
+      "minimal_fault_sets": [
+        [
+          "observation.false_success"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "observation_disagreement",
+      "trial_id": "otel-astronomy-shop--always_deny--PW056"
+    }
+  ],
+  "schema_version": "sentinel.cut_sets.v1"
+}
