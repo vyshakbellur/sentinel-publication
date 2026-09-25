@@ -7,19 +7,24 @@ import json
 from pathlib import Path
 
 from .harness import run_matrix
-from .matrix import initial_matrix
+from .matrix import baseline_matrix, initial_matrix
 from .reporting import summarize, write_run
 
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument(
+        "--matrix",
+        choices=("initial", "baseline"),
+        default="initial",
+    )
     return parser
 
 
 def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
-    specs = initial_matrix()
+    specs = baseline_matrix() if args.matrix == "baseline" else initial_matrix()
     records = run_matrix(specs)
     write_run(args.output, specs, records)
     print(json.dumps(summarize(records), indent=2, sort_keys=True))
@@ -28,4 +33,3 @@ def main(argv: list[str] | None = None) -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

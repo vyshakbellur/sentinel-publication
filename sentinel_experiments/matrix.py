@@ -66,3 +66,27 @@ def initial_matrix() -> tuple[TrialSpec, ...]:
         ),
     )
 
+
+def baseline_matrix() -> tuple[TrialSpec, ...]:
+    """Frozen proposal pairs for the first differential baseline smoke run."""
+    incident = "online-boutique/adservice/replicas-zero"
+    specs: list[TrialSpec] = []
+    for guardrail in ("none", "schema_allowlist", "guardian"):
+        specs.extend(
+            (
+                TrialSpec(
+                    f"{guardrail}-nominal",
+                    incident,
+                    "adservice",
+                    guardrail=guardrail,
+                ),
+                TrialSpec(
+                    f"{guardrail}-wrong-prediction",
+                    incident,
+                    "adservice",
+                    guardrail=guardrail,
+                    faults=(Fault("wrong_service", FaultLayer.PREDICTOR),),
+                ),
+            )
+        )
+    return tuple(specs)

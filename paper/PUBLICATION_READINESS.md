@@ -2,7 +2,7 @@
 
 Last reviewed: 2026-09-24
 
-Iteration budget: **2/25 completed**. Stop after Cycle 25, or earlier if every
+Iteration budget: **3/25 completed**. Stop after Cycle 25, or earlier if every
 publication gate passes. The final cycle must record a readiness verdict and
 all remaining blockers before pausing the publication automation.
 
@@ -23,7 +23,7 @@ Current maturity: **protocol + E0 harness validation**.
 | References verified against primary sources | Fail | Candidate bibliography exists; venue/version/DOI verification is incomplete. |
 | Independent oracle fixtures | Pass | Eleven deterministic fixtures cover safe/no-effect, wrong target, duplicate identity and semantic effects, excessive and partial effects, false success, rollback, delayed regression, and stale observation. Live calibration remains separate. |
 | Frozen threat model and fault catalog | Partial | Six-layer taxonomy exists, but operators and exclusions are not preregistered/frozen. |
-| Meaningful baselines | Fail | Only Guardian and no-guard simulator paths exist; schema/allowlist and OPA/Cedar are missing. |
+| Meaningful baselines | Partial | No-guard and schema/allowlist simulator paths now run beside Guardian on frozen proposals; OPA/Cedar and live-system baselines remain. |
 | First realistic public system | Fail | Online Boutique is revision-locked but not deployed or actuated by SENTINEL. |
 | Second realistic public system | Fail | OTel Demo is revision-locked but not deployed or actuated by SENTINEL. |
 | Repeated trials and uncertainty | Fail | Current evidence is nine deterministic smoke trials; no confirmatory sampling or intervals. |
@@ -42,9 +42,10 @@ must never populate the confirmatory result tables.
 
 ### P0 — Missing comparisons
 
-No schema/allowlist or external policy baseline is implemented. Without at
-least one non-Guardian deterministic baseline, reviewers cannot separate the
-methodology's value from implementation-specific behavior.
+The schema/allowlist baseline is implemented for simulator studies, but no
+external policy engine is integrated. Without OPA or Cedar on the same frozen
+proposals, reviewers cannot fully separate the methodology's value from
+Guardian-specific behavior.
 
 ### P0 — No statistical experiment
 
@@ -105,9 +106,26 @@ status before they can support novelty claims.
   harness evidence only; timing windows and signals remain unvalidated on live
   systems.
 
+### Cycle 3 — 2026-09-25
+
+- **Review:** selected the missing schema/allowlist comparison, the highest P0
+  blocker that did not require a live cluster.
+- **Fix:** added an explicitly limited baseline that validates exact proposal
+  shape, capability, argument types, and a static resource allowlist but has no
+  incident-specific trusted binding. Added a frozen six-trial matrix replaying
+  identical nominal and wrong-service proposals across no guard, static
+  schema/allowlist, and Guardian, plus per-guardrail summaries.
+- **Run:** 138 unit/regression tests and all SENTINEL lint checks passed. The
+  immutable `e1-baseline-smoke-v1` simulator run completed.
+- **Analyze:** in the two trials per condition, Guardian contained the injected
+  wrong-service proposal (0/2 unauthorized), whereas no guard and the static
+  schema/allowlist each produced one unauthorized effect (1/2). All three
+  recovered safely in their nominal trial. These are deterministic contract
+  examples, not rate estimates or evidence of population superiority.
+
 ## Next highest-priority cycle
 
-Implement the schema/allowlist baseline behind the same guardrail interface and
-replay the frozen smoke matrix across no-guard, schema/allowlist, and Guardian.
-The comparison must expose trusted-binding differences without implying
-population results. After that, freeze the fault catalog and primary contrasts.
+Freeze a machine-readable fault catalog, operator semantics, exclusions, and
+the primary confirmatory contrasts. Validate that every implemented operator
+is declared and every declared core operator has a test before starting the
+pairwise covering-array design.

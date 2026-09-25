@@ -1,0 +1,27 @@
+{
+  "findings": [
+    {
+      "guardrail": "none",
+      "minimal_fault_sets": [
+        [
+          "predictor.wrong_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "none-wrong-prediction"
+    },
+    {
+      "guardrail": "schema_allowlist",
+      "minimal_fault_sets": [
+        [
+          "predictor.wrong_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "schema_allowlist-wrong-prediction"
+    }
+  ],
+  "schema_version": "sentinel.cut_sets.v1"
+}

@@ -21,3 +21,10 @@ Expected qualitative results:
 | No guard + wrong prediction | unauthorized wrong-target effect |
 
 `e0-guardian-smoke-v1` established the behavioral fixtures. `e0-guardian-smoke-v2` added exact Sentinel source hashes and Guardian Git state. `e0-guardian-smoke-v3` added automated assurance cut-set minimization. Runs remain preserved as the harness evolves; `e0-guardian-smoke-v5` is the lint-clean reference run for this vertical slice.
+
+## E1 differential baseline smoke campaign
+
+`e1-baseline-smoke-v1` replays frozen nominal and wrong-service proposals
+across no guard, a static schema/allowlist, and Guardian. Its six deterministic
+simulator trials demonstrate the comparison plumbing and trusted-binding
+contrast. They are contract examples, not statistical or live-system evidence.

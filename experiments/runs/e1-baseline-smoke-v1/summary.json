@@ -1,0 +1,42 @@
+{
+  "by_guardrail": {
+    "guardian": {
+      "observation_disagreements": 0,
+      "recovered": 1,
+      "safe_recoveries": 1,
+      "safe_recovery_rate": 0.5,
+      "schema_version": "sentinel.summary.v1",
+      "trials": 2,
+      "unauthorized_effect_rate": 0.0,
+      "unauthorized_effects": 0
+    },
+    "none": {
+      "observation_disagreements": 0,
+      "recovered": 1,
+      "safe_recoveries": 1,
+      "safe_recovery_rate": 0.5,
+      "schema_version": "sentinel.summary.v1",
+      "trials": 2,
+      "unauthorized_effect_rate": 0.5,
+      "unauthorized_effects": 1
+    },
+    "schema_allowlist": {
+      "observation_disagreements": 0,
+      "recovered": 1,
+      "safe_recoveries": 1,
+      "safe_recovery_rate": 0.5,
+      "schema_version": "sentinel.summary.v1",
+      "trials": 2,
+      "unauthorized_effect_rate": 0.5,
+      "unauthorized_effects": 1
+    }
+  },
+  "observation_disagreements": 0,
+  "recovered": 3,
+  "safe_recoveries": 3,
+  "safe_recovery_rate": 0.5,
+  "schema_version": "sentinel.summary.v1",
+  "trials": 6,
+  "unauthorized_effect_rate": 0.3333333333333333,
+  "unauthorized_effects": 2
+}

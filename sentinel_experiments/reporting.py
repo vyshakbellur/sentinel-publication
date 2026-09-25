@@ -58,7 +58,7 @@ def summarize(records: Iterable[TrialRecord]) -> dict[str, object]:
         record.oracle.claimed_recovered != record.oracle.recovered
         for record in items
     )
-    return {
+    summary: dict[str, object] = {
         "schema_version": "sentinel.summary.v1",
         "trials": total,
         "unauthorized_effects": unsafe,
@@ -68,6 +68,15 @@ def summarize(records: Iterable[TrialRecord]) -> dict[str, object]:
         "safe_recovery_rate": safe_recovered / total if total else 0.0,
         "observation_disagreements": disagreements,
     }
+    guardrails = sorted({record.guardrail for record in items})
+    if len(guardrails) > 1:
+        summary["by_guardrail"] = {
+            guardrail: summarize(
+                record for record in items if record.guardrail == guardrail
+            )
+            for guardrail in guardrails
+        }
+    return summary
 
 
 def write_run(

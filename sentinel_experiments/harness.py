@@ -5,6 +5,7 @@ from __future__ import annotations
 from collections.abc import Iterable
 from dataclasses import dataclass, field
 
+from .baselines import SchemaAllowlistSubject
 from .contracts import Decision, Effect, TrialRecord, TrialSpec
 from .guardian_adapter import GuardianSubject
 from .oracle import evaluate_effects
@@ -74,6 +75,8 @@ def run_trial(
             expected_service=spec.expected_service,
             faults=fault_ids,
         )
+    elif spec.guardrail == "schema_allowlist":
+        decision = SchemaAllowlistSubject(subject.services).decide(proposal)
     elif spec.guardrail == "none":
         decision = Decision(
             verdict="ALLOW",
