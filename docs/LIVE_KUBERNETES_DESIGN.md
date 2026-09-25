@@ -33,6 +33,20 @@ pre-state -> ResetContract -> actuator restore -> observer verification
 - `KubernetesTarget` maps neutral experiment roles to revision-pinned workload
   names and namespaces.
 
+## Authorization and readiness gate
+
+`deploy/kubernetes/experiment-rbac.json` creates distinct observer and actuator
+service accounts in each disposable namespace. Observer authority is limited to
+`get` on the two mapped Deployments. Actuator authority is limited to
+`get`, `patch`, and `update` on the corresponding `deployments/scale`
+subresources. Both Roles use `resourceNames`; neither can read Secrets.
+
+Before a trial, `python -m scripts.check_kubernetes_readiness` verifies distinct
+contexts, positive permissions required by each adapter, negative permissions
+that enforce separation, and independently observed target convergence. Its
+content-digested JSON result is an experiment input. A failed or malformed
+check blocks execution.
+
 ## Initial mappings
 
 | System | Namespace | Incident target | Alternate target | Deployment source |
@@ -60,10 +74,12 @@ configuration patches, rollouts, network policy, or persistent data. CLI-based
 adapters are slower than a Kubernetes client library, but make exact commands
 auditable and avoid adding a large client dependency. Separate kube contexts
 improve independence but still share the Kubernetes API server; later work
-should add audit-log receipts and dedicated service accounts.
+should add audit-log receipts. Dedicated service accounts and resource-scoped
+RBAC are included in the current pilot boundary.
 
 ## Revisit after the pilot
 
 Calibrate convergence and recovery windows, add rollout and partial-commit
-actions, verify RBAC manifests, and decide whether API-server audit events or a
-side-channel controller should become the authoritative effect log.
+actions, validate RBAC behavior on a disposable API server, and decide whether
+API-server audit events or a side-channel controller should become the
+authoritative effect log.

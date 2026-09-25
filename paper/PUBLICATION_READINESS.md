@@ -1,8 +1,8 @@
 # SENTINEL publication-readiness ledger
 
-Last reviewed: 2026-09-24
+Last reviewed: 2026-09-25
 
-Iteration budget: **10/25 completed**. Stop after Cycle 25, or earlier if every
+Iteration budget: **11/25 completed**. Stop after Cycle 25, or earlier if every
 publication gate passes. The final cycle must record a readiness verdict and
 all remaining blockers before pausing the publication automation.
 
@@ -12,7 +12,7 @@ all remaining blockers before pausing the publication automation.
 protocol are credible, but the evidence supports only a simulator/harness
 demonstration. The abstract, results, and conclusion still contain placeholders.
 
-Current maturity: **protocol + E0 harness validation**.
+Current maturity: **frozen protocol + simulator preflight + live contracts**.
 
 ## Release gates
 
@@ -24,8 +24,8 @@ Current maturity: **protocol + E0 harness validation**.
 | Independent oracle fixtures | Pass | Eleven deterministic fixtures cover safe/no-effect, wrong target, duplicate identity and semantic effects, excessive and partial effects, false success, rollback, delayed regression, and stale observation. Live calibration remains separate. |
 | Frozen threat model and fault catalog | Pass | Versioned machine-readable v1 catalog declares all 11 implemented operators; five primary contrasts, exclusions, non-exclusions, pairing, and analysis rules are frozen before live-pilot outcomes. |
 | Meaningful baselines | Partial | No-guard, schema/allowlist, Guardian, checksum-pinned OPA, and always-deny now run on frozen simulator proposals; live-system equivalence remains. |
-| First realistic public system | Fail | Online Boutique now has a revision-locked Kubernetes target and tested adapter contract, but has not been deployed or actuated. |
-| Second realistic public system | Fail | OTel Demo and its official Helm chart now have revision-locked targets and tested adapter contracts, but have not been deployed or actuated. |
+| First realistic public system | Fail | Online Boutique has a revision-locked target, least-privilege RBAC, and a readiness gate, but has not been deployed or actuated. |
+| Second realistic public system | Fail | OTel Demo and its official Helm chart have a revision-locked target, least-privilege RBAC, and a readiness gate, but have not been deployed or actuated. |
 | Repeated trials and uncertainty | Fail | Exact binomial intervals and paired-contrast extraction are implemented for descriptive preflight analysis, but there are no repeated live trials, pilot variance, or confirmatory intervals. |
 | Cross-layer interaction analysis | Partial | The 58-row design expanded to 580 unique system/guardrail rows and completed a simulator preflight; live execution, repetitions, and inferential analysis remain. |
 | Ablations | Fail | Planned but not executed. |
@@ -253,9 +253,31 @@ status before they can support novelty claims.
   transports cannot validate Kubernetes controller lag, concurrent mutation,
   API retries, or real recovery windows.
 
+### Cycle 11 — 2026-09-25
+
+- **Review:** selected deployment authorization and preflight readiness because
+  separate context names alone did not prove separate authority, least
+  privilege, target presence, or safe starting state.
+- **Fix:** added namespace bootstrap and resource-name-scoped RBAC for distinct
+  observer and actuator service accounts on both workloads. Added a read-only,
+  fail-closed readiness checker that verifies distinct contexts, positive and
+  negative authorization, mapped target availability, convergence, and a
+  content-digested report. Added an operational checklist with explicit stop
+  and rollback triggers.
+- **Run:** 185 tests, all lint checks, and JSON syntax validation passed.
+  Recorded transports exercised the ready path, shared-context rejection,
+  excess observer authority, unconverged targets, exact authorization command
+  construction, and static manifest scope. No live API server was contacted.
+- **Analyze:** context separation and bounded permissions are now executable
+  admission criteria rather than deployment assumptions. Fixture-backed
+  authorization responses do not establish that a real cluster honors the
+  manifests, that service-account contexts are correctly issued, or that the
+  pinned applications converge.
+
 ## Next highest-priority cycle
 
-Add least-privilege actuator/observer RBAC, namespace bootstrap manifests, and a
-readiness checker that proves context separation and target availability before
-any live trial. Then the remaining blocker will be an actual disposable
-Kubernetes runtime rather than missing experiment code.
+Add a one-row live-pilot command that requires a successful readiness report,
+binds a frozen guardrail decision to the fail-safe state machine, and writes an
+immutable terminal record even on failure. This will make the actual disposable
+Kubernetes runtime, rather than orchestration glue, the remaining execution
+blocker.

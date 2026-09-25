@@ -1,0 +1,108 @@
+{
+  "apiVersion": "v1",
+  "kind": "List",
+  "items": [
+    {
+      "apiVersion": "v1",
+      "kind": "Namespace",
+      "metadata": {"name": "sentinel-online-boutique"}
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "ServiceAccount",
+      "metadata": {"name": "sentinel-observer", "namespace": "sentinel-online-boutique"}
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "ServiceAccount",
+      "metadata": {"name": "sentinel-actuator", "namespace": "sentinel-online-boutique"}
+    },
+    {
+      "apiVersion": "rbac.authorization.k8s.io/v1",
+      "kind": "Role",
+      "metadata": {"name": "sentinel-observer", "namespace": "sentinel-online-boutique"},
+      "rules": [{
+        "apiGroups": ["apps"],
+        "resources": ["deployments"],
+        "resourceNames": ["adservice", "cartservice"],
+        "verbs": ["get"]
+      }]
+    },
+    {
+      "apiVersion": "rbac.authorization.k8s.io/v1",
+      "kind": "Role",
+      "metadata": {"name": "sentinel-actuator", "namespace": "sentinel-online-boutique"},
+      "rules": [{
+        "apiGroups": ["apps"],
+        "resources": ["deployments/scale"],
+        "resourceNames": ["adservice", "cartservice"],
+        "verbs": ["get", "patch", "update"]
+      }]
+    },
+    {
+      "apiVersion": "rbac.authorization.k8s.io/v1",
+      "kind": "RoleBinding",
+      "metadata": {"name": "sentinel-observer", "namespace": "sentinel-online-boutique"},
+      "subjects": [{"kind": "ServiceAccount", "name": "sentinel-observer", "namespace": "sentinel-online-boutique"}],
+      "roleRef": {"apiGroup": "rbac.authorization.k8s.io", "kind": "Role", "name": "sentinel-observer"}
+    },
+    {
+      "apiVersion": "rbac.authorization.k8s.io/v1",
+      "kind": "RoleBinding",
+      "metadata": {"name": "sentinel-actuator", "namespace": "sentinel-online-boutique"},
+      "subjects": [{"kind": "ServiceAccount", "name": "sentinel-actuator", "namespace": "sentinel-online-boutique"}],
+      "roleRef": {"apiGroup": "rbac.authorization.k8s.io", "kind": "Role", "name": "sentinel-actuator"}
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Namespace",
+      "metadata": {"name": "sentinel-otel-demo"}
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "ServiceAccount",
+      "metadata": {"name": "sentinel-observer", "namespace": "sentinel-otel-demo"}
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "ServiceAccount",
+      "metadata": {"name": "sentinel-actuator", "namespace": "sentinel-otel-demo"}
+    },
+    {
+      "apiVersion": "rbac.authorization.k8s.io/v1",
+      "kind": "Role",
+      "metadata": {"name": "sentinel-observer", "namespace": "sentinel-otel-demo"},
+      "rules": [{
+        "apiGroups": ["apps"],
+        "resources": ["deployments"],
+        "resourceNames": ["ad", "cart"],
+        "verbs": ["get"]
+      }]
+    },
+    {
+      "apiVersion": "rbac.authorization.k8s.io/v1",
+      "kind": "Role",
+      "metadata": {"name": "sentinel-actuator", "namespace": "sentinel-otel-demo"},
+      "rules": [{
+        "apiGroups": ["apps"],
+        "resources": ["deployments/scale"],
+        "resourceNames": ["ad", "cart"],
+        "verbs": ["get", "patch", "update"]
+      }]
+    },
+    {
+      "apiVersion": "rbac.authorization.k8s.io/v1",
+      "kind": "RoleBinding",
+      "metadata": {"name": "sentinel-observer", "namespace": "sentinel-otel-demo"},
+      "subjects": [{"kind": "ServiceAccount", "name": "sentinel-observer", "namespace": "sentinel-otel-demo"}],
+      "roleRef": {"apiGroup": "rbac.authorization.k8s.io", "kind": "Role", "name": "sentinel-observer"}
+    },
+    {
+      "apiVersion": "rbac.authorization.k8s.io/v1",
+      "kind": "RoleBinding",
+      "metadata": {"name": "sentinel-actuator", "namespace": "sentinel-otel-demo"},
+      "subjects": [{"kind": "ServiceAccount", "name": "sentinel-actuator", "namespace": "sentinel-otel-demo"}],
+      "roleRef": {"apiGroup": "rbac.authorization.k8s.io", "kind": "Role", "name": "sentinel-actuator"}
+    }
+  ]
+}
