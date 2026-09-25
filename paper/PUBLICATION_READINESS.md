@@ -2,6 +2,10 @@
 
 Last reviewed: 2026-09-24
 
+Iteration budget: **1/25 completed**. Stop after Cycle 25, or earlier if every
+publication gate passes. The final cycle must record a readiness verdict and
+all remaining blockers before pausing the publication automation.
+
 ## Current verdict
 
 **Not publishable as a research paper.** The novelty claim and experimental
