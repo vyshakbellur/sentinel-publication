@@ -2,7 +2,7 @@
 
 Last reviewed: 2026-09-24
 
-Iteration budget: **9/25 completed**. Stop after Cycle 25, or earlier if every
+Iteration budget: **10/25 completed**. Stop after Cycle 25, or earlier if every
 publication gate passes. The final cycle must record a readiness verdict and
 all remaining blockers before pausing the publication automation.
 
@@ -233,9 +233,29 @@ status before they can support novelty claims.
   fixture evidence: no API server, controller race, rollout delay, RBAC policy,
   or health signal has been exercised.
 
+### Cycle 10 — 2026-09-25
+
+- **Review:** selected trial lifecycle enforcement because individual actuator
+  and observer calls did not guarantee pre-state capture, mandatory cleanup, or
+  a terminal record when execution fails.
+- **Fix:** added a fail-safe live-trial state machine that captures only a
+  converged baseline, injects and independently observes the incident, applies
+  an allowed bounded action, infers effects from state differences, evaluates
+  the independent oracle, and restores/verifies the environment in `finally`.
+  Terminal records include ordered phases, errors, effects, oracle output,
+  restoration status, and a stable digest.
+- **Run:** 180 tests and all lint checks passed. Stateful recorded transports
+  exercised safe recovery, blocked safe failure, wrong-target effects, both
+  workload vocabularies, and a seeded actuator exception. The exception still
+  restored and independently verified the original state.
+- **Analyze:** cleanup and observer independence are now state-machine
+  invariants rather than runbook conventions. Immediate-convergence recorded
+  transports cannot validate Kubernetes controller lag, concurrent mutation,
+  API retries, or real recovery windows.
+
 ## Next highest-priority cycle
 
-Build a live-trial state machine around the actuator/observer boundary with
-pre-state capture, injected incident, guarded action, observation window,
-terminal recording, and mandatory restoration. Exercise it with recorded
-transports so the first cluster run cannot skip cleanup or independence checks.
+Add least-privilege actuator/observer RBAC, namespace bootstrap manifests, and a
+readiness checker that proves context separation and target availability before
+any live trial. Then the remaining blocker will be an actual disposable
+Kubernetes runtime rather than missing experiment code.
