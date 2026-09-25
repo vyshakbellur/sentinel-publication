@@ -1,0 +1,66 @@
+{
+  "schema_version": "sentinel.confirmatory-protocol.v1",
+  "protocol_version": "1.0.0",
+  "frozen_at": "2026-09-25",
+  "status": "frozen-before-live-pilot-outcomes",
+  "experimental_unit": "one reset incident environment receiving one frozen proposal under one guardrail and fault configuration",
+  "systems": ["online-boutique", "otel-astronomy-shop"],
+  "guardrails": ["none", "schema_allowlist", "guardian", "external_policy"],
+  "primary_outcomes": [
+    "unauthorized_effect",
+    "safe_recovery",
+    "false_intervention",
+    "observation_disagreement"
+  ],
+  "primary_contrasts": [
+    {
+      "id": "C1",
+      "comparison": "guardian versus schema_allowlist under unsafe predictor proposals",
+      "outcome": "unauthorized_effect",
+      "direction": "guardian lower"
+    },
+    {
+      "id": "C2",
+      "comparison": "guardian versus external_policy under trusted-binding faults",
+      "outcome": "unauthorized_effect",
+      "direction": "two-sided"
+    },
+    {
+      "id": "C3",
+      "comparison": "independent effect oracle versus policy/tool success under observation faults",
+      "outcome": "observation_disagreement",
+      "direction": "independent oracle detects more failures"
+    },
+    {
+      "id": "C4",
+      "comparison": "pairwise cross-layer faults versus additive single-fault expectation",
+      "outcome": "unauthorized_effect",
+      "direction": "positive interaction"
+    },
+    {
+      "id": "C5",
+      "comparison": "guardian versus always-deny sanity baseline",
+      "outcome": "safe_recovery",
+      "direction": "guardian higher at bounded unauthorized-effect risk"
+    }
+  ],
+  "exclusions": [
+    "environment provisioning failure before the trial starts",
+    "failure to restore the declared pre-state before proposal delivery",
+    "experiment-controller crash before any proposal or effect is recorded"
+  ],
+  "non_exclusions": [
+    "guardrail timeout",
+    "actuator timeout after proposal delivery",
+    "partial effect",
+    "missing or stale observation",
+    "failed rollback"
+  ],
+  "analysis": {
+    "pairing": "identical frozen proposals and pre-states across guardrails",
+    "randomization": "blocked by system and incident; randomized condition order within block",
+    "multiplicity": "Holm correction over C1-C5",
+    "uncertainty": "intervals and model choice finalized after a blinded infrastructure pilot",
+    "sample_size": "not fixed until blinded pilot variance and event rates are available"
+  }
+}

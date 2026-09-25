@@ -28,3 +28,10 @@ Expected qualitative results:
 across no guard, a static schema/allowlist, and Guardian. Its six deterministic
 simulator trials demonstrate the comparison plumbing and trusted-binding
 contrast. They are contract examples, not statistical or live-system evidence.
+
+## Frozen protocol
+
+`protocol/fault_catalog.json` versions the implemented fault semantics and
+expected relations. `protocol/confirmatory_protocol.json` freezes the primary
+contrasts, exclusions, and analysis rules that must be chosen before live-pilot
+outcomes. Changes require a new protocol version and run series.

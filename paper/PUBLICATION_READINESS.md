@@ -2,7 +2,7 @@
 
 Last reviewed: 2026-09-24
 
-Iteration budget: **3/25 completed**. Stop after Cycle 25, or earlier if every
+Iteration budget: **4/25 completed**. Stop after Cycle 25, or earlier if every
 publication gate passes. The final cycle must record a readiness verdict and
 all remaining blockers before pausing the publication automation.
 
@@ -22,7 +22,7 @@ Current maturity: **protocol + E0 harness validation**.
 | Complete manuscript without placeholders | Fail | Abstract, results tables, discussion, and conclusion await confirmatory results. |
 | References verified against primary sources | Fail | Candidate bibliography exists; venue/version/DOI verification is incomplete. |
 | Independent oracle fixtures | Pass | Eleven deterministic fixtures cover safe/no-effect, wrong target, duplicate identity and semantic effects, excessive and partial effects, false success, rollback, delayed regression, and stale observation. Live calibration remains separate. |
-| Frozen threat model and fault catalog | Partial | Six-layer taxonomy exists, but operators and exclusions are not preregistered/frozen. |
+| Frozen threat model and fault catalog | Pass | Versioned machine-readable v1 catalog declares all 11 implemented operators; five primary contrasts, exclusions, non-exclusions, pairing, and analysis rules are frozen before live-pilot outcomes. |
 | Meaningful baselines | Partial | No-guard and schema/allowlist simulator paths now run beside Guardian on frozen proposals; OPA/Cedar and live-system baselines remain. |
 | First realistic public system | Fail | Online Boutique is revision-locked but not deployed or actuated by SENTINEL. |
 | Second realistic public system | Fail | OTel Demo is revision-locked but not deployed or actuated by SENTINEL. |
@@ -123,9 +123,25 @@ status before they can support novelty claims.
   recovered safely in their nominal trial. These are deterministic contract
   examples, not rate estimates or evidence of population superiority.
 
+### Cycle 4 — 2026-09-25
+
+- **Review:** selected protocol freezing because unversioned operator semantics
+  and outcome-dependent analysis choices would invalidate later experiments.
+- **Fix:** froze a machine-readable v1 catalog for all 11 implemented operators,
+  including mutations, expected relations, and paired preconditions. Froze five
+  primary contrasts plus experimental unit, systems, baselines, outcomes,
+  exclusions, non-exclusions, pairing, randomization, and multiplicity rules.
+  Added executable contract coverage for every operator.
+- **Run:** 153 unit/regression tests and all SENTINEL lint and JSON syntax checks
+  passed. An initial protocol-status spelling mismatch was caught and corrected.
+- **Analyze:** operator and primary-analysis semantics are now protected from
+  silent post-outcome changes. This is an internal frozen protocol, not a public
+  timestamped preregistration; sample size and interval model remain explicitly
+  deferred to the blinded infrastructure pilot.
+
 ## Next highest-priority cycle
 
-Freeze a machine-readable fault catalog, operator semantics, exclusions, and
-the primary confirmatory contrasts. Validate that every implemented operator
-is declared and every declared core operator has a test before starting the
-pairwise covering-array design.
+Generate a deterministic pairwise covering array from the frozen catalog with
+explicit compatibility constraints and coverage verification. Keep it separate
+from confirmatory results, then use the generated design to estimate the live
+trial budget before selecting pilot sample sizes.
