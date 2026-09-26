@@ -2,7 +2,7 @@
 
 Last reviewed: 2026-09-26
 
-Iteration budget: **22/25 completed**. Stop after Cycle 25, or earlier if every
+Iteration budget: **23/25 completed**. Stop after Cycle 25, or earlier if every
 publication gate passes. The final cycle must record a readiness verdict and
 all remaining blockers before pausing the publication automation.
 
@@ -29,7 +29,7 @@ Current maturity: **complete pilot and audit-reconciliation contracts + simulato
 | Repeated trials and uncertainty | Fail | The independent deployment/incident/load block and a 19-row powered confirmatory subset are preregistered, but there are no repeated live trials, pilot variance, frozen repetition count, or confirmatory intervals. |
 | Cross-layer interaction analysis | Partial | The 58-row descriptive census is separated from seven prespecified all-layer confirmatory pairs; live execution, repeated independent blocks, and inferential analysis remain. |
 | Ablations | Partial | Trusted-scope and fail-closed mechanism ablations completed on all 58 selected simulator rows; independent-observer and broker-idempotency ablations still require live execution. |
-| Clean-environment artifact reproduction | Partial | A fresh CPython 3.12 virtual environment reproduced 193 tests, lint, OPA integration, and citation checks from a frozen runtime/test lock; an independent machine or container is still required. |
+| Clean-environment artifact reproduction | Partial | A second fresh CPython 3.12 environment reproduced the expanded 234-test artifact, lint, OPA integration, and citation checks from frozen locks; it is still the same host and does not exercise Kubernetes. |
 | Anonymous venue package | Fail | Markdown draft only; no DSN template, anonymized artifact, or generated figures. |
 
 ## Critical reviewer findings
@@ -561,12 +561,33 @@ claim.
   policy is not enabled, `kubectl scale` correlation propagation is not
   empirically observed, and no real API audit event has been reconciled.
 
+### Cycle 23 — 2026-09-26
+
+- **Review:** selected stale clean-environment evidence because the Cycle 15
+  report covered 193 tests and predated the study partition, all live fault
+  adapters, scheduler, and audit reconciliation.
+- **Fix:** reused the frozen CPython dependency graph and checksum-pinned OPA
+  bootstrap to construct a new temporary virtual environment from scratch and
+  emitted a new content-described reproduction report for the expanded source
+  tree.
+- **Run:** CPython 3.12.7 created the temporary environment, installed the
+  complete constraint lock, fetched and verified OPA 1.21.0, passed all 234
+  tests, passed scoped lint, and revalidated all 31 references.
+  Every recorded command exited zero. The report records dependency/tool/source
+  digests, command tails, timings, platform, and explicit limitations.
+- **Analyze:** the expanded non-live artifact remains reproducible from frozen
+  inputs in a fresh environment, and no new dependency drift appeared after
+  the exact SciPy/NumPy pins introduced in Cycle 15. This is a second virtual
+  environment on the same macOS host—not an independent machine, container
+  attestation, Kubernetes deployment, or replication of empirical results—so
+  the reproduction gate remains partial.
+
 ## Next highest-priority cycle
 
 The P0 experimental blocker remains a disposable Kubernetes runtime with
 `kubectl` and Helm. Once available, deploy the pinned Online Boutique subject,
 run the readiness and RBAC checks, and execute a blinded single-row smoke trial
 before any campaign, then reconcile broker receipts with API audit events. If
-it remains unavailable, rerun the complete frozen-dependency reproduction from
-a fresh environment against the expanded artifact, recording that same-host
-reproduction still does not satisfy independent-machine or live-system gates.
+it remains unavailable, prepare an anonymous venue-package skeleton and a
+machine-checked claim/evidence table without filling result placeholders or
+misrepresenting the protocol artifact as a completed research paper.
