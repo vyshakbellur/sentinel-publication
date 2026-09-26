@@ -251,13 +251,26 @@ The external-policy condition tests whether results arise from Sentinel's method
 
 ### 6.4 Fault campaign
 
-Run:
+The live study has three disjoint phases:
 
-- nominal controls;
-- every single fault operator;
-- within-layer representative pairs;
-- cross-layer pairs chosen through a preregistered pairwise covering array;
-- a small set of hand-designed high-risk compound scenarios.
+1. A blinded infrastructure pilot uses the nominal row and all 11 single-fault
+   rows to estimate timing, restoration reliability, operational missingness,
+   and dependence. Guardrail-condition labels remain masked, C1--C5 are not
+   evaluated, and these records are not reused for hypothesis testing.
+2. A fault-surface census executes the nominal row, every single fault, and all
+   46 cross-layer pairs once per system and guardrail. It supports descriptive
+   coverage, counterexample discovery, and cut-set minimization—not population
+   inference.
+3. The confirmatory experiment repeats 19 preregistered rows: nominal, all 11
+   singles, and seven mechanism-motivated pairs spanning all six layers. The
+   seven pairs were selected before live outcomes to test binding/enforcement,
+   predictor/enforcement, execution/observation, evidence/policy, and
+   predictor/policy pathways. Final repetition counts are fixed from the
+   blinded pilot.
+
+Pilot, census, and confirmatory run identifiers are disjoint, and records may
+not be reused across phases. A complete block contains 120 pilot cells, 580
+census cells, or 190 confirmatory cells across two systems and five guardrails.
 
 For every unsafe compound trace, apply fault-set minimization: remove one operator at a time and rerun the frozen trial until no proper subset reproduces the effect. Record the remaining minimal assurance cut set. Separately run preregistered metamorphic transformations, including lower predictor confidence, greater declared blast radius, older evidence, changed agent-asserted tenant, canonical resource alias substitution, and duplicate effect identifiers. Each relation must state the expected verdict/effect ordering before execution.
 
@@ -307,6 +320,12 @@ Secondary outcomes include unsafe success, failed-safe outcomes, rollback succes
 - Never convert zero observed events into a zero population rate; report an exact or appropriate cluster-aware upper bound.
 
 Power and final sample size must be chosen after a blinded infrastructure pilot that estimates event rates and variance without testing the primary hypotheses.
+The independent block is a freshly restored deployment instance crossed with
+an incident template and load seed. Repeated calls against an unchanged
+deployment are technical repeats and must not inflate the inferential sample
+size. The confirmatory design requires at least three independent deployment
+blocks per system, but that minimum does not replace the pilot-based power
+calculation.
 
 ## 7. Reproducibility and Artifact Design
 

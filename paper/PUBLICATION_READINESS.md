@@ -2,7 +2,7 @@
 
 Last reviewed: 2026-09-26
 
-Iteration budget: **16/25 completed**. Stop after Cycle 25, or earlier if every
+Iteration budget: **17/25 completed**. Stop after Cycle 25, or earlier if every
 publication gate passes. The final cycle must record a readiness verdict and
 all remaining blockers before pausing the publication automation.
 
@@ -12,7 +12,7 @@ all remaining blockers before pausing the publication automation.
 protocol are credible, but the evidence supports only a simulator/harness
 demonstration. The abstract, results, and conclusion still contain placeholders.
 
-Current maturity: **frozen protocol + simulator preflight/ablations + live contracts**.
+Current maturity: **partitioned live-study protocol + simulator preflight/ablations + live contracts**.
 
 ## Release gates
 
@@ -26,8 +26,8 @@ Current maturity: **frozen protocol + simulator preflight/ablations + live contr
 | Meaningful baselines | Partial | No-guard, schema/allowlist, Guardian, checksum-pinned OPA, and always-deny now run on frozen simulator proposals; live-system equivalence remains. |
 | First realistic public system | Fail | Online Boutique has a revision-locked target, least-privilege RBAC, and a readiness gate, but has not been deployed or actuated. |
 | Second realistic public system | Fail | OTel Demo and its official Helm chart have a revision-locked target, least-privilege RBAC, and a readiness gate, but have not been deployed or actuated. |
-| Repeated trials and uncertainty | Fail | Exact binomial intervals and paired-contrast extraction are implemented for descriptive preflight analysis, but there are no repeated live trials, pilot variance, or confirmatory intervals. |
-| Cross-layer interaction analysis | Partial | The 58-row design expanded to 580 unique system/guardrail rows and completed a simulator preflight; live execution, repetitions, and inferential analysis remain. |
+| Repeated trials and uncertainty | Fail | The independent deployment/incident/load block and a 19-row powered confirmatory subset are preregistered, but there are no repeated live trials, pilot variance, frozen repetition count, or confirmatory intervals. |
+| Cross-layer interaction analysis | Partial | The 58-row descriptive census is separated from seven prespecified all-layer confirmatory pairs; live execution, repeated independent blocks, and inferential analysis remain. |
 | Ablations | Partial | Trusted-scope and fail-closed mechanism ablations completed on all 58 selected simulator rows; independent-observer and broker-idempotency ablations still require live execution. |
 | Clean-environment artifact reproduction | Partial | A fresh CPython 3.12 virtual environment reproduced 193 tests, lint, OPA integration, and citation checks from a frozen runtime/test lock; an independent machine or container is still required. |
 | Anonymous venue package | Fail | Markdown draft only; no DSN template, anonymized artifact, or generated figures. |
@@ -395,11 +395,38 @@ claim.
   not rates, uncertainty-bearing estimates, live-system results, or evidence
   that either mechanism has the same effect in deployed systems.
 
+### Cycle 17 — 2026-09-26
+
+- **Review:** selected the unresolved statistical-design blocker that could be
+  advanced without Kubernetes. The prior plan risked treating all 580 selected
+  cells per repetition as an inferential sample and counting repeated calls on
+  an unchanged deployment as independent evidence.
+- **Fix:** froze a phase-disjoint study partition before live outcomes: a
+  guardrail-label-blinded 12-row pilot, a descriptive 58-row fault-surface
+  census, and a powered 19-row confirmatory subset. The subset retains nominal
+  and all 11 single faults plus seven mechanism-motivated pairs spanning all
+  six layers; every selected pair's component singles are present. Defined an
+  independent block as deployment instance crossed with incident template and
+  load seed, prohibited record reuse across phases, added machine-readable run
+  prefixes and rerun rules, and aligned the manuscript and DSN plan.
+- **Run:** the partition audit verified the frozen design and protocol digests,
+  row membership, pair rationales, component-single support, all-layer
+  representation, and phase separation. It computed complete-block budgets of
+  120 pilot cells, 580 census cells, and 190 confirmatory cells. All 200 tests
+  passed with checksum-pinned OPA enabled, scoped lint passed, and all 31
+  references revalidated.
+- **Analyze:** the revision converts the 580-cell design into a coverage census
+  rather than a source of pseudo-replicated confidence intervals. Only the
+  independently blocked 19-row study may support C1--C5, with repetitions and
+  power still unset until a blinded live pilot. The seven pairs test
+  prespecified assurance pathways rather than every interaction, so omitted
+  pairs remain descriptive and the paper cannot yet make inferential claims.
+
 ## Next highest-priority cycle
 
 The P0 experimental blocker remains a disposable Kubernetes runtime with
 `kubectl` and Helm. Once available, deploy the pinned Online Boutique subject,
 run the readiness and RBAC checks, and execute a blinded single-row smoke trial
-before any campaign. If it remains unavailable, split the exhaustive fault
-surface census from the powered confirmatory subset before live outcomes exist,
-so repeated deterministic rows are not later treated as independent samples.
+before any campaign. If it remains unavailable, make the live controller
+phase-aware and block pilot/census records from confirmatory analysis so the
+new partition is enforced by software rather than author discipline.

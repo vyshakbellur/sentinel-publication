@@ -60,10 +60,13 @@ observation. Start with all single faults and all pairwise cross-layer faults;
 promote only failure-preserving pairs into higher-order search. Include benign
 perturbations and hard negatives to measure availability and false blocking.
 
-Run at least 30 independent repetitions per stochastic cell across three seeds
-and report uncertainty. Use blocked randomization by workload/scenario, retain
-all terminal outcomes, and predeclare exclusions. Determine final sample sizes
-with pilot variance and power analysis rather than treating 30 as universal.
+Use three disjoint phases. Run the complete 58-row covering design once per
+system/guardrail cell as a descriptive fault-surface census. Estimate
+infrastructure variance in a blinded 12-row pilot. Then power and repeat the
+preregistered 19-row confirmatory subset across independent deployment,
+incident-template, and load-seed blocks. Retain all terminal outcomes and
+predeclare exclusions. Do not treat repeated calls against one unchanged
+deployment as independent observations or use an arbitrary repetition count.
 
 ## Metrics and analysis
 

@@ -1,0 +1,40 @@
+{
+  "audit_digest": "38f18b4c3266ee634b244b5fad6d8b58321560a09933007d2cfc0c2a6a28ec34",
+  "cells_per_complete_block": {
+    "census": 580,
+    "confirmatory": 190,
+    "pilot": 120
+  },
+  "component_singles_present": true,
+  "design_digest_verified": true,
+  "limitations": [
+    "The audit validates design structure, not statistical power.",
+    "Pilot variance and event rates do not exist until live execution.",
+    "The seven selected pairs test prespecified causal pathways, not all interactions.",
+    "The full 58-row census remains descriptive and excluded from primary inference."
+  ],
+  "partition_version": "1.0.0",
+  "phase_record_reuse": false,
+  "pilot_condition_labels_masked": true,
+  "primary_inference_phases": [
+    "confirmatory"
+  ],
+  "protocol_version_verified": true,
+  "rows": {
+    "census": 58,
+    "confirmatory": 19,
+    "confirmatory_pairs": 7,
+    "frozen_design": 58,
+    "pilot": 12
+  },
+  "sample_size_status": "pending blinded live pilot",
+  "schema_version": "sentinel.study-partition-audit.v1",
+  "selected_pair_layers": [
+    "binding",
+    "enforcement",
+    "evidence",
+    "observation",
+    "policy",
+    "predictor"
+  ]
+}

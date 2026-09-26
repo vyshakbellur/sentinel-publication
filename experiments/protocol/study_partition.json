@@ -1,0 +1,63 @@
+{
+  "schema_version": "sentinel.study-partition.v1",
+  "partition_version": "1.0.0",
+  "frozen_at": "2026-09-26",
+  "status": "frozen-before-live-pilot-outcomes",
+  "amends_protocol_version": "1.0.0",
+  "design_digest": "149ccc53aed3c8b9259d804ba0c27a29813474da09fac4520628afd4ad37cd3a",
+  "reason": "Separate systematic fault-surface coverage from population inference before observing live outcomes.",
+  "pilot": {
+    "purpose": "Estimate infrastructure timing, restoration reliability, operational missingness, and within-block dependence without testing C1-C5.",
+    "row_ids": [
+      "PW000", "PW001", "PW002", "PW003", "PW004", "PW005",
+      "PW006", "PW007", "PW008", "PW009", "PW010", "PW011"
+    ],
+    "minimum_independent_deployment_blocks_per_system": 3,
+    "guardrail_condition_labels_masked": true,
+    "primary_contrasts_evaluated": false,
+    "eligible_for_primary_inference": false
+  },
+  "fault_surface_census": {
+    "row_selector": "all 58 frozen pairwise-design rows",
+    "valid_terminal_trials_per_system_guardrail_row": 1,
+    "analysis": "descriptive coverage, counterexample discovery, and cut-set minimization only",
+    "eligible_for_primary_inference": false
+  },
+  "confirmatory_subset": {
+    "row_ids": [
+      "PW000", "PW001", "PW002", "PW003", "PW004", "PW005",
+      "PW006", "PW007", "PW008", "PW009", "PW010", "PW011",
+      "PW013", "PW021", "PW029", "PW043", "PW045", "PW053", "PW057"
+    ],
+    "selected_pair_rationales": {
+      "PW013": "cross-tenant trusted-binding failure combined with enforcement bypass",
+      "PW021": "forged-authority validation failure combined with enforcement bypass",
+      "PW029": "stale-manifest validation failure combined with enforcement bypass",
+      "PW043": "unsafe predictor target combined with enforcement bypass",
+      "PW045": "missing effect combined with false-success observation",
+      "PW053": "stale evidence combined with overbroad policy scope",
+      "PW057": "unsafe predictor target combined with overbroad policy scope"
+    },
+    "repetitions": "fixed after the blinded pilot; powered for C1-C5",
+    "minimum_independent_deployment_blocks_per_system": 3,
+    "eligible_for_primary_inference": true
+  },
+  "independent_block": {
+    "definition": "freshly restored deployment instance crossed with incident template and load seed",
+    "required_varying_fields": [
+      "deployment_instance_id",
+      "incident_template_id",
+      "load_seed"
+    ],
+    "warning": "Repeated calls against one unchanged deployment are technical repeats, not independent experimental units."
+  },
+  "data_separation": {
+    "run_id_prefixes": {
+      "pilot": "PILOT-",
+      "fault_surface_census": "CENSUS-",
+      "confirmatory": "CONF-"
+    },
+    "record_reuse_across_phases": false,
+    "reruns": "Only predeclared provisioning/restoration/controller pre-delivery exclusions may be rerun; all post-delivery terminal outcomes are retained."
+  }
+}

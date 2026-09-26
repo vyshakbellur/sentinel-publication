@@ -74,3 +74,14 @@ cross-layer operator pairs. With two systems and five frozen guardrail
 conditions, it requires 580 trials per repetition before restoration checks or
 counterexample minimization. Regenerate it with
 `python scripts/generate_pairwise_design.py`.
+
+`protocol/study_partition.json` freezes the separation between the blinded
+12-row pilot, descriptive 58-row census, and powered 19-row confirmatory
+subset. Its audit verifies design/protocol digests, component-single support
+for every selected pair, all-layer representation, phase-disjoint evidence,
+and budgets of 120, 580, and 190 cells per complete block respectively:
+
+```bash
+PYTHONPATH=. python scripts/audit_study_partition.py \
+  --output experiments/protocol/study_partition_audit.json
+```
