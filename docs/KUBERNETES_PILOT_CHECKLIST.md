@@ -24,17 +24,25 @@ Use only a disposable, non-production cluster dedicated to SENTINEL trials.
 
   ```sh
   python -m sentinel_experiments.pilot_cli \
-    --trial-id pilot-online-none-001 \
+    --trial-id PILOT-online-none-001 \
     --system online-boutique \
     --guardrail none \
+    --phase pilot \
+    --design-row-id PW000 \
+    --deployment-instance-id online-deploy-001 \
+    --incident-template-id replicas-zero-v1 \
+    --load-seed seed-001 \
     --observer-context sentinel-observer \
     --actuator-context sentinel-actuator \
-    --output experiments/runs/pilot-online-none-001.json
+    --output experiments/runs/PILOT-online-none-001.json
   ```
 
   The output path must not exist. The controller rejects conditions absent from
-  the frozen protocol, reruns readiness immediately before mutation, stores the
-  protocol and readiness digests, and refuses to overwrite a prior record.
+  the frozen protocol, enforces the phase-specific row allocation and trial-ID
+  prefix, binds the independent deployment/incident/load block, reruns readiness
+  immediately before mutation, stores protocol/design/partition/readiness
+  digests, and refuses to overwrite a prior record. Until live fault adapters
+  exist, it rejects every non-nominal design row before contacting Kubernetes.
 - Preserve randomized trial identity, proposal, observations, state-machine
   phases, oracle output, errors, and restoration result in the terminal record.
 - Do not retry or exclude a failed trial based on its outcome. Record the
@@ -63,4 +71,7 @@ pass without recording and reviewing the protocol deviation.
 - Inspect all restoration failures and observation disagreements.
 - Calibrate recovery windows without looking at guardrail identities.
 - Freeze repetition count and analysis changes before confirmatory execution.
+- Replace the pending repetition marker in the frozen partition only through a
+  versioned post-pilot amendment; confirmatory execution remains software-locked
+  until this occurs.
 - Record exact cluster, Kubernetes, client, workload, and tool versions.

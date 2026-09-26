@@ -2,7 +2,7 @@
 
 Last reviewed: 2026-09-26
 
-Iteration budget: **17/25 completed**. Stop after Cycle 25, or earlier if every
+Iteration budget: **18/25 completed**. Stop after Cycle 25, or earlier if every
 publication gate passes. The final cycle must record a readiness verdict and
 all remaining blockers before pausing the publication automation.
 
@@ -12,7 +12,7 @@ all remaining blockers before pausing the publication automation.
 protocol are credible, but the evidence supports only a simulator/harness
 demonstration. The abstract, results, and conclusion still contain placeholders.
 
-Current maturity: **partitioned live-study protocol + simulator preflight/ablations + live contracts**.
+Current maturity: **software-enforced study partition + simulator preflight/ablations + nominal live contract**.
 
 ## Release gates
 
@@ -422,11 +422,38 @@ claim.
   prespecified assurance pathways rather than every interaction, so omitted
   pairs remain descriptive and the paper cannot yet make inferential claims.
 
+### Cycle 18 — 2026-09-26
+
+- **Review:** selected enforcement of the new pilot/census/confirmatory
+  partition because prose-only phase separation could still allow exploratory
+  records into primary analysis or label nominal live actions as fault trials.
+- **Fix:** bound the single-row live controller to a phase, frozen design row,
+  deployment instance, incident template, and load seed. The controller now
+  enforces phase-specific trial-ID prefixes and row allocation; records carry
+  protocol, design, partition, and independent-block digests plus explicit
+  confirmatory eligibility. Confirmatory execution fails closed while the
+  repetition count is pending. Primary-analysis validation recomputes record
+  digests and rejects pilot/census records or mismatched evidence-chain
+  digests. Non-nominal rows fail before cluster access because live fault
+  adapters do not yet exist.
+- **Run:** all 206 tests passed with checksum-pinned OPA enabled, scoped lint
+  passed, all 31 references revalidated, and the expanded live-pilot CLI help
+  path executed. Recorded transports exercised a phase-bound nominal trial and
+  restoration, rejected a non-nominal row with zero cluster commands, rejected
+  a wrong phase prefix, kept confirmatory execution locked, rejected pilot
+  evidence from primary analysis, and detected record tampering.
+- **Analyze:** the artifact now enforces the Cycle 17 statistical boundary
+  rather than relying on author discipline. This prevents evidence leakage and
+  false fault labels but adds no live-system outcome, variance estimate, or
+  confirmatory result. Only nominal `PW000` can currently cross the live
+  boundary; the remaining 11 pilot rows require real fault injection semantics.
+
 ## Next highest-priority cycle
 
 The P0 experimental blocker remains a disposable Kubernetes runtime with
 `kubectl` and Helm. Once available, deploy the pinned Online Boutique subject,
 run the readiness and RBAC checks, and execute a blinded single-row smoke trial
-before any campaign. If it remains unavailable, make the live controller
-phase-aware and block pilot/census records from confirmatory analysis so the
-new partition is enforced by software rather than author discipline.
+before any campaign. If it remains unavailable, implement and contract-test
+the single-fault live adapters without claiming execution evidence, beginning
+with predictor, binding, and observation faults that do not require a cluster
+chaos operator.

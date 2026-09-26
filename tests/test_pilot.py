@@ -9,6 +9,7 @@ from sentinel_experiments.pilot import (
     run_live_pilot,
     write_pilot_record,
 )
+from sentinel_experiments.study_execution import StudyAssignment
 
 ROOT = Path(__file__).parents[1]
 
@@ -89,16 +90,31 @@ def run(spec, targets, cluster, protocol, *, shared_context=False):
     return run_live_pilot(
         spec,
         protocol,
+        json.loads(
+            (ROOT / "experiments/protocol/pairwise_design.json").read_text()
+        ),
+        json.loads(
+            (ROOT / "experiments/protocol/study_partition.json").read_text()
+        ),
         targets,
         KubectlTransport(observer_context, cluster.runner),
         KubectlTransport(actuator_context, cluster.runner),
     )
 
 
+def pilot_spec(suffix, guardrail):
+    return PilotSpec(
+        f"PILOT-{suffix}",
+        "online-boutique",
+        guardrail,
+        StudyAssignment("pilot", "PW000", "deploy-1", "replicas-zero", "seed-1"),
+    )
+
+
 def test_one_row_pilot_binds_decision_runs_trial_and_restores():
     targets, cluster, protocol = setup()
     result = run(
-        PilotSpec("pilot-001", "online-boutique", "none"),
+        pilot_spec("001", "none"),
         targets,
         cluster,
         protocol,
@@ -115,13 +131,14 @@ def test_one_row_pilot_binds_decision_runs_trial_and_restores():
 def test_failed_readiness_never_mutates_cluster():
     targets, cluster, protocol = setup()
     result = run(
-        PilotSpec("pilot-shared", "online-boutique", "guardian"),
+        pilot_spec("shared", "guardian"),
         targets,
         cluster,
         protocol,
         shared_context=True,
     )
     assert not result.succeeded and result.terminal_stage == "readiness"
+    assert result.study is not None and result.study.phase == "pilot"
     assert cluster.commands == []
     assert cluster.scale_calls == 0
 
@@ -129,7 +146,7 @@ def test_failed_readiness_never_mutates_cluster():
 def test_precapture_failure_becomes_terminal_record_without_mutation():
     targets, cluster, protocol = setup(fail_get_after=2)
     result = run(
-        PilotSpec("pilot-observation-failure", "online-boutique", "always_deny"),
+        pilot_spec("observation-failure", "always_deny"),
         targets,
         cluster,
         protocol,
@@ -143,7 +160,7 @@ def test_precapture_failure_becomes_terminal_record_without_mutation():
 def test_non_frozen_condition_is_rejected_before_cluster_calls():
     targets, cluster, protocol = setup()
     result = run(
-        PilotSpec("pilot-unknown", "online-boutique", "new_guardrail"),
+        pilot_spec("unknown", "new_guardrail"),
         targets,
         cluster,
         protocol,
@@ -152,10 +169,24 @@ def test_non_frozen_condition_is_rejected_before_cluster_calls():
     assert cluster.commands == []
 
 
+def test_unimplemented_fault_row_is_rejected_before_cluster_calls():
+    targets, cluster, protocol = setup()
+    spec = PilotSpec(
+        "PILOT-fault-row",
+        "online-boutique",
+        "guardian",
+        StudyAssignment("pilot", "PW001", "deploy-1", "replicas-zero", "seed-1"),
+    )
+    result = run(spec, targets, cluster, protocol)
+    assert not result.succeeded and result.terminal_stage == "study"
+    assert "fault adapter" in (result.terminal_error or "")
+    assert cluster.commands == []
+
+
 def test_pilot_record_is_content_digested_and_cannot_be_overwritten(tmp_path):
     targets, cluster, protocol = setup()
     result = run(
-        PilotSpec("pilot-record", "online-boutique", "always_deny"),
+        pilot_spec("record", "always_deny"),
         targets,
         cluster,
         protocol,
@@ -163,7 +194,10 @@ def test_pilot_record_is_content_digested_and_cannot_be_overwritten(tmp_path):
     output = tmp_path / "pilot-record.json"
     write_pilot_record(output, result)
     payload = json.loads(output.read_text())
+    assert payload["schema_version"] == "sentinel.live-pilot.v2"
     assert len(payload["record_digest"]) == 64
-    assert payload["spec"]["trial_id"] == "pilot-record"
+    assert payload["spec"]["trial_id"] == "PILOT-record"
+    assert payload["study"]["phase"] == "pilot"
+    assert not payload["study"]["confirmatory_eligible"]
     with pytest.raises(FileExistsError):
         write_pilot_record(output, result)

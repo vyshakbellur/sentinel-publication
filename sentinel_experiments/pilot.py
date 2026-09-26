@@ -17,6 +17,7 @@ from .kubernetes import (
 )
 from .live_trial import LiveTrialResult, LiveTrialSpec, run_live_trial
 from .readiness import ReadinessReport, check_kubernetes_readiness
+from .study_execution import StudyAssignment, StudyBinding, bind_study_assignment
 from .subjects import decide_proposal
 
 
@@ -25,6 +26,7 @@ class PilotSpec:
     trial_id: str
     system: str
     guardrail: str
+    study: StudyAssignment
     proposal_service: str | None = None
     desired_replicas: int = 2
 
@@ -35,6 +37,7 @@ class PilotResult:
     spec: PilotSpec
     protocol_version: str | None
     protocol_digest: str | None
+    study: StudyBinding | None
     readiness: ReadinessReport | None
     proposal: dict[str, Any] | None
     decision: Decision | None
@@ -64,16 +67,18 @@ def _failure(
     error: str,
     *,
     protocol: dict[str, Any] | None = None,
+    study: StudyBinding | None = None,
     readiness: ReadinessReport | None = None,
     proposal: dict[str, Any] | None = None,
     decision: Decision | None = None,
     trial: LiveTrialResult | None = None,
 ) -> PilotResult:
     return PilotResult(
-        "sentinel.live-pilot.v1",
+        "sentinel.live-pilot.v2",
         spec,
         None if protocol is None else protocol.get("protocol_version"),
         None if protocol is None else digest(protocol),
+        study,
         readiness,
         proposal,
         decision,
@@ -86,6 +91,8 @@ def _failure(
 def run_live_pilot(
     spec: PilotSpec,
     protocol: dict[str, Any],
+    design: dict[str, Any],
+    partition: dict[str, Any],
     targets: dict[str, KubernetesTarget],
     observer_transport: KubectlTransport,
     actuator_transport: KubectlTransport,
@@ -93,17 +100,36 @@ def run_live_pilot(
     """Run exactly one frozen, readiness-gated row and always return a record."""
     if protocol.get("schema_version") != "sentinel.confirmatory-protocol.v1":
         return _failure(spec, "protocol", "unsupported protocol schema")
+    try:
+        study = bind_study_assignment(
+            spec.trial_id, spec.study, protocol, design, partition
+        )
+    except ValueError as error:
+        return _failure(spec, "study", str(error), protocol=protocol)
     if spec.system not in protocol.get("systems", ()) or spec.system not in targets:
-        return _failure(spec, "protocol", "system is not frozen in the protocol", protocol=protocol)
+        return _failure(
+            spec,
+            "protocol",
+            "system is not frozen in the protocol",
+            protocol=protocol,
+            study=study,
+        )
     if spec.guardrail not in protocol.get("guardrails", ()):
         return _failure(
             spec,
             "protocol",
             "guardrail is not frozen in the protocol",
             protocol=protocol,
+            study=study,
         )
     if spec.desired_replicas < 0:
-        return _failure(spec, "protocol", "replicas must be non-negative", protocol=protocol)
+        return _failure(
+            spec,
+            "protocol",
+            "replicas must be non-negative",
+            protocol=protocol,
+            study=study,
+        )
 
     target = targets[spec.system]
     readiness = check_kubernetes_readiness(
@@ -117,6 +143,7 @@ def run_live_pilot(
             "readiness",
             "Kubernetes readiness gate failed",
             protocol=protocol,
+            study=study,
             readiness=readiness,
         )
 
@@ -141,6 +168,7 @@ def run_live_pilot(
             "decision",
             f"{type(error).__name__}: {error}",
             protocol=protocol,
+            study=study,
             readiness=readiness,
             proposal=proposal,
         )
@@ -159,6 +187,7 @@ def run_live_pilot(
             "trial",
             f"{type(error).__name__}: {error}",
             protocol=protocol,
+            study=study,
             readiness=readiness,
             proposal=proposal,
             decision=decision,
@@ -168,10 +197,11 @@ def run_live_pilot(
     if not trial.restoration_verified and terminal_error is None:
         terminal_error = "restoration was not independently verified"
     return PilotResult(
-        "sentinel.live-pilot.v1",
+        "sentinel.live-pilot.v2",
         spec,
         protocol.get("protocol_version"),
         digest(protocol),
+        study,
         readiness,
         proposal,
         decision,

@@ -54,6 +54,16 @@ creation so a trial ID cannot silently overwrite earlier evidence. Failures in
 decision evaluation or pre-state capture also produce a terminal record; a
 failed readiness check produces no mutation.
 
+The controller also binds every record to the frozen study partition, pairwise
+design digest, phase-specific run-ID prefix, design row, and independent
+deployment/incident/load block. Pilot and census records are marked
+non-confirmatory. Primary-analysis validation recomputes record digests and
+rejects non-confirmatory phases or mismatched protocol, design, and partition
+digests. Confirmatory execution is locked until the blinded pilot yields a
+versioned integer repetition count. Non-nominal rows are currently rejected
+because live fault injection has not yet been implemented; this prevents a
+nominal action from being mislabeled as a fault trial.
+
 ## Initial mappings
 
 | System | Namespace | Incident target | Alternate target | Deployment source |
