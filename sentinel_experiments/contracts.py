@@ -80,6 +80,7 @@ class ExecutionReceipt:
     completed: bool
     bypassed: bool = False
     dropped: bool = False
+    correlation_id: str | None = None
 
 
 @dataclass(frozen=True)

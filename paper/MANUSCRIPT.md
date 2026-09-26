@@ -208,7 +208,12 @@ operator, applied transformation, and per-attempt receipt so analysis can
 reject missing or substituted applications. Environment state grades target
 and recovery. Because duplicate writes can converge to the same state, broker
 receipts additionally identify repeated semantic actions; live calibration
-must reconcile them with Kubernetes audit events before confirmatory use.
+must reconcile them with Kubernetes audit events before confirmatory use. Each
+submitted attempt therefore carries a unique field-manager correlation. A
+separate audit parser requires an API-server `ResponseComplete` scale event
+from the dedicated actuator identity with matching namespace, target, replica
+value, completion status, and correlation. Reconciliation is exact over the
+bounded trial window: missing or extra events fail the trial's evidence gate.
 
 ## 5. Research Questions and Hypotheses
 

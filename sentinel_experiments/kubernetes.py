@@ -111,16 +111,32 @@ class KubernetesActuator:
 
     transport: KubectlTransport
 
-    def set_replicas(self, namespace: str, name: str, replicas: int) -> None:
+    def set_replicas(
+        self,
+        namespace: str,
+        name: str,
+        replicas: int,
+        *,
+        correlation_id: str | None = None,
+    ) -> None:
         if replicas < 0:
             raise ValueError("replicas must be non-negative")
-        self.transport.run(
+        if correlation_id is not None and (
+            not correlation_id
+            or len(correlation_id) > 128
+            or not all(character.isalnum() or character in "_.-" for character in correlation_id)
+        ):
+            raise ValueError("correlation ID is not a valid Kubernetes field manager")
+        arguments = [
             "--namespace",
             namespace,
             "scale",
             f"deployment/{name}",
             f"--replicas={replicas}",
-        )
+        ]
+        if correlation_id is not None:
+            arguments.append(f"--field-manager={correlation_id}")
+        self.transport.run(*arguments)
 
 
 @dataclass(frozen=True)

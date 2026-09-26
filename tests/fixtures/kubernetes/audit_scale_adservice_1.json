@@ -1,0 +1,20 @@
+{
+  "apiVersion": "audit.k8s.io/v1",
+  "kind": "Event",
+  "level": "RequestResponse",
+  "auditID": "audit-001",
+  "stage": "ResponseComplete",
+  "requestURI": "/apis/apps/v1/namespaces/sentinel-online-boutique/deployments/adservice/scale?fieldManager=sentinel-attempt-001",
+  "verb": "patch",
+  "user": {"username": "system:serviceaccount:sentinel-online-boutique:sentinel-actuator"},
+  "objectRef": {
+    "resource": "deployments",
+    "namespace": "sentinel-online-boutique",
+    "name": "adservice",
+    "apiGroup": "apps",
+    "apiVersion": "v1",
+    "subresource": "scale"
+  },
+  "responseStatus": {"code": 200},
+  "requestObject": {"apiVersion": "autoscaling/v1", "kind": "Scale", "spec": {"replicas": 2}}
+}

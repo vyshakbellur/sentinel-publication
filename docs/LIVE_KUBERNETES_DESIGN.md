@@ -79,6 +79,16 @@ independent Kubernetes audit source; the live pilot must reconcile them with
 API-server audit events before confirmatory use. Until then, duplicate results
 remain controller contract evidence.
 
+Every submitted broker attempt carries a deterministic `sentinel-*` field
+manager correlation into the Kubernetes request. A strict parser accepts only
+`audit.k8s.io/v1` `ResponseComplete` Deployment scale writes with that
+correlation, request replicas, response code, expected namespace, and dedicated
+actuator identity. Reconciliation is multiset-exact: missing, extra, duplicate
+correlations, wrong actors, wrong namespaces, wrong targets, wrong replica
+values, or completion disagreement fail closed. The supplied audit policy is
+scoped to the two actuator service accounts and `deployments/scale`; it must be
+enabled and empirically validated on the disposable cluster.
+
 ## Initial mappings
 
 | System | Namespace | Incident target | Alternate target | Deployment source |

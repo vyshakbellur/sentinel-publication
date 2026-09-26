@@ -1,0 +1,17 @@
+apiVersion: audit.k8s.io/v1
+kind: Policy
+omitStages:
+  - RequestReceived
+rules:
+  - level: RequestResponse
+    users:
+      - system:serviceaccount:sentinel-online-boutique:sentinel-actuator
+      - system:serviceaccount:sentinel-otel-demo:sentinel-actuator
+    verbs:
+      - patch
+      - update
+    resources:
+      - group: apps
+        resources:
+          - deployments/scale
+  - level: None

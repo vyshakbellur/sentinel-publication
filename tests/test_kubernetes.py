@@ -68,6 +68,22 @@ def test_actuator_uses_separate_context_and_validates_replicas():
         actuator.set_replicas("namespace", "deployment", -1)
 
 
+def test_actuator_propagates_valid_correlation_and_rejects_invalid_value():
+    runner = RecordedRunner([""])
+    actuator = KubernetesActuator(KubectlTransport("actuator-context", runner))
+    actuator.set_replicas(
+        "sentinel-online-boutique",
+        "adservice",
+        2,
+        correlation_id="sentinel-attempt-001",
+    )
+    assert "--field-manager=sentinel-attempt-001" in runner.commands[0]
+    with pytest.raises(ValueError, match="field manager"):
+        actuator.set_replicas(
+            "namespace", "deployment", 1, correlation_id="invalid:correlation"
+        )
+
+
 def test_reset_contract_restores_sorted_targets_and_verifies_fresh_state():
     actuator_runner = RecordedRunner(["", ""])
     actuator = KubernetesActuator(KubectlTransport("actuator", actuator_runner))

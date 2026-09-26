@@ -2,7 +2,7 @@
 
 Last reviewed: 2026-09-26
 
-Iteration budget: **21/25 completed**. Stop after Cycle 25, or earlier if every
+Iteration budget: **22/25 completed**. Stop after Cycle 25, or earlier if every
 publication gate passes. The final cycle must record a readiness verdict and
 all remaining blockers before pausing the publication automation.
 
@@ -12,7 +12,7 @@ all remaining blockers before pausing the publication automation.
 protocol are credible, but the evidence supports only a simulator/harness
 demonstration. The abstract, results, and conclusion still contain placeholders.
 
-Current maturity: **complete pilot orchestration contract + simulator preflight/ablations; no live run**.
+Current maturity: **complete pilot and audit-reconciliation contracts + simulator preflight/ablations; no live run**.
 
 ## Release gates
 
@@ -535,12 +535,38 @@ claim.
   a confirmatory sample size. Real block identifiers, cluster state, outcomes,
   and analyst/operations key separation remain absent.
 
+### Cycle 22 — 2026-09-26
+
+- **Review:** selected the unresolved independence of broker receipts. A
+  duplicate retry can converge to the same environment state as one write, but
+  trusting the experiment broker's own attempt count would make the safety
+  claim circular.
+- **Fix:** attached a unique deterministic `sentinel-*` field-manager
+  correlation to each submitted scale attempt and added strict parsing for
+  Kubernetes `audit.k8s.io/v1` `ResponseComplete` Deployment scale events.
+  Reconciliation requires exact correlation, dedicated actuator identity,
+  namespace, target, replica value, verb, completion status, unique audit ID,
+  and a one-to-one receipt/event multiset; missing or extra events fail closed.
+  Added a write-once reconciliation command, a scale-only API-server audit
+  policy, known-event fixtures, and pilot operating instructions.
+- **Run:** all 234 tests passed with checksum-pinned OPA enabled, scoped lint
+  passed, all 31 references revalidated, and the live-pilot help path ran.
+  Fixtures demonstrated one receipt/one event agreement, two uniquely
+  correlated audit events for a semantic duplicate, successful no-event
+  reconciliation for a dropped pre-submission action, and rejection of missing,
+  extra, uncorrelated, non-scale, tampered-record, and wrong-actor evidence.
+- **Analyze:** the artifact can now distinguish an idempotent duplicate write
+  from one write without relying solely on broker self-report. This is fixture
+  contract evidence only: the host still lacks Kubernetes, the proposed audit
+  policy is not enabled, `kubectl scale` correlation propagation is not
+  empirically observed, and no real API audit event has been reconciled.
+
 ## Next highest-priority cycle
 
 The P0 experimental blocker remains a disposable Kubernetes runtime with
 `kubectl` and Helm. Once available, deploy the pinned Online Boutique subject,
 run the readiness and RBAC checks, and execute a blinded single-row smoke trial
 before any campaign, then reconcile broker receipts with API audit events. If
-it remains unavailable, implement Kubernetes audit-event parsing and strict
-broker-receipt reconciliation against known fixtures, while keeping it
-explicit that fixture agreement is not live audit calibration.
+it remains unavailable, rerun the complete frozen-dependency reproduction from
+a fresh environment against the expanded artifact, recording that same-host
+reproduction still does not satisfy independent-machine or live-system gates.

@@ -16,6 +16,12 @@ Use only a disposable, non-production cluster dedicated to SENTINEL trials.
 - Run `python -m scripts.check_kubernetes_readiness` and retain its JSON report.
 - Require `ready: true`, a verified report digest, and a converged baseline
   before scheduling any trial.
+- Configure the disposable API server with
+  `deploy/kubernetes/audit-policy.yaml` and a protected audit-log destination.
+  Confirm that one correlated scale smoke request emits a `ResponseComplete`
+  `deployments/scale` event with request and response bodies. If the cluster
+  provider cannot expose bounded audit events, enforcement-receipt calibration
+  is blocked; do not silently treat broker receipts as independent evidence.
 
 ## Pilot execution
 
@@ -73,6 +79,21 @@ Use only a disposable, non-production cluster dedicated to SENTINEL trials.
 - Give the pilot analyst a keyed blinded projection that omits guardrail labels
   and randomization keys. Keep the operational label mapping separate until
   sample size and analysis choices are frozen.
+- Extract only the trial-bounded audit events carrying the `sentinel-*` field
+  manager correlations and reconcile them with the immutable pilot record:
+
+  ```sh
+  PYTHONPATH=. python scripts/reconcile_kubernetes_audit.py \
+    --pilot-record /path/to/PILOT-record.json \
+    --audit-jsonl /path/to/PILOT-audit.jsonl \
+    --namespace sentinel-online-boutique \
+    --username system:serviceaccount:sentinel-online-boutique:sentinel-actuator \
+    --output /path/to/PILOT-audit-reconciliation.json
+  ```
+
+  Missing, extra, duplicated, wrong-actor, wrong-namespace, semantic, or
+  completion-mismatched events fail reconciliation. Preserve both raw audit
+  events and the content-digested report.
 
 ## Rollback triggers
 

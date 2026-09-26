@@ -116,6 +116,13 @@ def run_live_trial(
             )
             dropped = "enforcement.drop_effect" in enforcement_faults
             for attempt in range(1, attempts + 1):
+                correlation_id = "sentinel-" + digest(
+                    {
+                        "trial_id": spec.trial_id,
+                        "action_id": spec.effect_id,
+                        "attempt": attempt,
+                    }
+                )[:24]
                 receipt = ExecutionReceipt(
                     receipt_id=f"{spec.effect_id}:receipt:{attempt}",
                     action_id=spec.effect_id,
@@ -127,6 +134,7 @@ def run_live_trial(
                     completed=False,
                     bypassed=not decision.allowed,
                     dropped=dropped,
+                    correlation_id=correlation_id,
                 )
                 if dropped:
                     receipts.append(receipt)
@@ -137,6 +145,7 @@ def run_live_trial(
                         target.namespace,
                         action_service,
                         spec.desired_replicas,
+                        correlation_id=correlation_id,
                     )
                 except Exception:
                     receipts.append(receipt)

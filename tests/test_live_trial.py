@@ -214,5 +214,10 @@ def test_duplicate_retry_receipts_detect_semantic_duplicate():
         observer,
     )
     assert len(result.execution_receipts) == 2
+    assert all(
+        receipt.correlation_id is not None
+        and receipt.correlation_id.startswith("sentinel-")
+        for receipt in result.execution_receipts
+    )
     assert result.oracle is not None and result.oracle.duplicate_effect
     assert result.oracle.unauthorized_effect
