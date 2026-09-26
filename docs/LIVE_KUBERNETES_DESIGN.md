@@ -62,15 +62,22 @@ rejects non-confirmatory phases or mismatched protocol, design, and partition
 digests. Confirmatory execution is locked until the blinded pilot yields a
 versioned integer repetition count.
 
-Seven single-fault rows have controller-level adapters: stale evidence and a
+Seven single-fault rows use pre/post-decision controller adapters: stale evidence and a
 wrong predictor target select the alternate mapped Deployment; the three
 binding faults and overbroad policy mutation are passed into the real decision
 adapter; false success overrides only the reported recovery claim while the
-independent observer remains unchanged. Each application is recorded beside
-the requested fault. The four enforcement rows remain rejected before cluster
-access. They require broker-level substitution, bypass, drop, and duplicate
-receipts; treating ordinary nominal actuation as those faults would invalidate
-the experiment.
+independent observer remains unchanged. Four enforcement adapters operate at
+the broker boundary: argument substitution changes the executed target after
+decision, bypass submits a denied action, drop records receipt without API
+submission, and duplicate retry emits two completed receipts for one semantic
+action. Each application is recorded beside the requested fault.
+
+Environment state remains authoritative for target and recovery outcomes. A
+duplicate write may leave the same final state as one write, so duplicate
+detection also consumes broker attempt receipts. These receipts are not yet an
+independent Kubernetes audit source; the live pilot must reconcile them with
+API-server audit events before confirmatory use. Until then, duplicate results
+remain controller contract evidence.
 
 ## Initial mappings
 

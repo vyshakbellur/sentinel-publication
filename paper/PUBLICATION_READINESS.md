@@ -2,7 +2,7 @@
 
 Last reviewed: 2026-09-26
 
-Iteration budget: **19/25 completed**. Stop after Cycle 25, or earlier if every
+Iteration budget: **20/25 completed**. Stop after Cycle 25, or earlier if every
 publication gate passes. The final cycle must record a readiness verdict and
 all remaining blockers before pausing the publication automation.
 
@@ -12,7 +12,7 @@ all remaining blockers before pausing the publication automation.
 protocol are credible, but the evidence supports only a simulator/harness
 demonstration. The abstract, results, and conclusion still contain placeholders.
 
-Current maturity: **software-enforced study partition + simulator preflight/ablations + 8/12 pilot-row live contracts**.
+Current maturity: **software-enforced study partition + simulator preflight/ablations + 12/12 pilot-row live contracts**.
 
 ## Release gates
 
@@ -63,7 +63,8 @@ environment is installed or attached.
 The effect oracle is a separate function that receives neither policy verdict
 nor tool-return success, and its current semantic contract is fixture-tested.
 Recovery windows and signal freshness still require calibration against both
-live systems before confirmatory use.
+live systems before confirmatory use. Broker duplicate-attempt receipts also
+require reconciliation with independent Kubernetes API audit events.
 
 ### Resolved in Cycle 14 — Manuscript/reference integrity
 
@@ -479,11 +480,39 @@ claim.
   require broker/action-receipt instrumentation; implementing them as labels or
   ordinary replica calls would invalidate the fault semantics.
 
+### Cycle 20 — 2026-09-26
+
+- **Review:** selected the four missing enforcement single-fault adapters,
+  which blocked complete pilot-row execution and could not be graded faithfully
+  from final replica state alone, especially for an idempotent duplicate write.
+- **Fix:** added per-attempt broker execution receipts recording semantic action
+  identity, requested and executed targets, attempt number, submission,
+  completion, bypass, and drop status. Implemented post-decision argument
+  substitution, denied-action bypass, pre-submission drop, and two-attempt
+  duplicate retry. Environment state remains authoritative for wrong target and
+  recovery; the oracle uses completed broker receipts only to detect semantic
+  duplicate attempts that converge to one final state. Live terminal records
+  now preserve both receipts and independently observed effects.
+- **Run:** all 223 tests passed with checksum-pinned OPA enabled, scoped lint
+  passed, and all 31 references revalidated. Recorded transports showed
+  argument substitution producing a wrong-target effect and mismatched
+  requested/executed receipt; bypass submitting a blocked action; drop leaving
+  the incident safely unrecovered without API submission; and duplicate retry
+  producing two completed receipts, one final state transition, and an unsafe
+  duplicate classification. Each trial restored its captured state.
+- **Analyze:** all 12 pilot rows now have executable controller contracts.
+  Receipt-aware grading closes the idempotent-final-state blind spot, but the
+  receipts are produced by the experiment broker and have not been reconciled
+  with an independent API-server audit trail. The results remain mocked
+  transport contract evidence, not proof that Kubernetes accepted the same
+  attempts, live-system rates, or confirmatory findings.
+
 ## Next highest-priority cycle
 
 The P0 experimental blocker remains a disposable Kubernetes runtime with
 `kubectl` and Helm. Once available, deploy the pinned Online Boutique subject,
 run the readiness and RBAC checks, and execute a blinded single-row smoke trial
-before any campaign. If it remains unavailable, add broker action receipts and
-implement the four enforcement single-fault adapters, including semantic
-duplicate detection, while keeping all outputs classified as contract evidence.
+before any campaign, then reconcile broker receipts with API audit events. If
+it remains unavailable, add a deterministic randomized pilot scheduler that
+enforces complete blocks, unique cells, phase binding, and stop-on-restoration
+failure without manufacturing live evidence.

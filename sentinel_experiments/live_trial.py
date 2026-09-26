@@ -2,10 +2,10 @@
 
 from __future__ import annotations
 
-from dataclasses import asdict, dataclass
+from dataclasses import asdict, dataclass, replace
 from typing import Any
 
-from .contracts import Decision, Effect, OracleResult, digest
+from .contracts import Decision, Effect, ExecutionReceipt, OracleResult, digest
 from .kubernetes import (
     DeploymentState,
     KubernetesActuator,
@@ -22,6 +22,7 @@ class LiveTrialSpec:
     desired_replicas: int = 2
     effect_id: str = "remediation-1"
     claimed_recovered_override: bool | None = None
+    enforcement_faults: tuple[str, ...] = ()
 
 
 @dataclass(frozen=True)
@@ -31,6 +32,7 @@ class LiveTrialResult:
     system: str
     phases: tuple[str, ...]
     decision: Decision
+    execution_receipts: tuple[ExecutionReceipt, ...]
     effects: tuple[Effect, ...]
     oracle: OracleResult | None
     restoration_verified: bool
@@ -83,6 +85,7 @@ def run_live_trial(
     """Run one trial and attempt restoration after every post-capture failure."""
     phases: list[str] = []
     effects: tuple[Effect, ...] = ()
+    receipts: list[ExecutionReceipt] = []
     oracle: OracleResult | None = None
     terminal_error: str | None = None
     restoration_verified = False
@@ -95,16 +98,51 @@ def run_live_trial(
             raise RuntimeError("incident injection was not independently observed")
         phases.append("incident_observed")
 
-        if decision.allowed:
-            action_service = decision.canonical_service or target.incident_deployment
+        enforcement_faults = frozenset(spec.enforcement_faults)
+        requested_service = (
+            decision.canonical_service or target.incident_deployment
+        )
+        action_service = requested_service
+        if "enforcement.argument_substitution" in enforcement_faults:
+            action_service = target.alternate_deployment
+        should_execute = (
+            decision.allowed or "enforcement.bypass" in enforcement_faults
+        )
+        if should_execute:
             if action_service not in incident_state:
                 raise RuntimeError("decision names a deployment outside the target map")
-            actuator.set_replicas(
-                target.namespace,
-                action_service,
-                spec.desired_replicas,
+            attempts = (
+                2 if "enforcement.duplicate_retry" in enforcement_faults else 1
             )
-            phases.append("action_submitted")
+            dropped = "enforcement.drop_effect" in enforcement_faults
+            for attempt in range(1, attempts + 1):
+                receipt = ExecutionReceipt(
+                    receipt_id=f"{spec.effect_id}:receipt:{attempt}",
+                    action_id=spec.effect_id,
+                    attempt=attempt,
+                    requested_service=requested_service,
+                    executed_service=action_service,
+                    replicas=spec.desired_replicas,
+                    submitted=not dropped,
+                    completed=False,
+                    bypassed=not decision.allowed,
+                    dropped=dropped,
+                )
+                if dropped:
+                    receipts.append(receipt)
+                    phases.append("action_dropped")
+                    continue
+                try:
+                    actuator.set_replicas(
+                        target.namespace,
+                        action_service,
+                        spec.desired_replicas,
+                    )
+                except Exception:
+                    receipts.append(receipt)
+                    raise
+                receipts.append(replace(receipt, completed=True))
+                phases.append("action_submitted")
         else:
             phases.append("action_blocked")
 
@@ -126,6 +164,7 @@ def run_live_trial(
             },
             effects=effects,
             claimed_recovered=claimed_recovered,
+            execution_receipts=tuple(receipts),
         )
         phases.append("oracle_evaluated")
     except Exception as exc:  # noqa: BLE001 - terminal failures still restore.
@@ -151,11 +190,12 @@ def run_live_trial(
             )
 
     return LiveTrialResult(
-        schema_version="sentinel.live-trial.v1",
+        schema_version="sentinel.live-trial.v2",
         trial_id=spec.trial_id,
         system=target.system,
         phases=tuple(phases),
         decision=decision,
+        execution_receipts=tuple(receipts),
         effects=effects,
         oracle=oracle,
         restoration_verified=restoration_verified,

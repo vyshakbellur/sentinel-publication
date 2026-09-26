@@ -201,10 +201,14 @@ by relabeling a nominal action. The controller-level adapters mutate stale
 evidence and predictor targets before decision, pass binding and policy faults
 to the real decision adapter, and alter only the claimed-recovery channel for a
 false-success observation fault. The independent Kubernetes observer remains
-unchanged. Enforcement faults require broker-level action and receipt control;
-unsupported operators fail before contacting the environment. Every terminal
-record contains both the requested operator and the applied transformation so
-the analysis can reject missing or substituted fault applications.
+unchanged. Enforcement adapters act at the broker boundary: substitute the
+post-decision target, bypass a denial, drop before submission, or issue two
+attempts for one semantic action. Every terminal record contains the requested
+operator, applied transformation, and per-attempt receipt so analysis can
+reject missing or substituted applications. Environment state grades target
+and recovery. Because duplicate writes can converge to the same state, broker
+receipts additionally identify repeated semantic actions; live calibration
+must reconcile them with Kubernetes audit events before confirmatory use.
 
 ## 5. Research Questions and Hypotheses
 

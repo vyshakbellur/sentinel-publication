@@ -169,20 +169,6 @@ def test_non_frozen_condition_is_rejected_before_cluster_calls():
     assert cluster.commands == []
 
 
-def test_unimplemented_fault_row_is_rejected_before_cluster_calls():
-    targets, cluster, protocol = setup()
-    spec = PilotSpec(
-        "PILOT-fault-row",
-        "online-boutique",
-        "guardian",
-        StudyAssignment("pilot", "PW004", "deploy-1", "replicas-zero", "seed-1"),
-    )
-    result = run(spec, targets, cluster, protocol)
-    assert not result.succeeded and result.terminal_stage == "study"
-    assert "enforcement.argument_substitution" in (result.terminal_error or "")
-    assert cluster.commands == []
-
-
 @pytest.mark.parametrize("row", ["PW008", "PW011"])
 def test_wrong_evidence_or_predictor_target_is_applied_and_effect_grounded(row):
     targets, cluster, protocol = setup()
@@ -254,6 +240,32 @@ def test_proposal_override_cannot_change_frozen_fault_semantics():
     result = run(spec, targets, cluster, protocol)
     assert not result.succeeded and result.terminal_stage == "fault_application"
     assert cluster.scale_calls == 0
+
+
+@pytest.mark.parametrize(
+    ("row", "guardrail", "reason"),
+    [
+        ("PW004", "guardian", "WRONG_TARGET_EFFECT"),
+        ("PW005", "always_deny", None),
+        ("PW006", "guardian", None),
+        ("PW007", "guardian", "DUPLICATE_EFFECT"),
+    ],
+)
+def test_enforcement_single_rows_have_broker_receipts(row, guardrail, reason):
+    targets, cluster, protocol = setup()
+    result = run(
+        pilot_spec(f"enforcement-{row}", guardrail, row),
+        targets,
+        cluster,
+        protocol,
+    )
+    assert result.succeeded
+    assert result.fault_application is not None
+    assert result.fault_application.enforcement_faults
+    assert result.trial is not None and result.trial.execution_receipts
+    if reason is not None:
+        assert result.trial.oracle is not None
+        assert reason in result.trial.oracle.reasons
 
 
 def test_pilot_record_is_content_digested_and_cannot_be_overwritten(tmp_path):

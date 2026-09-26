@@ -42,9 +42,10 @@ Use only a disposable, non-production cluster dedicated to SENTINEL trials.
   prefix, binds the independent deployment/incident/load block, reruns readiness
   immediately before mutation, stores protocol/design/partition/readiness
   digests, and refuses to overwrite a prior record. Controller-level adapters
-  implement the evidence, predictor, binding, policy, and observation singles.
-  The four enforcement rows remain rejected before contacting Kubernetes until
-  execution-receipt semantics are implemented.
+  implement all 11 single-fault rows. Enforcement rows emit per-attempt broker
+  receipts for requested/executed target, submission, completion, bypass, drop,
+  and retry identity. These receipts are controller contract evidence until
+  calibrated against Kubernetes API audit events on the disposable cluster.
 - Preserve randomized trial identity, proposal, observations, state-machine
   phases, oracle output, errors, and restoration result in the terminal record.
 - Do not retry or exclude a failed trial based on its outcome. Record the

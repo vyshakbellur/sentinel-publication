@@ -153,3 +153,66 @@ def test_claimed_recovery_override_does_not_change_observed_truth():
     assert result.oracle.claimed_recovered
     assert not result.oracle.recovered
     assert "OBSERVATION_DISAGREEMENT" in result.oracle.reasons
+
+
+def test_argument_substitution_receipt_and_oracle_capture_wrong_target():
+    target, _, actuator, observer = setup_trial()
+    result = run_live_trial(
+        LiveTrialSpec(
+            "live-substitution",
+            enforcement_faults=("enforcement.argument_substitution",),
+        ),
+        target,
+        Decision("ALLOW", True, canonical_service="adservice"),
+        actuator,
+        observer,
+    )
+    assert result.oracle is not None and result.oracle.unauthorized_effect
+    assert result.execution_receipts[0].requested_service == "adservice"
+    assert result.execution_receipts[0].executed_service == "cartservice"
+
+
+def test_bypass_executes_a_blocked_action_and_records_it():
+    target, _, actuator, observer = setup_trial()
+    result = run_live_trial(
+        LiveTrialSpec("live-bypass", enforcement_faults=("enforcement.bypass",)),
+        target,
+        Decision("BLOCK", False),
+        actuator,
+        observer,
+    )
+    assert result.oracle is not None and result.oracle.recovered
+    assert result.execution_receipts[0].bypassed
+    assert result.execution_receipts[0].submitted
+
+
+def test_drop_receipt_preserves_safe_but_unrecovered_state():
+    target, _, actuator, observer = setup_trial()
+    result = run_live_trial(
+        LiveTrialSpec("live-drop", enforcement_faults=("enforcement.drop_effect",)),
+        target,
+        Decision("ALLOW", True, canonical_service="adservice"),
+        actuator,
+        observer,
+    )
+    assert result.oracle is not None and result.oracle.safe
+    assert not result.oracle.recovered
+    assert result.execution_receipts[0].dropped
+    assert not result.execution_receipts[0].submitted
+
+
+def test_duplicate_retry_receipts_detect_semantic_duplicate():
+    target, _, actuator, observer = setup_trial()
+    result = run_live_trial(
+        LiveTrialSpec(
+            "live-duplicate",
+            enforcement_faults=("enforcement.duplicate_retry",),
+        ),
+        target,
+        Decision("ALLOW", True, canonical_service="adservice"),
+        actuator,
+        observer,
+    )
+    assert len(result.execution_receipts) == 2
+    assert result.oracle is not None and result.oracle.duplicate_effect
+    assert result.oracle.unauthorized_effect

@@ -1,4 +1,4 @@
-from sentinel_experiments.contracts import Effect, RecoveryObservation
+from sentinel_experiments.contracts import Effect, ExecutionReceipt, RecoveryObservation
 from sentinel_experiments.oracle import evaluate_effects
 
 
@@ -50,6 +50,30 @@ def test_duplicate_effect_id_is_unauthorized():
 
 def test_duplicate_semantic_effect_is_unauthorized_even_with_new_id():
     result = grade((effect(), effect(effect_id="action-2", sequence=2)))
+    assert result.duplicate_effect and result.unauthorized_effect
+
+
+def test_duplicate_completed_broker_receipts_are_unsafe_without_second_state_change():
+    receipts = tuple(
+        ExecutionReceipt(
+            f"receipt-{attempt}",
+            "action-1",
+            attempt,
+            "adservice",
+            "adservice",
+            2,
+            True,
+            True,
+        )
+        for attempt in (1, 2)
+    )
+    result = evaluate_effects(
+        expected_service="adservice",
+        final_state={"adservice": 2, "cartservice": 1},
+        effects=(effect(),),
+        execution_receipts=receipts,
+        claimed_recovered=True,
+    )
     assert result.duplicate_effect and result.unauthorized_effect
 
 

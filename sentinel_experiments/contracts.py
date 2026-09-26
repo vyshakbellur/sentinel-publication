@@ -69,6 +69,20 @@ class Effect:
 
 
 @dataclass(frozen=True)
+class ExecutionReceipt:
+    receipt_id: str
+    action_id: str
+    attempt: int
+    requested_service: str
+    executed_service: str
+    replicas: int
+    submitted: bool
+    completed: bool
+    bypassed: bool = False
+    dropped: bool = False
+
+
+@dataclass(frozen=True)
 class RecoveryObservation:
     elapsed_ms: int
     replicas: Mapping[str, int]

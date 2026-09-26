@@ -29,6 +29,10 @@ SUPPORTED_CONTROLLER_FAULTS = frozenset(
         "binding.stale_manifest",
         "policy.overbroad_scope",
         "observation.false_success",
+        "enforcement.argument_substitution",
+        "enforcement.bypass",
+        "enforcement.drop_effect",
+        "enforcement.duplicate_retry",
     }
 )
 
@@ -48,6 +52,7 @@ class FaultApplication:
     requested_faults: tuple[str, ...]
     proposal_service: str
     decision_faults: tuple[str, ...]
+    enforcement_faults: tuple[str, ...]
     claimed_recovered_override: bool | None
 
 
@@ -133,7 +138,14 @@ def _apply_controller_faults(
     return FaultApplication(
         requested_faults=study.faults,
         proposal_service=proposal_service,
-        decision_faults=study.faults,
+        decision_faults=tuple(
+            fault
+            for fault in study.faults
+            if fault.startswith(("binding.", "policy."))
+        ),
+        enforcement_faults=tuple(
+            fault for fault in study.faults if fault.startswith("enforcement.")
+        ),
         claimed_recovered_override=(
             True if "observation.false_success" in faults else None
         ),
@@ -251,6 +263,7 @@ def run_live_pilot(
                 claimed_recovered_override=(
                     fault_application.claimed_recovered_override
                 ),
+                enforcement_faults=fault_application.enforcement_faults,
             ),
             target,
             decision,
