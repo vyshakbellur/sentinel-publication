@@ -35,6 +35,7 @@ def bind_study_assignment(
     protocol: dict[str, Any],
     design: dict[str, Any],
     partition: dict[str, Any],
+    supported_faults: frozenset[str] = frozenset(),
 ) -> StudyBinding:
     """Validate phase, row, provenance, and inference eligibility."""
     if partition.get("status") != "frozen-before-live-pilot-outcomes":
@@ -73,8 +74,12 @@ def bind_study_assignment(
         )
     if assignment.design_row_id not in allowed_rows:
         raise ValueError("design row is not allocated to this study phase")
-    if row["faults"]:
-        raise ValueError("live fault adapter is not implemented for this design row")
+    unsupported = set(row["faults"]) - supported_faults
+    if unsupported:
+        raise ValueError(
+            "live fault adapter is not implemented for: "
+            + ", ".join(sorted(unsupported))
+        )
 
     block_fields = (
         assignment.deployment_instance_id,

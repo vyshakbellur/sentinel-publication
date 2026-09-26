@@ -194,6 +194,18 @@ Policy mutations should be systematic and schema-valid. Each mutant records the 
 - monitoring blind spot;
 - stale postcondition evidence.
 
+### 4.7 Injection sites and fidelity
+
+Each operator is applied at the boundary named by the fault model rather than
+by relabeling a nominal action. The controller-level adapters mutate stale
+evidence and predictor targets before decision, pass binding and policy faults
+to the real decision adapter, and alter only the claimed-recovery channel for a
+false-success observation fault. The independent Kubernetes observer remains
+unchanged. Enforcement faults require broker-level action and receipt control;
+unsupported operators fail before contacting the environment. Every terminal
+record contains both the requested operator and the applied transformation so
+the analysis can reject missing or substituted fault applications.
+
 ## 5. Research Questions and Hypotheses
 
 **RQ1: Fault coverage.** Which single-layer faults produce unauthorized effects under each guardrail configuration?

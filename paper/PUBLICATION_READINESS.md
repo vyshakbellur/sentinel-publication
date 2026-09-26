@@ -2,7 +2,7 @@
 
 Last reviewed: 2026-09-26
 
-Iteration budget: **18/25 completed**. Stop after Cycle 25, or earlier if every
+Iteration budget: **19/25 completed**. Stop after Cycle 25, or earlier if every
 publication gate passes. The final cycle must record a readiness verdict and
 all remaining blockers before pausing the publication automation.
 
@@ -12,7 +12,7 @@ all remaining blockers before pausing the publication automation.
 protocol are credible, but the evidence supports only a simulator/harness
 demonstration. The abstract, results, and conclusion still contain placeholders.
 
-Current maturity: **software-enforced study partition + simulator preflight/ablations + nominal live contract**.
+Current maturity: **software-enforced study partition + simulator preflight/ablations + 8/12 pilot-row live contracts**.
 
 ## Release gates
 
@@ -448,12 +448,42 @@ claim.
   confirmatory result. Only nominal `PW000` can currently cross the live
   boundary; the remaining 11 pilot rows require real fault injection semantics.
 
+### Cycle 19 — 2026-09-26
+
+- **Review:** selected the missing single-fault live adapters that could be
+  implemented faithfully without a Kubernetes chaos operator. The controller
+  previously rejected every non-nominal row, leaving the 12-row pilot design
+  mostly non-executable.
+- **Fix:** added controller-level applications for stale evidence, wrong
+  predictor target, cross-tenant binding, forged authority, stale manifest,
+  overbroad policy scope, and false-success observation. Evidence/predictor
+  faults deterministically select the alternate frozen Deployment; binding and
+  policy faults reach the real decision adapter; false success changes only the
+  claimed-recovery channel while preserving the independent environment
+  observer. Terminal v3 records bind requested faults to the applied proposal,
+  decision faults, and observation override. Conflicting manual proposal
+  overrides fail closed. The four enforcement operators remain unsupported and
+  are rejected before cluster access.
+- **Run:** all 215 tests passed with checksum-pinned OPA enabled, scoped lint
+  passed, and all 31 references revalidated. Recorded transports exercised all
+  seven new single-fault adapters: stale evidence and wrong prediction produced
+  independently detected wrong-target effects under no guard; all three
+  binding faults made Guardian fail closed with no remediation effect;
+  overbroad policy preserved the nominal single-row outcome; and false success
+  created an observation disagreement without changing environment truth.
+  Restoration succeeded in every executed contract trial.
+- **Analyze:** nominal plus seven controller-level singles now have auditable
+  live execution contracts, covering 8 of the 12 pilot rows. These are mocked
+  transport contract results, not Kubernetes executions or safety-rate
+  estimates. Argument substitution, bypass, dropped effect, and duplicate retry
+  require broker/action-receipt instrumentation; implementing them as labels or
+  ordinary replica calls would invalidate the fault semantics.
+
 ## Next highest-priority cycle
 
 The P0 experimental blocker remains a disposable Kubernetes runtime with
 `kubectl` and Helm. Once available, deploy the pinned Online Boutique subject,
 run the readiness and RBAC checks, and execute a blinded single-row smoke trial
-before any campaign. If it remains unavailable, implement and contract-test
-the single-fault live adapters without claiming execution evidence, beginning
-with predictor, binding, and observation faults that do not require a cluster
-chaos operator.
+before any campaign. If it remains unavailable, add broker action receipts and
+implement the four enforcement single-fault adapters, including semantic
+duplicate detection, while keeping all outputs classified as contract evidence.

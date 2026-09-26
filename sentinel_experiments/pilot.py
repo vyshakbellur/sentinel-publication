@@ -20,6 +20,18 @@ from .readiness import ReadinessReport, check_kubernetes_readiness
 from .study_execution import StudyAssignment, StudyBinding, bind_study_assignment
 from .subjects import decide_proposal
 
+SUPPORTED_CONTROLLER_FAULTS = frozenset(
+    {
+        "evidence.stale_service",
+        "predictor.wrong_service",
+        "binding.cross_tenant",
+        "binding.forged_authority",
+        "binding.stale_manifest",
+        "policy.overbroad_scope",
+        "observation.false_success",
+    }
+)
+
 
 @dataclass(frozen=True)
 class PilotSpec:
@@ -32,12 +44,21 @@ class PilotSpec:
 
 
 @dataclass(frozen=True)
+class FaultApplication:
+    requested_faults: tuple[str, ...]
+    proposal_service: str
+    decision_faults: tuple[str, ...]
+    claimed_recovered_override: bool | None
+
+
+@dataclass(frozen=True)
 class PilotResult:
     schema_version: str
     spec: PilotSpec
     protocol_version: str | None
     protocol_digest: str | None
     study: StudyBinding | None
+    fault_application: FaultApplication | None
     readiness: ReadinessReport | None
     proposal: dict[str, Any] | None
     decision: Decision | None
@@ -68,23 +89,54 @@ def _failure(
     *,
     protocol: dict[str, Any] | None = None,
     study: StudyBinding | None = None,
+    fault_application: FaultApplication | None = None,
     readiness: ReadinessReport | None = None,
     proposal: dict[str, Any] | None = None,
     decision: Decision | None = None,
     trial: LiveTrialResult | None = None,
 ) -> PilotResult:
     return PilotResult(
-        "sentinel.live-pilot.v2",
-        spec,
-        None if protocol is None else protocol.get("protocol_version"),
-        None if protocol is None else digest(protocol),
-        study,
-        readiness,
-        proposal,
-        decision,
-        trial,
-        stage,
-        error,
+        schema_version="sentinel.live-pilot.v3",
+        spec=spec,
+        protocol_version=(
+            None if protocol is None else protocol.get("protocol_version")
+        ),
+        protocol_digest=None if protocol is None else digest(protocol),
+        study=study,
+        fault_application=fault_application,
+        readiness=readiness,
+        proposal=proposal,
+        decision=decision,
+        trial=trial,
+        terminal_stage=stage,
+        terminal_error=error,
+    )
+
+
+def _apply_controller_faults(
+    spec: PilotSpec,
+    study: StudyBinding,
+    target: KubernetesTarget,
+) -> FaultApplication:
+    faults = frozenset(study.faults)
+    wrong_target_faults = {
+        "evidence.stale_service",
+        "predictor.wrong_service",
+    }
+    proposal_service = (
+        target.alternate_deployment
+        if faults & wrong_target_faults
+        else target.incident_deployment
+    )
+    if spec.proposal_service is not None and spec.proposal_service != proposal_service:
+        raise ValueError("proposal override conflicts with the frozen fault row")
+    return FaultApplication(
+        requested_faults=study.faults,
+        proposal_service=proposal_service,
+        decision_faults=study.faults,
+        claimed_recovered_override=(
+            True if "observation.false_success" in faults else None
+        ),
     )
 
 
@@ -102,7 +154,12 @@ def run_live_pilot(
         return _failure(spec, "protocol", "unsupported protocol schema")
     try:
         study = bind_study_assignment(
-            spec.trial_id, spec.study, protocol, design, partition
+            spec.trial_id,
+            spec.study,
+            protocol,
+            design,
+            partition,
+            SUPPORTED_CONTROLLER_FAULTS,
         )
     except ValueError as error:
         return _failure(spec, "study", str(error), protocol=protocol)
@@ -147,7 +204,18 @@ def run_live_pilot(
             readiness=readiness,
         )
 
-    proposal_service = spec.proposal_service or target.incident_deployment
+    try:
+        fault_application = _apply_controller_faults(spec, study, target)
+    except ValueError as error:
+        return _failure(
+            spec,
+            "fault_application",
+            str(error),
+            protocol=protocol,
+            study=study,
+            readiness=readiness,
+        )
+    proposal_service = fault_application.proposal_service
     proposal = {
         "capability_name": "set_replicas",
         "arguments": {
@@ -161,6 +229,7 @@ def run_live_pilot(
             proposal,
             expected_service=target.incident_deployment,
             services=(target.incident_deployment, target.alternate_deployment),
+            faults=frozenset(fault_application.decision_faults),
         )
     except Exception as error:  # noqa: BLE001 - preserve a terminal pilot record.
         return _failure(
@@ -169,13 +238,20 @@ def run_live_pilot(
             f"{type(error).__name__}: {error}",
             protocol=protocol,
             study=study,
+            fault_application=fault_application,
             readiness=readiness,
             proposal=proposal,
         )
 
     try:
         trial = run_live_trial(
-            LiveTrialSpec(spec.trial_id, spec.desired_replicas),
+            LiveTrialSpec(
+                trial_id=spec.trial_id,
+                desired_replicas=spec.desired_replicas,
+                claimed_recovered_override=(
+                    fault_application.claimed_recovered_override
+                ),
+            ),
             target,
             decision,
             KubernetesActuator(actuator_transport),
@@ -188,6 +264,7 @@ def run_live_pilot(
             f"{type(error).__name__}: {error}",
             protocol=protocol,
             study=study,
+            fault_application=fault_application,
             readiness=readiness,
             proposal=proposal,
             decision=decision,
@@ -197,17 +274,18 @@ def run_live_pilot(
     if not trial.restoration_verified and terminal_error is None:
         terminal_error = "restoration was not independently verified"
     return PilotResult(
-        "sentinel.live-pilot.v2",
-        spec,
-        protocol.get("protocol_version"),
-        digest(protocol),
-        study,
-        readiness,
-        proposal,
-        decision,
-        trial,
-        "complete" if terminal_error is None else "trial",
-        terminal_error,
+        schema_version="sentinel.live-pilot.v3",
+        spec=spec,
+        protocol_version=protocol.get("protocol_version"),
+        protocol_digest=digest(protocol),
+        study=study,
+        fault_application=fault_application,
+        readiness=readiness,
+        proposal=proposal,
+        decision=decision,
+        trial=trial,
+        terminal_stage="complete" if terminal_error is None else "trial",
+        terminal_error=terminal_error,
     )
 
 

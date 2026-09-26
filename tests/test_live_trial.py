@@ -138,3 +138,18 @@ def test_live_terminal_record_digest_is_stable():
     )
     assert result.to_dict() == result.to_dict()
     assert result.to_dict()["record_digest"]
+
+
+def test_claimed_recovery_override_does_not_change_observed_truth():
+    target, _, actuator, observer = setup_trial()
+    result = run_live_trial(
+        LiveTrialSpec("live-false-success", claimed_recovered_override=True),
+        target,
+        Decision("BLOCK", False),
+        actuator,
+        observer,
+    )
+    assert result.oracle is not None
+    assert result.oracle.claimed_recovered
+    assert not result.oracle.recovered
+    assert "OBSERVATION_DISAGREEMENT" in result.oracle.reasons

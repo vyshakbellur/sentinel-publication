@@ -41,8 +41,10 @@ Use only a disposable, non-production cluster dedicated to SENTINEL trials.
   the frozen protocol, enforces the phase-specific row allocation and trial-ID
   prefix, binds the independent deployment/incident/load block, reruns readiness
   immediately before mutation, stores protocol/design/partition/readiness
-  digests, and refuses to overwrite a prior record. Until live fault adapters
-  exist, it rejects every non-nominal design row before contacting Kubernetes.
+  digests, and refuses to overwrite a prior record. Controller-level adapters
+  implement the evidence, predictor, binding, policy, and observation singles.
+  The four enforcement rows remain rejected before contacting Kubernetes until
+  execution-receipt semantics are implemented.
 - Preserve randomized trial identity, proposal, observations, state-machine
   phases, oracle output, errors, and restoration result in the terminal record.
 - Do not retry or exclude a failed trial based on its outcome. Record the

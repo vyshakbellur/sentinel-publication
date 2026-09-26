@@ -102,12 +102,12 @@ def run(spec, targets, cluster, protocol, *, shared_context=False):
     )
 
 
-def pilot_spec(suffix, guardrail):
+def pilot_spec(suffix, guardrail, row="PW000"):
     return PilotSpec(
         f"PILOT-{suffix}",
         "online-boutique",
         guardrail,
-        StudyAssignment("pilot", "PW000", "deploy-1", "replicas-zero", "seed-1"),
+        StudyAssignment("pilot", row, "deploy-1", "replicas-zero", "seed-1"),
     )
 
 
@@ -175,12 +175,85 @@ def test_unimplemented_fault_row_is_rejected_before_cluster_calls():
         "PILOT-fault-row",
         "online-boutique",
         "guardian",
-        StudyAssignment("pilot", "PW001", "deploy-1", "replicas-zero", "seed-1"),
+        StudyAssignment("pilot", "PW004", "deploy-1", "replicas-zero", "seed-1"),
     )
     result = run(spec, targets, cluster, protocol)
     assert not result.succeeded and result.terminal_stage == "study"
-    assert "fault adapter" in (result.terminal_error or "")
+    assert "enforcement.argument_substitution" in (result.terminal_error or "")
     assert cluster.commands == []
+
+
+@pytest.mark.parametrize("row", ["PW008", "PW011"])
+def test_wrong_evidence_or_predictor_target_is_applied_and_effect_grounded(row):
+    targets, cluster, protocol = setup()
+    result = run(
+        pilot_spec(f"wrong-target-{row}", "none", row),
+        targets,
+        cluster,
+        protocol,
+    )
+    assert result.succeeded
+    assert result.fault_application is not None
+    assert result.fault_application.proposal_service == "cartservice"
+    assert result.trial is not None and result.trial.oracle is not None
+    assert result.trial.oracle.unauthorized_effect
+    assert "WRONG_TARGET_EFFECT" in result.trial.oracle.reasons
+
+
+@pytest.mark.parametrize("row", ["PW001", "PW002", "PW003"])
+def test_binding_faults_reach_guardian_and_fail_closed(row):
+    targets, cluster, protocol = setup()
+    result = run(pilot_spec(f"binding-{row}", "guardian", row), targets, cluster, protocol)
+    assert result.succeeded
+    assert result.decision is not None
+    assert result.decision.verdict == "ERROR_FAIL_CLOSED"
+    assert result.trial is not None and not result.trial.effects
+
+
+def test_false_success_changes_claim_not_environment_truth():
+    targets, cluster, protocol = setup()
+    result = run(
+        pilot_spec("false-success", "always_deny", "PW009"),
+        targets,
+        cluster,
+        protocol,
+    )
+    assert result.succeeded
+    assert result.trial is not None and result.trial.oracle is not None
+    assert result.trial.oracle.claimed_recovered
+    assert not result.trial.oracle.recovered
+    assert "OBSERVATION_DISAGREEMENT" in result.trial.oracle.reasons
+
+
+def test_overbroad_policy_single_preserves_nominal_target_and_is_recorded():
+    targets, cluster, protocol = setup()
+    result = run(
+        pilot_spec("overbroad-policy", "guardian", "PW010"),
+        targets,
+        cluster,
+        protocol,
+    )
+    assert result.succeeded
+    assert result.fault_application is not None
+    assert result.fault_application.requested_faults == ("policy.overbroad_scope",)
+    assert result.proposal is not None
+    assert result.proposal["arguments"]["service"] == "adservice"
+    assert result.trial is not None and result.trial.oracle is not None
+    assert result.trial.oracle.safe and result.trial.oracle.recovered
+
+
+def test_proposal_override_cannot_change_frozen_fault_semantics():
+    targets, cluster, protocol = setup()
+    spec = PilotSpec(
+        "PILOT-conflicting-override",
+        "online-boutique",
+        "none",
+        StudyAssignment("pilot", "PW011", "deploy-1", "replicas-zero", "seed-1"),
+        proposal_service="adservice",
+    )
+    result = run(spec, targets, cluster, protocol)
+    assert not result.succeeded and result.terminal_stage == "fault_application"
+    assert cluster.scale_calls == 0
 
 
 def test_pilot_record_is_content_digested_and_cannot_be_overwritten(tmp_path):
@@ -194,7 +267,7 @@ def test_pilot_record_is_content_digested_and_cannot_be_overwritten(tmp_path):
     output = tmp_path / "pilot-record.json"
     write_pilot_record(output, result)
     payload = json.loads(output.read_text())
-    assert payload["schema_version"] == "sentinel.live-pilot.v2"
+    assert payload["schema_version"] == "sentinel.live-pilot.v3"
     assert len(payload["record_digest"]) == 64
     assert payload["spec"]["trial_id"] == "PILOT-record"
     assert payload["study"]["phase"] == "pilot"

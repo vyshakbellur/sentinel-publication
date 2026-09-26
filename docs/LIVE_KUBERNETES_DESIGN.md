@@ -60,9 +60,17 @@ deployment/incident/load block. Pilot and census records are marked
 non-confirmatory. Primary-analysis validation recomputes record digests and
 rejects non-confirmatory phases or mismatched protocol, design, and partition
 digests. Confirmatory execution is locked until the blinded pilot yields a
-versioned integer repetition count. Non-nominal rows are currently rejected
-because live fault injection has not yet been implemented; this prevents a
-nominal action from being mislabeled as a fault trial.
+versioned integer repetition count.
+
+Seven single-fault rows have controller-level adapters: stale evidence and a
+wrong predictor target select the alternate mapped Deployment; the three
+binding faults and overbroad policy mutation are passed into the real decision
+adapter; false success overrides only the reported recovery claim while the
+independent observer remains unchanged. Each application is recorded beside
+the requested fault. The four enforcement rows remain rejected before cluster
+access. They require broker-level substitution, bypass, drop, and duplicate
+receipts; treating ordinary nominal actuation as those faults would invalidate
+the experiment.
 
 ## Initial mappings
 

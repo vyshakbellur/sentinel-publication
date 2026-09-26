@@ -21,6 +21,7 @@ class LiveTrialSpec:
     trial_id: str
     desired_replicas: int = 2
     effect_id: str = "remediation-1"
+    claimed_recovered_override: bool | None = None
 
 
 @dataclass(frozen=True)
@@ -110,6 +111,11 @@ def run_live_trial(
         post_state = _snapshot(observer, target)
         phases.append("post_state_observed")
         effects = _observed_effects(incident_state, post_state, spec.effect_id)
+        claimed_recovered = (
+            decision.allowed
+            if spec.claimed_recovered_override is None
+            else spec.claimed_recovered_override
+        )
         oracle = evaluate_effects(
             expected_service=target.incident_deployment,
             pre_state={
@@ -119,7 +125,7 @@ def run_live_trial(
                 name: state.desired_replicas for name, state in post_state.items()
             },
             effects=effects,
-            claimed_recovered=decision.allowed,
+            claimed_recovered=claimed_recovered,
         )
         phases.append("oracle_evaluated")
     except Exception as exc:  # noqa: BLE001 - terminal failures still restore.
