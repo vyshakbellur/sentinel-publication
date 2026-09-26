@@ -11,6 +11,7 @@ def main() -> int:
     count = validate_reference_artifacts(
         ROOT / "references/core_references.json",
         ROOT / "paper/references.bib",
+        ROOT / "paper/MANUSCRIPT.md",
     )
     print(f"verified reference artifacts: {count} entries")
     return 0

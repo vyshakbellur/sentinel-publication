@@ -43,7 +43,7 @@ SENTINEL starts from these principles and evaluates their operational assumption
 ### 2.2 Runtime enforcement for LLM agents
 
 CaMeL separates trusted control flow from untrusted data and uses capabilities to prevent unauthorized exfiltration. Fides formalizes information-flow control for agent planners. AgentSpec supplies a runtime-constraint language, while Agent-C enforces temporal constraints. PCAS compiles policies into an instrumented reference monitor over dependency graphs. AgentFlow adds flow-centric policies and bounded formal verification.
-[@debenedetti2025camel; @costa2025fides; @wang2025agentspec; @palumbo2026pcas]
+[@debenedetti2025camel; @costa2025fides; @wang2025agentspec; @kamath2025agentc; @palumbo2026pcas; @shivakumar2026agentflow]
 
 ToolGate uses Hoare-style preconditions and verified postconditions to protect a
 symbolic state during tool execution [@liu2026toolgate]. It is especially close
@@ -56,6 +56,7 @@ These systems establish the breadth of deterministic runtime enforcement. SENTIN
 ### 2.3 Authority, provenance, and durable effects
 
 Open Agent Passport studies per-action authorization and signed audit records. Commit-time authorization requires earlier authority evidence to remain fresh, causally prior, effect-bound, and eligible when a durable effect occurs. CapLease shows that single-use identifiers do not prevent semantic replay without durable authorization state. Causal-reference-monitor work models information learned from denied actions. Proof-of-execution work binds a contract, causal history, effect, and replay context into a verifiable execution artifact.
+[@uchibeke2026oap; @santosgrueiro2026commit; @xu2026caplease; @chinaei2026causality; @rhodes2026poe]
 
 These mechanisms can strengthen a Guardian implementation, but they are prior art rather than our novelty. SENTINEL uses substitution, staleness, replay, denial feedback, and incomplete history as fault operators and measures the residual consequences under different defenses.
 
@@ -65,13 +66,15 @@ AgentDojo evaluates indirect prompt injection in tool-using agents. Task Shield 
 [@debenedetti2024agentdojo; @jia2025taskshield; @chen2026tracesafe; @mou2026toolsafe; @nist2025hijacking]
 
 AGENTCHAOSBENCH is the closest methodological neighbor: it injects operational faults at model, tool, guardrail, and inter-agent boundaries and asks models to detect and localize those faults from telemetry. SENTINEL asks a different question. It evaluates whether the assurance architecture prevents prohibited effects and preserves recovery after a fault is injected. Its primary labels are environment safety and recovery outcomes, not fault type or location.
+[@zhang2026agentchaosbench]
 
 Metamorphic testing addresses systems for which complete expected-output oracles are difficult to construct by checking relations between source and transformed executions. It has been applied to LLM behavior and autonomous systems. SENTINEL does not claim this testing method as new; it defines assurance-specific relations over authority, freshness, identity, risk, and effects and combines them with cross-layer fault injection and independent environment-state oracles.
+[@cho2025llmorph; @liang2025automt]
 
 ### 2.5 Autonomous remediation
 
 AIOpsLab evaluates agents over cloud incident lifecycles, while MicroRemed evaluates executable remediation generation. R2Act shows that high diagnostic accuracy does not imply valid recovery actions. ARBITER implements typed, policy-gated Kubernetes remediation. Risk-constrained remediation work combines blast radius, reversibility, epistemic uncertainty, and adaptive human review. AIOpsDoom shows that manipulated telemetry can steer AIOps agents toward harmful actions.
-[@chen2025aiopslab]
+[@chen2025aiopslab; @zhang2025microremed; @qi2026r2act; @habibi2026arbiter; @dai2026saferemediation; @pasquini2025aiopsdoom]
 
 These studies motivate our domain and baselines. SENTINEL's distinction is to test the fault coverage of the protection chain itself, including interactions among evidence faults, predictor errors, authority faults, enforcement faults, and outcome-observation faults.
 
@@ -403,43 +406,42 @@ Deterministic guardrails are increasingly proposed as the safety boundary around
 
 ## References to include in the formatted manuscript
 
-Seventeen core references below have publisher/proceedings/government/arXiv
+Thirty-one references below have publisher/proceedings/government/arXiv
 metadata recorded in `references/core_references.json` and matching entries in
-`paper/references.bib`. Entries without a BibTeX key remain candidates and must
-not support final novelty claims until verified.
+`paper/references.bib`. Peer-reviewed, preprint, and technical-blog status is
+recorded explicitly; arXiv presence is never presented as peer review.
 
 1. Alshiekh et al. [Safe Reinforcement Learning via Shielding](https://ojs.aaai.org/index.php/AAAI/article/view/11797). AAAI, 2018. `alshiekh2018shielding`.
 2. Angelopoulos et al. [Conformal Risk Control](https://proceedings.iclr.cc/paper_files/paper/2024/hash/f3549ef9b5ff520a7e41ff3cc306ab2b-Abstract-Conference.html). ICLR, 2024. `angelopoulos2024crc`.
 3. Debenedetti et al. [AgentDojo](https://proceedings.neurips.cc/paper_files/paper/2024/hash/97091a5177d8dc64b1da8bf3e1f6fb54-Abstract-Datasets_and_Benchmarks_Track.html). NeurIPS Datasets and Benchmarks, 2024. `debenedetti2024agentdojo`.
-4. Debenedetti et al. [Defeating Prompt Injections by Design](https://arxiv.org/abs/2503.18813). 2025.
-5. Costa et al. [Securing AI Agents with Information-Flow Control](https://arxiv.org/abs/2505.23643). 2025.
-6. Wang et al. [AgentSpec](https://arxiv.org/abs/2503.18666). 2025/2026.
-7. Jia et al. [The Task Shield](https://aclanthology.org/2025.acl-long.1435/). ACL, 2025.
-8. Palumbo et al. [Policy Compiler for Secure Agentic Systems](https://arxiv.org/abs/2602.16708). 2026.
-9. Uchibeke. [Before the Tool Call](https://arxiv.org/abs/2603.20953). 2026.
-10. Chinaei. [Causality Laundering](https://arxiv.org/abs/2604.04035). 2026.
-11. Santos-Grueiro. [Temporary Authority, Permanent Effects](https://arxiv.org/abs/2607.10487). 2026.
-12. Xu et al. [Beyond Single-Use Tokens](https://arxiv.org/abs/2608.01710). 2026.
-13. Rhodes and Kang. [Proof of Execution](https://arxiv.org/abs/2607.05397). 2026.
-14. Shivakumar et al. [AgentFlow](https://arxiv.org/abs/2608.22868). 2026.
-15. Zhang et al. [When Agentic Executions Fail](https://arxiv.org/abs/2608.14680). 2026.
-16. Pasquini et al. [When AIOps Become “AI Oops”](https://arxiv.org/abs/2508.06394). 2025.
-17. Zhang et al. [MicroRemed](https://arxiv.org/abs/2511.01166). 2025.
-18. Qi et al. [Can LLMs Really Recover Microservice Failures?](https://arxiv.org/abs/2607.04623). 2026.
-19. Dai et al. [Safe Remediation as Risk-Constrained Intervention](https://arxiv.org/abs/2607.20005). 2026.
-20. Habibi and Leon-Garcia. [ARBITER](https://arxiv.org/abs/2607.19182). 2026.
-21. Ponduru et al. [RACER](https://www.multiresearchjournal.com/arclist/list-2026.6.5/id-6834). 2026.
-22. NIST. [Strengthening AI Agent Hijacking Evaluations](https://www.nist.gov/news-events/news/2025/01/technical-blog-strengthening-ai-agent-hijacking-evaluations). 2025.
-23. Seto et al. [The Simplex Architecture for Safe Online Control System Upgrades](https://doi.org/10.1109/ACC.1998.703255). American Control Conference, 1998. `seto1998simplex`.
-24. Geifman and El-Yaniv. [SelectiveNet: A Deep Neural Network with an Integrated Reject Option](https://proceedings.mlr.press/v97/geifman19a.html). ICML, 2019.
-25. Kamath et al. [Enforcing Temporal Constraints for LLM Agents](https://arxiv.org/abs/2512.23738). 2025.
-26. Chen et al. [TraceSafe: A Systematic Assessment of LLM Guardrails on Multi-Step Tool-Calling Trajectories](https://arxiv.org/abs/2604.07223). 2026.
-27. Mou et al. [ToolSafe: Enhancing Tool Invocation Safety of LLM-based Agents via Proactive Step-level Guardrail and Feedback](https://aclanthology.org/2026.findings-acl.1850/). Findings of ACL, 2026.
-28. Chen et al. [AIOpsLab: A Holistic Framework to Evaluate AI Agents for Enabling Autonomous Clouds](https://proceedings.mlsys.org/paper_files/paper/2025/file/d1f9e4a9f109b6e8b75ed362736f22ec-Paper-Conference.pdf). MLSys, 2025. `chen2025aiopslab`.
-29. Slagel et al. [A Formal Verification Framework for Runtime Assurance](https://ntrs.nasa.gov/citations/20230017350). NASA Formal Methods, 2024. `slagel2024rta`.
-30. Cho et al. [LLMORPH: Automated Metamorphic Testing of Large Language Models](https://valerio-terragni.github.io/assets/pdf/cho-ase-2025.pdf). ASE, 2025.
-31. Liang et al. [AutoMT: A Multi-Agent LLM Framework for Automated Metamorphic Testing of Autonomous Driving Systems](https://arxiv.org/abs/2510.19438). 2025.
-32. Liu et al. [ToolGate: Contract-Grounded and Verified Tool Execution for LLMs](https://aclanthology.org/2026.findings-acl.470/). Findings of ACL, 2026. `liu2026toolgate`.
+4. Debenedetti et al. [Defeating Prompt Injections by Design](https://arxiv.org/abs/2503.18813). arXiv preprint, 2025. `debenedetti2025camel`.
+5. Costa et al. [Securing AI Agents with Information-Flow Control](https://arxiv.org/abs/2505.23643). arXiv preprint, 2025. `costa2025fides`.
+6. Wang et al. [AgentSpec](https://arxiv.org/abs/2503.18666). arXiv preprint, 2025. `wang2025agentspec`.
+7. Jia et al. [The Task Shield](https://aclanthology.org/2025.acl-long.1435/). ACL, 2025. `jia2025taskshield`.
+8. Palumbo et al. [Policy Compiler for Secure Agentic Systems](https://arxiv.org/abs/2602.16708). arXiv preprint, 2026. `palumbo2026pcas`.
+9. Uchibeke. [Before the Tool Call](https://arxiv.org/abs/2603.20953). arXiv preprint, 2026. `uchibeke2026oap`.
+10. Chinaei. [Causality Laundering](https://arxiv.org/abs/2604.04035). arXiv preprint, 2026. `chinaei2026causality`.
+11. Santos-Grueiro. [Temporary Authority, Permanent Effects](https://arxiv.org/abs/2607.10487). arXiv preprint, 2026. `santosgrueiro2026commit`.
+12. Xu et al. [Beyond Single-Use Tokens](https://arxiv.org/abs/2608.01710). arXiv preprint, 2026. `xu2026caplease`.
+13. Rhodes and Kang. [Proof of Execution](https://arxiv.org/abs/2607.05397). arXiv preprint, 2026. `rhodes2026poe`.
+14. Shivakumar et al. [AgentFlow](https://arxiv.org/abs/2608.22868). arXiv preprint, 2026. `shivakumar2026agentflow`.
+15. Zhang et al. [When Agentic Executions Fail](https://arxiv.org/abs/2608.14680). arXiv preprint, 2026. `zhang2026agentchaosbench`.
+16. Pasquini et al. [When AIOps Become “AI Oops”](https://arxiv.org/abs/2508.06394). arXiv preprint, 2025. `pasquini2025aiopsdoom`.
+17. Zhang et al. [MicroRemed](https://arxiv.org/abs/2511.01166). arXiv preprint, 2025. `zhang2025microremed`.
+18. Qi et al. [Can LLMs Really Recover Microservice Failures?](https://arxiv.org/abs/2607.04623). arXiv preprint, 2026. `qi2026r2act`.
+19. Dai et al. [Safe Remediation as Risk-Constrained Intervention](https://arxiv.org/abs/2607.20005). arXiv preprint, 2026. `dai2026saferemediation`.
+20. Habibi and Leon-Garcia. [ARBITER](https://arxiv.org/abs/2607.19182). arXiv preprint, 2026. `habibi2026arbiter`.
+21. NIST. [Strengthening AI Agent Hijacking Evaluations](https://www.nist.gov/news-events/news/2025/01/technical-blog-strengthening-ai-agent-hijacking-evaluations). Technical blog, 2025. `nist2025hijacking`.
+22. Seto et al. [The Simplex Architecture for Safe Online Control System Upgrades](https://doi.org/10.1109/ACC.1998.703255). American Control Conference, 1998. `seto1998simplex`.
+23. Geifman and El-Yaniv. [SelectiveNet: A Deep Neural Network with an Integrated Reject Option](https://proceedings.mlr.press/v97/geifman19a.html). ICML, 2019. `geifman2019selectivenet`.
+24. Kamath et al. [Enforcing Temporal Constraints for LLM Agents](https://arxiv.org/abs/2512.23738). arXiv preprint, 2025. `kamath2025agentc`.
+25. Chen et al. [TraceSafe: A Systematic Assessment of LLM Guardrails on Multi-Step Tool-Calling Trajectories](https://arxiv.org/abs/2604.07223). arXiv preprint, 2026. `chen2026tracesafe`.
+26. Mou et al. [ToolSafe: Enhancing Tool Invocation Safety of LLM-based Agents via Proactive Step-level Guardrail and Feedback](https://aclanthology.org/2026.findings-acl.1850/). Findings of ACL, 2026. `mou2026toolsafe`.
+27. Chen et al. [AIOpsLab: A Holistic Framework to Evaluate AI Agents for Enabling Autonomous Clouds](https://proceedings.mlsys.org/paper_files/paper/2025/file/d1f9e4a9f109b6e8b75ed362736f22ec-Paper-Conference.pdf). MLSys, 2025. `chen2025aiopslab`.
+28. Slagel et al. [A Formal Verification Framework for Runtime Assurance](https://ntrs.nasa.gov/citations/20230017350). NASA Formal Methods, 2024. `slagel2024rta`.
+29. Cho et al. [LLMorph: Automated Metamorphic Testing of Large Language Models](https://conf.researchr.org/details/ase-2025/ase-2025-tool-demonstration-track/34/LLMorph-Automated-Metamorphic-Testing-of-Large-Language-Models). ASE Tool Demonstration Track, 2025. `cho2025llmorph`.
+30. Liang et al. [AutoMT: A Multi-Agent LLM Framework for Automated Metamorphic Testing of Autonomous Driving Systems](https://arxiv.org/abs/2510.19438). arXiv preprint, 2025. `liang2025automt`.
+31. Liu et al. [ToolGate: Contract-Grounded and Verified Tool Execution for LLMs](https://aclanthology.org/2026.findings-acl.470/). Findings of ACL, 2026. `liu2026toolgate`.
 
 ## Publication-readiness gate
 

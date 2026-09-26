@@ -8,10 +8,15 @@ from pathlib import Path
 
 CITEKEY = re.compile(r"^[a-z][a-z0-9]+$")
 BIB_ENTRY = re.compile(r"^@[A-Za-z]+\{([^,]+),", re.MULTILINE)
+MANUSCRIPT_CITATION = re.compile(r"@([a-z][a-z0-9]+)")
 ALLOWED_STATUS = {"peer-reviewed", "preprint", "government-technical-blog"}
 
 
-def validate_reference_artifacts(ledger_path: Path, bib_path: Path) -> int:
+def validate_reference_artifacts(
+    ledger_path: Path,
+    bib_path: Path,
+    manuscript_path: Path | None = None,
+) -> int:
     ledger = json.loads(ledger_path.read_text())
     if ledger.get("schema_version") != "sentinel.reference-ledger.v1":
         raise ValueError("unsupported reference ledger schema")
@@ -66,4 +71,9 @@ def validate_reference_artifacts(ledger_path: Path, bib_path: Path) -> int:
             f"ledger/BibTeX mismatch: missing_bib={missing_bib}, "
             f"missing_ledger={missing_ledger}"
         )
+    if manuscript_path is not None:
+        manuscript_keys = set(MANUSCRIPT_CITATION.findall(manuscript_path.read_text()))
+        unknown = sorted(manuscript_keys - set(citekeys))
+        if unknown:
+            raise ValueError(f"unknown manuscript citekeys: {unknown}")
     return len(entries)

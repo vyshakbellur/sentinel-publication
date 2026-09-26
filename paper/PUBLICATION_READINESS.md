@@ -2,7 +2,7 @@
 
 Last reviewed: 2026-09-25
 
-Iteration budget: **13/25 completed**. Stop after Cycle 25, or earlier if every
+Iteration budget: **14/25 completed**. Stop after Cycle 25, or earlier if every
 publication gate passes. The final cycle must record a readiness verdict and
 all remaining blockers before pausing the publication automation.
 
@@ -20,7 +20,7 @@ Current maturity: **frozen protocol + simulator preflight + live contracts**.
 |---|---|---|
 | Defensible novelty statement | Pass | Effect-grounded cross-layer guardrail evaluation; does not claim deterministic enforcement itself as new. |
 | Complete manuscript without placeholders | Fail | Abstract, results tables, discussion, and conclusion await confirmatory results. |
-| References verified against primary sources | Partial | Seventeen core entries now have primary-source metadata, claim limits, and matching BibTeX; 15 candidate entries remain unverified. |
+| References verified against primary sources | Pass | All 31 retained references have primary-source metadata, explicit publication status and claim limits, matching BibTeX, and checked manuscript citekeys. |
 | Independent oracle fixtures | Pass | Eleven deterministic fixtures cover safe/no-effect, wrong target, duplicate identity and semantic effects, excessive and partial effects, false success, rollback, delayed regression, and stale observation. Live calibration remains separate. |
 | Frozen threat model and fault catalog | Pass | Versioned machine-readable v1 catalog declares all 11 implemented operators; five primary contrasts, exclusions, non-exclusions, pairing, and analysis rules are frozen before live-pilot outcomes. |
 | Meaningful baselines | Partial | No-guard, schema/allowlist, Guardian, checksum-pinned OPA, and always-deny now run on frozen simulator proposals; live-system equivalence remains. |
@@ -65,12 +65,13 @@ nor tool-return success, and its current semantic contract is fixture-tested.
 Recovery windows and signal freshness still require calibration against both
 live systems before confirmatory use.
 
-### P1 — Manuscript/reference integrity
+### Resolved in Cycle 14 — Manuscript/reference integrity
 
-The 17-reference core is verified against publisher, proceedings, government,
-or arXiv records and has a checked `.bib` database. Fifteen candidate works
-still need primary-source verification and publication-status checks before
-they can support final novelty claims.
+All 31 retained references are verified against publisher, proceedings,
+government, or arXiv records and have a checked `.bib` database. Publication
+status is explicit, and manuscript citation keys fail closed if absent from the
+ledger. The redundant RACER candidate was removed rather than used to support a
+claim.
 
 ## Review–fix–run–analyze history
 
@@ -321,10 +322,31 @@ they can support final novelty claims.
   contracts, postconditions, or deterministic enforcement. Preprints remain
   labeled as preprints, and the remaining 15 candidates are not yet verified.
 
+### Cycle 14 — 2026-09-25
+
+- **Review:** selected the 15 remaining bibliography candidates because the
+  final novelty and related-work argument could not safely cite them while
+  venue status and metadata were unresolved.
+- **Fix:** verified 14 against primary arXiv or conference records, added their
+  authorship, status, identifiers, relevance, and claim limits to the ledger and
+  BibTeX, and removed the redundant RACER candidate rather than relying on it.
+  Added checked citation keys throughout related work and extended validation
+  so unknown manuscript keys fail closed.
+- **Run:** the reference checker validated exact parity across 31 ledger and
+  BibTeX entries and resolved every manuscript citation key. All 193 tests,
+  lint checks, and JSON checks passed, including a negative unknown-citation
+  test.
+- **Analyze:** AGENTCHAOSBENCH is the closest fault-injection methodology but
+  targets telemetry-based fault detection/localization; ToolGate is the closest
+  contract/postcondition mechanism. SENTINEL remains differentiated only by
+  measuring containment and recovery under cross-layer faults with an
+  independent environment-effect oracle. Most 2025–2026 neighbors are
+  preprints, now labeled as such rather than presented as peer-reviewed work.
+
 ## Next highest-priority cycle
 
 The P0 experimental blocker remains a disposable Kubernetes runtime with
-`kubectl` and Helm. While it is unavailable, verify or remove the 15 remaining
-candidate references, prioritizing the closest authorization, durable-effect,
-and autonomous-remediation papers; then make every related-work claim resolve
-to a checked citation key.
+`kubectl` and Helm. While it is unavailable, address the clean-environment
+artifact gate by freezing Python dependencies, adding a one-command offline
+verification path, and recording a reproduction report from a fresh virtual
+environment without treating that as live-system evidence.
