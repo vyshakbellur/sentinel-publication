@@ -2,17 +2,19 @@
 
 Last reviewed: 2026-09-26
 
-Iteration budget: **24/25 completed**. Stop after Cycle 25, or earlier if every
-publication gate passes. The final cycle must record a readiness verdict and
-all remaining blockers before pausing the publication automation.
+Iteration budget: **25/25 completed**. The hard cycle budget is exhausted and
+the publication automation is paused. Resume only after the required live
+environment or another explicitly authorized scope change is available.
 
 ## Current verdict
 
-**Not publishable as a research paper.** The novelty claim and experimental
+**FINAL VERDICT: not publishable as a research paper.** The novelty claim and experimental
 protocol are credible, but the evidence supports only a simulator/harness
 demonstration. The abstract, results, and conclusion still contain placeholders.
 
 Current maturity: **complete pilot and audit-reconciliation contracts + simulator preflight/ablations; no live run**.
+
+Automation status: **PAUSED AT CYCLE 25**.
 
 ## Release gates
 
@@ -607,13 +609,53 @@ claim.
   figure was fabricated, and the anonymous-package gate advances only to
   partial.
 
-## Next highest-priority cycle
+### Cycle 25 — 2026-09-26 — terminal reviewer audit
 
-The P0 experimental blocker remains a disposable Kubernetes runtime with
-`kubectl` and Helm. Once available, deploy the pinned Online Boutique subject,
-run the readiness and RBAC checks, and execute a blinded single-row smoke trial
-before any campaign, then reconcile broker receipts with API audit events. The
-next and final budgeted cycle must conduct the terminal reviewer audit, record
-the publication verdict and exact remaining blockers, commit it, and pause the
-automation rather than using missing live evidence as an excuse to exceed the
-25-cycle limit.
+- **Review:** conducted the required terminal audit against every release gate,
+  the claim/evidence ledger, manuscript placeholders, latest simulator and
+  contract results, reproduction report, references, and clean repository
+  state. The audit confirmed that methodological preparation cannot substitute
+  for the absent two-system live study.
+- **Fix:** added a machine-readable final verdict containing supported claims,
+  prohibited current claims, exact critical blockers, required user input, and
+  the ordered resumption path. Marked the 25-cycle budget exhausted and the
+  automation paused; no result placeholder or readiness status was upgraded
+  without evidence.
+- **Run:** all 236 current tests passed with checksum-pinned OPA enabled, scoped
+  lint passed, and all 31 references revalidated. The anonymous-package audit
+  again reported `submission_ready: false`, with two supported, three partial,
+  and three missing claim classes, eight result tokens, 35 empty result cells,
+  15 open release items, and no venue template. Cycle 23 remains the latest
+  fresh-environment report and covered all 234 tests present at that point.
+- **Analyze:** SENTINEL is a strong pre-results methodology and artifact, not a
+  publishable empirical research paper. The differentiating hypothesis is
+  defensible and the experimental boundary is unusually well controlled, but
+  the central claims require live effects, independent blocks, uncertainty,
+  cross-system transfer, and calibrated audit/oracle evidence. Further local
+  scaffolding has sharply diminishing publication value. The scientifically
+  correct next action is to stop automation and obtain the live environment.
+
+## Final remaining blockers and resumption conditions
+
+1. **User/environment input required:** attach a dedicated disposable
+   Kubernetes cluster with `kubectl`, Helm, administrator access for setup,
+   separate observer/actuator contexts, and retrievable RequestResponse audit
+   events for `deployments/scale`. Production clusters are out of scope.
+2. Deploy and smoke-test the pinned Online Boutique and OTel Demo subjects;
+   preserve readiness, RBAC, restoration, and audit-reconciliation records.
+3. Supply three independent deployment/load blocks per system, execute the
+   blinded 360-cell pilot, and freeze recovery windows, repetition count,
+   power assumptions, and statistical model without evaluating C1--C5.
+4. Execute the 580-cell descriptive census and the powered 190-cell-per-block
+   confirmatory study, retaining every post-delivery terminal failure.
+5. Complete live observer/broker ablations, audit calibration, cross-system
+   cut-set transfer, effect sizes, multiplicity-adjusted uncertainty, and
+   safety--recovery--latency analysis.
+6. Reproduce the final artifact on an independent machine, generate all tables
+   and figures from immutable records, resolve eight result tokens and 35 table
+   cells, complete the 15 release items, sanitize the anonymous archive, and
+   convert to the selected venue template.
+
+After these conditions are met, rerun the full reviewer audit before any arXiv
+upload or peer-review submission. Until then, the allowed description is:
+**pre-results protocol plus simulator and controller-contract artifact**.

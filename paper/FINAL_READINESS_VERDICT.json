@@ -1,0 +1,51 @@
+{
+  "schema_version": "sentinel.final-readiness-verdict.v1",
+  "reviewed_at": "2026-09-26",
+  "completed_cycles": 25,
+  "verdict": "not_publishable_as_research_paper",
+  "automation_status": "paused_at_cycle_budget",
+  "supported_now": [
+    "defensible effect-grounded cross-layer methodology claim",
+    "31 verified references with claim limits",
+    "frozen fault catalog, primary contrasts, and study partition",
+    "five simulator guardrail conditions and exploratory mechanism ablations",
+    "12-row live-controller contract with blocked randomization and phase separation",
+    "Kubernetes readiness, restoration, RBAC, and audit-reconciliation contracts",
+    "same-host fresh-environment reproduction of the non-live artifact"
+  ],
+  "critical_blockers": [
+    "no disposable Kubernetes runtime is attached",
+    "Online Boutique has not been deployed or actuated",
+    "OTel Demo has not been deployed or actuated",
+    "no blinded live pilot, variance estimate, power calculation, or frozen repetition count exists",
+    "no repeated confirmatory live trials or uncertainty-bearing C1-C5 estimates exist",
+    "live oracle windows and Kubernetes audit reconciliation are uncalibrated",
+    "live ablations and independent-machine reproduction are incomplete",
+    "the manuscript retains result placeholders, has no generated figures, and is not in a venue template"
+  ],
+  "required_user_input": {
+    "environment": "A dedicated disposable Kubernetes cluster, never production, reachable through separate administrator, observer, and actuator contexts.",
+    "tooling": ["kubectl", "Helm"],
+    "capabilities": [
+      "deploy the pinned Online Boutique and OTel Demo revisions",
+      "apply least-privilege RBAC",
+      "enable and retrieve bounded RequestResponse audit events for deployments/scale",
+      "provide three independent deployment/load blocks per system"
+    ]
+  },
+  "resume_order": [
+    "run readiness and RBAC gates",
+    "execute one nominal Online Boutique smoke trial and reconcile its audit event",
+    "repeat the smoke boundary on OTel Demo",
+    "execute the blinded 360-cell pilot and freeze repetition count and analysis model",
+    "run the 580-cell descriptive census and powered 190-cell-per-block confirmatory study",
+    "run live ablations, regenerate figures and tables, perform independent reproduction, and re-audit claims"
+  ],
+  "prohibited_current_claims": [
+    "two realistic systems were evaluated",
+    "simulator proportions estimate deployed-system risk",
+    "Guardian significantly improves live-system safety",
+    "the empirical artifact was independently reproduced",
+    "the manuscript is ready for arXiv or peer review"
+  ]
+}
