@@ -287,6 +287,14 @@ The live study has three disjoint phases:
 Pilot, census, and confirmatory run identifiers are disjoint, and records may
 not be reused across phases. A complete block contains 120 pilot cells, 580
 census cells, or 190 confirmatory cells across two systems and five guardrails.
+The pilot uses three independent deployment/load blocks per system. Within
+each system/block, a committed cryptographic ordering key randomizes the 60
+guardrail-by-row cells reproducibly. The operational scheduler retains labels
+needed for execution; the analyst receives keyed condition tokens with
+guardrail labels and ordering keys removed until sample-size and analysis
+choices freeze. Duplicate or missing cells, digest drift, and phase-invalid
+assignments fail the schedule audit. Any unsuccessful terminal record halts the
+batch rather than allowing outcome-dependent reordering.
 
 For every unsafe compound trace, apply fault-set minimization: remove one operator at a time and rerun the frozen trial until no proper subset reproduces the effect. Record the remaining minimal assurance cut set. Separately run preregistered metamorphic transformations, including lower predictor confidence, greater declared blast radius, older evidence, changed agent-asserted tenant, canonical resource alias substitution, and duplicate effect identifiers. Each relation must state the expected verdict/effect ordering before execution.
 

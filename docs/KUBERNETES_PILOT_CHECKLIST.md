@@ -19,6 +19,22 @@ Use only a disposable, non-production cluster dedicated to SENTINEL trials.
 
 ## Pilot execution
 
+- Replace the contract-only identifiers in
+  `experiments/protocol/pilot_blocks_contract.json` with three real independent
+  deployment/load blocks per system in an execution-local file. Generate and
+  audit the immutable order before the first trial:
+
+  ```sh
+  PYTHONPATH=. python scripts/generate_pilot_schedule.py \
+    --blocks /path/to/live-pilot-blocks.json \
+    --output /path/to/live-pilot-schedule.json \
+    --audit-output /path/to/live-pilot-schedule-audit.json
+  ```
+
+  Require 360 unique cells, 60 rows per system block, three repetitions of each
+  system/guardrail/design-row cell, valid study bindings, and matching schedule,
+  protocol, design, and partition digests. Never execute the checked-in contract
+  schedule; its deployment identifiers are placeholders.
 - Begin with one nominal row and one blocked row per system.
 - Execute each row through the single-row controller, for example:
 
@@ -51,6 +67,12 @@ Use only a disposable, non-production cluster dedicated to SENTINEL trials.
 - Do not retry or exclude a failed trial based on its outcome. Record the
   failure and apply the frozen exclusion rules during analysis.
 - Verify the reset contract before advancing to the next row.
+- Execute the frozen schedule order without outcome-based reordering. Stop the
+  batch after any unsuccessful terminal record, especially a restoration
+  failure; resume only through a recorded protocol decision.
+- Give the pilot analyst a keyed blinded projection that omits guardrail labels
+  and randomization keys. Keep the operational label mapping separate until
+  sample size and analysis choices are frozen.
 
 ## Rollback triggers
 

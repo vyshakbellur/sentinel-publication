@@ -1,0 +1,22 @@
+{
+  "audit_digest": "cda80baa9a9c2910182056e284a6486b6d2348951bfc6b19ed31610e7dcffd48",
+  "blocks": 3,
+  "confirmatory_eligible": false,
+  "limitations": [
+    "This is a contract-preflight schedule and does not represent execution.",
+    "Placeholder deployment identifiers do not name Kubernetes resources.",
+    "Randomization order does not provide outcomes, variance, or power."
+  ],
+  "mode": "contract-preflight; identifiers do not represent deployed systems",
+  "phase": "pilot",
+  "repetitions_per_system_guardrail_row": 3,
+  "rows": 360,
+  "rows_per_system_block": [
+    60
+  ],
+  "schedule_digest": "aac6c49902bd217dd7214bfb1b8623af5ace0f188dd029b5023ed1c7662f72a8",
+  "schema_version": "sentinel.pilot-schedule-audit.v1",
+  "system_blocks": 6,
+  "unique_cells": 360,
+  "unique_trial_ids": 360
+}

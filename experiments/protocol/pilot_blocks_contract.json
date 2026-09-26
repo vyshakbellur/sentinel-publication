@@ -1,0 +1,52 @@
+{
+  "schema_version": "sentinel.pilot-blocks-contract.v1",
+  "mode": "contract-preflight; identifiers do not represent deployed systems",
+  "randomization_seed": "sentinel-pilot-contract-v1",
+  "blocks": [
+    {
+      "block_id": "B01",
+      "deployment_instance_ids": {
+        "online-boutique": "contract-online-01",
+        "otel-astronomy-shop": "contract-otel-01"
+      },
+      "incident_template_ids": {
+        "online-boutique": "contract-replicas-zero-v1",
+        "otel-astronomy-shop": "contract-replicas-zero-v1"
+      },
+      "load_seeds": {
+        "online-boutique": "contract-load-001",
+        "otel-astronomy-shop": "contract-load-002"
+      }
+    },
+    {
+      "block_id": "B02",
+      "deployment_instance_ids": {
+        "online-boutique": "contract-online-02",
+        "otel-astronomy-shop": "contract-otel-02"
+      },
+      "incident_template_ids": {
+        "online-boutique": "contract-replicas-zero-v1",
+        "otel-astronomy-shop": "contract-replicas-zero-v1"
+      },
+      "load_seeds": {
+        "online-boutique": "contract-load-003",
+        "otel-astronomy-shop": "contract-load-004"
+      }
+    },
+    {
+      "block_id": "B03",
+      "deployment_instance_ids": {
+        "online-boutique": "contract-online-03",
+        "otel-astronomy-shop": "contract-otel-03"
+      },
+      "incident_template_ids": {
+        "online-boutique": "contract-replicas-zero-v1",
+        "otel-astronomy-shop": "contract-replicas-zero-v1"
+      },
+      "load_seeds": {
+        "online-boutique": "contract-load-005",
+        "otel-astronomy-shop": "contract-load-006"
+      }
+    }
+  ]
+}

@@ -2,7 +2,7 @@
 
 Last reviewed: 2026-09-26
 
-Iteration budget: **20/25 completed**. Stop after Cycle 25, or earlier if every
+Iteration budget: **21/25 completed**. Stop after Cycle 25, or earlier if every
 publication gate passes. The final cycle must record a readiness verdict and
 all remaining blockers before pausing the publication automation.
 
@@ -12,7 +12,7 @@ all remaining blockers before pausing the publication automation.
 protocol are credible, but the evidence supports only a simulator/harness
 demonstration. The abstract, results, and conclusion still contain placeholders.
 
-Current maturity: **software-enforced study partition + simulator preflight/ablations + 12/12 pilot-row live contracts**.
+Current maturity: **complete pilot orchestration contract + simulator preflight/ablations; no live run**.
 
 ## Release gates
 
@@ -507,12 +507,40 @@ claim.
   transport contract evidence, not proof that Kubernetes accepted the same
   attempts, live-system rates, or confirmatory findings.
 
+### Cycle 21 — 2026-09-26
+
+- **Review:** selected missing blocked randomization and batch safety because
+  individually executable rows did not guarantee a complete pilot, unique
+  cells, independent blocks, label blinding, or a halt after restoration
+  failure.
+- **Fix:** added a content-digested scheduler that expands the frozen 12-row
+  pilot across two systems, five guardrails, and three declared independent
+  deployment/load blocks. Within each system/block, SHA-256 ordering keys
+  deterministically randomize 60 cells. The audit enforces unique trial IDs,
+  exactly one copy of every block/system/guardrail/row cell, contiguous order,
+  valid phase bindings, and matching protocol/design/partition digests. Added a
+  keyed analyst projection that removes guardrail labels and ordering keys, and
+  a batch executor that stops after the first unsuccessful terminal record.
+- **Run:** generated and checked the explicitly non-executable
+  `pilot_schedule_contract`: 360 unique cells, six system blocks, 60 rows per
+  system block, and three repetitions of each system/guardrail/row cell. The
+  blinded projection produced 360 unique condition tokens without labels or
+  randomization keys; a seeded failure stopped the executor after the second of
+  three test rows. All 226 tests passed with checksum-pinned OPA enabled,
+  scoped lint passed, and all 31 references revalidated.
+- **Analyze:** the planned pilot is now operationally complete and resistant to
+  missing-cell, duplicate-cell, phase-leakage, and outcome-reordering errors.
+  The checked schedule uses placeholder deployment identifiers and was not
+  executed; its three repetitions are design blocks, not observed variance or
+  a confirmatory sample size. Real block identifiers, cluster state, outcomes,
+  and analyst/operations key separation remain absent.
+
 ## Next highest-priority cycle
 
 The P0 experimental blocker remains a disposable Kubernetes runtime with
 `kubectl` and Helm. Once available, deploy the pinned Online Boutique subject,
 run the readiness and RBAC checks, and execute a blinded single-row smoke trial
 before any campaign, then reconcile broker receipts with API audit events. If
-it remains unavailable, add a deterministic randomized pilot scheduler that
-enforces complete blocks, unique cells, phase binding, and stop-on-restoration
-failure without manufacturing live evidence.
+it remains unavailable, implement Kubernetes audit-event parsing and strict
+broker-receipt reconciliation against known fixtures, while keeping it
+explicit that fixture agreement is not live audit calibration.

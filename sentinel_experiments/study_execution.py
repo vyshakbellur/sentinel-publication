@@ -7,6 +7,22 @@ from typing import Any
 
 from .contracts import digest
 
+SUPPORTED_LIVE_FAULTS = frozenset(
+    {
+        "evidence.stale_service",
+        "predictor.wrong_service",
+        "binding.cross_tenant",
+        "binding.forged_authority",
+        "binding.stale_manifest",
+        "policy.overbroad_scope",
+        "observation.false_success",
+        "enforcement.argument_substitution",
+        "enforcement.bypass",
+        "enforcement.drop_effect",
+        "enforcement.duplicate_retry",
+    }
+)
+
 
 @dataclass(frozen=True)
 class StudyAssignment:

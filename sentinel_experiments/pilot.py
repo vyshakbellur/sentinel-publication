@@ -17,24 +17,13 @@ from .kubernetes import (
 )
 from .live_trial import LiveTrialResult, LiveTrialSpec, run_live_trial
 from .readiness import ReadinessReport, check_kubernetes_readiness
-from .study_execution import StudyAssignment, StudyBinding, bind_study_assignment
-from .subjects import decide_proposal
-
-SUPPORTED_CONTROLLER_FAULTS = frozenset(
-    {
-        "evidence.stale_service",
-        "predictor.wrong_service",
-        "binding.cross_tenant",
-        "binding.forged_authority",
-        "binding.stale_manifest",
-        "policy.overbroad_scope",
-        "observation.false_success",
-        "enforcement.argument_substitution",
-        "enforcement.bypass",
-        "enforcement.drop_effect",
-        "enforcement.duplicate_retry",
-    }
+from .study_execution import (
+    SUPPORTED_LIVE_FAULTS,
+    StudyAssignment,
+    StudyBinding,
+    bind_study_assignment,
 )
+from .subjects import decide_proposal
 
 
 @dataclass(frozen=True)
@@ -171,7 +160,7 @@ def run_live_pilot(
             protocol,
             design,
             partition,
-            SUPPORTED_CONTROLLER_FAULTS,
+            SUPPORTED_LIVE_FAULTS,
         )
     except ValueError as error:
         return _failure(spec, "study", str(error), protocol=protocol)

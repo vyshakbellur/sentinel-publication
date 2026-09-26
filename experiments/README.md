@@ -85,3 +85,23 @@ and budgets of 120, 580, and 190 cells per complete block respectively:
 PYTHONPATH=. python scripts/audit_study_partition.py \
   --output experiments/protocol/study_partition_audit.json
 ```
+
+`protocol/pilot_schedule_contract.json` is a non-executable 360-cell scheduler
+preflight generated from three placeholder blocks. It proves complete balanced
+allocation, deterministic within-system/block randomization, unique trial
+identities, and valid non-confirmatory study bindings. Its companion audit is
+`protocol/pilot_schedule_contract_audit.json`. Generate a real schedule only
+after replacing every placeholder deployment and load identifier in an
+execution-local block file:
+
+```bash
+PYTHONPATH=. python scripts/generate_pilot_schedule.py \
+  --blocks experiments/protocol/pilot_blocks_contract.json \
+  --output experiments/protocol/pilot_schedule_contract.json \
+  --audit-output experiments/protocol/pilot_schedule_contract_audit.json
+```
+
+The scheduler can emit a keyed analyst projection without guardrail labels or
+randomization keys, and its execution helper stops immediately after an
+unsuccessful terminal record. Neither the checked schedule nor its audit is
+live-system evidence.
