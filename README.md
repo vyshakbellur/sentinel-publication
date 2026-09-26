@@ -38,6 +38,24 @@ python -m pytest
 python -m ruff check sentinel_experiments tests scripts
 ```
 
+## Reproduce the non-live artifact checks
+
+The clean-environment verifier creates a temporary virtual environment, applies
+the complete runtime/test constraints in `requirements/repro.lock`, downloads and
+checksum-verifies the locked OPA binary, and runs tests, lint, and reference
+integrity checks:
+
+```bash
+python3.12 scripts/reproduce_artifact.py \
+  --report artifacts/reproduction/local.json
+```
+
+The generated report records exact lock digests, a source-tree digest, command
+outcomes, environment details, and limitations. Dependency and tool bootstrap
+requires network access unless those artifacts are cached. This verifies the
+non-live research artifact only; it neither provisions Kubernetes nor produces
+live-system evidence.
+
 ## Fetch the locked public workloads
 
 ```bash

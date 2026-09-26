@@ -2,7 +2,7 @@
 
 Last reviewed: 2026-09-25
 
-Iteration budget: **14/25 completed**. Stop after Cycle 25, or earlier if every
+Iteration budget: **15/25 completed**. Stop after Cycle 25, or earlier if every
 publication gate passes. The final cycle must record a readiness verdict and
 all remaining blockers before pausing the publication automation.
 
@@ -29,7 +29,7 @@ Current maturity: **frozen protocol + simulator preflight + live contracts**.
 | Repeated trials and uncertainty | Fail | Exact binomial intervals and paired-contrast extraction are implemented for descriptive preflight analysis, but there are no repeated live trials, pilot variance, or confirmatory intervals. |
 | Cross-layer interaction analysis | Partial | The 58-row design expanded to 580 unique system/guardrail rows and completed a simulator preflight; live execution, repetitions, and inferential analysis remain. |
 | Ablations | Fail | Planned but not executed. |
-| Clean-environment artifact reproduction | Fail | Unit suite passes locally; no clean-machine/container reproduction report. |
+| Clean-environment artifact reproduction | Partial | A fresh CPython 3.12 virtual environment reproduced 193 tests, lint, OPA integration, and citation checks from a frozen runtime/test lock; an independent machine or container is still required. |
 | Anonymous venue package | Fail | Markdown draft only; no DSN template, anonymized artifact, or generated figures. |
 
 ## Critical reviewer findings
@@ -343,10 +343,33 @@ claim.
   independent environment-effect oracle. Most 2025–2026 neighbors are
   preprints, now labeled as such rather than presented as peer-reviewed work.
 
+### Cycle 15 — 2026-09-25
+
+- **Review:** selected clean-environment reproducibility because prior test
+  evidence reused project-external virtual environments and had no frozen
+  dependency graph or machine-readable reproduction report.
+- **Fix:** froze the complete Python runtime/test dependency graph, added a
+  one-command verifier that creates a temporary virtual environment, installs
+  from the constraint lock, fetches the checksum-pinned OPA binary, runs tests,
+  lint, and reference checks, and emits lock/source digests with explicit
+  limitations. Documented the workflow and excluded generated editable-install
+  metadata.
+- **Run:** the first fresh-environment attempt failed one report-equivalence
+  test with SciPy 1.18.1/NumPy 2.5.3 because exact Clopper–Pearson interval
+  serialization changed. Pinning the analysis stack to SciPy 1.13.1 and NumPy
+  1.26.4 restored byte-equivalent analysis. The second fresh CPython 3.12.7 run
+  passed all 193 tests, lint, OPA 1.21.0 integration, and 31-reference checks;
+  its report and digests are checked in.
+- **Analyze:** analysis-library drift can change exact interval values and the
+  derived report digest without changing experiment records, so dependency
+  versions are part of the evidence chain. A fresh virtual environment on this
+  host is stronger than the previous reused-environment result but is not an
+  independent clean-machine or container reproduction and does not exercise
+  Kubernetes.
+
 ## Next highest-priority cycle
 
 The P0 experimental blocker remains a disposable Kubernetes runtime with
-`kubectl` and Helm. While it is unavailable, address the clean-environment
-artifact gate by freezing Python dependencies, adding a one-command offline
-verification path, and recording a reproduction report from a fresh virtual
-environment without treating that as live-system evidence.
+`kubectl` and Helm. While it is unavailable, define and execute the planned
+guardrail ablations in the frozen simulator preflight, keeping them explicitly
+exploratory and separate from confirmatory live-system claims.

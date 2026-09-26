@@ -3,6 +3,7 @@ __pycache__/
 .ruff_cache/
 .venv/
 *.pyc
+*.egg-info/
 _workloads/
 _tools/
 .DS_Store
