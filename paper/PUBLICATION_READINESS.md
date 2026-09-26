@@ -1,8 +1,8 @@
 # SENTINEL publication-readiness ledger
 
-Last reviewed: 2026-09-25
+Last reviewed: 2026-09-26
 
-Iteration budget: **15/25 completed**. Stop after Cycle 25, or earlier if every
+Iteration budget: **16/25 completed**. Stop after Cycle 25, or earlier if every
 publication gate passes. The final cycle must record a readiness verdict and
 all remaining blockers before pausing the publication automation.
 
@@ -12,7 +12,7 @@ all remaining blockers before pausing the publication automation.
 protocol are credible, but the evidence supports only a simulator/harness
 demonstration. The abstract, results, and conclusion still contain placeholders.
 
-Current maturity: **frozen protocol + simulator preflight + live contracts**.
+Current maturity: **frozen protocol + simulator preflight/ablations + live contracts**.
 
 ## Release gates
 
@@ -28,7 +28,7 @@ Current maturity: **frozen protocol + simulator preflight + live contracts**.
 | Second realistic public system | Fail | OTel Demo and its official Helm chart have a revision-locked target, least-privilege RBAC, and a readiness gate, but have not been deployed or actuated. |
 | Repeated trials and uncertainty | Fail | Exact binomial intervals and paired-contrast extraction are implemented for descriptive preflight analysis, but there are no repeated live trials, pilot variance, or confirmatory intervals. |
 | Cross-layer interaction analysis | Partial | The 58-row design expanded to 580 unique system/guardrail rows and completed a simulator preflight; live execution, repetitions, and inferential analysis remain. |
-| Ablations | Fail | Planned but not executed. |
+| Ablations | Partial | Trusted-scope and fail-closed mechanism ablations completed on all 58 selected simulator rows; independent-observer and broker-idempotency ablations still require live execution. |
 | Clean-environment artifact reproduction | Partial | A fresh CPython 3.12 virtual environment reproduced 193 tests, lint, OPA integration, and citation checks from a frozen runtime/test lock; an independent machine or container is still required. |
 | Anonymous venue package | Fail | Markdown draft only; no DSN template, anonymized artifact, or generated figures. |
 
@@ -367,9 +367,39 @@ claim.
   independent clean-machine or container reproduction and does not exercise
   Kubernetes.
 
+### Cycle 16 — 2026-09-26
+
+- **Review:** selected missing guardrail ablations, the highest unresolved gate
+  that could be advanced without repeatedly probing the unavailable Kubernetes
+  runtime. Review also separated mechanism sensitivity from confirmatory effect
+  estimation so deterministic selected rows cannot be mistaken for samples.
+- **Fix:** added explicit Guardian variants that remove incident-specific
+  trusted target binding or replace validation fail-closed behavior with a
+  permissive proposal-target fallback. Added a versioned exploratory ablation
+  protocol, balanced 174-row campaign construction over the frozen 58-row
+  fault design, paired integrity analysis, CLI support, contract tests, and
+  manuscript language reserving observer and broker ablations for the live
+  boundary.
+- **Run:** the immutable `e4-guardian-ablation-preflight-v1` run wrote 174
+  terminal records: 58 matched selected rows for full Guardian and each of the
+  two variants. Manifest/spec/record verification passed; all 197 tests passed
+  with checksum-pinned OPA enabled, scoped lint passed, and all 31 reference
+  records revalidated.
+- **Analyze:** full Guardian produced 10 unauthorized effects and 10 safe
+  recoveries across the 58 selected rows. Removing trusted scope binding
+  produced 19 unauthorized effects with no additional safe recoveries: nine
+  matched rows became newly unsafe. Permissive fallback produced 22
+  unauthorized effects and 19 safe recoveries: 12 rows became newly unsafe and
+  nine gained safe recovery. These deterministic counts demonstrate that the
+  harness detects the intended containment/availability trade-off; they are
+  not rates, uncertainty-bearing estimates, live-system results, or evidence
+  that either mechanism has the same effect in deployed systems.
+
 ## Next highest-priority cycle
 
 The P0 experimental blocker remains a disposable Kubernetes runtime with
-`kubectl` and Helm. While it is unavailable, define and execute the planned
-guardrail ablations in the frozen simulator preflight, keeping them explicitly
-exploratory and separate from confirmatory live-system claims.
+`kubectl` and Helm. Once available, deploy the pinned Online Boutique subject,
+run the readiness and RBAC checks, and execute a blinded single-row smoke trial
+before any campaign. If it remains unavailable, split the exhaustive fault
+surface census from the powered confirmatory subset before live outcomes exist,
+so repeated deterministic rows are not later treated as independent samples.

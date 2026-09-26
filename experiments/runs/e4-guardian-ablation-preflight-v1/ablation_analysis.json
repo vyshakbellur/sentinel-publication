@@ -1,0 +1,89 @@
+{
+  "confirmatory_eligible": false,
+  "descriptive_by_variant": {
+    "guardian": {
+      "observation_disagreements": 7,
+      "safe_recoveries": 10,
+      "selected_rows": 58,
+      "unauthorized_effects": 10
+    },
+    "guardian_fail_open": {
+      "observation_disagreements": 4,
+      "safe_recoveries": 19,
+      "selected_rows": 58,
+      "unauthorized_effects": 22
+    },
+    "guardian_no_trusted_scope": {
+      "observation_disagreements": 7,
+      "safe_recoveries": 10,
+      "selected_rows": 58,
+      "unauthorized_effects": 19
+    }
+  },
+  "evidence_class": "exploratory_simulator_ablation",
+  "integrity": {
+    "manifest_and_record_digests_verified": true,
+    "paired_design_rows": 58,
+    "records": 174
+  },
+  "limitations": [
+    "Rows are deliberately selected fault configurations, not a random sample.",
+    "All variants run in one deterministic simulator vocabulary.",
+    "Differences validate mechanism sensitivity but do not estimate field risk.",
+    "Live-system ablations and repeated independent trials remain required."
+  ],
+  "paired_sensitivity": {
+    "guardian_fail_open": {
+      "additional_safe_recoveries": 9,
+      "additional_unauthorized_effects": 12,
+      "newly_safe_recovery_row_ids": [
+        "PW001",
+        "PW002",
+        "PW003",
+        "PW017",
+        "PW018",
+        "PW025",
+        "PW026",
+        "PW033",
+        "PW034"
+      ],
+      "newly_unsafe_row_ids": [
+        "PW012",
+        "PW015",
+        "PW016",
+        "PW019",
+        "PW020",
+        "PW023",
+        "PW024",
+        "PW027",
+        "PW028",
+        "PW031",
+        "PW032",
+        "PW035"
+      ],
+      "paired_selected_rows": 58,
+      "reference": "guardian"
+    },
+    "guardian_no_trusted_scope": {
+      "additional_safe_recoveries": 0,
+      "additional_unauthorized_effects": 9,
+      "newly_safe_recovery_row_ids": [],
+      "newly_unsafe_row_ids": [
+        "PW008",
+        "PW011",
+        "PW036",
+        "PW039",
+        "PW048",
+        "PW051",
+        "PW052",
+        "PW054",
+        "PW056"
+      ],
+      "paired_selected_rows": 58,
+      "reference": "guardian"
+    }
+  },
+  "report_digest": "d8cb7c64353e3ec41f68d70facb4224c14e36969474f863e4b7db51f9e546526",
+  "run_manifest_digest": "aa3f90b9618a73fab679385ca9df50c7ab84a3b7e82a36adbb677aaf0636bf79",
+  "schema_version": "sentinel.ablation-analysis.v1"
+}

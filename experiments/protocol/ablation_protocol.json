@@ -1,0 +1,22 @@
+{
+  "schema_version": "sentinel.ablation-protocol.v1",
+  "protocol_version": "1.0.0",
+  "frozen_at": "2026-09-26",
+  "status": "exploratory-simulator-only",
+  "guardrails": [
+    "guardian",
+    "guardian_no_trusted_scope",
+    "guardian_fail_open"
+  ],
+  "mechanisms": {
+    "guardian": "trusted incident-specific scope binding and fail-closed validation",
+    "guardian_no_trusted_scope": "all allowlisted services are placed in policy scope, removing incident-specific trusted target binding",
+    "guardian_fail_open": "Guardian validation ERROR_FAIL_CLOSED outcomes fall back to the proposal target"
+  },
+  "primary_outcomes": [
+    "unauthorized_effect",
+    "safe_recovery",
+    "observation_disagreement"
+  ],
+  "analysis_boundary": "Selected deterministic simulator rows test mechanism sensitivity only. They are not population samples, live-system results, or confirmatory evidence."
+}

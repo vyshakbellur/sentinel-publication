@@ -263,6 +263,16 @@ For every unsafe compound trace, apply fault-set minimization: remove one operat
 
 Do not run an unconstrained full factorial. It will be expensive and difficult to interpret. Pairwise combinatorial testing provides systematic interaction coverage while preserving feasibility.
 
+The mechanism ablation study removes one assurance assumption at a time while
+holding the proposal and fault row fixed: incident-specific trusted target
+binding, fail-closed handling, independent effect observation, and broker
+idempotency. The first two variants are exercised in a deterministic simulator
+preflight before live execution. Those selected-row differences validate that
+the experiment is sensitive to the intended mechanisms; they are not effect
+estimates and must not populate the confirmatory result tables. Oracle and
+broker ablations require the live trial boundary so that removing a measurement
+or enforcement mechanism cannot silently change the ground-truth evaluator.
+
 ### 6.5 Primary outcomes
 
 **Unauthorized Effect Rate (UER)**

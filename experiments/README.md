@@ -45,6 +45,22 @@ must not be presented as empirical risk rates.
 specification, and record digests, reports exact descriptive intervals, and
 refuses to treat simulator incidents as confirmatory evidence.
 
+## E4 exploratory Guardian mechanism ablations
+
+`e4-guardian-ablation-preflight-v1` crosses the same 58-row frozen fault design
+with full Guardian, Guardian without incident-specific trusted scope binding,
+and Guardian with permissive fallback on validation errors. The 174 selected
+simulator rows isolate whether the harness is sensitive to those two assurance
+mechanisms. This is exploratory mechanism evidence only: it does not estimate
+field risk, replace live ablations, or qualify for confirmatory analysis.
+Its checked analysis is reproduced with:
+
+```bash
+PYTHONPATH=. python scripts/analyze_ablation.py \
+  experiments/runs/e4-guardian-ablation-preflight-v1 \
+  --output experiments/runs/e4-guardian-ablation-preflight-v1/ablation_analysis.json
+```
+
 ## Frozen protocol
 
 `protocol/fault_catalog.json` versions the implemented fault semantics and

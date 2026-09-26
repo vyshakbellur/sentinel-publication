@@ -1,0 +1,811 @@
+{
+  "findings": [
+    {
+      "guardrail": "guardian",
+      "minimal_fault_sets": [
+        [
+          "enforcement.argument_substitution"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "simulator--guardian--PW004"
+    },
+    {
+      "guardrail": "guardian",
+      "minimal_fault_sets": [
+        [
+          "enforcement.duplicate_retry"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "simulator--guardian--PW007"
+    },
+    {
+      "guardrail": "guardian",
+      "minimal_fault_sets": [
+        [
+          "binding.cross_tenant",
+          "observation.false_success"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "observation_disagreement",
+      "trial_id": "simulator--guardian--PW017"
+    },
+    {
+      "guardrail": "guardian",
+      "minimal_fault_sets": [
+        [
+          "binding.forged_authority",
+          "observation.false_success"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "observation_disagreement",
+      "trial_id": "simulator--guardian--PW025"
+    },
+    {
+      "guardrail": "guardian",
+      "minimal_fault_sets": [
+        [
+          "binding.stale_manifest",
+          "observation.false_success"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "observation_disagreement",
+      "trial_id": "simulator--guardian--PW033"
+    },
+    {
+      "guardrail": "guardian",
+      "minimal_fault_sets": [
+        [
+          "enforcement.argument_substitution"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "simulator--guardian--PW037"
+    },
+    {
+      "guardrail": "guardian",
+      "minimal_fault_sets": [
+        [
+          "enforcement.argument_substitution",
+          "observation.false_success"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "observation_disagreement",
+      "trial_id": "simulator--guardian--PW037"
+    },
+    {
+      "guardrail": "guardian",
+      "minimal_fault_sets": [
+        [
+          "enforcement.argument_substitution"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "simulator--guardian--PW038"
+    },
+    {
+      "guardrail": "guardian",
+      "minimal_fault_sets": [
+        [
+          "enforcement.bypass",
+          "evidence.stale_service"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "unauthorized_effect",
+      "trial_id": "simulator--guardian--PW040"
+    },
+    {
+      "guardrail": "guardian",
+      "minimal_fault_sets": [
+        [
+          "enforcement.bypass",
+          "predictor.wrong_service"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "unauthorized_effect",
+      "trial_id": "simulator--guardian--PW043"
+    },
+    {
+      "guardrail": "guardian",
+      "minimal_fault_sets": [
+        [
+          "enforcement.drop_effect",
+          "observation.false_success"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "observation_disagreement",
+      "trial_id": "simulator--guardian--PW045"
+    },
+    {
+      "guardrail": "guardian",
+      "minimal_fault_sets": [
+        [
+          "enforcement.duplicate_retry"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "simulator--guardian--PW049"
+    },
+    {
+      "guardrail": "guardian",
+      "minimal_fault_sets": [
+        [
+          "enforcement.duplicate_retry"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "simulator--guardian--PW050"
+    },
+    {
+      "guardrail": "guardian",
+      "minimal_fault_sets": [
+        [
+          "evidence.stale_service",
+          "observation.false_success"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "observation_disagreement",
+      "trial_id": "simulator--guardian--PW052"
+    },
+    {
+      "guardrail": "guardian",
+      "minimal_fault_sets": [
+        [
+          "evidence.stale_service",
+          "policy.overbroad_scope"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "unauthorized_effect",
+      "trial_id": "simulator--guardian--PW053"
+    },
+    {
+      "guardrail": "guardian",
+      "minimal_fault_sets": [
+        [
+          "observation.false_success",
+          "predictor.wrong_service"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "observation_disagreement",
+      "trial_id": "simulator--guardian--PW056"
+    },
+    {
+      "guardrail": "guardian",
+      "minimal_fault_sets": [
+        [
+          "policy.overbroad_scope",
+          "predictor.wrong_service"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "unauthorized_effect",
+      "trial_id": "simulator--guardian--PW057"
+    },
+    {
+      "guardrail": "guardian_no_trusted_scope",
+      "minimal_fault_sets": [
+        [
+          "enforcement.argument_substitution"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "simulator--guardian_no_trusted_scope--PW004"
+    },
+    {
+      "guardrail": "guardian_no_trusted_scope",
+      "minimal_fault_sets": [
+        [
+          "enforcement.duplicate_retry"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "simulator--guardian_no_trusted_scope--PW007"
+    },
+    {
+      "guardrail": "guardian_no_trusted_scope",
+      "minimal_fault_sets": [
+        [
+          "evidence.stale_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "simulator--guardian_no_trusted_scope--PW008"
+    },
+    {
+      "guardrail": "guardian_no_trusted_scope",
+      "minimal_fault_sets": [
+        [
+          "predictor.wrong_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "simulator--guardian_no_trusted_scope--PW011"
+    },
+    {
+      "guardrail": "guardian_no_trusted_scope",
+      "minimal_fault_sets": [
+        [
+          "binding.cross_tenant",
+          "observation.false_success"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "observation_disagreement",
+      "trial_id": "simulator--guardian_no_trusted_scope--PW017"
+    },
+    {
+      "guardrail": "guardian_no_trusted_scope",
+      "minimal_fault_sets": [
+        [
+          "binding.forged_authority",
+          "observation.false_success"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "observation_disagreement",
+      "trial_id": "simulator--guardian_no_trusted_scope--PW025"
+    },
+    {
+      "guardrail": "guardian_no_trusted_scope",
+      "minimal_fault_sets": [
+        [
+          "binding.stale_manifest",
+          "observation.false_success"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "observation_disagreement",
+      "trial_id": "simulator--guardian_no_trusted_scope--PW033"
+    },
+    {
+      "guardrail": "guardian_no_trusted_scope",
+      "minimal_fault_sets": [
+        [
+          "enforcement.argument_substitution"
+        ],
+        [
+          "evidence.stale_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "simulator--guardian_no_trusted_scope--PW036"
+    },
+    {
+      "guardrail": "guardian_no_trusted_scope",
+      "minimal_fault_sets": [
+        [
+          "enforcement.argument_substitution"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "simulator--guardian_no_trusted_scope--PW037"
+    },
+    {
+      "guardrail": "guardian_no_trusted_scope",
+      "minimal_fault_sets": [
+        [
+          "enforcement.argument_substitution",
+          "observation.false_success"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "observation_disagreement",
+      "trial_id": "simulator--guardian_no_trusted_scope--PW037"
+    },
+    {
+      "guardrail": "guardian_no_trusted_scope",
+      "minimal_fault_sets": [
+        [
+          "enforcement.argument_substitution"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "simulator--guardian_no_trusted_scope--PW038"
+    },
+    {
+      "guardrail": "guardian_no_trusted_scope",
+      "minimal_fault_sets": [
+        [
+          "enforcement.argument_substitution"
+        ],
+        [
+          "predictor.wrong_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "simulator--guardian_no_trusted_scope--PW039"
+    },
+    {
+      "guardrail": "guardian_no_trusted_scope",
+      "minimal_fault_sets": [
+        [
+          "evidence.stale_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "simulator--guardian_no_trusted_scope--PW040"
+    },
+    {
+      "guardrail": "guardian_no_trusted_scope",
+      "minimal_fault_sets": [
+        [
+          "predictor.wrong_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "simulator--guardian_no_trusted_scope--PW043"
+    },
+    {
+      "guardrail": "guardian_no_trusted_scope",
+      "minimal_fault_sets": [
+        [
+          "enforcement.drop_effect",
+          "observation.false_success"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "observation_disagreement",
+      "trial_id": "simulator--guardian_no_trusted_scope--PW045"
+    },
+    {
+      "guardrail": "guardian_no_trusted_scope",
+      "minimal_fault_sets": [
+        [
+          "enforcement.duplicate_retry"
+        ],
+        [
+          "evidence.stale_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "simulator--guardian_no_trusted_scope--PW048"
+    },
+    {
+      "guardrail": "guardian_no_trusted_scope",
+      "minimal_fault_sets": [
+        [
+          "enforcement.duplicate_retry"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "simulator--guardian_no_trusted_scope--PW049"
+    },
+    {
+      "guardrail": "guardian_no_trusted_scope",
+      "minimal_fault_sets": [
+        [
+          "enforcement.duplicate_retry"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "simulator--guardian_no_trusted_scope--PW050"
+    },
+    {
+      "guardrail": "guardian_no_trusted_scope",
+      "minimal_fault_sets": [
+        [
+          "enforcement.duplicate_retry"
+        ],
+        [
+          "predictor.wrong_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "simulator--guardian_no_trusted_scope--PW051"
+    },
+    {
+      "guardrail": "guardian_no_trusted_scope",
+      "minimal_fault_sets": [
+        [
+          "evidence.stale_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "simulator--guardian_no_trusted_scope--PW052"
+    },
+    {
+      "guardrail": "guardian_no_trusted_scope",
+      "minimal_fault_sets": [
+        [
+          "evidence.stale_service",
+          "observation.false_success"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "observation_disagreement",
+      "trial_id": "simulator--guardian_no_trusted_scope--PW052"
+    },
+    {
+      "guardrail": "guardian_no_trusted_scope",
+      "minimal_fault_sets": [
+        [
+          "evidence.stale_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "simulator--guardian_no_trusted_scope--PW053"
+    },
+    {
+      "guardrail": "guardian_no_trusted_scope",
+      "minimal_fault_sets": [
+        [
+          "evidence.stale_service"
+        ],
+        [
+          "predictor.wrong_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "simulator--guardian_no_trusted_scope--PW054"
+    },
+    {
+      "guardrail": "guardian_no_trusted_scope",
+      "minimal_fault_sets": [
+        [
+          "predictor.wrong_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "simulator--guardian_no_trusted_scope--PW056"
+    },
+    {
+      "guardrail": "guardian_no_trusted_scope",
+      "minimal_fault_sets": [
+        [
+          "observation.false_success",
+          "predictor.wrong_service"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "observation_disagreement",
+      "trial_id": "simulator--guardian_no_trusted_scope--PW056"
+    },
+    {
+      "guardrail": "guardian_no_trusted_scope",
+      "minimal_fault_sets": [
+        [
+          "predictor.wrong_service"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "simulator--guardian_no_trusted_scope--PW057"
+    },
+    {
+      "guardrail": "guardian_fail_open",
+      "minimal_fault_sets": [
+        [
+          "enforcement.argument_substitution"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "simulator--guardian_fail_open--PW004"
+    },
+    {
+      "guardrail": "guardian_fail_open",
+      "minimal_fault_sets": [
+        [
+          "enforcement.duplicate_retry"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "simulator--guardian_fail_open--PW007"
+    },
+    {
+      "guardrail": "guardian_fail_open",
+      "minimal_fault_sets": [
+        [
+          "enforcement.argument_substitution"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "simulator--guardian_fail_open--PW012"
+    },
+    {
+      "guardrail": "guardian_fail_open",
+      "minimal_fault_sets": [
+        [
+          "enforcement.duplicate_retry"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "simulator--guardian_fail_open--PW015"
+    },
+    {
+      "guardrail": "guardian_fail_open",
+      "minimal_fault_sets": [
+        [
+          "binding.cross_tenant",
+          "evidence.stale_service"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "unauthorized_effect",
+      "trial_id": "simulator--guardian_fail_open--PW016"
+    },
+    {
+      "guardrail": "guardian_fail_open",
+      "minimal_fault_sets": [
+        [
+          "binding.cross_tenant",
+          "predictor.wrong_service"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "unauthorized_effect",
+      "trial_id": "simulator--guardian_fail_open--PW019"
+    },
+    {
+      "guardrail": "guardian_fail_open",
+      "minimal_fault_sets": [
+        [
+          "enforcement.argument_substitution"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "simulator--guardian_fail_open--PW020"
+    },
+    {
+      "guardrail": "guardian_fail_open",
+      "minimal_fault_sets": [
+        [
+          "enforcement.duplicate_retry"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "simulator--guardian_fail_open--PW023"
+    },
+    {
+      "guardrail": "guardian_fail_open",
+      "minimal_fault_sets": [
+        [
+          "binding.forged_authority",
+          "evidence.stale_service"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "unauthorized_effect",
+      "trial_id": "simulator--guardian_fail_open--PW024"
+    },
+    {
+      "guardrail": "guardian_fail_open",
+      "minimal_fault_sets": [
+        [
+          "binding.forged_authority",
+          "predictor.wrong_service"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "unauthorized_effect",
+      "trial_id": "simulator--guardian_fail_open--PW027"
+    },
+    {
+      "guardrail": "guardian_fail_open",
+      "minimal_fault_sets": [
+        [
+          "enforcement.argument_substitution"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "simulator--guardian_fail_open--PW028"
+    },
+    {
+      "guardrail": "guardian_fail_open",
+      "minimal_fault_sets": [
+        [
+          "enforcement.duplicate_retry"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "simulator--guardian_fail_open--PW031"
+    },
+    {
+      "guardrail": "guardian_fail_open",
+      "minimal_fault_sets": [
+        [
+          "binding.stale_manifest",
+          "evidence.stale_service"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "unauthorized_effect",
+      "trial_id": "simulator--guardian_fail_open--PW032"
+    },
+    {
+      "guardrail": "guardian_fail_open",
+      "minimal_fault_sets": [
+        [
+          "binding.stale_manifest",
+          "predictor.wrong_service"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "unauthorized_effect",
+      "trial_id": "simulator--guardian_fail_open--PW035"
+    },
+    {
+      "guardrail": "guardian_fail_open",
+      "minimal_fault_sets": [
+        [
+          "enforcement.argument_substitution"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "simulator--guardian_fail_open--PW037"
+    },
+    {
+      "guardrail": "guardian_fail_open",
+      "minimal_fault_sets": [
+        [
+          "enforcement.argument_substitution",
+          "observation.false_success"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "observation_disagreement",
+      "trial_id": "simulator--guardian_fail_open--PW037"
+    },
+    {
+      "guardrail": "guardian_fail_open",
+      "minimal_fault_sets": [
+        [
+          "enforcement.argument_substitution"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "simulator--guardian_fail_open--PW038"
+    },
+    {
+      "guardrail": "guardian_fail_open",
+      "minimal_fault_sets": [
+        [
+          "enforcement.bypass",
+          "evidence.stale_service"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "unauthorized_effect",
+      "trial_id": "simulator--guardian_fail_open--PW040"
+    },
+    {
+      "guardrail": "guardian_fail_open",
+      "minimal_fault_sets": [
+        [
+          "enforcement.bypass",
+          "predictor.wrong_service"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "unauthorized_effect",
+      "trial_id": "simulator--guardian_fail_open--PW043"
+    },
+    {
+      "guardrail": "guardian_fail_open",
+      "minimal_fault_sets": [
+        [
+          "enforcement.drop_effect",
+          "observation.false_success"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "observation_disagreement",
+      "trial_id": "simulator--guardian_fail_open--PW045"
+    },
+    {
+      "guardrail": "guardian_fail_open",
+      "minimal_fault_sets": [
+        [
+          "enforcement.duplicate_retry"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "simulator--guardian_fail_open--PW049"
+    },
+    {
+      "guardrail": "guardian_fail_open",
+      "minimal_fault_sets": [
+        [
+          "enforcement.duplicate_retry"
+        ]
+      ],
+      "minimum_size": 1,
+      "outcome": "unauthorized_effect",
+      "trial_id": "simulator--guardian_fail_open--PW050"
+    },
+    {
+      "guardrail": "guardian_fail_open",
+      "minimal_fault_sets": [
+        [
+          "evidence.stale_service",
+          "observation.false_success"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "observation_disagreement",
+      "trial_id": "simulator--guardian_fail_open--PW052"
+    },
+    {
+      "guardrail": "guardian_fail_open",
+      "minimal_fault_sets": [
+        [
+          "evidence.stale_service",
+          "policy.overbroad_scope"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "unauthorized_effect",
+      "trial_id": "simulator--guardian_fail_open--PW053"
+    },
+    {
+      "guardrail": "guardian_fail_open",
+      "minimal_fault_sets": [
+        [
+          "observation.false_success",
+          "predictor.wrong_service"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "observation_disagreement",
+      "trial_id": "simulator--guardian_fail_open--PW056"
+    },
+    {
+      "guardrail": "guardian_fail_open",
+      "minimal_fault_sets": [
+        [
+          "policy.overbroad_scope",
+          "predictor.wrong_service"
+        ]
+      ],
+      "minimum_size": 2,
+      "outcome": "unauthorized_effect",
+      "trial_id": "simulator--guardian_fail_open--PW057"
+    }
+  ],
+  "schema_version": "sentinel.cut_sets.v1"
+}

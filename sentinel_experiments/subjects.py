@@ -26,6 +26,18 @@ def decide_proposal(
             expected_service=expected_service,
             faults=faults,
         )
+    if guardrail == "guardian_no_trusted_scope":
+        return GuardianSubject(services, trusted_scope_binding=False).decide(
+            proposal,
+            expected_service=expected_service,
+            faults=faults,
+        )
+    if guardrail == "guardian_fail_open":
+        return GuardianSubject(services, fail_closed=False).decide(
+            proposal,
+            expected_service=expected_service,
+            faults=faults,
+        )
     if guardrail == "schema_allowlist":
         return SchemaAllowlistSubject(services).decide(proposal)
     if guardrail == "external_policy":

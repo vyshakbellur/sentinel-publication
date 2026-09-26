@@ -17,6 +17,8 @@ class GuardianUnavailable(RuntimeError):
 class GuardianSubject:
     services: tuple[str, ...] = ("adservice", "cartservice")
     tenant_id: str = "tenant-a"
+    trusted_scope_binding: bool = True
+    fail_closed: bool = True
 
     def decide(
         self,
@@ -103,9 +105,10 @@ class GuardianSubject:
             mutable_proposal["source"] = {"classification": "public"}
 
         scope = (
-            set(self.services)
-            if "policy.overbroad_scope" in faults
-            else {expected_service}
+            {expected_service}
+            if self.trusted_scope_binding
+            and "policy.overbroad_scope" not in faults
+            else set(self.services)
         )
         permissions = {
             "allowed_intents": {"WRITE"},
@@ -120,10 +123,24 @@ class GuardianSubject:
         reason_codes = tuple(result.reason_codes)
         if result.validation is not None and result.validation.verification is not None:
             reason_codes += tuple(result.validation.verification.checks_failed)
-        return Decision(
+        decision = Decision(
             verdict=result.decision,
             allowed=result.allowed,
             reason_codes=reason_codes,
             canonical_service=service,
+            evidence_digest=evidence_digest,
+        )
+        if self.fail_closed or decision.verdict != "ERROR_FAIL_CLOSED":
+            return decision
+
+        arguments = mutable_proposal.get("arguments", {})
+        fallback_service = arguments.get("service")
+        return Decision(
+            verdict="ALLOW_FAIL_OPEN",
+            allowed=True,
+            reason_codes=reason_codes + ("ABLATION_PERMISSIVE_FALLBACK",),
+            canonical_service=(
+                fallback_service if isinstance(fallback_service, str) else None
+            ),
             evidence_digest=evidence_digest,
         )
