@@ -1,0 +1,9 @@
+{
+  "schema_version": "sentinel.anonymous-metadata.v1",
+  "working_title": "SENTINEL: Effect-Grounded Fault Injection for Deterministic Guardrails in Predictive Remediation",
+  "authors": ["Anonymous"],
+  "planned_venue": "IEEE/IFIP DSN regular research track",
+  "artifact_policy": "Anonymous artifact snapshot to be created only after live evidence and manuscript claims freeze.",
+  "submission_ready": false,
+  "blocking_reason": "Live two-system experiments, pilot-derived sample size, confirmatory analysis, figures, and final venue formatting are incomplete."
+}

@@ -1,0 +1,107 @@
+{
+  "schema_version": "sentinel.claim-evidence.v1",
+  "claims": [
+    {
+      "id": "C-NOVELTY",
+      "claim": "SENTINEL contributes effect-grounded cross-layer fault injection for evaluating an assurance chain, not deterministic enforcement itself.",
+      "status": "supported",
+      "evidence_class": "method_and_verified_related_work",
+      "assertion_allowed": true,
+      "permitted_wording": "We introduce a methodology and artifact for effect-grounded cross-layer evaluation.",
+      "prohibited_wording": "SENTINEL is the first deterministic guardrail.",
+      "artifacts": [
+        "paper/MANUSCRIPT.md",
+        "references/core_references.json",
+        "paper/references.bib"
+      ]
+    },
+    {
+      "id": "C-SIMULATOR",
+      "claim": "The harness executes the frozen fault design, baselines, cut-set analysis, and mechanism ablations in a deterministic simulator.",
+      "status": "supported",
+      "evidence_class": "simulator_contract",
+      "assertion_allowed": true,
+      "permitted_wording": "Simulator preflight validates experiment plumbing and selected mechanism sensitivity.",
+      "prohibited_wording": "Simulator proportions estimate deployed-system risk.",
+      "artifacts": [
+        "experiments/runs/e3-campaign-preflight-v1/preflight_analysis.json",
+        "experiments/runs/e4-guardian-ablation-preflight-v1/ablation_analysis.json"
+      ]
+    },
+    {
+      "id": "C-LIVE-SYSTEMS",
+      "claim": "SENTINEL has been evaluated on two realistic public systems.",
+      "status": "missing",
+      "evidence_class": "none",
+      "assertion_allowed": false,
+      "permitted_wording": "Online Boutique and OTel Demo are pinned planned subjects with contract-tested adapters.",
+      "prohibited_wording": "Two live systems were evaluated.",
+      "artifacts": [
+        "external/workloads.lock.json",
+        "external/kubernetes_targets.json"
+      ]
+    },
+    {
+      "id": "C-CONFIRMATORY",
+      "claim": "The preregistered contrasts C1-C5 have repeated live estimates and uncertainty intervals.",
+      "status": "missing",
+      "evidence_class": "none",
+      "assertion_allowed": false,
+      "permitted_wording": "C1-C5 and the analysis boundary were frozen before live outcomes.",
+      "prohibited_wording": "Guardian significantly improves deployed-system safety.",
+      "artifacts": [
+        "experiments/protocol/confirmatory_protocol.json",
+        "experiments/protocol/study_partition.json"
+      ]
+    },
+    {
+      "id": "C-ABLATION",
+      "claim": "Trusted-scope and fail-closed mechanisms affect selected simulator outcomes.",
+      "status": "partial",
+      "evidence_class": "exploratory_simulator_ablation",
+      "assertion_allowed": true,
+      "permitted_wording": "Selected deterministic rows demonstrate mechanism sensitivity in the simulator.",
+      "prohibited_wording": "The ablation estimates real-world mechanism effect sizes.",
+      "artifacts": [
+        "experiments/runs/e4-guardian-ablation-preflight-v1/ablation_analysis.json"
+      ]
+    },
+    {
+      "id": "C-ORACLE",
+      "claim": "Independent environment-state and Kubernetes-audit oracles are calibrated on both live systems.",
+      "status": "partial",
+      "evidence_class": "fixture_contract",
+      "assertion_allowed": false,
+      "permitted_wording": "Oracle and audit reconciliation contracts pass known fixtures.",
+      "prohibited_wording": "Live oracle fidelity has been established.",
+      "artifacts": [
+        "tests/test_oracle.py",
+        "tests/test_kubernetes_audit.py"
+      ]
+    },
+    {
+      "id": "C-REPRODUCTION",
+      "claim": "The complete empirical artifact has been independently reproduced.",
+      "status": "partial",
+      "evidence_class": "same_host_fresh_environment",
+      "assertion_allowed": false,
+      "permitted_wording": "The non-live artifact reproduced in a fresh environment on the same host.",
+      "prohibited_wording": "An independent team reproduced the empirical study.",
+      "artifacts": [
+        "artifacts/reproduction/cycle23.json"
+      ]
+    },
+    {
+      "id": "C-PUBLICATION",
+      "claim": "The manuscript is ready for archival or peer-reviewed submission.",
+      "status": "missing",
+      "evidence_class": "none",
+      "assertion_allowed": false,
+      "permitted_wording": "The repository contains a pre-results protocol and contract-tested artifact.",
+      "prohibited_wording": "The current manuscript is publication-ready.",
+      "artifacts": [
+        "paper/PUBLICATION_READINESS.md"
+      ]
+    }
+  ]
+}

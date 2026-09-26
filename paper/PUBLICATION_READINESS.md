@@ -2,7 +2,7 @@
 
 Last reviewed: 2026-09-26
 
-Iteration budget: **23/25 completed**. Stop after Cycle 25, or earlier if every
+Iteration budget: **24/25 completed**. Stop after Cycle 25, or earlier if every
 publication gate passes. The final cycle must record a readiness verdict and
 all remaining blockers before pausing the publication automation.
 
@@ -19,7 +19,7 @@ Current maturity: **complete pilot and audit-reconciliation contracts + simulato
 | Gate | Status | Evidence or blocker |
 |---|---|---|
 | Defensible novelty statement | Pass | Effect-grounded cross-layer guardrail evaluation; does not claim deterministic enforcement itself as new. |
-| Complete manuscript without placeholders | Fail | Abstract, results tables, discussion, and conclusion await confirmatory results. |
+| Complete manuscript without placeholders | Fail | The audit finds eight result tokens, 35 result-table cells, and 15 open release-checklist items; abstract, results, discussion, and conclusion await confirmatory evidence. |
 | References verified against primary sources | Pass | All 31 retained references have primary-source metadata, explicit publication status and claim limits, matching BibTeX, and checked manuscript citekeys. |
 | Independent oracle fixtures | Pass | Eleven deterministic fixtures cover safe/no-effect, wrong target, duplicate identity and semantic effects, excessive and partial effects, false success, rollback, delayed regression, and stale observation. Live calibration remains separate. |
 | Frozen threat model and fault catalog | Pass | Versioned machine-readable v1 catalog declares all 11 implemented operators; five primary contrasts, exclusions, non-exclusions, pairing, and analysis rules are frozen before live-pilot outcomes. |
@@ -30,7 +30,7 @@ Current maturity: **complete pilot and audit-reconciliation contracts + simulato
 | Cross-layer interaction analysis | Partial | The 58-row descriptive census is separated from seven prespecified all-layer confirmatory pairs; live execution, repeated independent blocks, and inferential analysis remain. |
 | Ablations | Partial | Trusted-scope and fail-closed mechanism ablations completed on all 58 selected simulator rows; independent-observer and broker-idempotency ablations still require live execution. |
 | Clean-environment artifact reproduction | Partial | A second fresh CPython 3.12 environment reproduced the expanded 234-test artifact, lint, OPA integration, and citation checks from frozen locks; it is still the same host and does not exercise Kubernetes. |
-| Anonymous venue package | Fail | Markdown draft only; no DSN template, anonymized artifact, or generated figures. |
+| Anonymous venue package | Partial | Anonymous metadata, artifact appendix, and machine-checked claim/evidence ledger exist, but the venue template, live records, figures, sanitized archive, and supported result claims are absent. |
 
 ## Critical reviewer findings
 
@@ -582,12 +582,38 @@ claim.
   attestation, Kubernetes deployment, or replication of empirical results—so
   the reproduction gate remains partial.
 
+### Cycle 24 — 2026-09-26
+
+- **Review:** selected the missing anonymous package and claim-control boundary.
+  With no live evidence, packaging work had to make unsupported claims harder
+  to publish rather than cosmetically converting the draft into a venue paper.
+- **Fix:** created anonymous metadata, an artifact-appendix skeleton, and a
+  machine-readable claim/evidence ledger with explicit permitted and prohibited
+  wording. Added fail-closed checks for the eight required claim classes,
+  artifact existence, duplicate claims, missing claims marked assertable, local
+  identity markers, unresolved manuscript placeholders, open release gates,
+  and the absence of a venue template. The package declares itself blocked and
+  cannot certify submission readiness.
+- **Run:** the package audit found two supported claims, three partial claims,
+  and three missing claims; six claim classes remain unresolved. It counted
+  eight abstract/conclusion result tokens, 35 result-table placeholders, and 15
+  open publication-gate items, with no venue template. All 236 tests passed
+  with checksum-pinned OPA enabled, scoped lint passed, and all 31 references
+  revalidated.
+- **Analyze:** the skeleton is anonymous and useful for reviewer-facing claim
+  discipline, but it is intentionally not a submission. It prevents simulator
+  or fixture evidence from being described as two-system safety results and
+  records the precise missing evidence. No result placeholder was filled, no
+  figure was fabricated, and the anonymous-package gate advances only to
+  partial.
+
 ## Next highest-priority cycle
 
 The P0 experimental blocker remains a disposable Kubernetes runtime with
 `kubectl` and Helm. Once available, deploy the pinned Online Boutique subject,
 run the readiness and RBAC checks, and execute a blinded single-row smoke trial
-before any campaign, then reconcile broker receipts with API audit events. If
-it remains unavailable, prepare an anonymous venue-package skeleton and a
-machine-checked claim/evidence table without filling result placeholders or
-misrepresenting the protocol artifact as a completed research paper.
+before any campaign, then reconcile broker receipts with API audit events. The
+next and final budgeted cycle must conduct the terminal reviewer audit, record
+the publication verdict and exact remaining blockers, commit it, and pause the
+automation rather than using missing live evidence as an excuse to exceed the
+25-cycle limit.
