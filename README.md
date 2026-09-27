@@ -85,5 +85,7 @@ This slice uses a deterministic simulator, not a live Kubernetes cluster. Its pu
 The publication target and evidence gates are specified in
 `paper/DSN_2027_PLAN.md`. The primary-source gap review is in
 `docs/DETERMINISTIC_BOUNDARY_LITERATURE_REVIEW.md`; the proposed multi-step,
-multi-protocol design is in `docs/WORKFLOW_BOUNDARY_ARCHITECTURE.md`. That
-workflow design is planned work and must not be described as implemented.
+multi-protocol design is in `docs/WORKFLOW_BOUNDARY_ARCHITECTURE.md`; and the
+hostile-calendar benchmark is specified in
+`docs/CASE_STUDY_CALENDAR_PROMPTWARE.md`. Those designs are planned work and
+must not be described as implemented.
