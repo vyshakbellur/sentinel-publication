@@ -1,4 +1,4 @@
-# SENTINEL: Cross-Layer Fault Injection for Evaluating Deterministic Guardrails in Predictive Remediation Systems
+# SENTINEL: Effect-Grounded Conformance Testing of Deterministic Boundaries for Agentic Microservice Workflows
 
 **Manuscript status:** pre-results research draft; not publication-ready  
 **Target:** arXiv preprint after completion of the registered experiments; then ARR or a systems/dependability journal according to the final emphasis  
@@ -6,30 +6,30 @@
 
 ## Abstract
 
-Predictive systems increasingly propose or initiate consequential actions, including recovery operations in cloud services. Deterministic runtime guardrails are intended to prevent a fallible or compromised predictor from causing unauthorized effects. Existing work provides policy languages, reference monitors, information-flow controls, signed authorization, freshness checks, and guarded remediation controllers. Their guarantees, however, depend on a chain of assumptions about evidence, trusted attributes, policy state, enforcement, and outcome observation. Nominal policy-conformance tests do not measure how failures in those assumptions propagate into protected-system effects. We introduce **SENTINEL**, a cross-layer fault-injection methodology for evaluating deterministic guardrails around predictive remediation systems. SENTINEL perturbs six stages of the prediction-to-effect pipeline: operational evidence, prediction, trusted binding, policy decision, execution enforcement, and outcome observation. It measures unauthorized effects, safe recovery, false intervention, rollback success, and recovery latency using environment-state oracles. We instantiate the methodology using ARIA as a fallible microservice-diagnosis and remediation proposer, Guardian as a deterministic reference guardrail, and public microservice systems as execution environments. Across **[N]** incident-action trials and **[F]** fault configurations, cross-layer faults **[PRIMARY RESULT]**. Compared with **[BASELINE]**, Guardian **[RESULT]**, while **[ABLATION]** exposes **[FAILURE MODE]**. These results show **[EVIDENCE-SUPPORTED CONCLUSION]** and establish a reproducible method for testing guardrails as safety-critical software rather than assuming their correctness from nominal behavior.
+Agentic systems increasingly translate untrusted natural-language requests and service data into consequential multi-step actions. Deterministic boundaries are intended to prevent a fallible or compromised model from exceeding authority, violating dependencies, or misreporting effects. Existing work provides reference monitors, information-flow controls, policy languages, temporal constraints, action contracts, and durable workflow engines. Their guarantees, however, depend on contract adapters, trusted attributes, dependency and conflict metadata, policy state, execution brokers, and outcome observation. Nominal policy conformance and successful tool responses do not measure how failures in those assumptions propagate into protected-system effects. We introduce **SENTINEL**, a protocol-neutral, cross-layer conformance and fault-injection methodology for deterministic agent workflow boundaries. SENTINEL normalizes heterogeneous service operations into a canonical action/effect graph and perturbs the proposal-to-effect pipeline, including contract adaptation, trusted binding, graph validation, scheduling, authorization, execution, compensation, and observation. It measures unauthorized, missing, duplicated, substituted, and out-of-order effects together with safe recovery, useful completion, rollback, and latency using independent environment-state oracles. We instantiate the methodology using ARIA as a fallible microservice-remediation proposer, Guardian as a deterministic reference boundary, and public microservice systems as execution environments. Across **[N]** workflow trials and **[F]** fault configurations, cross-layer faults **[PRIMARY RESULT]**. Compared with **[BASELINE]**, Guardian **[RESULT]**, while **[ABLATION]** exposes **[FAILURE MODE]**. These results show **[EVIDENCE-SUPPORTED CONCLUSION]** and establish a reproducible method for testing deterministic agent boundaries as safety-critical distributed software rather than assuming their correctness from policy verdicts or workflow completion.
 
 ## 1. Introduction
 
-Machine-learning and large-language-model components increasingly sit upstream of consequential software actions. In cloud operations, a model may interpret telemetry, localize a failure, choose a remediation, and invoke an infrastructure API. The model can be wrong because of ordinary prediction error, distribution shift, incomplete evidence, poisoned telemetry, or malicious instructions. A common response is to place a deterministic policy or reference monitor between the model and the environment.
+Machine-learning and large-language-model components increasingly sit upstream of consequential software workflows. In cloud operations, a model may interpret telemetry, localize a failure, query several downstream services in parallel, wait for dependent results, choose a remediation, and invoke infrastructure APIs. The model can be wrong because of ordinary prediction error, distribution shift, incomplete evidence, poisoned service data, malicious instructions, or an invalid dependency plan. A common response is to place a deterministic policy or reference monitor between the model and the environment.
 
-This architectural pattern is well established. Runtime-assurance and shielding systems place an unverified advanced component behind a trusted safety mechanism. Agent-security systems such as CaMeL, Fides, AgentSpec, PCAS, and AgentFlow enforce capabilities, information-flow constraints, or declarative policies outside the model. Other systems bind authority to actions, histories, or execution evidence. In cloud operations, AIOpsLab, MicroRemed, R2Act, and ARBITER move evaluation from diagnosis toward executable remediation.
+This architectural pattern is well established. Runtime-assurance and shielding systems place an unverified advanced component behind a trusted safety mechanism. Agent-security systems such as CaMeL, Fides, AgentSpec, Agent-C, PCAS, ToolGate, and ActGov enforce capabilities, information-flow, temporal constraints, pre/postconditions, or declarative policies outside the model. Durable workflow systems already provide sequential, parallel, retry, and compensation semantics, while OpenAPI, WSDL/SOAP, GraphQL, gRPC, and AsyncAPI describe heterogeneous service interfaces. We therefore do not claim that deterministic boundaries, workflow graphs, or action contracts are new.
 
 External enforcement is necessary, but it does not make the surrounding system infallible. A deterministic decision can be consistently wrong when its resource catalog is stale. A correctly authorized action can be substituted or replayed at execution. A fail-closed dependency can prevent harm while also preventing recovery. An action can return success without restoring the service. A postcondition monitor can observe delayed or corrupted signals. These are faults in the assurance chain rather than failures of the language model alone.
 
 Existing evaluations commonly measure attack success, policy classification, task completion, recovery-plan validity, or fault diagnosis. These measures answer important but different questions. A policy-conformance score does not reveal whether an unauthorized effect reached the environment. Endpoint success does not reveal whether recovery was authorized. Fault-label accuracy does not reveal whether a guardrail contained the fault. As a result, we lack a systematic way to measure the **fault coverage** of deterministic guardrails around predictive systems.
 
-We present SENTINEL, a cross-layer fault-injection methodology for this purpose. SENTINEL models the complete path from operational evidence to observed recovery. It injects controlled faults into the evidence, predictor, trusted binder, policy, enforcement point, and outcome observer, both individually and in selected combinations. Each trial is graded by independently defined state and safety oracles.
+We present SENTINEL, a cross-layer conformance and fault-injection methodology for this purpose. SENTINEL models the complete path from untrusted request and service evidence through a protocol-normalized workflow graph to observed effects and recovery. It injects controlled faults into the proposal, contract adapter, trusted binder, dependency graph, policy, scheduler, broker, compensation path, and outcome observer, both individually and in selected combinations. Each trial is graded by independently defined state and safety oracles.
 
-We instantiate SENTINEL in microservice remediation. ARIA produces diagnoses and typed remediation proposals from public benchmark evidence. Its outputs, including confidence and suggested risk, are treated as untrusted. Guardian independently binds identity, capability, resource, destination, tenant, manifest, policy, and current state before deciding whether an action may execute. A broker is the only component with mutation credentials. Public microservice environments determine whether the authorized effect occurred and whether service health recovered.
+We instantiate SENTINEL in microservice remediation. ARIA produces diagnoses and typed workflow proposals from public benchmark evidence. Every model input and output is treated as data: it cannot assert identity, authority, resource classification, effect class, independence, or success. Guardian independently binds identity, capability, resource, destination, tenant, service contract, dependency/conflict facts, policy, and current state. It schedules only authorized ready nodes; narrow brokers alone possess service credentials. Responses are schema-checked and provenance-labeled before dependent nodes may consume them. Public microservice environments determine whether authorized effects occurred, whether ordering and cardinality were preserved, and whether service health recovered.
 
 This work makes four intended contributions:
 
-1. **A cross-layer fault model** for deterministic guardrails around predictive action systems, spanning evidence through outcome observation and defining metamorphic assurance relations that should remain invariant under untrusted-input transformations.
-2. **A reproducible fault-injection harness** that evaluates actual effects and recovery rather than guardrail verdicts alone.
-3. **An empirical study** of nominal, single-fault, and pairwise cross-layer behavior across multiple public microservice systems and guardrail configurations, including minimization of unsafe traces into assurance cut sets.
-4. **An assurance-recovery analysis** that quantifies unauthorized effects, safe recovery, false intervention, rollback, and latency as a joint frontier.
+1. **A protocol-neutral workflow assurance model** that separates an untrusted proposal from trusted identity, authority, resource, service-contract, dependency, conflict, and state facts.
+2. **Effect-grounded conformance relations** for protocol representation, complete mediation, dependency authenticity, safe parallelization, conflict serialization, response/effect agreement, and retry/compensation behavior.
+3. **A reproducible cross-layer fault-injection harness** that evaluates actual workflow effects and recovery rather than policy verdicts, schemas, or workflow status alone, and minimizes unsafe traces into assurance cut sets.
+4. **An empirical multi-system study** that quantifies unauthorized, missing, duplicated, substituted, and out-of-order effects together with safe recovery, useful completion, rollback, and latency.
 
-The contribution is an evaluation method and empirical result. We do not claim to invent external enforcement, risk-adaptive authorization, action contracts, commit-time freshness, replay protection, causal provenance, or guarded Kubernetes remediation.
+The contribution is an evaluation method and empirical result. We do not claim to invent external enforcement, risk-adaptive authorization, action contracts, temporal policy, workflow DAGs, durable execution, sagas, commit-time freshness, replay protection, causal provenance, protocol description languages, or guarded Kubernetes remediation.
 
 ## 2. Background and Related Work
 
@@ -80,26 +80,41 @@ These studies motivate our domain and baselines. SENTINEL's distinction is to te
 
 ## 3. System Model
 
-### 3.1 Prediction-to-effect pipeline
+### 3.1 Proposal-to-workflow-effect pipeline
 
-We model one remediation trial as:
+The predictor emits an authority-free workflow proposal (G_p=(V_p,E_p)).
+Each node names a registered capability and untrusted arguments; edges propose
+data or control dependencies. The deterministic boundary derives a canonical
+workflow (G_c=(V_c,E_c,C_c)), where (C_c) contains trusted conflict and
+temporal constraints that the proposal cannot remove. We model each node as:
 
 \[
-e \xrightarrow{P} d,a_p \xrightarrow{B} a_c \xrightarrow{D} v,o
-\xrightarrow{X} s' \xrightarrow{O} r,
+e,a_p \xrightarrow{N} a_n \xrightarrow{B} a_c
+\xrightarrow{D} v,o \xrightarrow{S} x \xrightarrow{X} s'
+\xrightarrow{R,O} r,
 \]
 
 where:
 
-- \(e\) is operational evidence;
-- \(P\) is a fallible predictor producing diagnosis \(d\) and proposed action \(a_p\);
+- \(e\) is untrusted request, operational, and predecessor-output data;
+- \(a_p\) is the authority-free action proposed by the fallible predictor;
+- \(N\) is a protocol adapter that resolves a pinned service contract and
+  produces normalized action \(a_n\);
 - \(B\) binds the proposal to trusted context, producing canonical action \(a_c\);
 - \(D\) is the policy decision function producing verdict \(v\) and obligations \(o\);
+- \(S\) is a deterministic scheduler producing a dispatchable node \(x\) only
+  after authentic dependencies complete and trusted conflicts permit it;
 - \(X\) is the enforcement/execution mechanism;
 - \(s'\) is the resulting environment state; and
-- \(O\) observes recovery and produces outcome record \(r\).
+- \(R\) validates and maps the protocol response while \(O\) independently
+  observes effects and produces terminal record \(r\).
 
-An action may be blocked, escalated, transformed into a bounded fallback, executed, or compensated after a failed postcondition.
+Independent ready nodes may run concurrently only when their trusted data,
+authority, resource, and effect sets are non-conflicting or explicitly
+commutative. Otherwise the scheduler uses a stable topological serialization.
+The single-action pipeline is the one-node special case. A node may be blocked,
+escalated, executed, quarantined pending reconciliation, or compensated after a
+failed postcondition.
 
 ### 3.2 Safety and recovery oracles
 
@@ -154,7 +169,21 @@ Guardian, ARIA, policy bundles, catalogs, state caches, providers, and observers
 
 Natural ARIA errors are preserved. Controlled mutations supplement them without being counted as independent model errors.
 
-### 4.3 Binding faults
+### 4.3 Contract-adapter faults
+
+- stale or substituted OpenAPI, WSDL, GraphQL, protobuf, or AsyncAPI contract;
+- operation or endpoint alias resolves to a different capability;
+- request canonicalization mismatch between policy and broker;
+- response schema accepts a semantically different result;
+- protocol downgrade, redirect, alternate channel, or shadow route bypass;
+- identity, correlation, streaming, or delivery metadata omitted.
+
+Protocol-representation tests preserve one registered logical capability while
+changing only its wire representation. Equivalent representations should yield
+the same canonical authority and effect class; protocol-specific delivery facts
+remain explicit rather than being erased.
+
+### 4.4 Binding faults
 
 - stale capability manifest;
 - incorrect resource or destination mapping;
@@ -163,7 +192,18 @@ Natural ARIA errors are preserved. Controlled mutations supplement them without 
 - agent-asserted security attribute accepted as authoritative;
 - policy/manifest version mismatch ignored.
 
-### 4.4 Policy faults
+### 4.5 Workflow and scheduling faults
+
+- missing, forged, or cyclic dependency edge;
+- dependent node dispatched before its predecessor is terminal;
+- predecessor text interpreted as control flow or authority;
+- conflicting writes falsely labeled independent;
+- non-commutative nodes executed concurrently or in reversed order;
+- stale authorization retained across a long-running workflow;
+- retry budget, concurrency ceiling, or approval barrier bypassed;
+- compensation omitted, duplicated, reordered, or applied to the wrong effect.
+
+### 4.6 Policy faults
 
 - omitted deny or escalation rule;
 - conflicting permit and deny rules;
@@ -175,7 +215,7 @@ Natural ARIA errors are preserved. Controlled mutations supplement them without 
 
 Policy mutations should be systematic and schema-valid. Each mutant records the exact operator and expected semantic change.
 
-### 4.5 Enforcement faults
+### 4.7 Enforcement faults
 
 - guardrail bypass;
 - argument substitution after decision;
@@ -185,7 +225,7 @@ Policy mutations should be systematic and schema-valid. Each mutant records the 
 - unauthorized fresh reissuance;
 - broker/result mismatch.
 
-### 4.6 Observation faults
+### 4.8 Observation faults
 
 - success response with no state change;
 - delayed health regression outside a short observation window;
@@ -194,7 +234,7 @@ Policy mutations should be systematic and schema-valid. Each mutant records the 
 - monitoring blind spot;
 - stale postcondition evidence.
 
-### 4.7 Injection sites and fidelity
+### 4.9 Injection sites and fidelity
 
 Each operator is applied at the boundary named by the fault model rather than
 by relabeling a nominal action. The controller-level adapters mutate stale
@@ -229,6 +269,10 @@ bounded trial window: missing or extra events fail the trial's evidence gate.
 
 **RQ6: Assurance structure.** Which minimal fault combinations and metamorphic-relation violations characterize the actual containment boundary of each guardrail configuration?
 
+**RQ7: Protocol invariance.** Do equivalent logical operations preserve canonical action, authorization, and independently observed effects across service-contract representations?
+
+**RQ8: Workflow semantics.** Do parallel executions admitted by the boundary preserve the safety and terminal state of allowed serializations under delay, retry, replay, and partial failure?
+
 Pre-registered hypotheses:
 
 - **H1:** faults in trusted binding or enforcement cause a higher unauthorized-effect rate than predictor-only faults because they invalidate the containment boundary;
@@ -236,7 +280,9 @@ Pre-registered hypotheses:
 - **H3:** fail-closed enforcement reduces unauthorized effects but increases false intervention and recovery time;
 - **H4:** a mandatory deterministic verification floor prevents adaptive routing from increasing unauthorized effects under predictor-confidence faults;
 - **H5:** environment postcondition oracles identify false recovery outcomes missed by authorization-decision and tool-return metrics;
-- **H6:** cross-layer minimization produces recurring assurance cut sets that transfer across incidents and at least two system environments.
+- **H6:** cross-layer minimization produces recurring assurance cut sets that transfer across incidents and at least two system environments;
+- **H7:** schema-valid protocol substitutions expose authorization or effect disagreements that single-adapter conformance tests do not detect;
+- **H8:** trusted effect-conflict serialization prevents duplicate and out-of-order effects that occur when the agent's independence declarations control scheduling.
 
 ## 6. Experimental Design
 

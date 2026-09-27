@@ -8,15 +8,17 @@ submission branch and artifact bundle. Post the fuller preprint to arXiv only
 after the experimental claims and figures freeze; use a title distinct from the
 blind submission and do not advertise concurrent review.
 
-Working title: **SENTINEL: Effect-Grounded Fault Injection for Deterministic
-Guardrails in Predictive Remediation**
+Working title: **SENTINEL: Effect-Grounded Conformance Testing of Deterministic
+Boundaries for Agentic Microservice Workflows**
 
 ## Central thesis
 
-A deterministic policy decision is insufficient evidence of safe automated
-remediation. Safety must be evaluated across the whole actuation chain against
-independently observed effects, including combinations of faults inside the
-assurance mechanism itself.
+A probabilistic agent may propose a typed workflow, but a deterministic boundary
+must own authority, dependency/conflict semantics, scheduling, actuation,
+response validation, and the definition of success. A correct local policy
+decision is insufficient evidence of a safe workflow. Assurance must cover the
+whole proposal-to-effect chain and use independently observed effects,
+including combinations of faults inside the boundary itself.
 
 ## Research questions
 
@@ -27,18 +29,26 @@ assurance mechanism itself.
 - RQ3: Do guardrail-local decisions agree with independently observed effects?
 - RQ4: What safety–recovery–latency trade-off does each mechanism occupy?
 - RQ5: Which failures and minimal cut sets transfer across realistic systems?
+- RQ6: Do equivalent operations preserve canonical action, authorization, and
+  effects across protocol representations and adapters?
+- RQ7: Do allowed parallel schedules preserve the safety and terminal state of
+  their serial equivalents under delay, retry, replay, and partial failure?
 
 ## Contributions required for acceptance
 
-1. A protocol-neutral fault model and terminal-record schema for the complete
-   predictive-remediation chain.
-2. An effect-grounded oracle that separates decision correctness, execution
-   authorization, observed effect, recovery success, and observation fidelity.
-3. An automated cut-set/minimization method for interacting assurance faults.
+1. A protocol-neutral canonical workflow/effect model that separates untrusted
+   agent proposals from trusted identity, authority, resource, dependency,
+   conflict, contract, and state facts.
+2. An effect-grounded conformance oracle covering protocol equivalence,
+   complete mediation, dependency authenticity, schedule invariance, decision
+   correctness, observed effects, recovery, and observation fidelity.
+3. A cross-layer fault model and automated cut-set minimizer for failures in
+   contracts, adapters, binding, graph validation, scheduling, authorization,
+   delivery, compensation, and observation.
 4. A controlled comparison on two maintained public microservice systems,
-   with a third-system replication if feasible.
-5. A reusable artifact containing locked dependencies, frozen proposals,
-   replay tools, analysis, and curated counterexamples.
+   supplemented by a protocol-adapter conformance suite.
+5. A reusable artifact containing locked dependencies, frozen proposals and
+   workflows, replay tools, analysis, and curated counterexamples.
 
 ## Experimental systems
 
@@ -49,14 +59,22 @@ assurance mechanism itself.
 - Guardrails: no guard, JSON schema + allowlist, OPA or Cedar policy-only,
   Guardian trusted binding + policy, and an always-deny sanity baseline.
 
+Protocol scope: use OpenAPI/HTTP and gRPC on the realistic systems first. Add
+GraphQL, SOAP/WSDL, and AsyncAPI as adapter-conformance subjects unless a
+maintained public system supports a credible end-to-end effect experiment.
+Breadth of parser fixtures must not be presented as breadth of deployment
+evidence.
+
 Use the same proposed action, starting state, load trace, and injected faults
 for every guardrail. Each actuator must carry a unique experiment and action ID
 so duplicate and substituted execution can be detected independently.
 
 ## Factorial design
 
-Layers: telemetry/evidence, predictor, binding, policy, enforcement, and
-observation. Start with all single faults and all pairwise cross-layer faults;
+Layers: input/provenance, predictor, protocol contract/adapter, binding,
+dependency/conflict graph, policy, scheduler/retry state, broker/delivery,
+environment effect, response/observation, and compensation/recording. Start
+with all single faults and all pairwise cross-layer faults;
 promote only failure-preserving pairs into higher-order search. Include benign
 perturbations and hard negatives to measure availability and false blocking.
 

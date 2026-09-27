@@ -1,10 +1,16 @@
 # SENTINEL
 
-SENTINEL is an effect-grounded fault-injection harness for evaluating deterministic guardrails around predictive action systems. This repository is intentionally separate from Guardian and ARIA:
+SENTINEL is an effect-grounded conformance and fault-injection harness for
+evaluating deterministic boundaries around probabilistic agent workflows. The
+target boundary treats every model input and output as data, binds actions to
+trusted contracts and authority, validates dependency/conflict semantics,
+mediates execution, and checks responses against independent effects. This
+repository is intentionally separate from Guardian and ARIA:
 
 - **ARIA** supplies fallible remediation proposals;
-- **Guardian** is the bundled reference deterministic guardrail under test;
-- **SENTINEL** injects faults and grades actual effects and recovery.
+- **Guardian** is the bundled reference deterministic boundary under test;
+- **SENTINEL** injects faults and grades conformance, actual effects, and
+  recovery.
 
 This private research monorepo contains a provenance-recorded snapshot of the
 Guardian reference implementation. The public `guardian-workshop` remains an
@@ -77,4 +83,7 @@ SENTINEL_OPA_BIN="$PWD/_tools/opa" python -m pytest
 This slice uses a deterministic simulator, not a live Kubernetes cluster. Its purpose is to validate experiment contracts, oracle behavior, deterministic replay, and fault plumbing before expensive model or cluster runs. It does not establish production safety.
 
 The publication target and evidence gates are specified in
-`paper/DSN_2027_PLAN.md`.
+`paper/DSN_2027_PLAN.md`. The primary-source gap review is in
+`docs/DETERMINISTIC_BOUNDARY_LITERATURE_REVIEW.md`; the proposed multi-step,
+multi-protocol design is in `docs/WORKFLOW_BOUNDARY_ARCHITECTURE.md`. That
+workflow design is planned work and must not be described as implemented.
