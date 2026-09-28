@@ -66,6 +66,30 @@ without silently changing hypotheses or the test partition.
 Do not begin with a new SENTINEL dataset. First establish that the harness can
 recover known results and known benchmark flaws.
 
+### Stage A milestone after iteration 4
+
+The development-only AgentDojo subset is frozen in
+`experiments/protocol/agentdojo_development_subset.json`. It targets the exact
+AgentDojo 0.1.34 revision locked by CaMeL and benchmark version v1.2: 16 user
+tasks and 16 injection tasks form 64 within-suite adversarial pairs, with all
+unlisted native tasks withheld from tuning.
+
+The model-free audit found two distinct validation defects that must be reported
+without replacing the native metric:
+
+1. the released injectability checker discards current typed tool-content
+   blocks and labels all 97 user tasks non-injectable while the command exits
+   zero; and
+2. one frozen workspace pair executes the exact attacker `send_email` effect,
+   but `InjectionTask0` returns false because its broad subject search matches
+   both the injection-bearing source email and the newly sent email.
+
+The version-pinned validator in `scripts/validate_agentdojo_artifact.py` fails
+closed on revision drift, unknown task IDs, selected ground-truth failures, and
+undeclared scorer disagreements. Original AgentDojo values remain in their
+native namespace; explicit `attack_goal_achieved` and later independent-effect
+fields are additional measurements.
+
 ### Stage B: reproduce representative defenses
 
 Use one representative from each enforcement family:
