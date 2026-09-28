@@ -4,9 +4,9 @@
   "started_at": "2026-09-28",
   "status": "active",
   "hard_iteration_limit": 28,
-  "completed_iterations": 1,
-  "next_iteration": 2,
-  "last_completed": "experiments/reproduction_campaign/iterations/iteration-01.md",
+  "completed_iterations": 2,
+  "next_iteration": 3,
+  "last_completed": "experiments/reproduction_campaign/iterations/iteration-02.md",
   "active_run": null,
   "next_check_at": null,
   "milestone_iterations": [4, 8, 12, 16, 20, 24, 28],
@@ -19,7 +19,11 @@
   ],
   "notes": [
     "Exact reproduction, artifact replication, and conceptual reimplementation are separate evidence classes.",
-    "No paid model use is authorized for this campaign."
+    "No paid model use is authorized for this campaign.",
+    "Iteration 2 first background clone was interrupted before checkout and did not count; its partial directory was preserved under /tmp/sentinel-interrupted-runs.",
+    "AgentDojo exact checkout 089ed468 completed a Python 3.12 editable install and all 32 collected unit tests passed. The loose dependency install differs materially from the repository lockfile and is not yet an exact locked-environment reproduction.",
+    "CaMeL exact checkout f083b6b passed all 126 collected released tests after explicitly installing pytest 8.3.5 from the released lock; the dependency group is not a pip extra.",
+    "Loose pip installs for AgentDojo and CaMeL drift from their uv locks, so iteration 2 establishes source executability rather than exact environment reproduction.",
+    "Agent-C's full archived requirements unconditionally include CUDA/NVIDIA, torch 2.8.0, and triton 3.4.0 and are not directly portable to Darwin arm64; a lean tau2 install will be an artifact replication with substitution."
   ]
 }
-
