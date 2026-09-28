@@ -4,9 +4,9 @@
   "started_at": "2026-09-28",
   "status": "active",
   "hard_iteration_limit": 28,
-  "completed_iterations": 2,
-  "next_iteration": 3,
-  "last_completed": "experiments/reproduction_campaign/iterations/iteration-02.md",
+  "completed_iterations": 3,
+  "next_iteration": 4,
+  "last_completed": "experiments/reproduction_campaign/iterations/iteration-03.md",
   "active_run": null,
   "next_check_at": null,
   "milestone_iterations": [4, 8, 12, 16, 20, 24, 28],
@@ -24,6 +24,8 @@
     "AgentDojo exact checkout 089ed468 completed a Python 3.12 editable install and all 32 collected unit tests passed. The loose dependency install differs materially from the repository lockfile and is not yet an exact locked-environment reproduction.",
     "CaMeL exact checkout f083b6b passed all 126 collected released tests after explicitly installing pytest 8.3.5 from the released lock; the dependency group is not a pip extra.",
     "Loose pip installs for AgentDojo and CaMeL drift from their uv locks, so iteration 2 establishes source executability rather than exact environment reproduction.",
-    "Agent-C's full archived requirements unconditionally include CUDA/NVIDIA, torch 2.8.0, and triton 3.4.0 and are not directly portable to Darwin arm64; a lean tau2 install will be an artifact replication with substitution."
+    "Agent-C's full archived requirements unconditionally include CUDA/NVIDIA, torch 2.8.0, and triton 3.4.0 and are not directly portable to Darwin arm64; a lean tau2 install will be an artifact replication with substitution.",
+    "AgentDojo v1.1.2 ground truths passed for 97 user and 27 injection tasks, and four stratified utility/attack-goal scorer sanity pairs passed.",
+    "AgentDojo's released default suite checker falsely labels all 97 current-format user tasks non-injectable because is_task_injectable filters for string content before calling a converter that expects typed content blocks; it also exits zero after printing four suite failures. A representation-aware diagnostic finds all 97 injectable."
   ]
 }
