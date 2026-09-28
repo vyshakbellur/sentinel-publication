@@ -87,5 +87,7 @@ The publication target and evidence gates are specified in
 `docs/DETERMINISTIC_BOUNDARY_LITERATURE_REVIEW.md`; the proposed multi-step,
 multi-protocol design is in `docs/WORKFLOW_BOUNDARY_ARCHITECTURE.md`; and the
 hostile-calendar benchmark is specified in
-`docs/CASE_STUDY_CALENDAR_PROMPTWARE.md`. Those designs are planned work and
-must not be described as implemented.
+`docs/CASE_STUDY_CALENDAR_PROMPTWARE.md`. The 18-work artifact audit, common
+dataset strategy, and reproduction protocol are in
+`docs/BASELINE_REPRODUCTION_STUDY.md`. Those designs are planned work and must
+not be described as implemented.
