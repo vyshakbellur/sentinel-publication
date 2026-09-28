@@ -4,9 +4,9 @@
   "started_at": "2026-09-28",
   "status": "active",
   "hard_iteration_limit": 28,
-  "completed_iterations": 12,
-  "next_iteration": 13,
-  "last_completed": "experiments/reproduction_campaign/iterations/iteration-12.md",
+  "completed_iterations": 13,
+  "next_iteration": 14,
+  "last_completed": "experiments/reproduction_campaign/iterations/iteration-13.md",
   "active_run": null,
   "next_check_at": null,
   "milestone_iterations": [4, 8, 12, 16, 20, 24, 28],
@@ -56,6 +56,10 @@
     "Iteration 11 verdict: continue. The positive result supports complete authenticated action-tuple binding on one real released policy, not a general efficacy claim. Milestone 12 must audit broader Agent-C policy coverage and replay a stratified set.",
     "Milestone 12 audited all 19 released Agent-C write policies and 67 arguments: 13 arguments are syntactically confirmation-bound, only airline cancel_reservation binds its complete write tuple, and 40 arguments have a wildcard occurrence across 12 policies.",
     "Three domain-stratified checker replays admitted a same-identity locally valid value change while denying the paired identity substitution: retail cancellation reason, airline certificate amount, and telecom suspension reason.",
-    "Milestone 12 verdict: continue and pivot to Fides. Complete authenticated tuple binding survives as a complementary candidate contribution, but current evidence is formula-level and does not establish end-to-end exploit rates, effects, or general superiority over Agent-C."
+    "Milestone 12 verdict: continue and pivot to Fides. Complete authenticated tuple binding survives as a complementary candidate contribution, but current evidence is formula-level and does not establish end-to-end exploit rates, effects, or general superiority over Agent-C.",
+    "Iteration 13 executed the pinned Fides tutorial's model-free core under Python 3.13: nine definition cells ran exactly and three mixed demo cells contributed only their released policy functions; no Azure or paid model call was made.",
+    "All 12 deterministic decisions matched across the tutorial URL, reader-set declassification, and combined policies. The five-email label joined to untrusted integrity and Bob-only readership.",
+    "Fides label inference in the tutorial trusts an @contoso.com sender string regardless of hostile body content, exposing an explicit adapter-label assumption rather than an end-to-end authentication flaw.",
+    "Iteration 13 verdict: continue. Reconstruct a minimal Fides-style AgentDojo condition with native scorers and a paired correct-label/mislabeled-adapter fault, clearly labeled as reconstruction."
   ]
 }
