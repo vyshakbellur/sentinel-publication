@@ -4,9 +4,9 @@
   "started_at": "2026-09-28",
   "status": "active",
   "hard_iteration_limit": 28,
-  "completed_iterations": 10,
-  "next_iteration": 11,
-  "last_completed": "experiments/reproduction_campaign/iterations/iteration-10.md",
+  "completed_iterations": 11,
+  "next_iteration": 12,
+  "last_completed": "experiments/reproduction_campaign/iterations/iteration-11.md",
   "active_run": null,
   "next_check_at": null,
   "milestone_iterations": [4, 8, 12, 16, 20, 24, 28],
@@ -50,6 +50,9 @@
     "Iteration 9 verdict: continue. Semantically compile a stratified set of real benign rules and replay model-free traces before attempting any model-backed evaluation.",
     "Iteration 10 semantically compiled three released Agent-C rules using tool signatures derived from the pinned tau2 source: retail modify_pending_order_address, airline cancel_reservation, and telecom suspend_line.",
     "The released retail address-change rule admitted its baseline and independently admitted substitutions of address1, address2, city, state, country, and zip after confirmation of the same order, while denying a substituted order identifier.",
-    "Iteration 10 verdict: continue. Agent-C overlaps temporal resource binding but leaves a released complete-tuple authorization gap. Compare a minimal SENTINEL canonical intent envelope on the identical eight-case matrix next."
+    "Iteration 10 verdict: continue. Agent-C overlaps temporal resource binding but leaves a released complete-tuple authorization gap. Compare a minimal SENTINEL canonical intent envelope on the identical eight-case matrix next.",
+    "Iteration 11 added opt-in complete argument-tuple binding to the trusted capability manifest and binding context, including fail-closed missing, omitted, and changed-argument handling.",
+    "On the paired eight-case address matrix, schema-only preserved the baseline and blocked 0/7 mutations, released Agent-C preserved the baseline and blocked 1/7, always-deny blocked 7/7 but lost the baseline, and SENTINEL preserved the baseline and blocked 7/7.",
+    "Iteration 11 verdict: continue. The positive result supports complete authenticated action-tuple binding on one real released policy, not a general efficacy claim. Milestone 12 must audit broader Agent-C policy coverage and replay a stratified set."
   ]
 }

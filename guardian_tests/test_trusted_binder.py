@@ -276,3 +276,123 @@ def test_session_must_be_tenant_bound(binder):
     with pytest.raises(BindingError) as exc:
         binder.bind(proposal, bad)
     assert exc.value.code == "SESSION_TENANT_MISMATCH"
+
+
+def test_tuple_bound_capability_accepts_exact_trusted_arguments():
+    binder = _tuple_bound_address_binder()
+    approved = _approved_address()
+    action = binder.bind(
+        AgentProposal("modify_pending_order_address", approved),
+        _address_context(approved),
+    )
+    assert action.arguments == approved
+    assert action.protocol_evidence["authorized_arguments_digest"]
+
+
+@pytest.mark.parametrize(
+    ("field", "replacement"),
+    [
+        ("order_id", "#ORDER-B"),
+        ("address1", "99 Attacker Avenue"),
+        ("address2", "Unit 404"),
+        ("city", "Elsewhere"),
+        ("state", "ZZ"),
+        ("country", "Neverland"),
+        ("zip", "99999"),
+    ],
+)
+def test_tuple_bound_capability_rejects_each_value_substitution(field, replacement):
+    binder = _tuple_bound_address_binder()
+    approved = _approved_address()
+    changed = {**approved, field: replacement}
+    with pytest.raises(BindingError) as exc:
+        binder.bind(
+            AgentProposal("modify_pending_order_address", changed),
+            _address_context(approved),
+        )
+    assert exc.value.code == "AUTHORIZED_ARGUMENT_VALUE_MISMATCH"
+
+
+def test_tuple_bound_capability_requires_trusted_tuple():
+    binder = _tuple_bound_address_binder()
+    with pytest.raises(BindingError) as exc:
+        binder.bind(
+            AgentProposal("modify_pending_order_address", _approved_address()),
+            _address_context(None),
+        )
+    assert exc.value.code == "AUTHORIZED_ARGUMENTS_MISSING"
+
+
+def test_tuple_bound_capability_rejects_omitted_argument():
+    binder = _tuple_bound_address_binder()
+    approved = _approved_address()
+    omitted = {name: value for name, value in approved.items() if name != "address2"}
+    with pytest.raises(BindingError) as exc:
+        binder.bind(
+            AgentProposal("modify_pending_order_address", omitted),
+            _address_context(approved),
+        )
+    assert exc.value.code == "REQUIRED_ARGUMENT_MISSING"
+
+
+def _approved_address() -> dict[str, str]:
+    return {
+        "order_id": "#ORDER-A",
+        "address1": "10 Trusted Street",
+        "address2": "",
+        "city": "Boston",
+        "state": "MA",
+        "country": "USA",
+        "zip": "02110",
+    }
+
+
+def _address_context(authorized_arguments) -> BindingContext:
+    return BindingContext(
+        principal={"id": "user-1", "tenant_id": "tenant-a"},
+        agent={"id": "agent-1"},
+        delegation={"id": "delegation-1"},
+        session={"id": "session-1", "tenant_id": "tenant-a"},
+        protocol_evidence={"id": "request-1", "protocol": "rest"},
+        authenticated_capability="modify_pending_order_address",
+        policy_version="policy-tuple-v1",
+        tenant_id="tenant-a",
+        input_provenance=("trusted-task-envelope-1",),
+        authorized_arguments=authorized_arguments,
+    )
+
+
+def _tuple_bound_address_binder() -> TrustedAttributeBinder:
+    arguments = {
+        name: ArgumentSpec("string", required=True) for name in _approved_address()
+    }
+    return TrustedAttributeBinder(
+        CapabilityCatalog(
+            [
+                CapabilityDefinition(
+                    name="modify_pending_order_address",
+                    intent="WRITE",
+                    operation="modify",
+                    arguments=arguments,
+                    resource_argument="order_id",
+                    fixed_destination_id="retail-order-service",
+                    effects=("change_shipping_address",),
+                    allowed_protocols=frozenset({"rest"}),
+                    bind_all_arguments=True,
+                )
+            ]
+        ),
+        ResourceCatalog(
+            [ResourceDefinition("#ORDER-A", "internal", "tenant-a")]
+        ),
+        DestinationCatalog(
+            [
+                DestinationDefinition(
+                    "retail-order-service",
+                    "internal_trusted",
+                    "https://retail.internal.example/orders",
+                    "tenant-a",
+                )
+            ]
+        ),
+    )

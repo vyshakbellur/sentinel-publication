@@ -118,6 +118,7 @@ class CapabilityDefinition:
     source_classification: str = "public"
     effects: tuple[str, ...] = ()
     allowed_protocols: frozenset[str] = frozenset()
+    bind_all_arguments: bool = False
 
     def manifest_record(self) -> dict[str, Any]:
         return {
@@ -134,6 +135,7 @@ class CapabilityDefinition:
             "source_classification": self.source_classification,
             "effects": list(self.effects),
             "allowed_protocols": sorted(self.allowed_protocols),
+            "bind_all_arguments": self.bind_all_arguments,
         }
 
 
@@ -174,6 +176,7 @@ class BindingContext:
     destination_id: str | None = None
     input_provenance: tuple[str, ...] = ()
     presented_manifest_digest: str | None = None
+    authorized_arguments: Mapping[str, Any] | None = None
 
 
 @dataclass(frozen=True)

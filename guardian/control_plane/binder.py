@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import hashlib
+from collections.abc import Mapping
 from typing import Any
 
 from guardian.control_plane.catalogs import (
@@ -17,6 +19,7 @@ from guardian.control_plane.models import (
     CapabilityDefinition,
     DestinationDefinition,
     _copy_json,
+    canonical_json,
 )
 from guardian.layers.classifier import IntentType
 
@@ -63,6 +66,9 @@ class TrustedAttributeBinder:
         capability = self.capabilities.resolve(proposal.capability_name)
         self._validate_capability(capability, context)
         arguments = self._validate_arguments(capability, proposal.arguments)
+        authorized_arguments = self._bind_authorized_arguments(
+            capability, arguments, context
+        )
 
         resource_id = context.resource_id
         if resource_id is None and capability.resource_argument:
@@ -100,6 +106,10 @@ class TrustedAttributeBinder:
                 "tenant_id": context.tenant_id,
             }
         )
+        if authorized_arguments is not None:
+            protocol_evidence["authorized_arguments_digest"] = hashlib.sha256(
+                canonical_json(authorized_arguments)
+            ).hexdigest()
 
         return CanonicalAction(
             principal=_copy_json(context.principal),
@@ -236,6 +246,40 @@ class TrustedAttributeBinder:
                     f"argument {name!r} must be {spec.json_type}",
                 )
         return normalized
+
+    def _bind_authorized_arguments(
+        self,
+        capability: CapabilityDefinition,
+        proposed: dict[str, Any],
+        context: BindingContext,
+    ) -> dict[str, Any] | None:
+        """Fail closed when a tuple-bound capability differs from trusted intent."""
+        if not capability.bind_all_arguments:
+            return None
+        if context.authorized_arguments is None:
+            raise BindingError(
+                "AUTHORIZED_ARGUMENTS_MISSING",
+                "capability requires a complete trusted argument tuple",
+            )
+        if not isinstance(context.authorized_arguments, Mapping):
+            raise BindingError(
+                "TRUSTED_CONTEXT_INVALID",
+                "authorized arguments must be a trusted mapping",
+            )
+        authorized = self._validate_arguments(
+            capability, context.authorized_arguments
+        )
+        if set(proposed) != set(authorized):
+            raise BindingError(
+                "AUTHORIZED_ARGUMENT_SET_MISMATCH",
+                "proposed argument names differ from the trusted tuple",
+            )
+        if canonical_json(proposed) != canonical_json(authorized):
+            raise BindingError(
+                "AUTHORIZED_ARGUMENT_VALUE_MISMATCH",
+                "proposed argument values differ from the trusted tuple",
+            )
+        return authorized
 
     def _resolve_destination(
         self,
