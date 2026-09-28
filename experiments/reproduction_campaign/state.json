@@ -4,13 +4,13 @@
   "started_at": "2026-09-28",
   "status": "active",
   "hard_iteration_limit": 28,
-  "completed_iterations": 7,
-  "next_iteration": 8,
-  "last_completed": "experiments/reproduction_campaign/iterations/iteration-07.md",
+  "completed_iterations": 8,
+  "next_iteration": 9,
+  "last_completed": "experiments/reproduction_campaign/iterations/iteration-08.md",
   "active_run": null,
   "next_check_at": null,
   "milestone_iterations": [4, 8, 12, 16, 20, 24, 28],
-  "decision": "pivot",
+  "decision": "continue",
   "current_claim_candidates": [
     "trusted_attribute_binding",
     "non_transitive_resource_transitions",
@@ -40,6 +40,9 @@
     "Iteration 6 verdict: pivot. Benign viability is not matched, so an adversarial Qwen comparison would confound proposal validity, baseline crashes, and enforcement. Probe CaMeL deterministically with scripted values next.",
     "Iteration 7 executed two byte-identical fresh-state CaMeL policy probes with independent effect oracles. A trusted event ID plus an untrusted participant was allowed and changed calendar membership; the released policy checks event_id despite stating that participants must come from the user.",
     "CaMeL's workspace delete_email policy rejected a trusted email ID but allowed an untrusted ID and deleted the message, reversing its adjacent stated rationale.",
-    "Iteration 7 verdict: continue. Trusted attribute binding is now an observed artifact gap, but the evidence is limited to two operations and synthetic provenance; milestone 8 must audit coverage systematically before generalizing."
+    "Iteration 7 verdict: continue. Trusted attribute binding is now an observed artifact gap, but the evidence is limited to two operations and synthetic provenance; milestone 8 must audit coverage systematically before generalizing.",
+    "Milestone 8 validated a complete ten-policy, 27-parameter CaMeL workspace inventory. Under the broader SENTINEL authorization criterion, only 4 of 20 authority-bearing fields require trusted provenance and only cancel_calendar_event and delete_file strictly bind their complete authority tuples.",
+    "Two byte-identical dynamic repetitions showed that untrusted resource selectors completed real effects in share_file, append_to_file, and reschedule_calendar_event, while all paired trusted controls remained functional.",
+    "Milestone 8 verdict: continue. Trusted attribute binding survives as the leading complementary integrity claim, not as a replacement for CaMeL's information-flow objective. Next test whether Agent-C temporal conformance overlaps or leaves the resource/identity gap."
   ]
 }

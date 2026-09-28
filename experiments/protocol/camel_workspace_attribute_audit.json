@@ -1,0 +1,87 @@
+{
+  "schema_version": "sentinel.camel-workspace-attribute-audit.v1",
+  "artifact": {
+    "camel_revision": "f083b6b396399d3b3c7f2ddaf613a5945eaf32d8",
+    "agentdojo_revision": "928bbae820a89556b03de5cf818eb350cd6082d1",
+    "benchmark_version": "v1.2",
+    "suite": "workspace",
+    "policy_source_sha256": "d51428deb08ffbb242b0fbc4aaf6a082b3ac7c9a5434a490025aa6de6ab3f541"
+  },
+  "authority_roles": ["resource", "destination", "permission", "schedule"],
+  "mode_definitions": {
+    "trusted_integrity": "The field is required to have trusted provenance in the released policy.",
+    "inverted_trust": "The released policy denies trusted provenance and permits untrusted provenance.",
+    "trusted_or_confidentiality": "Trusted provenance short-circuits to allow; otherwise only payload readability is checked.",
+    "confidentiality_only": "The policy constrains readers or disclosure but does not require trusted intent for the field.",
+    "unchecked": "No provenance or reader constraint is applied to the field by the operation-specific policy."
+  },
+  "operations": {
+    "send_email": {
+      "fields": {
+        "recipients": {"role": "destination", "mode": "trusted_or_confidentiality"},
+        "subject": {"role": "payload", "mode": "confidentiality_only"},
+        "body": {"role": "payload", "mode": "confidentiality_only"},
+        "attachments": {"role": "resource", "mode": "confidentiality_only"},
+        "cc": {"role": "destination", "mode": "trusted_or_confidentiality"},
+        "bcc": {"role": "destination", "mode": "trusted_or_confidentiality"}
+      }
+    },
+    "delete_email": {
+      "fields": {
+        "email_id": {"role": "resource", "mode": "inverted_trust"}
+      }
+    },
+    "create_calendar_event": {
+      "fields": {
+        "title": {"role": "payload", "mode": "confidentiality_only"},
+        "start_time": {"role": "schedule", "mode": "confidentiality_only"},
+        "end_time": {"role": "schedule", "mode": "confidentiality_only"},
+        "description": {"role": "payload", "mode": "confidentiality_only"},
+        "participants": {"role": "destination", "mode": "trusted_or_confidentiality"},
+        "location": {"role": "payload", "mode": "confidentiality_only"}
+      }
+    },
+    "cancel_calendar_event": {
+      "fields": {
+        "event_id": {"role": "resource", "mode": "trusted_integrity"}
+      }
+    },
+    "reschedule_calendar_event": {
+      "fields": {
+        "event_id": {"role": "resource", "mode": "unchecked"},
+        "new_start_time": {"role": "schedule", "mode": "confidentiality_only"},
+        "new_end_time": {"role": "schedule", "mode": "confidentiality_only"}
+      }
+    },
+    "add_calendar_event_participants": {
+      "fields": {
+        "event_id": {"role": "resource", "mode": "trusted_integrity"},
+        "participants": {"role": "destination", "mode": "unchecked"}
+      }
+    },
+    "create_file": {
+      "fields": {
+        "filename": {"role": "resource", "mode": "unchecked"},
+        "content": {"role": "payload", "mode": "unchecked"}
+      }
+    },
+    "delete_file": {
+      "fields": {
+        "file_id": {"role": "resource", "mode": "trusted_integrity"}
+      }
+    },
+    "share_file": {
+      "fields": {
+        "file_id": {"role": "resource", "mode": "unchecked"},
+        "email": {"role": "destination", "mode": "trusted_integrity"},
+        "permission": {"role": "permission", "mode": "unchecked"}
+      }
+    },
+    "append_to_file": {
+      "fields": {
+        "file_id": {"role": "resource", "mode": "unchecked"},
+        "content": {"role": "payload", "mode": "confidentiality_only"}
+      }
+    }
+  }
+}

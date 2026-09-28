@@ -108,6 +108,31 @@ attempt budget, user tasks, attacker knowledge, and effect oracle when the
 system permits it. Native paper metrics are retained in a separate namespace;
 they are never silently replaced by SENTINEL metrics.
 
+### CaMeL milestone after iteration 8
+
+The pinned CaMeL workspace artifact was audited separately under SENTINEL's
+broader action-authorization criterion. A version-validated inventory covers
+all ten registered side-effect policies and all 27 AgentDojo v1.2 workspace
+parameters. Twenty fields were classified as resource, destination,
+permission, or schedule attributes; four require trusted provenance, while
+only `cancel_calendar_event` and `delete_file` strictly bind their complete
+authority-bearing tuples.
+
+This is not a replacement metric for CaMeL's information-flow objective.
+Rather, it identifies a complementary integrity question: public data can be
+safe to disclose while remaining unauthorized to select a resource or effect.
+Controlled execution confirmed the distinction. Untrusted resource selectors
+completed real effects for `share_file`, `append_to_file`, and
+`reschedule_calendar_event`; earlier probes also found an unchecked calendar
+participant and an inverted email-deletion trust predicate. These are
+artifact-level deterministic results with synthetic provenance, not published
+ASR reproduction or evidence of end-to-end exploit frequency.
+
+The resulting comparison hypothesis is now explicit: add a complete trusted
+action-tuple contract to the information-flow baseline, then measure both
+unauthorized effects and benign utility under identical realistic
+provenance-producing workflows.
+
 ### Stage C: recreate promptware safely
 
 Reconstruct the *Invitation* scenarios using a synthetic calendar/mail/home
