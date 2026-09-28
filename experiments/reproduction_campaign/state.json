@@ -4,9 +4,9 @@
   "started_at": "2026-09-28",
   "status": "active",
   "hard_iteration_limit": 28,
-  "completed_iterations": 11,
-  "next_iteration": 12,
-  "last_completed": "experiments/reproduction_campaign/iterations/iteration-11.md",
+  "completed_iterations": 12,
+  "next_iteration": 13,
+  "last_completed": "experiments/reproduction_campaign/iterations/iteration-12.md",
   "active_run": null,
   "next_check_at": null,
   "milestone_iterations": [4, 8, 12, 16, 20, 24, 28],
@@ -53,6 +53,9 @@
     "Iteration 10 verdict: continue. Agent-C overlaps temporal resource binding but leaves a released complete-tuple authorization gap. Compare a minimal SENTINEL canonical intent envelope on the identical eight-case matrix next.",
     "Iteration 11 added opt-in complete argument-tuple binding to the trusted capability manifest and binding context, including fail-closed missing, omitted, and changed-argument handling.",
     "On the paired eight-case address matrix, schema-only preserved the baseline and blocked 0/7 mutations, released Agent-C preserved the baseline and blocked 1/7, always-deny blocked 7/7 but lost the baseline, and SENTINEL preserved the baseline and blocked 7/7.",
-    "Iteration 11 verdict: continue. The positive result supports complete authenticated action-tuple binding on one real released policy, not a general efficacy claim. Milestone 12 must audit broader Agent-C policy coverage and replay a stratified set."
+    "Iteration 11 verdict: continue. The positive result supports complete authenticated action-tuple binding on one real released policy, not a general efficacy claim. Milestone 12 must audit broader Agent-C policy coverage and replay a stratified set.",
+    "Milestone 12 audited all 19 released Agent-C write policies and 67 arguments: 13 arguments are syntactically confirmation-bound, only airline cancel_reservation binds its complete write tuple, and 40 arguments have a wildcard occurrence across 12 policies.",
+    "Three domain-stratified checker replays admitted a same-identity locally valid value change while denying the paired identity substitution: retail cancellation reason, airline certificate amount, and telecom suspension reason.",
+    "Milestone 12 verdict: continue and pivot to Fides. Complete authenticated tuple binding survives as a complementary candidate contribution, but current evidence is formula-level and does not establish end-to-end exploit rates, effects, or general superiority over Agent-C."
   ]
 }

@@ -133,6 +133,34 @@ action-tuple contract to the information-flow baseline, then measure both
 unauthorized effects and benign utility under identical realistic
 provenance-producing workflows.
 
+### Agent-C milestone after iteration 12
+
+The pinned Zenodo artifact's model-free checker was isolated on Darwin arm64
+with documented dependency substitutions. All 31 nonempty released formulas
+grammar-parse; three domain-stratified formulas semantically compile, and a
+synthetic equality rule confirms that Agent-C can bind an authorization to the
+same resource identifier. These are artifact-replication results, not a
+reproduction of a reported model-backed number.
+
+A source-complete audit covers all 19 methods marked `ToolType.WRITE` across
+retail, airline, and telecom and their 67 arguments. Thirteen arguments are
+syntactically equated to `action_confirmed.action_id`; only the single-argument
+airline cancellation policy binds every write argument that way. Forty
+arguments have a wildcard in at least one target-event pattern across 12
+policies. This is a syntactic property of the released formulas, not proof that
+every unbound value is attacker-controlled or that Agent-C claims full-tuple
+authorization.
+
+Controlled checker replays preserved valid baselines and denied identity
+substitutions, while admitting a second locally valid retail cancellation
+reason, a second state-eligible airline certificate amount, and an alternative
+telecom suspension reason. Together with the six address-field substitutions
+from iterations 10–11, the evidence supports a complementary comparison:
+temporal conformance and state validity can coexist with the absence of a
+machine-checkable complete approval tuple. SENTINEL must still show how such a
+tuple is authentically constructed and amended without collapsing benign
+utility.
+
 ### Stage C: recreate promptware safely
 
 Reconstruct the *Invitation* scenarios using a synthetic calendar/mail/home
