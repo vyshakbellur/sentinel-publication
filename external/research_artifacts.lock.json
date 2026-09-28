@@ -1,0 +1,79 @@
+{
+  "schema_version": "sentinel.research-artifacts.v1",
+  "resolved_at": "2026-09-28",
+  "artifacts": [
+    {
+      "name": "AgentDojo",
+      "url": "https://github.com/ethz-spylab/agentdojo.git",
+      "revision": "089ed468cf3ed0322acc66b0211f26d9d90dbf60",
+      "evidence_class": "exact_candidate"
+    },
+    {
+      "name": "CaMeL",
+      "url": "https://github.com/google-research/camel-prompt-injection.git",
+      "revision": "f083b6b396399d3b3c7f2ddaf613a5945eaf32d8",
+      "evidence_class": "exact_candidate"
+    },
+    {
+      "name": "Fides",
+      "url": "https://github.com/microsoft/fides.git",
+      "revision": "669c046c4adbc56ee49c9672fdd30c54937ea062",
+      "evidence_class": "tutorial_only"
+    },
+    {
+      "name": "Agent-C landing repository",
+      "url": "https://github.com/structuredllm/agent-c.git",
+      "revision": "70b536ad9a867d445aa2944033ab06efe220d412",
+      "evidence_class": "placeholder"
+    },
+    {
+      "name": "Agent-C ICSE artifact",
+      "url": "https://doi.org/10.5281/zenodo.21095899",
+      "artifact": "agent-c-icse-artifact.zip",
+      "size_bytes": 66633222,
+      "checksum": "md5:e37f84c00035d7d254170e474e938424",
+      "evidence_class": "exact_candidate"
+    },
+    {
+      "name": "AgentSpec",
+      "url": "https://github.com/haoyuwang99/AgentSpec.git",
+      "revision": "e6fa3902e2cfb9681f454b355691b771f70543f8",
+      "evidence_class": "exact_candidate"
+    },
+    {
+      "name": "InjecAgent",
+      "url": "https://github.com/uiuc-kang-lab/InjecAgent.git",
+      "revision": "f19c9f2c79a41046eb13c03c51a24c567a8ffa07",
+      "evidence_class": "exact_candidate"
+    },
+    {
+      "name": "Agent Security Bench",
+      "url": "https://github.com/agiresearch/ASB.git",
+      "revision": "1f561dccf92d55302368fa67679b4ba9d9c8fdc4",
+      "evidence_class": "exact_candidate_with_known_protocol_issues"
+    },
+    {
+      "name": "MUZZLE",
+      "url": "https://github.com/gsiros/muzzle.git",
+      "revision": "9f3effa1668fa29dcba8f2454e711ddf9ef3c038",
+      "evidence_class": "exact_candidate"
+    },
+    {
+      "name": "AutoDojo",
+      "url": "https://github.com/xhOwenMa/AutoDojo.git",
+      "revision": "89413642ea43f33a98b54c5550b76b97621506dc",
+      "evidence_class": "exact_candidate"
+    },
+    {
+      "name": "Invitation Is All You Need",
+      "url": "https://arxiv.org/abs/2508.12175",
+      "evidence_class": "scenario_reconstruction_only"
+    },
+    {
+      "name": "ToolGate",
+      "url": "https://aclanthology.org/2026.findings-acl.470/",
+      "evidence_class": "paper_only_clean_room_baseline"
+    }
+  ]
+}
+

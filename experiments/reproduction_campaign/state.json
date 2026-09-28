@@ -1,0 +1,25 @@
+{
+  "schema_version": "sentinel.reproduction-campaign.v1",
+  "campaign": "sentinel-28-step-reproduction-campaign",
+  "started_at": "2026-09-28",
+  "status": "active",
+  "hard_iteration_limit": 28,
+  "completed_iterations": 1,
+  "next_iteration": 2,
+  "last_completed": "experiments/reproduction_campaign/iterations/iteration-01.md",
+  "active_run": null,
+  "next_check_at": null,
+  "milestone_iterations": [4, 8, 12, 16, 20, 24, 28],
+  "decision": "continue",
+  "current_claim_candidates": [
+    "trusted_attribute_binding",
+    "non_transitive_resource_transitions",
+    "independent_effect_observation",
+    "cross_layer_assurance_cut_sets"
+  ],
+  "notes": [
+    "Exact reproduction, artifact replication, and conceptual reimplementation are separate evidence classes.",
+    "No paid model use is authorized for this campaign."
+  ]
+}
+
