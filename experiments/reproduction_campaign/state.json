@@ -2,20 +2,20 @@
   "schema_version": "sentinel.reproduction-campaign.v1",
   "campaign": "sentinel-28-step-reproduction-campaign",
   "started_at": "2026-09-28",
-  "status": "active",
+  "status": "complete",
   "hard_iteration_limit": 28,
-  "completed_iterations": 27,
-  "next_iteration": 28,
-  "last_completed": "experiments/reproduction_campaign/iterations/iteration-27.md",
+  "completed_iterations": 28,
+  "next_iteration": null,
+  "last_completed": "experiments/reproduction_campaign/iterations/iteration-28.md",
   "active_run": null,
   "next_check_at": null,
   "milestone_iterations": [4, 8, 12, 16, 20, 24, 28],
-  "decision": "continue",
+  "decision": "stop",
   "current_claim_candidates": [
-    "trusted_complete_tuple_construction_reference_mechanism",
-    "cross_layer_effect_correspondence_primary_evaluation_claim",
-    "non_transitive_resource_transitions_engineered_experimental_factor",
-    "minimal_cross_layer_assurance_cut_sets_development_supported"
+    "cross_layer_effect_correspondence_development_supported_primary_evaluation_contribution",
+    "minimal_cross_layer_assurance_cut_sets_development_supported_structural_contribution",
+    "trusted_complete_tuple_construction_reference_mechanism_not_standalone_novelty",
+    "replication_and_negative_results_core"
   ],
   "notes": [
     "Exact reproduction, artifact replication, and conceptual reimplementation are separate evidence classes.",
@@ -121,6 +121,12 @@
     "The five names were transparently downgraded to a post-development prospective synthetic challenge set and executed across five defenses in 25 deterministic trials.",
     "Correct-label Fides reconstruction and SENTINEL each safely handled four of five cases and failed the duplicate-effect false-success case. SENTINEL detected the duplicate after it occurred but received no prevention credit.",
     "No confidence interval was calculated because the five purposively constructed cases are neither random nor exchangeable. The held-out confirmation and statistical publication gates remain missing.",
-    "Iteration 27 verdict: proceed to the iteration-28 final audit, add no further experiment, and choose the assurance/evaluation or replication/negative-results framing."
+    "Iteration 27 verdict: proceed to the iteration-28 final audit, add no further experiment, and choose the assurance/evaluation or replication/negative-results framing.",
+    "Milestone 28 hash-verified six source reports and inventoried 1,329 heterogeneous deterministic development trials, 240 unauthorized-effect observations, and 240 receipt/effect disagreements; these are never pooled into an effectiveness rate.",
+    "Zero published effectiveness numbers, zero exact Invitation scenarios, and zero valid confirmatory holdouts were reproduced or evaluated.",
+    "Cross-layer effect correspondence and minimal assurance cut sets survive only as development-supported evaluation contributions. Trusted tuple construction is a reference mechanism; resource transitions are an engineered factor.",
+    "Nominal superiority over correct-label IFC, general prevention from observation, and broad deterministic-boundary novelty are rejected or unsupported.",
+    "All nine final publication gates are false. The current manuscript is not ready for arXiv, ARR, Q1 journal, or flagship conference submission.",
+    "Final verdict: stop at iteration 28. Prefer a bounded workshop/artifact/technical-report rewrite now, or obtain live multi-system confirmation for a dependable-systems/security archival paper."
   ]
 }

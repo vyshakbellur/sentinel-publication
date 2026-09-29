@@ -1,51 +1,73 @@
 {
-  "schema_version": "sentinel.final-readiness-verdict.v1",
-  "reviewed_at": "2026-09-26",
-  "completed_cycles": 25,
-  "verdict": "not_publishable_as_research_paper",
-  "automation_status": "paused_at_cycle_budget",
+  "schema_version": "sentinel.final-readiness-verdict.v2",
+  "reviewed_at": "2026-09-29",
+  "campaign": "sentinel-28-step-reproduction-campaign",
+  "completed_iterations": 28,
+  "verdict": "not_ready_for_arxiv_arr_or_archival_submission",
+  "automation_status": "pause_after_hard_iteration_limit",
+  "paper_framing": "effect-grounded assurance evaluation with a replication and negative-results core",
   "supported_now": [
-    "defensible effect-grounded cross-layer methodology claim",
-    "31 verified references with claim limits",
-    "frozen fault catalog, primary contrasts, and study partition",
-    "five simulator guardrail conditions and exploratory mechanism ablations",
-    "12-row live-controller contract with blocked randomization and phase separation",
-    "Kubernetes readiness, restoration, RBAC, and audit-reconciliation contracts",
-    "same-host fresh-environment reproduction of the non-live artifact"
+    "public-artifact source executability and native scorer validation for AgentDojo",
+    "CaMeL public-artifact tests and deterministic policy probes",
+    "Agent-C artifact replication with documented dependency substitutions",
+    "Fides tutorial-core execution and an explicitly conceptual AgentDojo reconstruction",
+    "an official ToolGate artifact probe without published benchmark-number reproduction",
+    "a hash-chained action/effect evidence model that preserves native metric namespaces and missingness",
+    "development evidence for cross-layer receipt, effect, and state disagreements",
+    "development evidence for minimal SENTINEL prevention and silent-compromise cut sets",
+    "a reproducible negative result: SENTINEL did not outperform ideal correct-label IFC on matched synthetic matrices",
+    "a reproducible negative result: observation detected but did not prevent a duplicate effect"
   ],
-  "critical_blockers": [
-    "no disposable Kubernetes runtime is attached",
-    "Online Boutique has not been deployed or actuated",
-    "OTel Demo has not been deployed or actuated",
-    "no blinded live pilot, variance estimate, power calculation, or frozen repetition count exists",
-    "no repeated confirmatory live trials or uncertainty-bearing C1-C5 estimates exist",
-    "live oracle windows and Kubernetes audit reconciliation are uncalibrated",
-    "live ablations and independent-machine reproduction are incomplete",
-    "the manuscript retains result placeholders, has no generated figures, and is not in a venue template"
-  ],
-  "required_user_input": {
-    "environment": "A dedicated disposable Kubernetes cluster, never production, reachable through separate administrator, observer, and actuator contexts.",
-    "tooling": ["kubectl", "Helm"],
-    "capabilities": [
-      "deploy the pinned Online Boutique and OTel Demo revisions",
-      "apply least-privilege RBAC",
-      "enable and retrieve bounded RequestResponse audit events for deployments/scale",
-      "provide three independent deployment/load blocks per system"
-    ]
+  "strongest_surviving_contribution": {
+    "primary": "effect-grounded cross-layer conformance and fault analysis for deterministic agent boundaries",
+    "structural_result": "adapter or broker faults individually defeat prevention, while silent compromise in the constructed SENTINEL chain requires either fault plus observer omission",
+    "novelty_limit": "the contribution is an evaluation method and assurance analysis, not deterministic boundaries, IFC, temporal policy, Hoare contracts, typed actions, tuple equality, or application-state assertions"
   },
-  "resume_order": [
-    "run readiness and RBAC gates",
-    "execute one nominal Online Boutique smoke trial and reconcile its audit event",
-    "repeat the smoke boundary on OTel Demo",
-    "execute the blinded 360-cell pilot and freeze repetition count and analysis model",
-    "run the 580-cell descriptive census and powered 190-cell-per-block confirmatory study",
-    "run live ablations, regenerate figures and tables, perform independent reproduction, and re-audit claims"
+  "rejected_or_unsupported_claims": [
+    "SENTINEL invents the deterministic boundary around probabilistic agents",
+    "SENTINEL is nominally superior to correctly labeled IFC",
+    "the study reproduced Invitation Is All You Need production scenarios or reported rates",
+    "the deterministic adaptive harness estimates model prompt-injection susceptibility",
+    "effect observation prevents already completed unauthorized effects",
+    "the five milestone-24 identifiers form a valid held-out confirmatory set",
+    "the heterogeneous synthetic trial inventory estimates production effectiveness"
   ],
-  "prohibited_current_claims": [
-    "two realistic systems were evaluated",
-    "simulator proportions estimate deployed-system risk",
-    "Guardian significantly improves live-system safety",
-    "the empirical artifact was independently reproduced",
-    "the manuscript is ready for arXiv or peer review"
-  ]
+  "evidence_inventory": {
+    "descriptive_development_trials": 1329,
+    "completed_unauthorized_effect_observations": 240,
+    "receipt_effect_disagreements": 240,
+    "published_effectiveness_numbers_reproduced": 0,
+    "exact_invitation_scenarios_reproduced": 0,
+    "valid_confirmatory_holdouts_evaluated": 0,
+    "warning": "Counts span incompatible deterministic development matrices and must never be pooled into a rate."
+  },
+  "critical_blockers": [
+    "no matched official defense comparison on resettable public multi-service systems",
+    "no valid executable held-out confirmatory partition",
+    "no repeated probabilistic planner seeds or independent infrastructure blocks",
+    "no justified uncertainty intervals",
+    "no realistic multi-service effect experiment",
+    "no independently authenticated effect observer",
+    "no model-backed adaptive attack result",
+    "the manuscript still contains result placeholders and is not in a venue template",
+    "the final empirical artifact has not been independently reproduced"
+  ],
+  "recommended_routes": {
+    "current": "Revise into an honest workshop short paper, artifact paper, or technical report centered on the methodology and negative results; do not submit the present placeholder manuscript.",
+    "archival": "After live multi-system confirmation, target a dependable-systems or security-evaluation venue class such as DSN/ISSRE rather than an NLP review venue.",
+    "arr": "Poor fit unless the study adds model-backed, repeated NLP benchmark experiments and uncertainty-bearing language-model results.",
+    "q1_journal": "Premature until external validity, confirmation, statistics, observer authentication, and independent reproduction are complete."
+  },
+  "minimum_next_evidence": [
+    "run matched official baselines on at least two resettable public multi-service systems",
+    "use an observer authenticated independently from the guardrail and broker",
+    "freeze executable inputs, state snapshots, scorers, exclusions, and analysis before holdout outcomes",
+    "repeat probabilistic and infrastructure blocks with a justified statistical model",
+    "implement and ablate broker idempotency or compensation for ambiguous receipts and duplicate effects",
+    "replace manuscript placeholders, generate figures from immutable records, and reproduce on an independent machine"
+  ],
+  "final_audit": {
+    "path": "_workloads/reproduction/iteration-28-final-audit-v1/report.json",
+    "sha256": "feafd5641dee4d48a6599d7a9d5197a08e8f3149448b57136f1790026077711d"
+  }
 }

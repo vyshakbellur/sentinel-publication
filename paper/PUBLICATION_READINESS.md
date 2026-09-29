@@ -659,3 +659,32 @@ claim.
 After these conditions are met, rerun the full reviewer audit before any arXiv
 upload or peer-review submission. Until then, the allowed description is:
 **pre-results protocol plus simulator and controller-contract artifact**.
+
+## 28-step reproduction campaign closure — 2026-09-29
+
+The separate bounded reproduction campaign completed at its hard limit of 28
+iterations. Its hash-bound final report is
+`_workloads/reproduction/iteration-28-final-audit-v1/report.json` with SHA-256
+`feafd5641dee4d48a6599d7a9d5197a08e8f3149448b57136f1790026077711d`.
+
+The campaign strengthens—but does not overturn—the terminal reviewer verdict.
+It executed or probed public AgentDojo, CaMeL, Agent-C, Fides tutorial, and
+ToolGate artifacts at explicitly graded fidelity, but reproduced zero
+published effectiveness numbers. Invitation coverage remains conceptual with
+0/14 exact scenarios. The five planned holdouts had only names frozen, so
+valid confirmation remains absent.
+
+The strongest supported direction is effect-grounded cross-layer evaluation:
+native decisions, receipts, environment effects, and observation can disagree,
+and minimal cut-set analysis makes the required prevention and observation
+failures explicit. This is deterministic development evidence, not a deployed
+effectiveness estimate. Correct-label IFC and SENTINEL tied on the matched
+synthetic nominal matrices, and both failed the prospective duplicate-effect
+case; SENTINEL detected the duplicate but did not prevent it.
+
+The current manuscript remains blocked from arXiv-as-results, ARR, archival
+conference, and Q1-journal submission. A bounded workshop/artifact/technical
+report rewrite is reasonable only after all result placeholders are replaced
+with honestly scoped deterministic findings. The archival path still requires
+the live multi-system, authenticated-observer, executable-holdout,
+uncertainty-bearing, and independent-reproduction evidence listed above.

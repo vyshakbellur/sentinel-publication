@@ -1,0 +1,79 @@
+{
+  "schema_version": "sentinel.milestone28-final-audit-protocol.v1",
+  "status": "frozen-before-final-audit",
+  "source_reports": {
+    "milestone16": {"path": "_workloads/reproduction/iteration-16-claim-audit-v1/report.json", "sha256": "4a7a5cedd1cacc031dd778f90b73d3cecc9667018aa278782daaff729abe5443"},
+    "milestone20": {"path": "_workloads/reproduction/iteration-20-claim-audit-v1/report.json", "sha256": "d5bc56b8470b56bf018abeca3b0f8a5333ecc26c285e7372f05837220ba6ae7b"},
+    "milestone24": {"path": "_workloads/reproduction/iteration-24-fidelity-audit-v1/report.json", "sha256": "3dcea978772f3f2c5287b86e82e7973994e142b6a96e42f38e8d3916adb2baf0"},
+    "adaptive25": {"path": "_workloads/reproduction/iteration-25-adaptive-promptware-v1/report.json", "sha256": "f907098b06992617343f49b3efeace003429c304dcf7411e59ab284fb91015db"},
+    "cutsets26": {"path": "_workloads/reproduction/iteration-26-boundary-fault-cutsets-v1/report.json", "sha256": "dbb54433f3d38e1b3f7f23cf59c6332ca374b1215eada8eddd15b8c3a8a061d0"},
+    "challenge27": {"path": "_workloads/reproduction/iteration-27-prospective-challenges-v1/report.json", "sha256": "7665fe711b17f4d1085568bce7d26831bbb0547c83e172dbaa4147d283aec8cb"}
+  },
+  "publication_gates": {
+    "matched_official_published_baseline_trials": false,
+    "valid_held_out_confirmatory_results": false,
+    "probabilistic_repeated_seeds_or_blocks": false,
+    "uncertainty_intervals": false,
+    "realistic_multi_service_effects": false,
+    "independently_authenticated_observer": false,
+    "model_backed_adaptive_attack_results": false,
+    "complete_result_grounded_manuscript": false,
+    "venue_template_and_release_audit": false
+  },
+  "claim_decisions": {
+    "deterministic_boundary_novelty": "rejected_by_prior_art",
+    "ifc_provenance_novelty": "rejected_by_prior_art",
+    "temporal_workflow_enforcement_novelty": "rejected_by_prior_art",
+    "hoare_contract_novelty": "rejected_by_prior_art",
+    "typed_action_contract_novelty": "rejected_by_prior_art",
+    "trusted_complete_tuple_construction": "reference_mechanism_not_standalone_novelty",
+    "non_transitive_resource_transitions": "engineered_experimental_factor_not_novel_mechanism",
+    "cross_layer_effect_correspondence": "development_supported_primary_evaluation_contribution",
+    "minimal_cross_layer_assurance_cut_sets": "development_supported_structural_contribution",
+    "nominal_superiority_over_correct_ifc": "rejected_on_matched_synthetic_matrices",
+    "general_prevention_from_effect_observation": "rejected_by_duplicate_effect_case",
+    "published_defense_effectiveness": "unsupported"
+  },
+  "reproduction_grades": {
+    "agentdojo": "public_artifact_source_executability_and_native_scorer_validation_no_published_efficacy_number",
+    "camel": "public_artifact_tests_and_deterministic_policy_probes_no_published_efficacy_number",
+    "agent_c": "artifact_replication_with_dependency_substitutions_no_model_backed_number",
+    "fides": "tutorial_core_execution_plus_conceptual_agentdojo_reconstruction",
+    "toolgate": "official_artifact_deterministic_probe_no_published_benchmark_number",
+    "invitation": "conceptual_behavioral_reconstruction_zero_of_fourteen_exact_scenarios",
+    "sentinel_calendar_resource_adaptive_cutsets": "deterministic_synthetic_development_evidence",
+    "iteration27_cases": "postdevelopment_prospective_synthetic_challenge_set_not_confirmation"
+  },
+  "readiness_verdict": {
+    "arxiv_research_preprint_ready": false,
+    "arr_ready": false,
+    "q1_or_flagship_ready": false,
+    "current_artifact_grade": "pre_results_protocol_plus_deterministic_development_artifact",
+    "recommended_current_framing": "effect_grounded_assurance_evaluation_with_replication_and_negative_results_core",
+    "recommended_near_term_venue_class": "workshop_short_paper_or_artifact_track_after_result_grounded_manuscript_revision",
+    "recommended_archival_venue_class": "dependable_systems_or_security_evaluation_after_live_multi_system_confirmation",
+    "arr_fit": "poor_without_model_backed_nlp_benchmark_results"
+  },
+  "acceptance": {
+    "verified_source_reports": 6,
+    "descriptive_development_trials": 1329,
+    "completed_unauthorized_effect_observations": 240,
+    "receipt_effect_disagreements": 240,
+    "published_effectiveness_numbers_reproduced": 0,
+    "exact_invitation_scenarios_reproduced": 0,
+    "valid_confirmatory_holdouts_evaluated": 0,
+    "sentinel_duplicate_effect_failures": 1,
+    "missing_publication_gate_count": 9,
+    "publication_ready": false,
+    "accepted": true
+  },
+  "aggregation_warning": "Trial and effect counts span heterogeneous deterministic development matrices and are inventory totals, never a pooled rate or independent sample.",
+  "minimum_next_evidence": [
+    "execute matched official defenses on at least two resettable public multi-service systems",
+    "authenticate environment effects independently from the guardrail and broker",
+    "freeze executable holdout inputs, initial states, scorers, exclusions, and analysis before outcomes",
+    "repeat probabilistic planners and infrastructure blocks with justified uncertainty analysis",
+    "add and ablate broker idempotency or compensation for duplicate and ambiguous receipts",
+    "reproduce the final artifact on an independent machine and replace every manuscript placeholder"
+  ]
+}
