@@ -4,9 +4,9 @@
   "started_at": "2026-09-28",
   "status": "active",
   "hard_iteration_limit": 28,
-  "completed_iterations": 25,
-  "next_iteration": 26,
-  "last_completed": "experiments/reproduction_campaign/iterations/iteration-25.md",
+  "completed_iterations": 26,
+  "next_iteration": 27,
+  "last_completed": "experiments/reproduction_campaign/iterations/iteration-26.md",
   "active_run": null,
   "next_check_at": null,
   "milestone_iterations": [4, 8, 12, 16, 20, 24, 28],
@@ -15,7 +15,7 @@
     "trusted_complete_tuple_construction_reference_mechanism",
     "cross_layer_effect_correspondence_primary_evaluation_claim",
     "non_transitive_resource_transitions_engineered_experimental_factor",
-    "minimal_cross_layer_assurance_cut_sets_untested"
+    "minimal_cross_layer_assurance_cut_sets_development_supported"
   ],
   "notes": [
     "Exact reproduction, artifact replication, and conceptual reimplementation are separate evidence classes.",
@@ -111,6 +111,11 @@
     "No-defense and schema-only each admitted all ten attack seeds on the first attempt, producing 20 unauthorized effects total. Correct-label Fides reconstruction and SENTINEL each exhausted 120 attempts with zero unauthorized effects, preserved 60 benign variants, and tied exactly.",
     "Always-deny contained all attacks but falsely denied all 60 benign variants. The effect comparison recorded 480 agreements, 20 disagreements, and 180 not-computable outcomes.",
     "The adaptive harness is deterministic state-machine development evidence, not live-model attack generation or an empirical susceptibility estimate. It only partially addresses the adaptive publication gate.",
-    "No confirmatory holdout was evaluated and no trusted-boundary fault was injected. Iteration 25 verdict: proceed to the frozen iteration-26 boundary-fault matrix and minimal assurance cut sets."
+    "No confirmatory holdout was evaluated and no trusted-boundary fault was injected. Iteration 25 verdict: proceed to the frozen iteration-26 boundary-fault matrix and minimal assurance cut sets.",
+    "Iteration 26 executed 180 deterministic development trials across no-defense, always-deny, two Fides reconstruction conditions, and all subsets of the three frozen SENTINEL fault primitives.",
+    "A single SENTINEL adapter or broker fault caused unauthorized effects, so the constructed system is not one-fault-safe for prevention. A system observer detected all 30 unauthorized effects while healthy, but detection received no prevention credit.",
+    "The minimal SENTINEL prevention cut sets are {adapter} and {broker}; the minimal silent-compromise cut sets are {adapter, observer} and {broker, observer}. Observer failure alone caused no effect.",
+    "The cut-set result is a structural property of an in-memory fault model, not production reliability, Byzantine tolerance, or a cross-family superiority result. Fides has no comparable native effect-observer layer in this reconstruction.",
+    "Minimal cross-layer assurance cut sets move from untested to development-supported. Iteration 26 verdict: freeze the interpretation and run the five predeclared confirmatory cases without tuning."
   ]
 }
