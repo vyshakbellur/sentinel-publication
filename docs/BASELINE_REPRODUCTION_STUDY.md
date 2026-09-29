@@ -191,6 +191,29 @@ effects. This narrows SENTINEL to trusted contract-input construction and
 effect-grounded cross-layer evaluation, not Hoare contracts or postcondition
 checking.
 
+### Baseline-fidelity and novelty milestone after iteration 16
+
+A hash-bound audit combined eight accepted reports spanning AgentDojo, CaMeL,
+Agent-C, Fides, ToolGate, and the narrow SENTINEL tuple control. It eliminates
+five broad mechanism claims from the paper: deterministic boundaries,
+information-flow/provenance enforcement, temporal workflow policy, Hoare-style
+pre/postcondition symbolic state, and typed action contracts all have direct
+prior art.
+
+Two narrower development candidates remain. First, incomplete authenticated
+tuple construction was observed under distinct CaMeL, Agent-C, and ToolGate
+probes, while a one-rule SENTINEL control retained its valid baseline and
+blocked seven mutations. The candidate is trusted construction of the complete
+normalized tuple—not equality predicates or contracts. Second, independent
+effects changed conclusions in the AgentDojo scorer audit and ToolGate boundary
+fault probe. The candidate is cross-layer disagreement analysis—not novelty for
+application-state assertions.
+
+No published effectiveness number has been reproduced. Non-transitive
+resource transitions and assurance cut sets have no executed result yet. The
+paper is therefore not publication-ready and pivots to a cross-layer assurance
+evaluation with a replication/negative-results fallback.
+
 ### Stage C: recreate promptware safely
 
 Reconstruct the *Invitation* scenarios using a synthetic calendar/mail/home

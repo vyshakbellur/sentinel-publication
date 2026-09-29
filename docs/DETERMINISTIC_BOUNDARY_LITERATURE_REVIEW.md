@@ -1,6 +1,6 @@
 # Deterministic boundaries for probabilistic agents: literature and gap review
 
-Last updated: 2026-09-27
+Last updated: 2026-09-29
 
 ## Review question
 
@@ -146,10 +146,12 @@ enforcement, delivery, compensation, and observation.
 This is intentionally narrower than claiming a new reference monitor, policy
 language, workflow engine, API description, or formal proof of safety.
 
-## Novel assurance relations to test
+## Candidate assurance relations to test
 
-The following relations are plausible original contributions when implemented
-and empirically evaluated:
+The following relations are candidate study contributions only when implemented
+and empirically evaluated. Their component mechanisms and application-state
+assertions are prior art; any surviving claim must concern the measured
+cross-layer relation and result:
 
 1. **Protocol-representation invariance.** Equivalent REST, SOAP, GraphQL,
    gRPC, or asynchronous representations of the same registered capability

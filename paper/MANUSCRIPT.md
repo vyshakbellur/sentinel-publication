@@ -22,14 +22,15 @@ We present SENTINEL, a cross-layer conformance and fault-injection methodology f
 
 We instantiate SENTINEL in microservice remediation. ARIA produces diagnoses and typed workflow proposals from public benchmark evidence. Every model input and output is treated as data: it cannot assert identity, authority, resource classification, effect class, independence, or success. Guardian independently binds identity, capability, resource, destination, tenant, service contract, dependency/conflict facts, policy, and current state. It schedules only authorized ready nodes; narrow brokers alone possess service credentials. Responses are schema-checked and provenance-labeled before dependent nodes may consume them. Public microservice environments determine whether authorized effects occurred, whether ordering and cardinality were preserved, and whether service health recovered.
 
-This work makes four intended contributions:
+Subject to the registered experiments, this work targets four evaluation
+contributions:
 
-1. **A protocol-neutral workflow assurance model** that separates an untrusted proposal from trusted identity, authority, resource, service-contract, dependency, conflict, and state facts.
-2. **Effect-grounded conformance relations** for protocol representation, complete mediation, dependency authenticity, safe parallelization, conflict serialization, response/effect agreement, and retry/compensation behavior.
+1. **A protocol-neutral experimental fault model and record schema** that separates an untrusted proposal from trusted identity, authority, resource, service-contract, dependency, conflict, decision, dispatch, receipt, and observed-effect facts.
+2. **Pre-registered effect-grounded conformance relations** for protocol representation, complete mediation, dependency authenticity, safe parallelization, conflict serialization, response/effect agreement, and retry/compensation behavior.
 3. **A reproducible cross-layer fault-injection harness** that evaluates actual workflow effects and recovery rather than policy verdicts, schemas, or workflow status alone, and minimizes unsafe traces into assurance cut sets.
 4. **An empirical multi-system study** that quantifies unauthorized, missing, duplicated, substituted, and out-of-order effects together with safe recovery, useful completion, rollback, and latency.
 
-The contribution is an evaluation method and empirical result. We do not claim to invent external enforcement, risk-adaptive authorization, action contracts, temporal policy, workflow DAGs, durable execution, sagas, commit-time freshness, replay protection, causal provenance, protocol description languages, or guarded Kubernetes remediation.
+The intended contribution is an evaluation method and empirical result. We do not claim to invent external enforcement, information-flow labels, provenance tracking, risk-adaptive authorization, typed action contracts, pre/postcondition checking, symbolic state, temporal policy, workflow DAGs, durable execution, sagas, commit-time freshness, replay protection, causal provenance, protocol description languages, independent application-state assertions, or guarded Kubernetes remediation. Until the registered experiments are complete, the four items above are study objectives rather than established contributions.
 
 ## 2. Background and Related Work
 

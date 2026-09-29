@@ -1,0 +1,82 @@
+{
+  "schema_version": "sentinel.milestone16-claim-audit-protocol.v1",
+  "status": "frozen-before-audit",
+  "source_reports": {
+    "agentdojo": {
+      "path": "_workloads/reproduction/iteration-04-agentdojo-dev-freeze/validation-report-v3.json",
+      "sha256": "c98e940e4595aa651108a1ed81fa8499ce56ed4eb7bdcdd5f373edee824af160"
+    },
+    "camel_static": {
+      "path": "_workloads/reproduction/iteration-08-camel-policy-audit-v1/report.json",
+      "sha256": "b06037313b3dc387e5d67233619479a4c0dcc72c6e16c5223b040b7354f4e8be"
+    },
+    "camel_dynamic": {
+      "path": "_workloads/reproduction/iteration-08-camel-resource-substitution-v2/report.json",
+      "sha256": "482261d8b96135369633fa3acaaa86d3936a6177e4179a054f7e7fc9ad3fb560"
+    },
+    "sentinel_tuple": {
+      "path": "_workloads/reproduction/iteration-11-sentinel-tuple-v2/report.json",
+      "sha256": "6e6437a4f02eea0c475e9062e4096633a5a1e601a3d2b38f5b3899f9eb1756c1"
+    },
+    "agent_c": {
+      "path": "_workloads/reproduction/iteration-12-agent-c-audit-v2/report.json",
+      "sha256": "88ae6f0592d24f00529cc98225e3507edba5e6df373e4b8c523f29f241ea7e51"
+    },
+    "fides_tutorial": {
+      "path": "_workloads/reproduction/iteration-13-fides-core-v2/report.json",
+      "sha256": "25023583ee508b67b387d96a631216a3008bda446f0827e01896fb37659a315e"
+    },
+    "fides_reconstruction": {
+      "path": "_workloads/reproduction/iteration-14-fides-agentdojo-v2/report.json",
+      "sha256": "87cc146eba9eb4ff51ceb72ae8ae569474bd8d2e5106d2673cfb986bd7d1c720"
+    },
+    "toolgate": {
+      "path": "_workloads/reproduction/iteration-15-toolgate-probe-v1/report.json",
+      "sha256": "7beadd0c02f0f5f71c67ea74f9fe9fffce0e8233bcf66966833c430b770ed620"
+    }
+  },
+  "decision_rules": {
+    "eliminate_mechanism_novelty_when_direct_prior_art_families_at_least": 1,
+    "retain_attribute_binding_candidate_when_gap_baseline_families_at_least": 2,
+    "retain_effect_observation_candidate_when_disagreement_contexts_at_least": 2,
+    "claim_requires_executed_evidence": true,
+    "publication_ready_requires": [
+      "matched_end_to_end_baseline_trials",
+      "held_out_confirmatory_partition",
+      "probabilistic_repeated_seeds",
+      "uncertainty_intervals",
+      "realistic_multi_service_effects"
+    ]
+  },
+  "direct_prior_art": {
+    "deterministic_boundary": ["CaMeL", "Fides", "Agent-C", "ToolGate"],
+    "information_flow_and_provenance": ["CaMeL", "Fides"],
+    "temporal_workflow_enforcement": ["Agent-C"],
+    "preconditions_postconditions_and_symbolic_state": ["ToolGate"],
+    "typed_action_contracts": ["ToolGate", "Agent-C"]
+  },
+  "candidate_claims": {
+    "trusted_attribute_binding": {
+      "required_gap_families": ["CaMeL", "Agent-C", "ToolGate"],
+      "scope": "authenticated construction and complete binding of the normalized action tuple, not the existence of policy predicates"
+    },
+    "independent_effect_observation": {
+      "required_disagreement_contexts": ["AgentDojo native scorer", "ToolGate symbolic commit"],
+      "scope": "effect-grounded disagreement evaluation, not novelty of application-state assertions"
+    },
+    "non_transitive_resource_transitions": {
+      "executed_evidence_available": false
+    },
+    "cross_layer_assurance_cut_sets": {
+      "executed_evidence_available": false,
+      "preliminary_fault_evidence": ["Fides adapter mislabel", "ToolGate executor/result faults"]
+    }
+  },
+  "known_missing_publication_evidence": {
+    "matched_end_to_end_baseline_trials": false,
+    "held_out_confirmatory_partition": false,
+    "probabilistic_repeated_seeds": false,
+    "uncertainty_intervals": false,
+    "realistic_multi_service_effects": false
+  }
+}

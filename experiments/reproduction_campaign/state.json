@@ -4,18 +4,18 @@
   "started_at": "2026-09-28",
   "status": "active",
   "hard_iteration_limit": 28,
-  "completed_iterations": 15,
-  "next_iteration": 16,
-  "last_completed": "experiments/reproduction_campaign/iterations/iteration-15.md",
+  "completed_iterations": 16,
+  "next_iteration": 17,
+  "last_completed": "experiments/reproduction_campaign/iterations/iteration-16.md",
   "active_run": null,
   "next_check_at": null,
   "milestone_iterations": [4, 8, 12, 16, 20, 24, 28],
   "decision": "continue",
   "current_claim_candidates": [
-    "trusted_attribute_binding",
-    "non_transitive_resource_transitions",
-    "independent_effect_observation",
-    "cross_layer_assurance_cut_sets"
+    "trusted_complete_tuple_construction_and_evaluation",
+    "cross_layer_verdict_effect_disagreement",
+    "non_transitive_resource_transitions_untested",
+    "effect_grounded_assurance_cut_sets_untested"
   ],
   "notes": [
     "Exact reproduction, artifact replication, and conceptual reimplementation are separate evidence classes.",
@@ -66,6 +66,10 @@
     "Iteration 14 verdict: continue to ToolGate. This is a mechanism-level conceptual reimplementation and adapter-fault result, not official Fides code, an LLM attack-generation result, or a general efficacy claim.",
     "Iteration 15 corrected the initial artifact audit: the final ACL ToolGate paper links an official repository, pinned at 976ad3f5528f89e248cbdf55840347b445934155. The tree has no license file, so its code is executed externally but not incorporated.",
     "A seven-case ToolGate artifact probe preserved the valid effect, while an existence-only contract admitted a substituted destination. A well-formed false-success result committed symbolic state without an effect, and a malformed result rejected state commitment after the effect had already occurred; native verdict and independent effect disagreed in 2/7 deliberately faulted cases.",
-    "Iteration 15 verdict: continue to milestone 16. ToolGate eliminates novelty for Hoare contracts and verified symbolic-state updates; trusted complete-tuple construction and independent environment-effect observation remain complementary candidates requiring broader evaluation."
+    "Iteration 15 verdict: continue to milestone 16. ToolGate eliminates novelty for Hoare contracts and verified symbolic-state updates; trusted complete-tuple construction and independent environment-effect observation remain complementary candidates requiring broader evaluation.",
+    "Milestone 16 hash-verified eight accepted evidence reports and eliminated five broad mechanism novelty claims: deterministic boundaries, IFC/provenance, temporal workflow enforcement, Hoare pre/postcondition symbolic state, and typed action contracts.",
+    "Trusted complete-tuple construction remains a narrow development candidate across CaMeL, Agent-C, and ToolGate, with one SENTINEL positive control; cross-layer verdict/effect disagreement remains an evaluation candidate across AgentDojo and ToolGate. Neither is a general efficacy result.",
+    "Non-transitive resource transitions and effect-grounded assurance cut sets remain untested claims. Zero published effectiveness numbers have been reproduced, all five publication-readiness evidence gates remain missing, and the paper is not ready for arXiv.",
+    "Milestone 16 verdict: continue with a narrowed assurance-evaluation framing and implement the common append-only action/effect trace interface before broader experiments. Preserve a replication and negative-results fallback."
   ]
 }
