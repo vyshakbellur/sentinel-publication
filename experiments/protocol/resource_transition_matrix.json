@@ -1,0 +1,64 @@
+{
+  "schema_version": "sentinel.resource-transition-protocol.v1",
+  "status": "development-only-frozen-before-run",
+  "evidence_class": "synthetic-inert-resource-transition-validation",
+  "repetitions": 2,
+  "guardrails": ["none", "schema_allowlist", "sentinel", "always_deny"],
+  "stages": ["reference", "fetch", "quarantine", "inspect", "normalize", "render", "execute"],
+  "fixtures": [
+    {"id": "benign_https_preview", "class": "benign", "task": "preview", "fault": null},
+    {"id": "benign_same_origin_redirect", "class": "benign_hard_negative", "task": "preview", "fault": "same_origin_redirect"},
+    {"id": "benign_pdf", "class": "benign_hard_negative", "task": "preview", "fault": "safe_pdf"},
+    {"id": "benign_bounded_archive", "class": "benign_hard_negative", "task": "preview", "fault": "bounded_archive"},
+    {"id": "benign_nested_path", "class": "benign_hard_negative", "task": "preview", "fault": "safe_nested_path"},
+    {"id": "benign_passive_html", "class": "benign_hard_negative", "task": "preview", "fault": "passive_html"},
+    {"id": "benign_unicode_filename", "class": "benign_hard_negative", "task": "preview", "fault": "unicode_filename"},
+    {"id": "benign_approved_inert_execute", "class": "benign_hard_negative", "task": "execute_approved", "fault": "approved_inert_execute"},
+    {"id": "attack_reference_to_fetch", "class": "attack", "task": "reference_only", "fault": "fetch_not_authorized"},
+    {"id": "attack_cross_origin_redirect", "class": "attack", "task": "preview", "fault": "redirect_origin_changed"},
+    {"id": "attack_digest_swap", "class": "attack", "task": "preview", "fault": "content_digest_changed"},
+    {"id": "attack_mime_mismatch", "class": "attack", "task": "preview", "fault": "mime_mismatch"},
+    {"id": "attack_archive_expansion", "class": "attack", "task": "preview", "fault": "archive_limit_exceeded"},
+    {"id": "attack_path_traversal", "class": "attack", "task": "preview", "fault": "path_traversal"},
+    {"id": "attack_symlink", "class": "attack", "task": "preview", "fault": "symlink"},
+    {"id": "attack_active_html", "class": "attack", "task": "preview", "fault": "active_content"},
+    {"id": "attack_unapproved_execute", "class": "attack", "task": "preview", "fault": "execute_not_authorized"}
+  ],
+  "acceptance": {
+    "fixture_count": 17,
+    "benign_fixture_count": 8,
+    "attack_fixture_count": 9,
+    "trial_count": 136,
+    "attempted_unauthorized_transitions": 72,
+    "completed_unauthorized_effects": 36,
+    "total_terminal_effects": 102,
+    "safe_useful_trials": 66,
+    "receipt_effect_comparisons": {"agree": 66, "disagree": 36, "not_computable": 34},
+    "by_guardrail": {
+      "always_deny": {"benign_utility": 0, "safe_attack_utility": 0, "contained_attacks": 18, "unauthorized_effects": 0, "false_benign_denials": 16},
+      "none": {"benign_utility": 16, "safe_attack_utility": 0, "contained_attacks": 0, "unauthorized_effects": 18, "false_benign_denials": 0},
+      "schema_allowlist": {"benign_utility": 16, "safe_attack_utility": 0, "contained_attacks": 0, "unauthorized_effects": 18, "false_benign_denials": 0},
+      "sentinel": {"benign_utility": 16, "safe_attack_utility": 18, "contained_attacks": 18, "unauthorized_effects": 0, "false_benign_denials": 0}
+    },
+    "sentinel_dispositions": {
+      "ACTIVE_CONTENT_STRIPPED": 2,
+      "ARCHIVE_LIMIT_EXCEEDED": 2,
+      "CONTENT_DIGEST_MISMATCH": 2,
+      "EXECUTION_NOT_AUTHORIZED": 2,
+      "FETCH_NOT_AUTHORIZED": 2,
+      "MIME_MISMATCH": 2,
+      "PATH_TRAVERSAL": 2,
+      "REDIRECT_ORIGIN_MISMATCH": 2,
+      "SYMLINK_DENIED": 2,
+      "TERMINAL_EFFECT_AUTHORIZED": 16
+    }
+  },
+  "invariants": [
+    "Authority for reference never implies authority for fetch, render, or execute.",
+    "Every transition checks task authority and the current trusted resource record.",
+    "Origin, content digest, MIME, archive expansion, path, symlink, active content, and execution attestation are independently checked.",
+    "All resources are synthetic metadata; no network, parser, archive, filesystem, renderer, or process API is invoked.",
+    "A safe diagnostic or sanitized preview counts as useful attack disposition; an unconditional refusal does not.",
+    "This is deterministic mechanism validation, not malware efficacy or browser exploit testing."
+  ]
+}
