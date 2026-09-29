@@ -7,6 +7,7 @@ from sentinel_experiments.action_effect_trace import (
     TraceEvent,
     TraceStage,
     compare_boolean_fields,
+    compare_event_fields,
 )
 
 
@@ -99,6 +100,92 @@ def test_missing_observation_is_not_silently_treated_as_false():
     )
     assert comparison["status"] == "not_computable"
     assert comparison["right_value"] is None
+
+
+def test_exact_scalar_comparison_preserves_type_and_missingness():
+    trace = (
+        TraceBuilder(
+            trace_id="trace-targets",
+            baseline="fixture",
+            evidence_class="test",
+            source_report_sha256="c" * 64,
+            native_namespace={},
+        )
+        .append(
+            event_id="decision",
+            stage=TraceStage.NATIVE_VERDICT,
+            status=EventStatus.OBSERVED,
+            source_namespace="native",
+            semantics="authorized target",
+            payload={"target": "adservice", "count": 1},
+        )
+        .append(
+            event_id="effect",
+            stage=TraceStage.EFFECT,
+            status=EventStatus.OBSERVED,
+            source_namespace="independent",
+            semantics="observed target",
+            payload={"target": "cartservice", "count": 1},
+        )
+        .build()
+    )
+    target = compare_event_fields(
+        trace,
+        comparison_id="target",
+        left_event_id="decision",
+        left_field="target",
+        right_event_id="effect",
+        right_field="target",
+    )
+    count = compare_event_fields(
+        trace,
+        comparison_id="count",
+        left_event_id="decision",
+        left_field="count",
+        right_event_id="effect",
+        right_field="count",
+        expected_type=int,
+    )
+    assert target["status"] == "disagree"
+    assert count["status"] == "agree"
+
+
+def test_scalar_comparison_does_not_treat_null_as_an_observation():
+    trace = (
+        TraceBuilder(
+            trace_id="trace-null",
+            baseline="fixture",
+            evidence_class="test",
+            source_report_sha256="d" * 64,
+            native_namespace={},
+        )
+        .append(
+            event_id="decision",
+            stage=TraceStage.NATIVE_VERDICT,
+            status=EventStatus.OBSERVED,
+            source_namespace="native",
+            semantics="authorized target",
+            payload={"target": "adservice"},
+        )
+        .append(
+            event_id="effect",
+            stage=TraceStage.EFFECT,
+            status=EventStatus.OBSERVED,
+            source_namespace="independent",
+            semantics="no target observed",
+            payload={"target": None},
+        )
+        .build()
+    )
+    comparison = compare_event_fields(
+        trace,
+        comparison_id="target",
+        left_event_id="decision",
+        left_field="target",
+        right_event_id="effect",
+        right_field="target",
+    )
+    assert comparison["status"] == "not_computable"
 
 
 def test_unobserved_event_rejects_payload():

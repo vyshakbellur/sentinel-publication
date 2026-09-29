@@ -4,9 +4,9 @@
   "started_at": "2026-09-28",
   "status": "active",
   "hard_iteration_limit": 28,
-  "completed_iterations": 17,
-  "next_iteration": 18,
-  "last_completed": "experiments/reproduction_campaign/iterations/iteration-17.md",
+  "completed_iterations": 18,
+  "next_iteration": 19,
+  "last_completed": "experiments/reproduction_campaign/iterations/iteration-18.md",
   "active_run": null,
   "next_check_at": null,
   "milestone_iterations": [4, 8, 12, 16, 20, 24, 28],
@@ -73,6 +73,10 @@
     "Milestone 16 verdict: continue with a narrowed assurance-evaluation framing and implement the common append-only action/effect trace interface before broader experiments. Preserve a replication and negative-results fallback.",
     "Iteration 17 implemented an immutable hash-chained action/effect trace that preserves exact native objects, represents missing evidence explicitly, and keeps named field comparisons in a separate SENTINEL namespace.",
     "Six CaMeL, Agent-C, Fides reconstruction, ToolGate, no-defense, and always-deny records produced six exact native round trips and valid chains. Twelve preregistered comparisons yielded six agreements, four disagreements, and two not-computable outcomes; Agent-C effect evidence remained correctly non-imputed.",
-    "Iteration 17 verdict: continue to independent environment-effect oracles. The common interface is validated on selected development records but is not an efficacy result and still needs multi-action causality fields before workflow experiments."
+    "Iteration 17 verdict: continue to independent environment-effect oracles. The common interface is validated on selected development records but is not an efficacy result and still needs multi-action causality fields before workflow experiments.",
+    "Iteration 18 executed a preregistered seven-condition controlled-fault matrix twice from fresh state. All 14 native objects round-tripped exactly and the two fresh reports were byte-identical.",
+    "Independent effect grading found eight unauthorized effects, ten claimed successes without safe recovery, and eight claimed/actual recovery disagreements. Across 56 explicit comparisons, 26 agreed, 18 disagreed, and 12 remained correctly not computable.",
+    "Receipt completion, final-state recovery, and safe recovery diverged: false success had no effect, while duplicate retry recovered final state but remained unsafe. Always-deny was safe but provided no utility.",
+    "Iteration 18 verdict: continue to domain-stratified identity, tenant, resource, destination, provenance, and delegation substitution tests. This is evaluation-method validation, not real-world prevalence or defense efficacy."
   ]
 }

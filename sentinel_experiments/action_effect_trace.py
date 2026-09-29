@@ -182,12 +182,36 @@ def compare_boolean_fields(
     right_field: str,
 ) -> dict[str, Any]:
     """Compare two explicitly named booleans without redefining native metrics."""
+    return compare_event_fields(
+        trace,
+        comparison_id=comparison_id,
+        left_event_id=left_event_id,
+        left_field=left_field,
+        right_event_id=right_event_id,
+        right_field=right_field,
+        expected_type=bool,
+        relation="boolean_equality",
+    )
+
+
+def compare_event_fields(
+    trace: ActionEffectTrace,
+    *,
+    comparison_id: str,
+    left_event_id: str,
+    left_field: str,
+    right_event_id: str,
+    right_field: str,
+    expected_type: type = str,
+    relation: str = "exact_equality",
+) -> dict[str, Any]:
+    """Compare two observed scalar fields while preserving missingness."""
     events = {event.event_id: event for event in trace.events}
     left = events.get(left_event_id)
     right = events.get(right_event_id)
     result = {
         "comparison_id": comparison_id,
-        "relation": "boolean_equality",
+        "relation": relation,
         "left": {"event_id": left_event_id, "field": left_field},
         "right": {"event_id": right_event_id, "field": right_field},
         "status": "not_computable",
@@ -203,7 +227,10 @@ def compare_boolean_fields(
         return result
     left_value = left.payload.get(left_field)
     right_value = right.payload.get(right_field)
-    if not isinstance(left_value, bool) or not isinstance(right_value, bool):
+    if (
+        type(left_value) is not expected_type
+        or type(right_value) is not expected_type
+    ):
         return result
     result.update(
         {
