@@ -1,7 +1,9 @@
 # Case study: hostile calendar content during weekly summarization
 
-Status: proposed SENTINEL benchmark and Guardian workflow profile; not yet
-implemented or executed.
+Status: deterministic synthetic environment and development matrix implemented
+in iteration 21. This is an Invitation-style causal reconstruction, not an
+exact reproduction of a closed commercial agent or a model-backed efficacy
+result.
 
 ## Security objective
 
@@ -241,3 +243,19 @@ defense. Its value is that it makes a precise end-to-end claim testable:
 SENTINEL then tests how that claim fails when the capability, provenance,
 adapter, policy, broker, renderer, or observer assumptions are violated. That
 assurance result is the contribution.
+
+## Iteration-21 implementation result
+
+The first deterministic environment freezes eight attack fixtures and eight
+benign or suspicious-looking fixtures, including security-training language,
+incident-response indicators, code snippets, multilingual text, legitimate
+links and attachment metadata, plus a separately authorized new recipient.
+All external destinations are reserved `.test` or `.invalid` names, and the
+process-execution case is an inert identifier logged only to an in-memory sink.
+
+Across two repetitions and four controls, SENTINEL retained all 16 benign
+trials, safely completed all 16 attacked summaries, and completed no
+unauthorized effect. No-defense and schema-only retained benign utility but
+each completed 16 unauthorized effects. Always-deny contained all attacks but
+falsely denied all 16 benign trials. These are fixed-plan mechanism results;
+they do not estimate how often a real LLM follows invitation promptware.

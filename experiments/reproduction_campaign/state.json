@@ -4,9 +4,9 @@
   "started_at": "2026-09-28",
   "status": "active",
   "hard_iteration_limit": 28,
-  "completed_iterations": 20,
-  "next_iteration": 21,
-  "last_completed": "experiments/reproduction_campaign/iterations/iteration-20.md",
+  "completed_iterations": 21,
+  "next_iteration": 22,
+  "last_completed": "experiments/reproduction_campaign/iterations/iteration-21.md",
   "active_run": null,
   "next_check_at": null,
   "milestone_iterations": [4, 8, 12, 16, 20, 24, 28],
@@ -86,6 +86,11 @@
     "Milestone 20 hash-verified the milestone-16 prior-art audit and iterations 17-19. Five broad novelty claims remain eliminated; tuple predicates, digest sealing, application-state assertions, and the common trace are enabling mechanisms or artifacts rather than novelty claims.",
     "Trusted complete-tuple construction remains a mechanism-supported reference candidate across three observed baseline families and six synthetic authority dimensions. Cross-layer effect correspondence is the primary evaluation candidate across two native disagreement contexts and five controlled failure classes.",
     "All seven publication gates remain missing: matched published-baseline trials, held-out confirmation, probabilistic repeated seeds, uncertainty intervals, realistic multi-service effects, independently authenticated observation, and adaptive attacks.",
-    "Milestone 20 verdict: continue with an effect-grounded cross-layer assurance-evaluation framing; retain a replication and negative-results fallback. The paper is not ready for arXiv."
+    "Milestone 20 verdict: continue with an effect-grounded cross-layer assurance-evaluation framing; retain a replication and negative-results fallback. The paper is not ready for arXiv.",
+    "Iteration 21 implemented an inert synthetic calendar promptware environment with eight attack fixtures, eight benign or suspicious-looking fixtures, four controls, two repetitions, and independent in-memory effect sinks.",
+    "SENTINEL preserved all 16 paired benign trials and safely completed all 16 attacked summaries with zero unauthorized effects. No-defense and schema-only each completed 16 unauthorized effects; always-deny contained attacks but falsely denied all 16 benign trials.",
+    "Thirty-two receipt/safe-effect disagreements showed that a correct rendered summary can coexist with an unauthorized email, fetch, memory write, process canary, calendar mutation, or agent invocation.",
+    "Iteration 21 is fixed-plan causal reconstruction and mechanism coverage, not an exact Invitation reproduction, LLM susceptibility estimate, held-out result, or real multi-service deployment.",
+    "Iteration 21 verdict: continue to inert non-transitive URL/file resource transitions."
   ]
 }
