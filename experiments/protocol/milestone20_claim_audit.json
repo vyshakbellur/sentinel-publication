@@ -1,0 +1,74 @@
+{
+  "schema_version": "sentinel.milestone20-claim-audit-protocol.v1",
+  "status": "frozen-before-audit",
+  "source_reports": {
+    "milestone16": {
+      "path": "_workloads/reproduction/iteration-16-claim-audit-v1/report.json",
+      "sha256": "4a7a5cedd1cacc031dd778f90b73d3cecc9667018aa278782daaff729abe5443"
+    },
+    "common_trace": {
+      "path": "_workloads/reproduction/iteration-17-action-effect-trace-v1/report.json",
+      "sha256": "3bc5e9b2899f9ef13b826af8ae854a20811514a35e7907c88e94df212350248d"
+    },
+    "effect_oracle": {
+      "path": "_workloads/reproduction/iteration-18-effect-oracle-matrix-v1/report.json",
+      "sha256": "2acd20cc25f43aa4baed3ecf9fc3436a4e9c3d640be3d60551ee1efda4966a20"
+    },
+    "tuple_substitution": {
+      "path": "_workloads/reproduction/iteration-19-tuple-substitution-v1/report.json",
+      "sha256": "e8f632109b5befff5c0348f6b006bef8203b9f5d5bceb71f1a4b5d1f0b9b6737"
+    }
+  },
+  "decision_rules": {
+    "required_gap_baseline_families": 3,
+    "required_native_disagreement_contexts": 2,
+    "required_controlled_effect_failure_classes": 4,
+    "required_tuple_dimensions": 6,
+    "require_all_paired_benign_utility": true,
+    "require_all_substitutions_contained": true,
+    "require_better_utility_than_always_deny": true
+  },
+  "prior_art_subtraction": {
+    "deterministic_boundary": "eliminated_as_novel_mechanism",
+    "information_flow_and_provenance": "eliminated_as_novel_mechanism",
+    "temporal_workflow_enforcement": "eliminated_as_novel_mechanism",
+    "preconditions_postconditions_and_symbolic_state": "eliminated_as_novel_mechanism",
+    "typed_action_contracts": "eliminated_as_novel_mechanism",
+    "tuple_equality_predicates": "enabling_mechanism_not_novel",
+    "policy_to_execution_digest_seal": "enabling_mechanism_not_novel",
+    "application_state_assertions": "enabling_mechanism_not_novel"
+  },
+  "candidate_claims": {
+    "trusted_complete_tuple_construction": "test_for_retention",
+    "cross_layer_effect_correspondence": "test_for_retention",
+    "common_action_effect_evidence_model": "supporting_artifact_only",
+    "non_transitive_resource_transitions": "requires_executed_evidence",
+    "minimal_assurance_cut_sets": "requires_executed_evidence"
+  },
+  "publication_gates": {
+    "matched_published_baseline_trials": false,
+    "held_out_confirmatory_partition": false,
+    "probabilistic_repeated_seeds": false,
+    "uncertainty_intervals": false,
+    "realistic_multi_service_effects": false,
+    "independently_authenticated_observer": false,
+    "adaptive_attack_evaluation": false
+  },
+  "acceptance": {
+    "verified_reports": 4,
+    "inherited_prior_art_eliminations": 5,
+    "controlled_effect_failure_classes": 5,
+    "tuple_dimensions": 6,
+    "tuple_protocol_labels": 3,
+    "candidate_decisions": {
+      "common_action_effect_evidence_model": "supporting_artifact_only",
+      "cross_layer_effect_correspondence": "retain_as_primary_evaluation_candidate",
+      "minimal_assurance_cut_sets": "motivated_but_untested",
+      "non_transitive_resource_transitions": "untested_hypothesis",
+      "policy_to_execution_digest_seal": "enabling_control_not_novel_claim",
+      "trusted_complete_tuple_construction": "retain_as_mechanism_supported_candidate"
+    },
+    "publication_ready": false,
+    "recommended_framing": "effect-grounded cross-layer assurance evaluation with trusted complete-tuple construction; Guardian is the reference implementation, with a replication and negative-results fallback"
+  }
+}

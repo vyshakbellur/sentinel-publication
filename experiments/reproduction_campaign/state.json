@@ -4,18 +4,18 @@
   "started_at": "2026-09-28",
   "status": "active",
   "hard_iteration_limit": 28,
-  "completed_iterations": 19,
-  "next_iteration": 20,
-  "last_completed": "experiments/reproduction_campaign/iterations/iteration-19.md",
+  "completed_iterations": 20,
+  "next_iteration": 21,
+  "last_completed": "experiments/reproduction_campaign/iterations/iteration-20.md",
   "active_run": null,
   "next_check_at": null,
   "milestone_iterations": [4, 8, 12, 16, 20, 24, 28],
   "decision": "continue",
   "current_claim_candidates": [
-    "trusted_complete_tuple_construction_and_evaluation",
-    "cross_layer_verdict_effect_disagreement",
+    "trusted_complete_tuple_construction_reference_mechanism",
+    "cross_layer_effect_correspondence_primary_evaluation_claim",
     "non_transitive_resource_transitions_untested",
-    "effect_grounded_assurance_cut_sets_untested"
+    "minimal_cross_layer_assurance_cut_sets_untested"
   ],
   "notes": [
     "Exact reproduction, artifact replication, and conceptual reimplementation are separate evidence classes.",
@@ -82,6 +82,10 @@
     "SENTINEL preserved all 12 benign controls and contained all 24 substitution attacks. No-defense and schema-only preserved benign utility but contained 0/24 attacks; always-deny contained 24/24 but preserved 0/12 benign controls.",
     "The actual Guardian trusted binder rejected eight authority-injection proposals and four complete-argument mutations. A new broker-side evidence seal rejected all 12 post-decision tuple mutations.",
     "An independent exact-tuple oracle found 48 unauthorized effects in the permissive controls. This is deterministic synthetic mechanism coverage, not published-baseline or end-to-end efficacy evidence.",
-    "Iteration 19 verdict: continue to milestone 20 and subtract prior-art coverage before selecting the surviving paper claim."
+    "Iteration 19 verdict: continue to milestone 20 and subtract prior-art coverage before selecting the surviving paper claim.",
+    "Milestone 20 hash-verified the milestone-16 prior-art audit and iterations 17-19. Five broad novelty claims remain eliminated; tuple predicates, digest sealing, application-state assertions, and the common trace are enabling mechanisms or artifacts rather than novelty claims.",
+    "Trusted complete-tuple construction remains a mechanism-supported reference candidate across three observed baseline families and six synthetic authority dimensions. Cross-layer effect correspondence is the primary evaluation candidate across two native disagreement contexts and five controlled failure classes.",
+    "All seven publication gates remain missing: matched published-baseline trials, held-out confirmation, probabilistic repeated seeds, uncertainty intervals, realistic multi-service effects, independently authenticated observation, and adaptive attacks.",
+    "Milestone 20 verdict: continue with an effect-grounded cross-layer assurance-evaluation framing; retain a replication and negative-results fallback. The paper is not ready for arXiv."
   ]
 }
