@@ -4,9 +4,9 @@
   "started_at": "2026-09-28",
   "status": "active",
   "hard_iteration_limit": 28,
-  "completed_iterations": 22,
-  "next_iteration": 23,
-  "last_completed": "experiments/reproduction_campaign/iterations/iteration-22.md",
+  "completed_iterations": 23,
+  "next_iteration": 24,
+  "last_completed": "experiments/reproduction_campaign/iterations/iteration-23.md",
   "active_run": null,
   "next_check_at": null,
   "milestone_iterations": [4, 8, 12, 16, 20, 24, 28],
@@ -96,6 +96,11 @@
     "SENTINEL preserved 16/16 benign trials and provided 18/18 safe useful attack dispositions with zero unauthorized effects. No-defense and schema-only each completed 18 unauthorized terminal effects; always-deny lost all benign utility.",
     "Per-edge checks contained reference-to-fetch expansion, cross-origin redirect, changed digest, MIME mismatch, archive expansion, traversal, symlink, active content, and unapproved execution. Active content was sanitized rather than refused.",
     "Iteration 22 promotes non-transitive resource transitions to a development-supported mechanism candidate, but no real protocol, parser, file, renderer, malware, or sandbox was exercised.",
-    "Iteration 22 verdict: continue to matched Invitation-style scenario reconstruction and defense-family comparison."
+    "Iteration 22 verdict: continue to matched Invitation-style scenario reconstruction and defense-family comparison.",
+    "Iteration 23 mapped ten inert behavioral analogs across all five Invitation threat classes but explicitly reproduced 0/14 exact production scenarios.",
+    "Across 180 trials, correctly labeled Fides-style IFC reconstruction and SENTINEL tied: both preserved 10/10 benign controls and safely handled 20/20 attack trials. SENTINEL has no nominal superiority result over correct IFC on this matrix.",
+    "Fides adapter mislabeling, schema-only, and no defense each completed 20 unauthorized effects; always-deny contained attacks but lost all benign utility. Sixty receipt/effect disagreements were observed.",
+    "Iteration 23 is conceptual behavioral reconstruction with inert labels, not a Gemini, Fides benchmark, device, or published-number reproduction.",
+    "Iteration 23 verdict: continue to milestone 24 fidelity and claim audit, then freeze development selections before adaptive work."
   ]
 }
