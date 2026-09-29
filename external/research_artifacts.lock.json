@@ -71,9 +71,11 @@
     },
     {
       "name": "ToolGate",
-      "url": "https://aclanthology.org/2026.findings-acl.470/",
-      "evidence_class": "paper_only_clean_room_baseline"
+      "url": "https://github.com/OceannTwT/ToolGate.git",
+      "revision": "976ad3f5528f89e248cbdf55840347b445934155",
+      "paper_url": "https://aclanthology.org/2026.findings-acl.470/",
+      "evidence_class": "artifact_execution_candidate",
+      "license_status": "no_license_file_found_at_pinned_revision"
     }
   ]
 }
-

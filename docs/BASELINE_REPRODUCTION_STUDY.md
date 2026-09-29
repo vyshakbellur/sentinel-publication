@@ -38,7 +38,7 @@ compared with an attack generator as if they were interchangeable baselines.
 | [Task Shield](https://aclanthology.org/2025.acl-long.1435/) | Evaluates alignment between the user task, intermediate instructions, and tool calls at test time. | BU/utility and ASR on AgentDojo; reported GPT-4o ASR 2.07% with utility 69.79%. | Model-mediated baseline. Evaluate repeated trials and adaptive attacks because its judgment is probabilistic and is not an authorization proof. |
 | [AgentSpec](https://github.com/haoyuwang99/AgentSpec) | A small rule DSL with triggers, predicates, and multiple enforcement responses; evaluates code, embodied, and autonomous-driving domains. | Unsafe-call prevention, compliance, rule-generation precision/recall, and millisecond overhead. | Public research code. Port a minimal rule set to the common calendar and workflow cases. Test parser/rule omissions, predicate faults, alternate tool paths, and LLM-generated-rule recall. |
 | [Agent-C](https://arxiv.org/abs/2512.23738) | Specifies temporal requirements, translates them to logic, checks during generation, and evaluates both adversarial and benign tasks. | Conformance, harm, utility, and runtime across retail and airline workloads and multiple models. | GitHub currently contains a placeholder, but the open [Zenodo artifact](https://doi.org/10.5281/zenodo.21095899) is complete. Verified archive checksum `md5:e37f84c00035d7d254170e474e938424`; it includes retail, airline, and telecom benign/adversarial splits and AgentSpec/DynaGuard baselines. Test correct ordering with wrong principal/resource, stale authorization, concurrency, and effects outside the temporal alphabet. |
-| [ToolGate](https://aclanthology.org/2026.findings-acl.470/) | Makes trusted symbolic state explicit and applies Hoare-style preconditions and verified postconditions before committing state. | Logical validity, state correctness, task success, and overhead on multi-step reasoning. | No public implementation link was found in the arXiv or ACL record during this audit. Implement only a minimal paper-faithful contract baseline and label it clean-room. Test lying tools, valid responses with absent/wrong effects, concurrent interference, and observer compromise. |
+| [ToolGate](https://aclanthology.org/2026.findings-acl.470/) | Makes trusted symbolic state explicit and applies Hoare-style preconditions and verified postconditions before committing state. | Logical validity, state correctness, task success, and overhead on multi-step reasoning. | The final ACL paper links an [official implementation](https://github.com/OceannTwT/ToolGate), now pinned at `976ad3f5528f89e248cbdf55840347b445934155`. Use artifact execution before any clean-room subset. The pinned tree has no license file, so inspect and execute it without incorporating its code. Test lying tools, valid responses with absent/wrong effects, concurrent interference, and observer compromise. |
 | [ToolSafe](https://aclanthology.org/2026.findings-acl.1850/) | Focuses on step-level hazards within multi-step traces and supplies feedback rather than only an end-of-run label. | Unsafe-call detection, task performance, and guardrail classification metrics. | Learned-guard baseline. Its classification output must not be treated as an observed effect or deterministic authorization decision. |
 | [TraceSafe](https://arxiv.org/abs/2604.07223) | Tests guardrails at intermediate trajectory positions across security and operational failure categories. | Precision/recall and related classification measures over more than 1,000 trajectories and 12 risk categories. | Use as an offline judgment benchmark and source of trajectory mutations. It does not replace end-to-end execution oracles. |
 | [AttriGuard](https://arxiv.org/abs/2603.10749) | Uses counterfactual shadow replay to ask whether a tool call is caused by trusted intent or untrusted observation; evaluates adaptive attacks. | Static/adaptive ASR, utility loss, and runtime overhead across models and benchmarks. | Strong causal-attribution baseline. Test stochastic disagreement, nondeterministic tools, multi-cause actions, delayed triggers, and attacks that preserve action identity but substitute attributes. |
@@ -99,7 +99,8 @@ Use one representative from each enforcement family:
 - information-flow control: Fides reconstruction;
 - per-action rule enforcement: AgentSpec;
 - temporal enforcement: Agent-C;
-- pre/postcondition enforcement: ToolGate clean-room subset;
+- pre/postcondition enforcement: pinned ToolGate artifact, with a clean-room
+  extension only where the released code cannot express the required probe;
 - causal action attribution: AttriGuard, if an official artifact becomes
   available.
 
@@ -160,6 +161,35 @@ temporal conformance and state validity can coexist with the absence of a
 machine-checkable complete approval tuple. SENTINEL must still show how such a
 tuple is authentically constructed and amended without collapsing benign
 utility.
+
+### ToolGate artifact result after iteration 15
+
+The final ACL publication, unlike the earlier record inspected during the
+initial audit, explicitly links an official GitHub repository. The source was
+pinned at revision `976ad3f5528f89e248cbdf55840347b445934155`; the tree exposes
+version 0.1.0 but has no license file. SENTINEL therefore executes the external
+artifact for research but does not incorporate its code.
+
+A deterministic seven-scenario probe exercised the released precondition,
+pipeline, executor, postcondition, and symbolic-state components with a fixed
+retriever and proposal source. The positive ToolGate row executed a valid
+effect and committed the receipt; always-deny prevented both while losing the
+valid effect. Three distinct boundary results followed. First, an
+existence-only generated-style precondition admitted a locally valid but
+unauthorized destination substitution. Second, a well-formed false-success
+response was committed to symbolic state although the independent sink saw no
+effect. Third, a real effect followed by a malformed response was rejected for
+state commitment only after the effect had occurred. Native verdict/effect
+disagreement was therefore 2/7 under the deliberately faulted matrix.
+
+This is artifact execution, not a reproduction of ToolGate's ToolBench or
+MCP-Universe numbers. ToolGate can accept developer-supplied Python predicates,
+so complete tuple binding is expressible; the result instead shows that schema-
+derived existence checks do not establish user authority and that verified
+symbolic-state evolution is not equivalent to independently verified external
+effects. This narrows SENTINEL to trusted contract-input construction and
+effect-grounded cross-layer evaluation, not Hoare contracts or postcondition
+checking.
 
 ### Stage C: recreate promptware safely
 
