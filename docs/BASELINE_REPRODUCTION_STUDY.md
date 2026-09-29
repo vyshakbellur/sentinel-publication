@@ -214,6 +214,22 @@ resource transitions and assurance cut sets have no executed result yet. The
 paper is therefore not publication-ready and pivots to a cross-layer assurance
 evaluation with a replication/negative-results fallback.
 
+### Common evidence interface after iteration 17
+
+Six selected CaMeL, Agent-C, Fides-reconstruction, ToolGate, no-defense, and
+always-deny records were normalized into an immutable action/effect trace. The
+selected native objects round-trip exactly; proposal, action, binding, verdict,
+dispatch, receipt, effect, and state stages are separately sourced; unobserved
+stages carry no payload; and every event is hash-chained. Derived comparisons
+name exact boolean fields and live outside native metric namespaces.
+
+This interface prevents two invalid conversions: Agent-C formula admission is
+not treated as a completed domain effect, and an absent observation is not
+treated as a false effect. In contrast, ToolGate's retained receipt and
+independent sink permit a computable false-success disagreement. The interface
+therefore enables later matched analysis without making heterogeneous native
+metrics equivalent by definition.
+
 ### Stage C: recreate promptware safely
 
 Reconstruct the *Invitation* scenarios using a synthetic calendar/mail/home
