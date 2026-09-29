@@ -1,0 +1,61 @@
+{
+  "schema_version": "sentinel.milestone24-fidelity-audit-protocol.v1",
+  "status": "frozen-before-audit",
+  "source_reports": {
+    "milestone20": {"path": "_workloads/reproduction/iteration-20-claim-audit-v1/report.json", "sha256": "d5bc56b8470b56bf018abeca3b0f8a5333ecc26c285e7372f05837220ba6ae7b"},
+    "calendar": {"path": "_workloads/reproduction/iteration-21-calendar-promptware-v1/report.json", "sha256": "aaeeece3ead971522cd45f9da407f7d1a7e2469507a3f6639e55231e0c7b38f9"},
+    "resources": {"path": "_workloads/reproduction/iteration-22-resource-transitions-v1/report.json", "sha256": "a381c969e93d25b6a42493db500ad1ababcb36811ad1bfa16bd712eaa1eed545"},
+    "invitation": {"path": "_workloads/reproduction/iteration-23-invitation-reconstruction-v1/report.json", "sha256": "567f1ecff74dc7659f242c6a4535c2d6d9534648d40252295e5d2b8ac322c48c"}
+  },
+  "fidelity_rules": {
+    "exact_reproduction_requires_exact_scenarios": true,
+    "published_baseline_requires_official_integration": true,
+    "real_effect_requires_external_service_or_isolated_real_application": true,
+    "statistical_claim_requires_stochastic_repeats_and_intervals": true,
+    "nominal_superiority_requires_beating_correct_ifc_on_matched_utility_and_security": true
+  },
+  "development_freeze": {
+    "adaptive_defenses": ["none", "schema_allowlist", "fides_correct_label_reconstruction", "sentinel", "always_deny"],
+    "boundary_fault_variants_reserved_for_iteration26": ["fides_mislabeled_adapter_reconstruction", "sentinel_adapter_fault", "sentinel_broker_fault", "sentinel_observer_fault"],
+    "adaptive_development_operators": ["case_and_whitespace", "unicode_homoglyph", "field_relocation", "multilingual_paraphrase", "encoding_wrapper", "delayed_trigger", "cross_tool_indirection"],
+    "adaptive_attempt_budget_per_seed": 12,
+    "confirmatory_holdout_ids": [
+      "holdout-multilingual-zero-width-destination",
+      "holdout-redirect-plus-digest-swap",
+      "holdout-delayed-memory-agent-chain",
+      "holdout-valid-capability-resource-substitution",
+      "holdout-duplicate-effect-false-success"
+    ],
+    "confirmatory_status": "frozen-identifiers-only-no-outcomes-inspected"
+  },
+  "publication_gates": {
+    "matched_published_baseline_trials": false,
+    "held_out_confirmatory_results": false,
+    "probabilistic_repeated_seeds": false,
+    "uncertainty_intervals": false,
+    "realistic_multi_service_effects": false,
+    "independently_authenticated_observer": false,
+    "adaptive_attack_results": false
+  },
+  "acceptance": {
+    "verified_reports": 4,
+    "development_trials": 444,
+    "completed_unauthorized_effects": 128,
+    "receipt_effect_disagreements": 128,
+    "sentinel_benign_utility": 42,
+    "sentinel_safe_attack_utility": 54,
+    "sentinel_unauthorized_effects": 0,
+    "always_deny_false_benign_denials": 42,
+    "paper_threat_class_coverage": 5,
+    "exact_invitation_scenarios_reproduced": 0,
+    "candidate_decisions": {
+      "cross_layer_effect_correspondence": "retain_primary_evaluation_candidate",
+      "invitation_scenario_result": "conceptual_development_evidence_only",
+      "minimal_assurance_cut_sets": "next_required_experiment",
+      "nominal_superiority_over_correct_ifc": "rejected_on_selected_matrix",
+      "non_transitive_resource_transitions": "retain_as_engineered_experimental_factor_not_novel_mechanism",
+      "trusted_complete_tuple_construction": "retain_reference_mechanism"
+    },
+    "publication_ready": false
+  }
+}

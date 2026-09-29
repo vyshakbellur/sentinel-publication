@@ -4,9 +4,9 @@
   "started_at": "2026-09-28",
   "status": "active",
   "hard_iteration_limit": 28,
-  "completed_iterations": 23,
-  "next_iteration": 24,
-  "last_completed": "experiments/reproduction_campaign/iterations/iteration-23.md",
+  "completed_iterations": 24,
+  "next_iteration": 25,
+  "last_completed": "experiments/reproduction_campaign/iterations/iteration-24.md",
   "active_run": null,
   "next_check_at": null,
   "milestone_iterations": [4, 8, 12, 16, 20, 24, 28],
@@ -14,7 +14,7 @@
   "current_claim_candidates": [
     "trusted_complete_tuple_construction_reference_mechanism",
     "cross_layer_effect_correspondence_primary_evaluation_claim",
-    "non_transitive_resource_transitions_development_supported",
+    "non_transitive_resource_transitions_engineered_experimental_factor",
     "minimal_cross_layer_assurance_cut_sets_untested"
   ],
   "notes": [
@@ -101,6 +101,11 @@
     "Across 180 trials, correctly labeled Fides-style IFC reconstruction and SENTINEL tied: both preserved 10/10 benign controls and safely handled 20/20 attack trials. SENTINEL has no nominal superiority result over correct IFC on this matrix.",
     "Fides adapter mislabeling, schema-only, and no defense each completed 20 unauthorized effects; always-deny contained attacks but lost all benign utility. Sixty receipt/effect disagreements were observed.",
     "Iteration 23 is conceptual behavioral reconstruction with inert labels, not a Gemini, Fides benchmark, device, or published-number reproduction.",
-    "Iteration 23 verdict: continue to milestone 24 fidelity and claim audit, then freeze development selections before adaptive work."
+    "Iteration 23 verdict: continue to milestone 24 fidelity and claim audit, then freeze development selections before adaptive work.",
+    "Milestone 24 hash-verified iterations 20-23 and aggregated 444 deterministic synthetic trials, 128 unauthorized effects in permissive controls, and 128 receipt/effect disagreements as development evidence only.",
+    "SENTINEL retained 42 benign and 54 attacked development tasks with zero unauthorized effects, but tied correct-label Fides reconstruction on the selected nominal matrix. Nominal superiority over correct IFC is rejected.",
+    "Non-transitive resource transitions are downgraded to an engineered experimental factor rather than a novel mechanism. Invitation coverage remains conceptual with 0/14 exact scenarios reproduced.",
+    "All seven publication gates remain missing. Adaptive defenses, seven mutation operators, a 12-attempt budget, boundary-fault variants, and five confirmatory holdout identifiers are now frozen.",
+    "Milestone 24 verdict: continue to deterministic adaptive attacks on development fixtures only; do not inspect confirmatory holdouts."
   ]
 }
