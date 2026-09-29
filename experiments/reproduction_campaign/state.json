@@ -4,9 +4,9 @@
   "started_at": "2026-09-28",
   "status": "active",
   "hard_iteration_limit": 28,
-  "completed_iterations": 13,
-  "next_iteration": 14,
-  "last_completed": "experiments/reproduction_campaign/iterations/iteration-13.md",
+  "completed_iterations": 14,
+  "next_iteration": 15,
+  "last_completed": "experiments/reproduction_campaign/iterations/iteration-14.md",
   "active_run": null,
   "next_check_at": null,
   "milestone_iterations": [4, 8, 12, 16, 20, 24, 28],
@@ -60,6 +60,9 @@
     "Iteration 13 executed the pinned Fides tutorial's model-free core under Python 3.13: nine definition cells ran exactly and three mixed demo cells contributed only their released policy functions; no Azure or paid model call was made.",
     "All 12 deterministic decisions matched across the tutorial URL, reader-set declassification, and combined policies. The five-email label joined to untrusted integrity and Bob-only readership.",
     "Fides label inference in the tutorial trusts an @contoso.com sender string regardless of hostile body content, exposing an explicit adapter-label assumption rather than an end-to-end authentication flaw.",
-    "Iteration 13 verdict: continue. Reconstruct a minimal Fides-style AgentDojo condition with native scorers and a paired correct-label/mislabeled-adapter fault, clearly labeled as reconstruction."
+    "Iteration 13 verdict: continue. Reconstruct a minimal Fides-style AgentDojo condition with native scorers and a paired correct-label/mislabeled-adapter fault, clearly labeled as reconstruction.",
+    "Iteration 14 ran a conceptual Fides-style reconstruction on frozen AgentDojo workspace user_task_0 paired with injection tasks 0, 1, 2, and 4. Correct labeling preserved 4/4 selected benign read-only traces and stopped 4/4 attack effects; no defense and the deliberately mislabeled adapter executed 4/4 attacks; always deny stopped the attacks but preserved 0/4 benign traces.",
+    "Native AgentDojo attack scoring and an independent exact-write oracle agreed on all 16 iteration-14 rows, and no benign trace satisfied its paired attack goal.",
+    "Iteration 14 verdict: continue to ToolGate. This is a mechanism-level conceptual reimplementation and adapter-fault result, not official Fides code, an LLM attack-generation result, or a general efficacy claim."
   ]
 }
