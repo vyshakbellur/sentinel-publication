@@ -17,6 +17,11 @@ from guardian.control_plane.models import (
     ResourceDefinition,
 )
 from guardian.control_plane.pipeline import BoundValidationResult, validate_proposal
+from guardian.control_plane.execution import (
+    ExecutionVerification,
+    envelope_digest,
+    verify_execution_envelope,
+)
 
 __all__ = [
     "AgentProposal",
@@ -29,8 +34,11 @@ __all__ = [
     "CapabilityDefinition",
     "DestinationCatalog",
     "DestinationDefinition",
+    "ExecutionVerification",
     "ResourceCatalog",
     "ResourceDefinition",
     "TrustedAttributeBinder",
+    "envelope_digest",
     "validate_proposal",
+    "verify_execution_envelope",
 ]

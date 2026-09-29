@@ -4,9 +4,9 @@
   "started_at": "2026-09-28",
   "status": "active",
   "hard_iteration_limit": 28,
-  "completed_iterations": 18,
-  "next_iteration": 19,
-  "last_completed": "experiments/reproduction_campaign/iterations/iteration-18.md",
+  "completed_iterations": 19,
+  "next_iteration": 20,
+  "last_completed": "experiments/reproduction_campaign/iterations/iteration-19.md",
   "active_run": null,
   "next_check_at": null,
   "milestone_iterations": [4, 8, 12, 16, 20, 24, 28],
@@ -77,6 +77,11 @@
     "Iteration 18 executed a preregistered seven-condition controlled-fault matrix twice from fresh state. All 14 native objects round-tripped exactly and the two fresh reports were byte-identical.",
     "Independent effect grading found eight unauthorized effects, ten claimed successes without safe recovery, and eight claimed/actual recovery disagreements. Across 56 explicit comparisons, 26 agreed, 18 disagreed, and 12 remained correctly not computable.",
     "Receipt completion, final-state recovery, and safe recovery diverged: false success had no effect, while duplicate retry recovered final state but remained unsafe. Always-deny was safe but provided no utility.",
-    "Iteration 18 verdict: continue to domain-stratified identity, tenant, resource, destination, provenance, and delegation substitution tests. This is evaluation-method validation, not real-world prevalence or defense efficacy."
+    "Iteration 18 verdict: continue to domain-stratified identity, tenant, resource, destination, provenance, and delegation substitution tests. This is evaluation-method validation, not real-world prevalence or defense efficacy.",
+    "Iteration 19 ran 144 deterministic trials across retail/REST, calendar/GraphQL, and document/SOAP synthetic fixtures, six authority dimensions, proposal-time and post-decision substitutions, four controls, and two fresh repetitions.",
+    "SENTINEL preserved all 12 benign controls and contained all 24 substitution attacks. No-defense and schema-only preserved benign utility but contained 0/24 attacks; always-deny contained 24/24 but preserved 0/12 benign controls.",
+    "The actual Guardian trusted binder rejected eight authority-injection proposals and four complete-argument mutations. A new broker-side evidence seal rejected all 12 post-decision tuple mutations.",
+    "An independent exact-tuple oracle found 48 unauthorized effects in the permissive controls. This is deterministic synthetic mechanism coverage, not published-baseline or end-to-end efficacy evidence.",
+    "Iteration 19 verdict: continue to milestone 20 and subtract prior-art coverage before selecting the surviving paper claim."
   ]
 }
