@@ -21,8 +21,10 @@ def test_checked_submission_audit_matches_honest_non_readiness_state():
         "partial": 3,
         "missing": 3,
     }
-    assert report["result_token_placeholders"] > 0
-    assert report["result_table_placeholders"] > 0
+    # The development paper now reports bounded results; the unexecuted
+    # archival study is identified explicitly rather than with bracket tokens.
+    assert report["result_token_placeholders"] == 0
+    assert report["result_table_placeholders"] == 0
     assert report["open_checklist_items"] > 0
 
 

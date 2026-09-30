@@ -1,14 +1,14 @@
 {
   "anonymous_metadata": true,
-  "audit_digest": "cfca26fa73397eba9d52d82959204df3e4cba34939af0315c43b9f9ff7da0601",
+  "audit_digest": "92ca1c743b41538c469365f6c2918553738256483c4ba320456bb5a17afbc709",
   "claim_counts": {
     "missing": 3,
     "partial": 3,
     "supported": 2
   },
   "open_checklist_items": 15,
-  "result_table_placeholders": 35,
-  "result_token_placeholders": 8,
+  "result_table_placeholders": 0,
+  "result_token_placeholders": 0,
   "schema_version": "sentinel.submission-audit.v1",
   "submission_ready": false,
   "unresolved_claim_ids": [

@@ -97,10 +97,12 @@
       "status": "missing",
       "evidence_class": "none",
       "assertion_allowed": false,
-      "permitted_wording": "The repository contains a pre-results protocol and contract-tested artifact.",
+      "permitted_wording": "The repository contains a development-evidence manuscript, generated figures, an archival protocol, and a contract-tested artifact; live confirmation remains incomplete.",
       "prohibited_wording": "The current manuscript is publication-ready.",
       "artifacts": [
-        "paper/PUBLICATION_READINESS.md"
+        "paper/PUBLICATION_READINESS.md",
+        "paper/MANUSCRIPT.md",
+        "paper/ARCHIVAL_EXECUTION_PLAN.md"
       ]
     }
   ]

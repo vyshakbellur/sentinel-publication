@@ -1,12 +1,14 @@
 # SENTINEL: Effect-Grounded Conformance Testing of Deterministic Boundaries for Agentic Microservice Workflows
 
-**Manuscript status:** pre-results research draft; not publication-ready  
-**Target:** arXiv preprint after completion of the registered experiments; then ARR or a systems/dependability journal according to the final emphasis  
-**Warning:** do not upload this version. Bracketed fields require measured evidence.
+**Manuscript status:** development-evidence draft; not yet ready for archival submission
+
+**Current framing:** effect-grounded assurance evaluation with a replication and negative-results core
+
+**Evidence boundary:** deterministic artifact probes and inert synthetic experiments; no production effectiveness claim
 
 ## Abstract
 
-Agentic systems increasingly translate untrusted natural-language requests and service data into consequential multi-step actions. Deterministic boundaries are intended to prevent a fallible or compromised model from exceeding authority, violating dependencies, or misreporting effects. Existing work provides reference monitors, information-flow controls, policy languages, temporal constraints, action contracts, and durable workflow engines. Their guarantees, however, depend on contract adapters, trusted attributes, dependency and conflict metadata, policy state, execution brokers, and outcome observation. Nominal policy conformance and successful tool responses do not measure how failures in those assumptions propagate into protected-system effects. We introduce **SENTINEL**, a protocol-neutral, cross-layer conformance and fault-injection methodology for deterministic agent workflow boundaries. SENTINEL normalizes heterogeneous service operations into a canonical action/effect graph and perturbs the proposal-to-effect pipeline, including contract adaptation, trusted binding, graph validation, scheduling, authorization, execution, compensation, and observation. It measures unauthorized, missing, duplicated, substituted, and out-of-order effects together with safe recovery, useful completion, rollback, and latency using independent environment-state oracles. We instantiate the methodology using ARIA as a fallible microservice-remediation proposer, Guardian as a deterministic reference boundary, and public microservice systems as execution environments. Across **[N]** workflow trials and **[F]** fault configurations, cross-layer faults **[PRIMARY RESULT]**. Compared with **[BASELINE]**, Guardian **[RESULT]**, while **[ABLATION]** exposes **[FAILURE MODE]**. These results show **[EVIDENCE-SUPPORTED CONCLUSION]** and establish a reproducible method for testing deterministic agent boundaries as safety-critical distributed software rather than assuming their correctness from policy verdicts or workflow completion.
+Agentic systems translate untrusted natural-language requests and service data into consequential actions. Deterministic boundaries can restrict those actions, but their guarantees depend on contract adapters, trusted attributes, policy state, execution brokers, receipts, and outcome observation. Nominal policy conformance and successful tool responses therefore do not establish that the intended effect occurred safely. We introduce **SENTINEL**, a protocol-neutral methodology for cross-layer conformance testing and fault injection around deterministic agent boundaries. SENTINEL preserves native baseline metrics while recording proposal, binding, verdict, dispatch, receipt, environment effect, and terminal state in separate evidence namespaces. A 28-step reproduction campaign executed public AgentDojo, CaMeL, Agent-C, Fides-tutorial, and ToolGate artifacts at explicitly graded fidelity and constructed deterministic calendar, resource-transition, adaptive-input, and boundary-fault matrices. Across 1,329 heterogeneous development trials, the evidence inventory contained 240 receipt-versus-safe-effect disagreements; these counts are descriptive and are not pooled into an effectiveness rate. SENTINEL and an idealized correct-label Fides reconstruction tied in the nominal and adaptive synthetic matrices. In the constructed SENTINEL chain, either an adapter or broker fault was sufficient to defeat prevention, whereas silent compromise required either fault together with observer omission. A prospective duplicate-retry case further showed that observation can detect an unsafe repeated effect without preventing it. The contribution is thus not a new deterministic guardrail or a superiority claim, but an effect-grounded method for exposing assurance failures hidden by policy verdicts and tool receipts. Production effectiveness remains unestablished pending matched live systems, authenticated observation, executable holdouts, repeated probabilistic blocks, and uncertainty-bearing analysis.
 
 ## 1. Introduction
 
@@ -22,15 +24,14 @@ We present SENTINEL, a cross-layer conformance and fault-injection methodology f
 
 We instantiate SENTINEL in microservice remediation. ARIA produces diagnoses and typed workflow proposals from public benchmark evidence. Every model input and output is treated as data: it cannot assert identity, authority, resource classification, effect class, independence, or success. Guardian independently binds identity, capability, resource, destination, tenant, service contract, dependency/conflict facts, policy, and current state. It schedules only authorized ready nodes; narrow brokers alone possess service credentials. Responses are schema-checked and provenance-labeled before dependent nodes may consume them. Public microservice environments determine whether authorized effects occurred, whether ordering and cardinality were preserved, and whether service health recovered.
 
-Subject to the registered experiments, this work targets four evaluation
-contributions:
+This development study makes four bounded contributions:
 
 1. **A protocol-neutral experimental fault model and record schema** that separates an untrusted proposal from trusted identity, authority, resource, service-contract, dependency, conflict, decision, dispatch, receipt, and observed-effect facts.
 2. **Pre-registered effect-grounded conformance relations** for protocol representation, complete mediation, dependency authenticity, safe parallelization, conflict serialization, response/effect agreement, and retry/compensation behavior.
-3. **A reproducible cross-layer fault-injection harness** that evaluates actual workflow effects and recovery rather than policy verdicts, schemas, or workflow status alone, and minimizes unsafe traces into assurance cut sets.
-4. **An empirical multi-system study** that quantifies unauthorized, missing, duplicated, substituted, and out-of-order effects together with safe recovery, useful completion, rollback, and latency.
+3. **A reproducible cross-layer fault-injection harness** that evaluates effect records rather than policy verdicts, schemas, or workflow status alone, and minimizes unsafe traces into assurance cut sets.
+4. **A replication and negative-results account** showing where public artifacts execute, where conceptual reconstruction is unavoidable, why nominally secure mechanisms tie under ideal assumptions, and which evidence is still required for an archival effectiveness claim.
 
-The intended contribution is an evaluation method and empirical result. We do not claim to invent external enforcement, information-flow labels, provenance tracking, risk-adaptive authorization, typed action contracts, pre/postcondition checking, symbolic state, temporal policy, workflow DAGs, durable execution, sagas, commit-time freshness, replay protection, causal provenance, protocol description languages, independent application-state assertions, or guarded Kubernetes remediation. Until the registered experiments are complete, the four items above are study objectives rather than established contributions.
+The contribution is an evaluation method and development result. We do not claim to invent external enforcement, information-flow labels, provenance tracking, risk-adaptive authorization, typed action contracts, pre/postcondition checking, symbolic state, temporal policy, workflow DAGs, durable execution, sagas, commit-time freshness, replay protection, causal provenance, protocol description languages, independent application-state assertions, or guarded Kubernetes remediation. We also do not claim published-defense efficacy, production prevalence, or superiority over correctly labeled information-flow control.
 
 ## 2. Background and Related Work
 
@@ -82,6 +83,13 @@ These studies motivate our domain and baselines. SENTINEL's distinction is to te
 ## 3. System Model
 
 ### 3.1 Proposal-to-workflow-effect pipeline
+
+![SENTINEL separates untrusted computation, deterministic enforcement, environmental effects, and independent observation.](figures/fig1-assurance-architecture.svg)
+
+**Figure 1. SENTINEL assurance architecture.** The model proposes; the
+deterministic boundary derives and enforces authority; the environment produces
+effects; and an independently sourced oracle grades those effects. Faults may
+occur on either the prevention path or the observation path.
 
 The predictor emits an authority-free workflow proposal (G_p=(V_p,E_p)).
 Each node names a registered capability and untrusted arguments; edges propose
@@ -256,7 +264,255 @@ from the dedicated actuator identity with matching namespace, target, replica
 value, completion status, and correlation. Reconciliation is exact over the
 bounded trial window: missing or extra events fail the trial's evidence gate.
 
-## 5. Research Questions and Hypotheses
+## 5. Development Study
+
+### 5.1 Research questions
+
+The completed campaign addresses five development-stage questions:
+
+- **RQ1—Reproduction fidelity:** Which public artifacts execute, and which
+  comparisons remain conceptual reconstructions?
+- **RQ2—Outcome correspondence:** When do native verdicts or receipts disagree
+  with independently graded safe effects?
+- **RQ3—Nominal robustness:** Do adaptive content mutations distinguish
+  SENTINEL from correctly labeled information-flow control under ideal trusted
+  assumptions?
+- **RQ4—Assurance structure:** Which minimum trusted-boundary fault sets cause
+  any unauthorized effect, and which cause a silent unauthorized effect?
+- **RQ5—Claim validity:** Which apparent positive results survive prior-art
+  subtraction, utility controls, and a confirmatory-validity audit?
+
+### 5.2 Evidence grades and subjects
+
+The study separates public-artifact execution, artifact replication with
+substitutions, conceptual reconstruction, and synthetic mechanism evidence.
+Table 1 is a fidelity statement, not a ranking of the defenses.
+
+| Subject | Executed evidence | Grade and claim limit |
+|---|---|---|
+| AgentDojo | Public source, native tasks, ground truths, and scorer diagnostics | Source executability and benchmark validation; no published efficacy number reproduced |
+| CaMeL | Released tests, scripted smoke path, policy inventory, and deterministic resource probes | Public-artifact execution; no published defense number reproduced |
+| Agent-C | Pinned Zenodo archive, grammar/checker paths, and selected formula replays | Artifact replication with dependency substitutions; no model-backed result reproduced |
+| Fides | Model-free tutorial core plus a matched AgentDojo-style comparison | Tutorial execution; comparison is explicitly conceptual |
+| ToolGate | Official artifact precondition/executor/postcondition path | Deterministic artifact probe; no ToolBench or MCP-Universe number reproduced |
+| Invitation Is All You Need | Five threat classes mapped to ten inert behavioral analogs | Conceptual reconstruction; 0/14 exact production scenarios |
+| SENTINEL extensions | Calendar, resource, adaptive-input, boundary-fault, and prospective challenge matrices | Deterministic synthetic development evidence only |
+
+### 5.3 Controls and evidence record
+
+Every matched matrix includes no-defense and always-deny sanity conditions.
+Where meaningful, schema-only, correct-label Fides reconstruction, and
+SENTINEL receive identical fixed proposals. Native metrics remain in their own
+namespaces. The derived action/effect record separately identifies proposal,
+binding, verdict, dispatch, receipt, environment effect, and terminal state;
+missing evidence remains explicitly not computable.
+
+The immutable campaign inventory comprises 1,329 deterministic development
+trials. It includes deliberately permissive controls, intentionally injected
+boundary faults, and repeated mechanism checks. Consequently, neither the 240
+unauthorized-effect observations nor the 240 receipt/effect disagreements are
+population rates or independent samples.
+
+### 5.4 Analysis boundary
+
+The study reports exact descriptive counts and byte-identical deterministic
+reruns. It does not calculate confidence intervals: the trials are
+purposefully constructed, heterogeneous, and non-exchangeable. A planned set
+of five holdout names was audited before use and found to lack frozen inputs,
+initial states, scorers, and expected outcomes. Those cases were downgraded to
+a post-development prospective challenge set rather than mislabeled as
+confirmation.
+
+## 6. Results
+
+### 6.1 Artifact and benchmark findings
+
+The reproduction campaign recovered source executability and several
+mechanism-level behaviors, but reproduced zero published effectiveness
+numbers. It also found benchmark and integration limitations relevant to the
+paper's evaluation thesis: an AgentDojo representation mismatch incorrectly
+classified injectable tasks; one native scorer rejected an exact effect under
+ambiguous search results; CaMeL policy probes admitted selected untrusted
+resource selectors; Agent-C formulas frequently left non-identity write
+arguments unconstrained; and ToolGate's native symbolic state disagreed with
+independent effects under false-success and post-effect malformed-response
+faults. These observations motivate effect-grounded comparison without turning
+heterogeneous native metrics into a common score.
+
+### 6.2 Nominal and adaptive defense comparison
+
+In the Invitation-style matrix, correct-label Fides reconstruction and
+SENTINEL each preserved all ten benign controls and safely handled all twenty
+attack trials. Neither had an unauthorized effect. Schema-only, no defense,
+and the deliberately mislabeled Fides adapter each produced twenty
+unauthorized effects. Always-deny contained attacks but lost all benign
+utility. Thus SENTINEL has no nominal superiority result over ideal IFC.
+
+The frozen adaptive development matrix reached the same conclusion. No
+defense and schema-only were compromised on the first attempt for all ten
+attack seeds. Correct-label Fides and SENTINEL each exhausted 120 attempts
+without an unauthorized effect and retained 60/60 benign variants. Always-deny
+again retained 0/60 benign variants. Because the adaptive generator was a
+deterministic state machine over inert mutation descriptors, this is a
+mechanism-conformance result, not an LLM susceptibility estimate.
+
+![Adaptive development controls and receipt/effect correspondence across six deterministic matrices.](figures/fig2-development-results.svg)
+
+**Figure 2. Development evidence.** Panel A shows the matched adaptive sanity
+conditions after putting benign utility and compromised seeds on a common
+0–10 descriptive scale. Panel B preserves agreement, disagreement, and missing
+evidence separately. The matrices are not pooled into an effectiveness rate.
+
+| Defense | Attack attempts | Compromised seeds | Benign variants retained | Unauthorized effects |
+|---|---:|---:|---:|---:|
+| No defense | 10 | 10/10 | 60/60 | 10 |
+| Schema allowlist | 10 | 10/10 | 60/60 | 10 |
+| Correct-label Fides reconstruction | 120 | 0/10 | 60/60 | 0 |
+| SENTINEL | 120 | 0/10 | 60/60 | 0 |
+| Always deny | 120 | 0/10 | 0/60 | 0 |
+
+### 6.3 Cross-layer effect correspondence
+
+Receipt/effect disagreement recurred across distinct failure classes:
+unauthorized effects paired with successful receipts, false-success receipts
+without effects, post-effect rejection, wrong targets, duplicate retries, and
+observer omission. The common trace prevented two invalid inferences: formula
+admission was not treated as a completed effect, and missing observation was
+not treated as evidence of safety. Across the six final synthetic matrices,
+disagreement counts were 32/128 calendar trials, 36/136 resource trials,
+60/180 Invitation trials, 20/680 adaptive trials, 80/180 cut-set trials, and
+12/25 prospective challenge trials. These are designed-condition counts, not
+prevalence estimates.
+
+### 6.4 Minimal assurance cut sets
+
+The boundary-fault experiment held ten attack actions and five benign actions
+fixed across nominal controls and all subsets of adapter, broker, and observer
+faults. A single adapter fault or broker fault caused unauthorized effects in
+all ten attack actions; a healthy observer detected each effect. Observer
+failure alone caused no unauthorized effect. Silent compromise required a
+prevention fault together with observer omission.
+
+![Minimal prevention and silent-compromise cut sets.](figures/fig3-minimal-cutsets.svg)
+
+**Figure 3. Minimal assurance cut sets.** Prevention has singleton cut sets;
+silent compromise has two-layer cut sets in the constructed chain. Detection
+does not receive prevention credit.
+
+| Outcome | Minimal cut sets | Interpretation |
+|---|---|---|
+| Any unauthorized effect | `{adapter}`, `{broker}` | SENTINEL is not one-fault-safe for prevention |
+| Silent unauthorized effect | `{adapter, observer}`, `{broker, observer}` | A separate observer adds detection redundancy, not effect prevention |
+
+### 6.5 Prospective challenge failure
+
+The post-development challenge set combined normalized-destination,
+redirect-plus-digest, delayed memory/agent, resource-substitution, and
+duplicate-effect factors. Correct-label Fides and SENTINEL each safely handled
+four of five cases. Both failed the duplicate-effect false-success case: one
+approved write completed, a false failure receipt triggered a retry, and the
+environment recorded two effects. SENTINEL's observer detected the duplicate
+after it occurred. The case therefore remains a security failure and motivates
+broker idempotency, exactly-once semantics where feasible, or compensation.
+
+## 7. Interpretation
+
+Three findings define the paper's contribution boundary.
+
+First, the deterministic-boundary pattern is prior art. Information-flow
+control, temporal constraints, Hoare-style contracts, typed actions, symbolic
+state, and workflow enforcement cannot be claimed as SENTINEL inventions.
+Trusted complete-tuple construction is a useful reference mechanism, while
+non-transitive URL/file transitions are an experimental factor rather than a
+new security model.
+
+Second, nominal attack blocking does not distinguish ideal mechanisms. Under
+correct trusted labels, SENTINEL and the Fides reconstruction tied in both the
+fixed and adaptive matrices. The differentiator is not another prompt filter;
+it is whether the evaluation follows authority and effects across adapters,
+brokers, receipts, and observers—including faults in those trusted layers.
+
+Third, observation and prevention are distinct. Independent effects changed
+the interpretation of scorer outputs, symbolic commits, successful receipts,
+and retries. Yet the duplicate case demonstrates the limit: detecting an
+effect after completion does not make the execution safe. The strongest
+supported claim is therefore methodological:
+
+> SENTINEL exposes and minimizes cross-layer assurance failures that nominal
+> policy and tool-success metrics can hide.
+
+This claim is supported in deterministic development environments. Whether
+the resulting cut sets recur across real systems is an open empirical question.
+
+## 8. Threats to Validity
+
+**Construct validity.** The synthetic policies and consequence labels encode
+the intended security property by construction. We mitigate circularity by
+preserving native baseline metrics, using separate effect namespaces, and
+including deliberately falsifying cases, but official baseline integrations
+remain necessary.
+
+**Internal validity.** Deterministic state machines make fault application and
+reruns exact, but they may omit timing, parser, network, credential, and
+controller behavior. The independent oracle is process-separated by namespace,
+not independently authenticated infrastructure.
+
+**External validity.** Calendar and resource fixtures do not establish behavior
+on production Gmail, Calendar, browsers, Kubernetes, or physical devices.
+Invitation coverage is class-level analogy, not exact reproduction.
+
+**Statistical validity.** The 1,329 trials span incompatible matrices and
+deliberately selected conditions. They are neither random nor exchangeable and
+support no pooled rate, significance test, or confidence interval.
+
+**Researcher degrees of freedom.** Only names—not executable cases—were frozen
+for the planned holdout. We therefore rejected the confirmatory label and
+reported the later cases as prospective development challenges.
+
+## 9. Limitations and Required Confirmation
+
+The study has no matched official defense comparison on resettable public
+multi-service systems, no model-backed adaptive attack rate, no valid held-out
+confirmation, no repeated probabilistic or infrastructure blocks, and no
+uncertainty analysis. It does not measure latency, recovery, rollback, or
+availability in a live system. Same-host replay does not establish independent
+reproducibility.
+
+The archival study must authenticate environment effects independently from
+Guardian and the broker; freeze executable holdout inputs, states, scorers,
+exclusions, and analysis; repeat planners and deployment/load blocks; and add
+idempotency and compensation ablations. Until then, the reported counts are
+development evidence and the paper must not claim production effectiveness or
+general superiority.
+
+## 10. Ethical Considerations
+
+All campaign fixtures used public or synthetic data, fake authority, reserved
+destinations, and inert in-memory effects. No live malware, production
+credentials, real accounts, uncontrolled callbacks, or destructive external
+actions were used. Future live work should remain confined to disposable
+systems, preserve post-effect failures, and disclose containment limits rather
+than presenting finite-sample absence of compromise as zero risk.
+
+## 11. Conclusion
+
+Deterministic boundaries are necessary but not self-validating. Their security
+depends on how trusted attributes are constructed, how decisions reach
+credentialed brokers, whether receipts correspond to environmental effects,
+and whether observation remains available when prevention fails. SENTINEL
+treats that complete assurance chain as testable software.
+
+The development campaign supports two narrow outcomes. Cross-layer effect
+records expose failures hidden by verdict and receipt metrics, and minimal
+cut-set analysis separates prevention failure from silent failure. It also
+produces important negative results: SENTINEL did not outperform ideal
+correct-label IFC in matched synthetic matrices, names alone did not form a
+valid holdout, and an observer detected but did not prevent a duplicate effect.
+These findings justify an effect-grounded assurance study, not a broad claim
+that deterministic guardrails solve prompt injection. Live multi-system,
+uncertainty-bearing confirmation is the next required step.
+
+## Appendix A. Registered archival-study design
 
 **RQ1: Fault coverage.** Which single-layer faults produce unauthorized effects under each guardrail configuration?
 
@@ -285,9 +541,9 @@ Pre-registered hypotheses:
 - **H7:** schema-valid protocol substitutions expose authorization or effect disagreements that single-adapter conformance tests do not detect;
 - **H8:** trusted effect-conflict serialization prevents duplicate and out-of-order effects that occur when the agent's independence declarations control scheduling.
 
-## 6. Experimental Design
+### A.1 Planned experimental design
 
-### 6.1 Systems and incidents
+#### A.1.1 Systems and incidents
 
 Use at least two public microservice systems; three are preferred:
 
@@ -297,7 +553,7 @@ Use at least two public microservice systems; three are preferred:
 
 Incident evidence should come from canonical public benchmark readers or a declared live fault-injection testbed. Do not infer ground truth from directory names. Freeze incident IDs, repository revisions, container images, deployment manifests, and oracle definitions before the confirmatory run.
 
-### 6.2 Predictor conditions
+#### A.1.2 Predictor conditions
 
 - deterministic ARIA RCA/remediation;
 - at least two LLM configurations from different model families;
@@ -306,7 +562,7 @@ Incident evidence should come from canonical public benchmark readers or a decla
 
 For stochastic predictors, use predeclared seeds and repeated trials. Predictor outputs must be frozen before guardrail-condition comparison so every guardrail sees identical proposals.
 
-### 6.3 Guardrail conditions
+#### A.1.3 Guardrail conditions
 
 1. **No external guardrail:** direct execution within the simulator/testbed.
 2. **Schema and allowlist only:** typed action plus static capability exposure.
@@ -317,7 +573,7 @@ For stochastic predictors, use predeclared seeds and repeated trials. Predictor 
 
 The external-policy condition tests whether results arise from Sentinel's methodology or Guardian-specific implementation choices.
 
-### 6.4 Fault campaign
+#### A.1.4 Fault campaign
 
 The live study has three disjoint phases:
 
@@ -362,7 +618,7 @@ estimates and must not populate the confirmatory result tables. Oracle and
 broker ablations require the live trial boundary so that removing a measurement
 or enforcement mechanism cannot silently change the ground-truth evaluator.
 
-### 6.5 Primary outcomes
+#### A.1.5 Primary outcomes
 
 **Unauthorized Effect Rate (UER)**
 
@@ -384,7 +640,7 @@ SRR = \frac{\sum_i \mathbb{1}[Recovered_i \land Safe_i]}{N}.
 
 Secondary outcomes include unsafe success, failed-safe outcomes, rollback success, duplicate-effect rate, metamorphic-relation violation rate, postcondition disagreement, human escalation rate, deep-verifier invocation rate, and p50/p95/p99 decision and recovery latency.
 
-### 6.6 Statistical analysis
+#### A.1.6 Statistical analysis
 
 - Use paired comparisons because identical frozen proposals run under each guardrail condition.
 - Report absolute risk differences, relative risks where denominators permit, and confidence intervals.
@@ -403,7 +659,7 @@ size. The confirmatory design requires at least three independent deployment
 blocks per system, but that minimum does not replace the pilot-based power
 calculation.
 
-## 7. Reproducibility and Artifact Design
+### A.2 Reproducibility and artifact design
 
 Every run should emit one immutable terminal record containing:
 
@@ -423,38 +679,38 @@ Every run should emit one immutable terminal record containing:
 
 Paper tables and figures must be generated exclusively from these records. The artifact checker must fail if a reported number does not reproduce from the frozen run set.
 
-## 8. Results
+### A.3 Planned archival results
 
-### 8.1 Nominal behavior
+#### A.3.1 Nominal behavior
 
 Report nominal UER, SRR, FIR, escalation, rollback, and latency for every condition. Nominal correctness is necessary but not the primary contribution.
 
 | Condition | UER | SRR | FIR | Escalation | p95 decision latency | p95 recovery time |
 |---|---:|---:|---:|---:|---:|---:|
-| No guardrail | [ ] | [ ] | [ ] | - | [ ] | [ ] |
-| Schema/allowlist | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
-| Guardian static | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
-| Guardian full | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
-| Guardian adaptive | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
-| External policy | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
+| No guardrail | Not executed | Not executed | Not executed | - | Not executed | Not executed |
+| Schema/allowlist | Not executed | Not executed | Not executed | Not executed | Not executed | Not executed |
+| Guardian static | Not executed | Not executed | Not executed | Not executed | Not executed | Not executed |
+| Guardian full | Not executed | Not executed | Not executed | Not executed | Not executed | Not executed |
+| Guardian adaptive | Not executed | Not executed | Not executed | Not executed | Not executed | Not executed |
+| External policy | Not executed | Not executed | Not executed | Not executed | Not executed | Not executed |
 
-### 8.2 Single-fault coverage
+#### A.3.2 Single-fault coverage
 
 Report outcomes by fault operator and layer. Avoid an aggregate “accuracy” that hides high-consequence failures.
 
-### 8.3 Cross-layer interactions
+#### A.3.3 Cross-layer interactions
 
 Present a layer-by-layer interaction heatmap using absolute UER increase over the nominal condition. Identify which pairs exceed the additive expectation and verify them with targeted reruns.
 
-### 8.4 Safety-recovery frontier
+#### A.3.4 Safety-recovery frontier
 
 Plot SRR against UER, with latency or escalation encoded separately. A strong result moves toward high safe recovery and low unauthorized effects; pure refusal should not appear superior merely because it prevents execution.
 
-### 8.5 Assurance cut sets and metamorphic relations
+#### A.3.5 Assurance cut sets and metamorphic relations
 
 Report the distribution and recurrence of minimized assurance cut sets by architecture, system, and unsafe-effect class. Separate portable cut sets from implementation-specific ones. For each preregistered metamorphic relation, report violation counts and minimized counterexamples.
 
-### 8.6 Outcome disagreement
+#### A.3.6 Outcome disagreement
 
 Compare:
 
@@ -466,7 +722,7 @@ Compare:
 
 Quantify how often earlier-stage metrics overstate safe recovery.
 
-## 9. Discussion
+### A.4 Planned archival discussion
 
 The discussion must be driven by results. Candidate questions include:
 
@@ -485,7 +741,7 @@ The paper should distinguish three forms of assurance:
 
 SENTINEL primarily evaluates the gaps between these layers.
 
-## 10. Threats to Validity
+### A.5 Planned archival threats to validity
 
 **Construct validity.** Safety policies and recovery oracles simplify operational judgment. Each must be reviewed independently and versioned before experiments.
 
@@ -497,17 +753,19 @@ SENTINEL primarily evaluates the gaps between these layers.
 
 **Implementation validity.** Guardian is both a research prototype and a system under test. Equivalent external-policy baselines, ablations, and fault-oracle tests reduce author-implementation bias.
 
-## 11. Limitations
+### A.6 General limitations
 
 SENTINEL cannot establish that a policy is complete or morally correct. Deterministic enforcement only guarantees behavior relative to the facts, state model, policies, credentials, and enforcement coverage supplied to it. Fault operators approximate possible failures and cannot enumerate all adversarial strategies. A simulator improves reproducibility but may omit Kubernetes races, controller interactions, or delayed effects. A live testbed improves realism but adds environmental variance. Results from microservice remediation may not transfer to finance, healthcare, robotics, or open-ended computer-use agents without new action and safety models. The study evaluates bounded actions and does not solve general prompt injection, compromised tool implementations, or malicious infrastructure administrators.
 
-## 12. Ethical Considerations
+### A.7 Ethical constraints for live work
 
 Experiments should use public datasets, synthetic secrets, reserved destinations, and isolated test environments. No production credentials or externally reachable destructive tools should be available to an agent. Telemetry attacks and enforcement bypasses should be disclosed only as reproducible test fixtures against disposable systems. The paper should avoid describing finite-sample containment as universal security.
 
-## 13. Conclusion
+### A.8 Archival-study objective
 
-Deterministic guardrails are increasingly proposed as the safety boundary around predictive and agentic systems. Their presence alone does not establish dependable behavior. SENTINEL treats the guardrail and its assumptions as testable safety-critical software. By injecting faults across evidence, prediction, binding, policy, enforcement, and observation, and grading actual effects and recovery, the methodology is designed to reveal assurance failures hidden by nominal conformance and endpoint-success metrics. **[Insert result-grounded conclusion after confirmatory experiments.]**
+The archival extension will test whether the development findings transfer to
+live, resettable multi-service systems under repeated probabilistic and
+infrastructure blocks. No conclusion from that future study is asserted here.
 
 ## References to include in the formatted manuscript
 
