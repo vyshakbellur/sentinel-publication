@@ -2,9 +2,11 @@
 
 from __future__ import annotations
 
+import hashlib
 import json
 from pathlib import Path
 
+import matplotlib as mpl
 import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.patches import FancyArrowPatch, FancyBboxPatch
@@ -13,6 +15,7 @@ from matplotlib.patches import FancyArrowPatch, FancyBboxPatch
 ROOT = Path(__file__).parents[1]
 FIGURES = ROOT / "paper" / "figures"
 REPORTS = ROOT / "_workloads" / "reproduction"
+FIGURE_DATA = ROOT / "paper" / "data" / "development_figure_data.json"
 
 COLORS = {
     "untrusted": "#9ca3af",
@@ -24,15 +27,32 @@ COLORS = {
     "missing": "#d1d5db",
 }
 
+mpl.rcParams["svg.hashsalt"] = "sentinel-paper-v1"
+
 
 def load(path: str) -> dict:
-    return json.loads((REPORTS / path / "report.json").read_text())
+    snapshot = json.loads(FIGURE_DATA.read_text())
+    report = snapshot["reports"][path]
+    local_source = REPORTS / path / "report.json"
+    if local_source.exists():
+        digest = hashlib.sha256(local_source.read_bytes()).hexdigest()
+        if digest != report["source_sha256"]:
+            raise ValueError(f"source report digest mismatch: {path}")
+    return report
 
 
 def save(fig: plt.Figure, stem: str) -> None:
     FIGURES.mkdir(parents=True, exist_ok=True)
-    fig.savefig(FIGURES / f"{stem}.svg", bbox_inches="tight")
-    fig.savefig(FIGURES / f"{stem}.pdf", bbox_inches="tight")
+    svg = FIGURES / f"{stem}.svg"
+    fig.savefig(svg, bbox_inches="tight", metadata={"Date": None})
+    svg.write_text(
+        "\n".join(line.rstrip() for line in svg.read_text().splitlines()) + "\n"
+    )
+    fig.savefig(
+        FIGURES / f"{stem}.pdf",
+        bbox_inches="tight",
+        metadata={"CreationDate": None, "ModDate": None},
+    )
     fig.savefig(FIGURES / f"{stem}.png", dpi=220, bbox_inches="tight")
     plt.close(fig)
 

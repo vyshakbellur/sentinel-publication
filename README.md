@@ -12,20 +12,62 @@ repository is intentionally separate from Guardian and ARIA:
 - **SENTINEL** injects faults and grades conformance, actual effects, and
   recovery.
 
-This private research monorepo contains a provenance-recorded snapshot of the
+This research monorepo contains a provenance-recorded snapshot of the
 Guardian reference implementation. The public `guardian-workshop` remains an
 educational artifact; ARIA remains an independent predictor repository and is
 connected through frozen proposal records. See
 `docs/adr/0001-private-research-monorepo.md` for the boundary decision.
 
-The first vertical slice uses Guardian's real trusted-attribute binder and policy pipeline with a deterministic microservice simulator. It covers nominal recovery plus predictor, binding, policy, enforcement, and observation faults. Public systems used for live experiments are locked in `external/workloads.lock.json` and fetched into an ignored directory.
+The first vertical slice uses Guardian's real trusted-attribute binder and
+policy pipeline with a deterministic microservice simulator. It covers nominal
+recovery plus predictor, binding, policy, enforcement, and observation faults.
+Public systems used for live experiments are locked in
+`external/workloads.lock.json` and fetched into an ignored directory.
+
+## Paper and evidence
+
+> **Research status:** development evidence, not a production-safety claim.
+> The current results are deterministic simulator and public-artifact probes.
+> Authenticated live-system confirmation, repeated probabilistic blocks,
+> uncertainty analysis, and independent reproduction remain planned work.
+
+- [Draft manuscript](paper/MANUSCRIPT.md)
+- [Archival experimental plan](paper/ARCHIVAL_EXECUTION_PLAN.md)
+- [Publication-readiness audit](paper/PUBLICATION_READINESS.md)
+- [Claim-to-evidence ledger](paper/submission/claim_evidence.json)
+- [Locked public workloads](external/workloads.lock.json)
+- [Generated figures and provenance](paper/figures/README.md)
+
+![SENTINEL assurance architecture](paper/figures/fig1-assurance-architecture.png)
+
+The development inventory contains 1,329 heterogeneous deterministic trials
+and 240 receipt-versus-safe-effect disagreements. These are designed-condition
+counts and must not be pooled into an effectiveness or deployed-risk estimate.
+
+## Quick start
+
+Requires Python 3.12.
+
+```bash
+git clone https://github.com/vyshakbellur/sentinel-publication.git
+cd sentinel-publication
+python3.12 -m venv .venv
+source .venv/bin/activate
+python -m pip install -e ".[dev,analysis]"
+python -m pytest
+python scripts/generate_paper_figures.py
+```
+
+The last command regenerates the SVG, PDF, and PNG manuscript figures from the
+tracked aggregate evidence snapshot. If the full local development reports are
+present, it also verifies their recorded SHA-256 digests.
 
 ## Run the initial experiment
 
 ```bash
-python -m pip install -e ".[dev]"
+sentinel_run_dir=$(mktemp -d)
 python -m sentinel_experiments.cli \
-  --output experiments/runs/e0-guardian-smoke-v1
+  --output "$sentinel_run_dir/initial"
 ```
 
 The command writes:
@@ -37,14 +79,7 @@ The command writes:
 
 Output directories are write-once by default. Choose a new run ID rather than overwriting evidence.
 
-## Test
-
-```bash
-python -m pytest
-python -m ruff check sentinel_experiments tests scripts
-```
-
-## Reproduce the non-live artifact checks
+## Reproduce the checked artifact
 
 The clean-environment verifier creates a temporary virtual environment, applies
 the complete runtime/test constraints in `requirements/repro.lock`, downloads and

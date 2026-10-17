@@ -1,0 +1,105 @@
+{
+  "schema_version": "sentinel.development-figure-data.v1",
+  "scope": "Aggregate deterministic development evidence; not a population estimate",
+  "reports": {
+    "iteration-21-calendar-promptware-v1": {
+      "source_sha256": "aaeeece3ead971522cd45f9da407f7d1a7e2469507a3f6639e55231e0c7b38f9",
+      "trial_count": 128,
+      "completed_unauthorized_effects": 32,
+      "receipt_effect_comparisons": {
+        "agree": 64,
+        "disagree": 32,
+        "not_computable": 32
+      }
+    },
+    "iteration-22-resource-transitions-v1": {
+      "source_sha256": "a381c969e93d25b6a42493db500ad1ababcb36811ad1bfa16bd712eaa1eed545",
+      "trial_count": 136,
+      "completed_unauthorized_effects": 36,
+      "receipt_effect_comparisons": {
+        "agree": 66,
+        "disagree": 36,
+        "not_computable": 34
+      }
+    },
+    "iteration-23-invitation-reconstruction-v1": {
+      "source_sha256": "567f1ecff74dc7659f242c6a4535c2d6d9534648d40252295e5d2b8ac322c48c",
+      "trial_count": 180,
+      "completed_unauthorized_effects": 60,
+      "receipt_effect_comparisons": {
+        "agree": 90,
+        "disagree": 60,
+        "not_computable": 30
+      }
+    },
+    "iteration-25-adaptive-promptware-v1": {
+      "source_sha256": "f907098b06992617343f49b3efeace003429c304dcf7411e59ab284fb91015db",
+      "completed_unauthorized_effects": 20,
+      "receipt_effect_comparisons": {
+        "agree": 480,
+        "disagree": 20,
+        "not_computable": 180
+      },
+      "by_defense": {
+        "always_deny": {
+          "attack_attempts": 120,
+          "benign_utility": 0,
+          "successful_attack_seeds": 0,
+          "unauthorized_effects": 0
+        },
+        "fides_correct_label_reconstruction": {
+          "attack_attempts": 120,
+          "benign_utility": 60,
+          "successful_attack_seeds": 0,
+          "unauthorized_effects": 0
+        },
+        "none": {
+          "attack_attempts": 10,
+          "benign_utility": 60,
+          "successful_attack_seeds": 10,
+          "unauthorized_effects": 10
+        },
+        "schema_allowlist": {
+          "attack_attempts": 10,
+          "benign_utility": 60,
+          "successful_attack_seeds": 10,
+          "unauthorized_effects": 10
+        },
+        "sentinel": {
+          "attack_attempts": 120,
+          "benign_utility": 60,
+          "successful_attack_seeds": 0,
+          "unauthorized_effects": 0
+        }
+      }
+    },
+    "iteration-26-boundary-fault-cutsets-v1": {
+      "source_sha256": "dbb54433f3d38e1b3f7f23cf59c6332ca374b1215eada8eddd15b8c3a8a061d0",
+      "trial_count": 180,
+      "completed_unauthorized_effects": 80,
+      "receipt_effect_comparisons": {
+        "agree": 85,
+        "disagree": 80,
+        "not_computable": 15
+      },
+      "minimal_sentinel_prevention_cut_sets": [
+        ["sentinel_adapter_fault"],
+        ["sentinel_broker_fault"]
+      ],
+      "minimal_sentinel_silent_cut_sets": [
+        ["sentinel_adapter_fault", "sentinel_observer_fault"],
+        ["sentinel_broker_fault", "sentinel_observer_fault"]
+      ]
+    },
+    "iteration-27-prospective-challenges-v1": {
+      "source_sha256": "7665fe711b17f4d1085568bce7d26831bbb0547c83e172dbaa4147d283aec8cb",
+      "trial_count": 25,
+      "completed_unauthorized_effects": 12,
+      "receipt_effect_comparisons": {
+        "agree": 8,
+        "disagree": 12,
+        "not_computable": 5
+      }
+    }
+  }
+}
